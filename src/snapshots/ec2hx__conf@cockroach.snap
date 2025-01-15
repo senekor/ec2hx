@@ -1,0 +1,8 @@
+---
+source: src/lib.rs
+expression: config_toml
+input_file: test_data/cockroach
+snapshot_kind: text
+---
+editor.default-line-ending = "lf"
+editor.insert-final-newline = true

@@ -1,0 +1,9 @@
+[package]
+name = "ec2hx"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[dev-dependencies]
+insta = { version = "1.42.0", features = ["glob"] }

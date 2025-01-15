@@ -1,0 +1,7 @@
+---
+source: src/lib.rs
+expression: config_toml
+input_file: test_data/linux
+snapshot_kind: text
+---
+
