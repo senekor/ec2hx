@@ -75,8 +75,45 @@ pub fn ec2hx(input: &str) -> (String, String) {
 }
 
 fn extract_langs_from_header(header: &str) -> Vec<String> {
-    // TODO
-    Vec::new()
+    if header.contains(['/', '?', '[', ']', '!']) || header.contains("**") || header.contains("..")
+    {
+        // deranged section detected, give up
+        return Vec::new();
+    }
+
+    let mut rest = header;
+    let mut stack = vec![vec![]];
+    let mut should_expanded_at_next_delimiter = false;
+
+    'outer: loop {
+        for i in 0..=rest.len() {
+            if i == rest.len() || matches!(rest.as_bytes()[i], b'{' | b',' | b'}') {
+                if should_expanded_at_next_delimiter {
+                    should_expanded_at_next_delimiter = false;
+                    let fragments = stack.pop().unwrap();
+                    let current_buffer = stack.last_mut().unwrap();
+                    let prefix = current_buffer.pop().unwrap_or_default();
+                    let suffix = rest[0..i].to_string();
+
+                    for frag in fragments {
+                        current_buffer.push(format!("{prefix}{frag}{suffix}"));
+                    }
+                } else {
+                    stack.last_mut().unwrap().push(rest[0..i].to_string());
+                }
+                match rest.as_bytes().get(i) {
+                    Some(b'{') => stack.push(Vec::new()), // recurse deeper
+                    Some(b'}') => should_expanded_at_next_delimiter = true,
+                    None => break 'outer,
+                    _ => {} // b','
+                }
+                rest = &rest[i + 1..];
+                continue 'outer; // make sure counter starts back at 0
+            }
+        }
+    }
+
+    stack.pop().unwrap()
 }
 
 #[derive(Debug, Clone, Default)]
@@ -271,6 +308,35 @@ impl<T: AsRef<str>> HxIndentCfgExt for BTreeMap<T, HxIndentCfg> {
         }
         f
     }
+}
+
+#[test]
+fn extract_langs() {
+    let actual = extract_langs_from_header("Makefile");
+    let expected = vec!["Makefile"];
+    assert_eq!(actual, expected);
+
+    let actual = extract_langs_from_header("*.{json,js}");
+    let expected = vec!["*.json", "*.js"];
+    assert_eq!(actual, expected);
+
+    let actual =
+        extract_langs_from_header("{*.{awk,c,dts,dtsi,dtso,h,mk,s,S},Kconfig,Makefile,Makefile.*}");
+    let expected = vec![
+        "*.awk",
+        "*.c",
+        "*.dts",
+        "*.dtsi",
+        "*.dtso",
+        "*.h",
+        "*.mk",
+        "*.s",
+        "*.S",
+        "Kconfig",
+        "Makefile",
+        "Makefile.*",
+    ];
+    assert_eq!(actual, expected);
 }
 
 #[test]

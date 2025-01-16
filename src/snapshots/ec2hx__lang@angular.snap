@@ -6,6 +6,10 @@ snapshot_kind: text
 ---
 # language-specific settings:
 
+[[language]]
+name = "*.md"
+indent = { unit = "  ", tab-width = 2 }
+
 ################################################################################
 
 # global settings, applied equally to all remaining languages:

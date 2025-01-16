@@ -4,4 +4,10 @@ expression: languages_toml
 input_file: test_data/cockroach
 snapshot_kind: text
 ---
+[[language]]
+name = "*.opt"
+indent = { unit = "    ", tab-width = 4 }
 
+[[language]]
+name = "Makefile"
+indent = { unit = "\t", tab-width = 2 }

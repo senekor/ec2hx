@@ -4,4 +4,66 @@ expression: languages_toml
 input_file: test_data/linux
 snapshot_kind: text
 ---
+[[language]]
+name = "*.S"
+indent = { unit = "\t", tab-width = 8 }
 
+[[language]]
+name = "*.awk"
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "*.c"
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "*.dts"
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "*.dtsi"
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "*.dtso"
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "*.h"
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "*.json"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "*.mk"
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "*.py"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "*.rs"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "*.s"
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "*.yaml"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "Kconfig"
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "Makefile"
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "Makefile.*"
+indent = { unit = "\t", tab-width = 8 }

@@ -46,8 +46,6 @@ It will automatically be picked up by the snapshot tests (using [insta](https://
 
 TODO:
 
-- extract languages from section header
-
 - parse default languages.toml (from helix as submodule?) (at built time?) to match section headers against supported languages and their file-types and globs
 
 - CLI to generate files (config.toml, languages.toml, .gitignore)
