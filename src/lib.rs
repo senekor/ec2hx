@@ -219,7 +219,13 @@ impl<'a> EditorConfig<'a> {
                 cur_section = BTreeMap::new();
             } else {
                 let (key, value) = line.parse_key_value_pair();
-                cur_section.insert(key, value);
+                // see: ../test_data/pandoc and ../test_data/nodejs
+                // I guess an empty value means "unsetting" a global config.
+                // This is not really relevant to us, because global configs
+                // aren't applied to zip, docx etc. anyway...
+                if !matches!(value, "" | "unset" | "ignore") {
+                    cur_section.insert(key, value);
+                }
             }
         }
         res.sections.push((cur_section_header, cur_section));

@@ -1,0 +1,13 @@
+---
+source: src/lib.rs
+expression: languages_toml
+input_file: test_data/htop
+snapshot_kind: text
+---
+[[language]]
+name = "c"
+indent = { unit = "   ", tab-width = 3 }
+
+[[language]]
+name = "cpp"
+indent = { unit = "   ", tab-width = 3 }

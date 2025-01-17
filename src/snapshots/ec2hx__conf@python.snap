@@ -1,0 +1,7 @@
+---
+source: src/lib.rs
+expression: config_toml
+input_file: test_data/python
+snapshot_kind: text
+---
+

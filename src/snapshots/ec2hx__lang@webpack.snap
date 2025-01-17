@@ -1,0 +1,1003 @@
+---
+source: src/lib.rs
+expression: languages_toml
+input_file: test_data/webpack
+snapshot_kind: text
+---
+# language-specific settings:
+
+[[language]]
+name = "ec2hx-unknown-lang-snap"
+scope = "text.plain"
+file-types = [{ glob = "*.snap" },]
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "json"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "markdown"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "yaml"
+indent = { unit = "  ", tab-width = 2 }
+
+################################################################################
+
+# global settings, applied equally to all remaining languages:
+
+[[language]]
+name = "ada"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "adl"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "agda"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "amber"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "astro"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "awk"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "bash"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "bass"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "beancount"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "bibtex"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "bicep"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "bitbake"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "blade"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "blueprint"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "c"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "c-sharp"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "cabal"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "cairo"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "capnp"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "cel"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "circom"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "clojure"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "cmake"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "comment"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "common-lisp"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "cpon"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "cpp"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "crystal"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "css"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "cue"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "cylc"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "d"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "dart"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "dbml"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "devicetree"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "dhall"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "diff"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "docker-compose"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "dockerfile"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "dot"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "dtd"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "dune"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "earthfile"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-global-fallback-plain-text"
+scope = "text.plain"
+file-types = [{ glob = "*.txt" },]
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "edoc"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "eex"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "ejs"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "elisp"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "elixir"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "elm"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "elvish"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "env"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "erb"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "erlang"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "esdl"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "fidl"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "fish"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "forth"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "fortran"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "fsharp"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "gas"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "gdscript"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "gemini"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "gherkin"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "git-attributes"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "git-commit"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "git-config"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "git-ignore"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "git-rebase"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "gjs"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "gleam"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "glimmer"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "glsl"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "gn"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "go"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "godot-resource"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "gomod"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "gotmpl"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "gowork"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "gpr"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "graphql"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "groovy"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "gts"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "hare"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "haskell"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "haskell-persistent"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "hcl"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "heex"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "helm"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "hocon"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "hoon"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "hosts"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "html"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "hurl"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "hyprlang"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "idris"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "iex"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "ini"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "inko"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "janet"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "java"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "javascript"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "jinja"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "jjdescription"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "jq"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "jsdoc"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "json5"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "jsonc"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "jsonnet"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "jsx"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "julia"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "just"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "kdl"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "koka"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "kotlin"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "koto"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "latex"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "ld"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "ldif"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "lean"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "ledger"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "llvm"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "llvm-mir"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "llvm-mir-yaml"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "log"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "lpf"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "lua"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "make"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "markdoc"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "markdown.inline"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "matlab"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "mermaid"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "meson"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "mint"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "mojo"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "move"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "msbuild"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "nasm"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "nestedtext"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "nginx"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "nickel"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "nim"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "nix"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "nu"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "nunjucks"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "ocaml"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "ocaml-interface"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "odin"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "ohm"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "opencl"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "openscad"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "org"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "pascal"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "passwd"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "pem"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "perl"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "pest"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "php"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "php-only"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "pkgbuild"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "pkl"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "po"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "pod"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "ponylang"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "powershell"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "prisma"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "prolog"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "protobuf"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "prql"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "purescript"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "python"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "qml"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "quint"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "r"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "racket"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "regex"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "rego"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "rescript"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "rmarkdown"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "robot"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "ron"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "rst"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "ruby"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "rust"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "sage"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "scala"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "scheme"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "scss"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "slint"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "smali"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "smithy"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "sml"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "snakemake"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "solidity"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "spade"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "spicedb"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "sql"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "sshclientconfig"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "starlark"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "strace"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "supercollider"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "svelte"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "sway"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "swift"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "t32"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "tablegen"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "tact"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "task"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "tcl"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "teal"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "templ"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "textproto"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "tfvars"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "thrift"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "todotxt"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "toml"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "tsq"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "tsx"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "twig"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "typescript"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "typespec"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "typst"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "ungrammar"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "unison"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "uxntal"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "v"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "vala"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "vento"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "verilog"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "vhdl"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "vhs"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "vue"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "wast"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "wat"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "webc"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "wgsl"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "wit"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "wren"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "xit"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "xml"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "xtc"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "yuck"
+indent = { unit = "\t", tab-width = 2 }
+
+[[language]]
+name = "zig"
+indent = { unit = "\t", tab-width = 2 }

@@ -1,0 +1,15 @@
+---
+source: src/lib.rs
+expression: languages_toml
+input_file: test_data/vscode
+snapshot_kind: text
+---
+[[language]]
+name = "ec2hx-unknown-lang-package.json"
+scope = "text.plain"
+file-types = [{ glob = "package.json" },]
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "yaml"
+indent = { unit = "  ", tab-width = 2 }

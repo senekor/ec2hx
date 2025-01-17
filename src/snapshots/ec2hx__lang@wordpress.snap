@@ -1,0 +1,9 @@
+---
+source: src/lib.rs
+expression: languages_toml
+input_file: test_data/wordpress
+snapshot_kind: text
+---
+[[language]]
+name = "yaml"
+indent = { unit = "  ", tab-width = 2 }

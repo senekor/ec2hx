@@ -1,0 +1,33 @@
+---
+source: src/lib.rs
+expression: languages_toml
+input_file: test_data/elastic
+snapshot_kind: text
+---
+[[language]]
+name = "bash"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "groovy"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "java"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "json"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "python"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "xml"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "yaml"
+indent = { unit = "  ", tab-width = 2 }

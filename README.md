@@ -62,8 +62,6 @@ I think this should be fine, since changes to this file are about rather niche l
 
 TODO:
 
-- add more relevant examples for snapshot testing and analyse the output (linux kernel!)
-
 - release: crate metadata (v1.0), dist and binstall setup, publish to crates.io
 
 - `indent_style` and `indent_size` are currently expected to both be present.
