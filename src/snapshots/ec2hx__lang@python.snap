@@ -4,4 +4,26 @@ expression: languages_toml
 input_file: test_data/python
 snapshot_kind: text
 ---
+[[language]]
+name = "c"
+indent = { unit = "    ", tab-width = 4 }
 
+[[language]]
+name = "cpp"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "javascript"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "python"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "rst"
+indent = { unit = "   ", tab-width = 3 }
+
+[[language]]
+name = "yaml"
+indent = { unit = "  ", tab-width = 2 }

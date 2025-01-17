@@ -27,98 +27,128 @@ pub fn ec2hx(input: &str) -> (String, String) {
     // don't care about preample (usually just "root = true")
     let (_, _preample) = editorconfig.sections.remove(0);
 
-    let mut global_indent_size: Option<&str> = None;
-    let mut global_indent_style: Option<&str> = None;
+    let mut global_indent_cfg = IndentCfg::default();
 
     let mut hx_editor_cfg = HxEditorCfg::default();
-    let mut hx_global_lang_cfg = None;
-    let mut hx_lang_cfg = BTreeMap::<String, HxIndentCfg>::new();
+    let mut hx_lang_cfg = BTreeMap::<String, IndentCfg>::new();
 
     for (header, section) in editorconfig.sections {
+        let mut indent_cfg = IndentCfg::from(&section);
+
         if header == "*" {
             // apply global editor settings
             hx_editor_cfg = HxEditorCfg::from(&section);
+
             // remember global defaults for language-specific stuff
-            global_indent_size = section.get(&Key::IndentSize).cloned();
-            global_indent_style = section.get(&Key::IndentStyle).cloned();
+            global_indent_cfg = indent_cfg;
+
+            continue;
         }
 
-        let Some(indent) =
-            HxIndentCfg::try_from(&section, &global_indent_size, &global_indent_style)
-        else {
-            continue;
-        };
+        // language-specific settings, use global values as default
+        indent_cfg.with_default_size(global_indent_cfg.size);
+        indent_cfg.with_default_style(global_indent_cfg.style);
 
-        if header == "*" {
-            // track globally-defined language settings separately
-            hx_global_lang_cfg = Some(indent);
-        } else {
-            for lang in extract_langs_from_header(header) {
-                let mut short_lang = lang.as_str();
-                short_lang = short_lang.strip_prefix("*.").unwrap_or(short_lang);
+        for lang in extract_langs_from_header(header) {
+            let mut short_lang = lang.as_str();
+            short_lang = short_lang.strip_prefix("*.").unwrap_or(short_lang);
 
-                let mut found_match = false;
-                for supported_lang in lang::LANGUAGES {
-                    if supported_lang.file_types.iter().any(|ft| *ft == short_lang) {
-                        found_match = true;
-                        hx_lang_cfg.insert(supported_lang.name.into(), indent.clone());
-                        break;
+            let mut found_match = false;
+            for supported_lang in lang::LANGUAGES {
+                if supported_lang
+                    .file_types
+                    .iter()
+                    .any(|ft| *ft == short_lang || *ft == lang)
+                {
+                    found_match = true;
+                    let matched_name = supported_lang.name.into();
+                    let mut indent_cfg = indent_cfg.clone();
+
+                    // use potential previous matching section as default values,
+                    // see for example ../test_data/python
+                    if let Some(prev_indent_cfg) = hx_lang_cfg.get(&matched_name) {
+                        indent_cfg.with_default_size(prev_indent_cfg.size);
+                        indent_cfg.with_default_style(prev_indent_cfg.style);
                     }
-                }
-                if !found_match {
-                    // The language in question doesn't seem to match any of
-                    // the languages supported by Helix. Probably the language
-                    // has neither an LSP nor a tree-sitter grammar, so there's
-                    // little reason to support it in Helix. Whatever the
-                    // reason may be, let's generate a custom language for
-                    // Helix with just the indent configuration.
-                    // An example for this situation: Linux Kconfig files
-                    let name = format!("ec2hx-unknown-lang-{short_lang}");
-                    let mut indent = indent.clone();
-                    indent.file_types.push(lang);
 
-                    hx_lang_cfg.insert(name, indent);
+                    hx_lang_cfg.insert(matched_name, indent_cfg);
+                    break;
                 }
+            }
+            if !found_match {
+                // The language in question doesn't seem to match any of
+                // the languages supported by Helix. Probably the language
+                // has neither an LSP nor a tree-sitter grammar, so there's
+                // little reason to support it in Helix. Whatever the
+                // reason may be, let's generate a custom language for
+                // Helix with just the indent configuration.
+                // An example for this situation: Linux Kconfig files
+                let name = format!("ec2hx-unknown-lang-{short_lang}");
+                let mut indent_cfg = indent_cfg.clone();
+                indent_cfg.file_types.push(lang);
+
+                // use potential previous matching section as default values,
+                // see for example ../test_data/python
+                if let Some(prev_indent_cfg) = hx_lang_cfg.get(&name) {
+                    indent_cfg.with_default_size(prev_indent_cfg.size);
+                    indent_cfg.with_default_style(prev_indent_cfg.style);
+                }
+
+                hx_lang_cfg.insert(name, indent_cfg);
             }
         }
     }
 
-    let languages_toml = match hx_global_lang_cfg {
-        Some(mut indent) => {
+    let languages_toml = match (global_indent_cfg.size, global_indent_cfg.style) {
+        (Some(_), Some(_)) => {
             let mut hx_global_lang_cfg = BTreeMap::new();
             for lang in lang::LANGUAGES {
-                hx_global_lang_cfg.insert(lang.name, indent.clone());
+                hx_global_lang_cfg.insert(lang.name, global_indent_cfg.clone());
             }
 
             // global fallback plain text language configuration
-            indent
+            global_indent_cfg
                 .file_types
                 .extend(lang::PLAIN_TEXT.file_types.iter().map(|s| s.to_string()));
-            hx_global_lang_cfg.insert(lang::PLAIN_TEXT.name, indent);
+            hx_global_lang_cfg.insert(lang::PLAIN_TEXT.name, global_indent_cfg);
 
             // to not apply global settings to languages with overrides
             for lang in hx_lang_cfg.keys() {
                 hx_global_lang_cfg.remove(lang.as_str());
             }
 
-            format!(
-                "\
+            ["\
 # language-specific settings:
 
-{}\
+"
+            .to_string()]
+            .into_iter()
+            .chain(
+                hx_lang_cfg
+                    .into_iter()
+                    .map(|(name, cfg)| cfg.to_languages_toml(&name)),
+            )
+            .chain(["\
 ################################################################################
 
 # global settings, applied equally to all remaining languages:
 
-{}",
-                hx_lang_cfg.to_string(),
-                hx_global_lang_cfg.to_string(),
+"
+            .to_string()])
+            .chain(
+                hx_global_lang_cfg
+                    .into_iter()
+                    .map(|(name, cfg)| cfg.to_languages_toml(name)),
             )
+            .collect()
         }
-        None => hx_lang_cfg.to_string(),
+        _ => hx_lang_cfg
+            .into_iter()
+            .map(|(name, cfg)| cfg.to_languages_toml(&name))
+            .collect(),
     };
 
-    (hx_editor_cfg.to_string(), languages_toml)
+    (hx_editor_cfg.to_config_toml(), languages_toml)
 }
 
 fn extract_langs_from_header(header: &str) -> Vec<String> {
@@ -290,89 +320,94 @@ impl HxEditorCfg {
     }
 }
 
-impl std::fmt::Display for HxEditorCfg {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl HxEditorCfg {
+    fn to_config_toml(&self) -> String {
+        let mut f = String::new();
         if let Some(default_line_ending) = self.default_line_ending {
-            writeln!(f, "editor.default-line-ending = {default_line_ending:?}")?;
+            writeln!(f, "editor.default-line-ending = {default_line_ending:?}").unwrap();
         }
         if let Some(insert_final_newline) = self.insert_final_newline {
-            writeln!(f, "editor.insert-final-newline = {insert_final_newline}")?;
+            writeln!(f, "editor.insert-final-newline = {insert_final_newline}").unwrap();
         }
-        Ok(())
+        f
     }
 }
 
-#[derive(Debug, Clone)]
-pub struct HxIndentCfg {
-    unit: String,
-    tab_width: usize,
+#[derive(Debug, Clone, Default)]
+pub struct IndentCfg {
+    size: Option<usize>,
+    style: Option<&'static str>,
     /// to generate custom configs for languages unsupported by Helix
     file_types: Vec<String>,
 }
 
-impl HxIndentCfg {
-    fn try_from<'a>(
-        section: &BTreeMap<Key, &'a str>,
-        global_indent_size: &Option<&'a str>,
-        global_indent_style: &Option<&'a str>,
-    ) -> Option<Self> {
-        let indent_size = section
+impl IndentCfg {
+    fn with_default_size(&mut self, size: Option<usize>) -> &mut Self {
+        if self.size.is_some() {
+            return self;
+        }
+        self.size = size;
+        self
+    }
+
+    fn with_default_style(&mut self, style: Option<&str>) -> &mut Self {
+        if self.style.is_some() {
+            return self;
+        }
+        self.style = style.and_then(|s| match s.to_lowercase().as_str() {
+            "tab" => Some("tab"),
+            "space" => Some("space"),
+            _ => None,
+        });
+        self
+    }
+
+    fn from(section: &BTreeMap<Key, &str>) -> Self {
+        let mut res = Self::default();
+        let size = section
             .get(&Key::IndentSize)
-            .or(global_indent_size.as_ref())?;
-        let indent_style = section
-            .get(&Key::IndentStyle)
-            .or(global_indent_style.as_ref())?;
-
-        let indent_size = indent_size
-            .parse::<usize>()
-            .expect("indent_size must be a whole number");
-
-        let unit = {
-            let indent_style = indent_style.to_lowercase();
-            match indent_style.as_str() {
-                "tab" => "\t".into(),
-                "space" => " ".repeat(indent_size),
-                _ => return None,
-            }
-        };
-
-        Some(HxIndentCfg {
-            unit,
-            tab_width: indent_size,
-            file_types: Vec::new(),
-        })
+            .copied()
+            .and_then(|s| s.parse::<usize>().ok());
+        res.with_default_size(size);
+        res.with_default_style(section.get(&Key::IndentStyle).copied());
+        res
     }
 }
 
-trait HxIndentCfgExt {
-    fn to_string(&self) -> String;
-}
-impl<T: AsRef<str>> HxIndentCfgExt for BTreeMap<T, HxIndentCfg> {
-    fn to_string(&self) -> String {
+impl IndentCfg {
+    fn to_languages_toml(&self, lang: &str) -> String {
+        let Some(tab_width) = self.size else {
+            return String::new();
+        };
+        let Some(indent_style) = self.style else {
+            return String::new();
+        };
+        let unit = match indent_style {
+            "tab" => "\t".into(),
+            "space" => " ".repeat(tab_width),
+            _ => return String::new(),
+        };
+
         let mut f = String::new();
-        for (lang, indent) in self.iter() {
-            let lang = lang.as_ref();
-            f.push_str("[[language]]\n");
-            writeln!(f, "name = {lang:?}").unwrap();
 
-            let unit = &indent.unit;
-            let tab_width = indent.tab_width;
+        f.push_str("[[language]]\n");
+        writeln!(f, "name = {lang:?}").unwrap();
 
-            if !indent.file_types.is_empty() {
-                // language is unsupported by Helix, generate necessary config
-                // for custom language
-                writeln!(f, r#"scope = "text.plain""#).unwrap();
-                write!(f, "file-types = [").unwrap();
-                for ft in indent.file_types.iter() {
-                    write!(f, "{{ glob = {ft:?} }},").unwrap();
-                }
-                writeln!(f, "]").unwrap();
+        if !self.file_types.is_empty() {
+            // language is unsupported by Helix, generate necessary config
+            // for custom language
+            writeln!(f, r#"scope = "text.plain""#).unwrap();
+            write!(f, "file-types = [").unwrap();
+            for ft in self.file_types.iter() {
+                write!(f, "{{ glob = {ft:?} }},").unwrap();
             }
-
-            f.push_str(&format!(
-                "indent = {{ unit = {unit:?}, tab-width = {tab_width} }}\n\n"
-            ));
+            writeln!(f, "]").unwrap();
         }
+
+        f.push_str(&format!(
+            "indent = {{ unit = {unit:?}, tab-width = {tab_width} }}\n\n"
+        ));
+
         f
     }
 }
