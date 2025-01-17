@@ -1,7 +1,16 @@
 [package]
 name = "ec2hx"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
+authors = ["Remo Senekowitsch <remo@buenzli.dev>"]
+description = "Convert EditorConfig to Helix configuration"
+readme = "README.md"
+repository = "https://github.com/senekor/ec2hx"
+license = "Unlicense"
+categories = ["command-line-utilities"]
+
+# don't publish unnecessary files to crates.io
+exclude = [".github", "test_data", "src/snapshots"]
 
 [dependencies]
 
