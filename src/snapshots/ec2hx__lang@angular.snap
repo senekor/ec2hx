@@ -7,7 +7,7 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
-name = "*.md"
+name = "markdown"
 indent = { unit = "  ", tab-width = 2 }
 
 ################################################################################
@@ -528,10 +528,6 @@ indent = { unit = "  ", tab-width = 2 }
 
 [[language]]
 name = "markdoc"
-indent = { unit = "  ", tab-width = 2 }
-
-[[language]]
-name = "markdown"
 indent = { unit = "  ", tab-width = 2 }
 
 [[language]]

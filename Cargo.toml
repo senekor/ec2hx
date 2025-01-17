@@ -7,3 +7,7 @@ edition = "2021"
 
 [dev-dependencies]
 insta = { version = "1.42.0", features = ["glob"] }
+
+[build-dependencies]
+serde = "1.0.217"
+toml = "0.8.19"

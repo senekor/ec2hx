@@ -5,65 +5,45 @@ input_file: test_data/linux
 snapshot_kind: text
 ---
 [[language]]
-name = "*.S"
+name = "awk"
 indent = { unit = "\t", tab-width = 8 }
 
 [[language]]
-name = "*.awk"
+name = "c"
 indent = { unit = "\t", tab-width = 8 }
 
 [[language]]
-name = "*.c"
+name = "cpp"
 indent = { unit = "\t", tab-width = 8 }
 
 [[language]]
-name = "*.dts"
+name = "devicetree"
 indent = { unit = "\t", tab-width = 8 }
 
 [[language]]
-name = "*.dtsi"
+name = "gas"
 indent = { unit = "\t", tab-width = 8 }
 
 [[language]]
-name = "*.dtso"
-indent = { unit = "\t", tab-width = 8 }
-
-[[language]]
-name = "*.h"
-indent = { unit = "\t", tab-width = 8 }
-
-[[language]]
-name = "*.json"
+name = "json"
 indent = { unit = "    ", tab-width = 4 }
 
 [[language]]
-name = "*.mk"
+name = "make"
 indent = { unit = "\t", tab-width = 8 }
 
 [[language]]
-name = "*.py"
-indent = { unit = "    ", tab-width = 4 }
-
-[[language]]
-name = "*.rs"
-indent = { unit = "    ", tab-width = 4 }
-
-[[language]]
-name = "*.s"
+name = "nasm"
 indent = { unit = "\t", tab-width = 8 }
 
 [[language]]
-name = "*.yaml"
+name = "python"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "rust"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "yaml"
 indent = { unit = "  ", tab-width = 2 }
-
-[[language]]
-name = "Kconfig"
-indent = { unit = "\t", tab-width = 8 }
-
-[[language]]
-name = "Makefile"
-indent = { unit = "\t", tab-width = 8 }
-
-[[language]]
-name = "Makefile.*"
-indent = { unit = "\t", tab-width = 8 }

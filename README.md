@@ -44,9 +44,11 @@ An easy way to contribute is to provide an example EditorConfig file that you th
 You can open an issue about it or even a PR adding it to the `test_data/` directory next to the other examples.
 It will automatically be picked up by the snapshot tests (using [insta](https://insta.rs/)).
 
-TODO:
+In order to match the EditorConfig section header with a Helix language, the default languages.toml is parsed in a build script.
+The URL is pinned to a stable release of Helix and needs to be updated manually.
+I think this should be fine, since changes to this file are about rather niche languages at this point.
 
-- parse default languages.toml (from helix as submodule?) (at built time?) to match section headers against supported languages and their file-types and globs
+TODO:
 
 - CLI to generate files (config.toml, languages.toml, .gitignore)
 

@@ -5,9 +5,5 @@ input_file: test_data/cockroach
 snapshot_kind: text
 ---
 [[language]]
-name = "*.opt"
-indent = { unit = "    ", tab-width = 4 }
-
-[[language]]
-name = "Makefile"
+name = "make"
 indent = { unit = "\t", tab-width = 2 }

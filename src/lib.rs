@@ -1,9 +1,9 @@
 use std::collections::BTreeMap;
 
-// obtained with:
-// hx --health languages | tail --lines +2 | awk '{ print $1 }' | wl-copy
-// TODO: fetch this dynamically to stay up to date?
-const SUPPORTED_LANGS: &str = include_str!("supported_langs.txt");
+// see ../build.rs
+pub mod lang {
+    include!(concat!(env!("OUT_DIR"), "/lang.rs"));
+}
 
 /// The returned tuple has the contents of config.toml and languages.toml.
 pub fn ec2hx(input: &str) -> (String, String) {
@@ -17,7 +17,7 @@ pub fn ec2hx(input: &str) -> (String, String) {
 
     let mut hx_editor_cfg = HxEditorCfg::default();
     let mut hx_global_lang_cfg = None;
-    let mut hx_lang_cfg = BTreeMap::<String, HxIndentCfg>::new();
+    let mut hx_lang_cfg = BTreeMap::<&str, HxIndentCfg>::new();
 
     for (header, section) in editorconfig.sections {
         if header == "*" {
@@ -39,7 +39,14 @@ pub fn ec2hx(input: &str) -> (String, String) {
             hx_global_lang_cfg = Some(indent);
         } else {
             for lang in extract_langs_from_header(header) {
-                hx_lang_cfg.insert(lang, indent.clone());
+                let mut lang = lang.as_str();
+                lang = lang.strip_prefix("*.").unwrap_or(lang);
+
+                for supported_lang in lang::LANGUAGES {
+                    if supported_lang.file_types.iter().any(|ft| *ft == lang) {
+                        hx_lang_cfg.insert(supported_lang.name, indent.clone());
+                    }
+                }
             }
         }
     }
@@ -47,12 +54,12 @@ pub fn ec2hx(input: &str) -> (String, String) {
     let languages_toml = match hx_global_lang_cfg {
         Some(indent) => {
             let mut hx_global_lang_cfg = BTreeMap::new();
-            for lang in SUPPORTED_LANGS.lines() {
-                hx_global_lang_cfg.insert(lang, indent.clone());
+            for lang in lang::LANGUAGES {
+                hx_global_lang_cfg.insert(lang.name, indent.clone());
             }
             // to not apply global settings to languages with overrides
             for lang in hx_lang_cfg.keys() {
-                hx_global_lang_cfg.remove(lang.as_str());
+                hx_global_lang_cfg.remove(lang);
             }
             format!(
                 "\
