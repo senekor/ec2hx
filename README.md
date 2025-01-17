@@ -62,8 +62,6 @@ I think this should be fine, since changes to this file are about rather niche l
 
 TODO:
 
-- release: crate metadata (v1.0), dist and binstall setup, publish to crates.io
-
 - `indent_style` and `indent_size` are currently expected to both be present.
   If only one of them is present, it's ignored.
   (Helix _requires_ both `unit` and `tab-width` to be explicitly configured at the same time.)
