@@ -14,16 +14,7 @@ fn main() {
     let langauges = toml::from_str::<toml::Table>(&langauges).unwrap();
     let languages = &langauges["language"].as_array().unwrap();
 
-    let mut buffer = String::from(
-        "\
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
-pub(crate) struct Language {
-    pub(crate) name: &'static str,
-    pub(crate) file_types: &'static [&'static str],
-}
-
-pub(crate) static LANGUAGES: &[Language] = &[\n",
-    );
+    let mut buffer = String::from("&[");
 
     for lang in languages.iter() {
         let lang = lang.as_table().unwrap();
@@ -41,7 +32,7 @@ pub(crate) static LANGUAGES: &[Language] = &[\n",
         }
         buffer.push_str("],\n},\n");
     }
-    buffer.push_str("];\n");
+    buffer.push(']');
 
     std::fs::write(std::env::var("OUT_DIR").unwrap() + "/lang.rs", buffer).unwrap();
 }

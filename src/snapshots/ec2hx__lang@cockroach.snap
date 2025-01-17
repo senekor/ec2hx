@@ -5,5 +5,11 @@ input_file: test_data/cockroach
 snapshot_kind: text
 ---
 [[language]]
+name = "ec2hx-unknown-lang-opt"
+scope = "text.plain"
+file-types = [{ glob = "*.opt" },]
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
 name = "make"
 indent = { unit = "\t", tab-width = 2 }

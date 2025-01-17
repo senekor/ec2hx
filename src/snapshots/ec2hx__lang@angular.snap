@@ -187,6 +187,12 @@ name = "earthfile"
 indent = { unit = "  ", tab-width = 2 }
 
 [[language]]
+name = "ec2hx-global-fallback-plain-text"
+scope = "text.plain"
+file-types = [{ glob = "*.txt" },]
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
 name = "edoc"
 indent = { unit = "  ", tab-width = 2 }
 

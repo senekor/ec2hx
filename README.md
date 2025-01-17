@@ -34,6 +34,18 @@ Here is a list of notable limitations:
   For simplicity, any section that includes the following special characters is ignored: `/`, `**`, `?`, `..`, `[`, `]`, `!`, `\`.
   If you think some application of these special characters can and should be supported, feel free to open an issue about it.
 
+- File types:
+
+  As mentioned in the "supported keys" section, in Helix, indentation can only be configured for a specific language.
+  If indentation is configured in the global EditorConfig section (`[*]`), the generated Helix config will have a section for _all_ its supported languages.
+  However, that's still not perfect!
+  Languages that don't appear in the default languages.toml of Helix are left out.
+  The CLI hardcodes some additional ones just for this purpose, for example `.txt`.
+  If you work with some file extension that Helix doesn't recognize and you would like it to be covered by a `[*]` section, please open an issue.
+  It should be an quick fix.
+
+  (If you have a file extension that appears explicitly in a section header, e.g. `[*.foobar]`, the CLI should already generate an appropriate custom language definition for you.)
+
 The generated Helix config lives in `.helix/config.toml` and `.helix/languages.toml`.
 The CLI also generates a gitignore file `.helix/.gitignore` with the content `*`.
 This ensures you don't accidentally commit these files into version control.
@@ -51,9 +63,6 @@ I think this should be fine, since changes to this file are about rather niche l
 TODO:
 
 - CLI to generate files (config.toml, languages.toml, .gitignore)
-
-- apply global settings to a custom language for generic files, e.g. `*.txt`
-  (Helix doesn't have a builtin config for those.)
 
 - add more relevant examples for snapshot testing and analyse the output (linux kernel!)
 
