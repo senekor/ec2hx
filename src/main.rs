@@ -54,29 +54,59 @@ fn main() {
     let (config_toml, languages_toml) = ec2hx::ec2hx(&editorconfig, args.fallback_globs);
 
     fs::create_dir_all(".helix").expect("failed to create .helix directory");
-    std::env::set_current_dir(".helix").expect("failed to cd into .helix directory");
 
-    if !fs::exists(".gitignore").is_ok_and(|b| b) {
-        fs::write(".gitignore", "*\n").expect("failed to write .helix/.gitignore");
+    if !fs::exists(".helix/.gitignore").is_ok_and(|b| b) {
+        fs::write(".helix/.gitignore", "*\n").expect("failed to write .helix/.gitignore");
     }
-    if fs::exists("languages.toml").is_ok_and(|b| b) {
-        println!("WARN: .helix/languages.toml already exists.");
-        println!("      Writing to .helix/languages.new.toml instead.");
-        println!("      Compare and swap them manually if you like.");
-        fs::write("languages.new.toml", languages_toml)
-            .expect("failed to write .helix/languages.new.toml");
-    } else {
-        fs::write("languages.toml", languages_toml).expect("failed to write .helix/languages.toml");
+    try_write(".helix/languages.toml", languages_toml);
+    try_write(".helix/config.toml", config_toml);
+}
+
+fn try_write(name: &str, contents: String) {
+    if contents.is_empty() {
+        return;
     }
-    if !config_toml.is_empty() {
-        if fs::exists("config.toml").is_ok_and(|b| b) {
-            println!("WARN: .helix/config.toml already exists.");
-            println!("      Writing to .helix/config.new.toml instead.");
-            println!("      Compare and swap them manually if you like.");
-            fs::write("config.new.toml", config_toml)
-                .expect("failed to write .helix/config.new.toml");
-        } else {
-            fs::write("config.toml", config_toml).expect("failed to write .helix/config.toml");
+    if let Ok(prev_contents) = fs::read_to_string(name) {
+        if prev_contents == contents {
+            return;
         }
+        let name_new = &format!("{name}.new");
+        let name_patch = &format!("{name}.patch");
+
+        println!("WARN: {name} already exists.");
+        if fs::write(name_new, &contents).is_err() {
+            panic!("failed to write {name_new}");
+        }
+
+        // Attempt to produce a diff against the existing file. This makes it
+        // easier for users to assess and apply the changes.
+        let create_diff = || -> Option<()> {
+            fs::write(name_new, &contents).ok()?;
+
+            let diff_output = std::process::Command::new("diff")
+                .arg("--unified")
+                .arg(name)
+                .arg(name_new)
+                .output()
+                .ok()?;
+            fs::write(name_patch, diff_output.stdout).ok()?;
+
+            // don't care if *.new file wasn't cleaned up
+            let _ = fs::remove_file(name_new);
+            Some(())
+        };
+
+        if create_diff().is_some() {
+            println!("      Writing the diff to {name_patch} instead.");
+            println!("      Run the following command to apply the patch:");
+            println!();
+            println!("      patch {name} < {name_patch}");
+            println!();
+        } else {
+            println!("      Writing to {name_new} instead.");
+            println!("      Compare and swap them manually if you like.");
+        }
+    } else if fs::write(name, contents).is_err() {
+        panic!("failed to write {name}");
     }
 }

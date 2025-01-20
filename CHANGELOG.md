@@ -6,6 +6,9 @@
 
 ### Changed
 
+- If a Helix configuration already exists, the new one is now written as a
+  patch against the old one with instructions on how to apply it.
+
 ### Added
 
 - Additional file globs to which global configuration should be applied can now
