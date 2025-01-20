@@ -2,60 +2,71 @@
 
 This is a CLI tool that translates an [EditorConfig] file to a project-specific configuration for the [Helix] editor.
 
+## Usage
+
+1. Install using your preferred method:
+   | using [binstall](https://github.com/cargo-bins/cargo-binstall) | `cargo binstall ec2hx` |
+   | --: | :-- |
+   | from source | `cargo install ec2hx` |
+   | script, manual etc. | [see release page](https://github.com/senekor/ec2hx/releases/latest) |
+
+2. Run `ec2hx` in your project directory.
+
+3. Start Helix / reload its config.
+
+## Setting expectations
+
 EditorConfig is much more flexible than the config of Helix, which means support is only partial.
 Here is a list of notable limitations:
 
-- Supported keys:
+### Supported keys:
 
-  - The keys `end_of_line` and `insert_final_newline` are only supported as a global setting, not per-language.
-    That means the keys will only be translated to the Helix config if they appear in the global (`[*]`) section.
-    If they appear in any other section, they will be ignored.
-  - The keys `indent_style` and `indent_size` are supported per-language.
-    This is probably the most important feature and it works.
-    However, they cannot be applied multiple times to the same language with different values.[^1]
-    Therefore, sections that contain arbitrary globs are ignored.
-    Only sections that look like they cleanly map to a set of file types are considered.
-  - All other keys do not map to a config in Helix, so they will be ignored.
+- The keys `end_of_line` and `insert_final_newline` are only supported as a global setting, not per-language.
+  That means the keys will only be translated to the Helix config if they appear in the global `[*]` section.
+  If they appear in any other section, they will be ignored.
+  (These keys are represented in the file `.helix/config.toml`.)
+- The keys `indent_style` and `indent_size` are supported per-language.
+  However, they cannot be applied multiple times to the same language with different values.[^1]
+  Therefore, sections that contain arbitrary globs are ignored.
+  Only sections that look like they cleanly map to a set of file types are considered.
+  (These keys are represented in the file `.helix/languages.toml`.)
+- All other keys do not map to a config in Helix, so they will be ignored.
 
-- File processing:
+### File processing:
 
-  The CLI only reads the toplevel `.editorconfig`.
-  Supporting multiple `.editorconfig` files in a directory hierarchy leads to the same problem as arbitrary globs in section headers.[^1]
+The CLI only reads the toplevel `.editorconfig`.
+Supporting multiple `.editorconfig` files in a directory hierarchy leads to the same problem as arbitrary globs in section headers.[^1]
 
-- Glob expressions:
+### Glob expressions:
 
-  Only globs that look like they map cleanly to one or several file types are supported, including for example:
-  - `[Makefile]`
-  - `[*.py]`
-  - `[*.{json,js}]`
-  - and even `[{*.{awk,c,dts,dtsi,dtso,h,mk,s,S},Kconfig,Makefile,Makefile.*}]`
+Only globs that look like they map cleanly to one or several file types are supported, including for example:
+- `[Makefile]`
+- `[*.py]`
+- `[*.{json,js}]`
+- and even `[{*.{awk,c,dts,dtsi,dtso,h,mk,s,S},Kconfig,Makefile,Makefile.*}]`
 
-  Globs that don't map to a set of file types are not supported.[^1]
-  For simplicity, any section that includes the following special characters is ignored: `/`, `**`, `?`, `..`, `[`, `]`, `!`, `\`.
-  If you think some application of these special characters can and should be supported, feel free to open an issue about it.
+Globs that don't map to a set of file types are not supported.[^1]
+For simplicity, any section that includes the following special characters is ignored: `/`, `**`, `?`, `..`, `[`, `]`, `!`, `\`.
+If you think some application of these special characters can and should be supported, feel free to open an issue about it.
 
-- File types:
+### File types:
 
-  As mentioned in the "supported keys" section, in Helix, indentation can only be configured for a specific language.
-  If indentation is configured in the global EditorConfig section (`[*]`), the generated Helix config will have a section for _all_ its supported languages.
-  However, that's still not perfect!
-  Languages that don't appear in the default languages.toml of Helix are left out.
-  The CLI hardcodes some additional ones just for this purpose, for example `.txt`.
-  You can specify additional file globs to which the global config should apply via the CLI, for example:
-  ```sh
-  ec2hx --fallback-globs '*.foo,*.bar'
-  ```
+As mentioned in the "supported keys" section, in Helix, indentation can only be configured for a specific language.
+If indentation is configured in the global EditorConfig section (`[*]`), the generated Helix config will have a section for _all_ its supported languages.
+However, that's still not perfect!
+Languages that don't appear in the default languages.toml of Helix are left out.
+The CLI hardcodes some additional ones just for this purpose, for example `.txt`.
+You can specify additional file globs to which the global config should apply via the CLI, for example:
+```sh
+ec2hx --fallback-globs '*.foo,*.bar'
+```
 
-  (If you have a file extension that appears explicitly in a section header, e.g. `[*.foobar]`, the CLI should already generate an appropriate custom language definition for you.)
-
-The generated Helix config lives in `.helix/config.toml` and `.helix/languages.toml`.
-The CLI also generates a gitignore file `.helix/.gitignore` with the content `*`.
-This ensures you don't accidentally commit these files into version control.
+(If you have a file extension that appears explicitly in a section header, e.g. `[*.foobar]`, the CLI should already generate an appropriate custom language definition for you.)
 
 ## Contributing
 
-An easy way to contribute is to provide an example EditorConfig file that you think could be handled better.
-You can open an issue about it or even a PR adding it to the `test_data/` directory next to the other examples.
+A good way to contribute is to provide an example EditorConfig file that you think could be handled better.
+You can open an issue about it or a PR adding it to the `test_data/` directory next to the other examples.
 It will automatically be picked up by the snapshot tests (using [insta](https://insta.rs/)).
 
 In order to match the EditorConfig section header with a Helix language, the default languages.toml is parsed in a build script.
@@ -75,7 +86,7 @@ TODO:
 - The key `trim_trailing_whitespace` could become supported by helix in the future.
   See for exmaple [this PR](https://github.com/helix-editor/helix/pull/8366) for progress.
   An alternative would be to bundle a simple formatter with the CLI.
-  Then parse the default `languages.toml` to determine which languages don't already have a formatter.
+  Then parse the the output of `hx --health` to determine which languages don't already have a formatter.
   (wouldn't want to override a more powerful, language-specific formatter that probably already trims whitespace)
   Add this generic formatter to the language config where appropriate.
 
