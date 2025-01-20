@@ -193,7 +193,7 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "ec2hx-global-fallback-plain-text"
 scope = "text.plain"
-file-types = [{ glob = "*.txt" },]
+file-types = [{ glob = "*.foo" },{ glob = "*.txt" },]
 indent = { unit = "  ", tab-width = 2 }
 
 [[language]]

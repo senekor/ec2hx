@@ -7,21 +7,13 @@ pub mod lang {
         pub(crate) file_types: &'static [&'static str],
     }
 
-    // A custom language as fallback for plain text files where global indent
-    // configuration should apply as well. Hardcoded - exentd as users report
-    // what they need.
-    pub(crate) static PLAIN_TEXT: Language = Language {
-        name: "ec2hx-global-fallback-plain-text",
-        file_types: &["*.txt"],
-    };
-
     /// Language name-to-file-types pairings parsed from Helix' default
     /// languages.toml. See this crate's build script.
     pub(crate) static LANGUAGES: &[Language] = include!(concat!(env!("OUT_DIR"), "/lang.rs"));
 }
 
 /// The returned tuple has the contents of config.toml and languages.toml.
-pub fn ec2hx(input: &str) -> (String, String) {
+pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
     let mut editorconfig = EditorConfig::from(input);
 
     // don't care about preample (usually just "root = true")
@@ -107,10 +99,11 @@ pub fn ec2hx(input: &str) -> (String, String) {
             }
 
             // global fallback plain text language configuration
-            global_indent_cfg
-                .file_types
-                .extend(lang::PLAIN_TEXT.file_types.iter().map(|s| s.to_string()));
-            hx_global_lang_cfg.insert(lang::PLAIN_TEXT.name, global_indent_cfg);
+            global_indent_cfg.file_types.extend(fallback_globs);
+            if !global_indent_cfg.file_types.contains(&"*.txt".into()) {
+                global_indent_cfg.file_types.push("*.txt".into());
+            }
+            hx_global_lang_cfg.insert("ec2hx-global-fallback-plain-text", global_indent_cfg);
 
             // to not apply global settings to languages with overrides
             for lang in hx_lang_cfg.keys() {
@@ -445,7 +438,7 @@ fn extract_langs() {
 fn snapshot() {
     insta::glob!("..", "test_data/*", |path| {
         let input = std::fs::read_to_string(path).unwrap();
-        let (config_toml, languages_toml) = ec2hx(&input);
+        let (config_toml, languages_toml) = ec2hx(&input, vec!["*.foo".into()]);
         insta::assert_snapshot!("conf", config_toml);
         insta::assert_snapshot!("lang", languages_toml);
     });

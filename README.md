@@ -41,8 +41,10 @@ Here is a list of notable limitations:
   However, that's still not perfect!
   Languages that don't appear in the default languages.toml of Helix are left out.
   The CLI hardcodes some additional ones just for this purpose, for example `.txt`.
-  If you work with some file extension that Helix doesn't recognize and you would like it to be covered by a `[*]` section, please open an issue.
-  It should be an quick fix.
+  You can specify additional file globs to which the global config should apply via the CLI, for example:
+  ```sh
+  ec2hx --fallback-globs '*.foo,*.bar'
+  ```
 
   (If you have a file extension that appears explicitly in a section header, e.g. `[*.foobar]`, the CLI should already generate an appropriate custom language definition for you.)
 
