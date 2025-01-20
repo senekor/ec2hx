@@ -1,23 +1,29 @@
 use std::{fs, process::exit};
 
+use clap::Parser;
+
+/// ec2hx - convert EditorConfig to Helix configuration
+///
+/// Simply run `ec2hx` in a directory with a `.editorconfig` file and a `.helix`
+/// directory will be generated for you. It contains configuration to match
+/// EditorConfig as closely as possible.
+///
+/// Due to limitations in the configuration of Helix, not all EditorConfig
+/// features are supported, but the important ones should work fine
+/// (indentation, line ending, final newline).
+///
+/// The `.helix` directory will ignore itself using a `.helix/.gitignore` file,
+/// so don't worry about accidentally committing these files to version control.
+/// Existing files won't be clobbered, to preserve any manual adjustments you
+/// have made.
+///
+/// For more information, visit <https://github.com/senekor/ec2hx>
+#[derive(Debug, clap::Parser)]
+#[command(version, about, long_about)]
+struct CliArgs {}
+
 fn main() {
-    if std::env::args().count() > 1 {
-        println!(
-            "\
-ec2hx - EditorConfig to Helix
-
-Run this in same directory as your .editorconfig file to generate a matching
-Helix configuration for it. The Helix config lives in a .helix/ directory that
-ignores itself from version control.
-
-Usage:
-     no arguments -> do the thing
-    any arguments -> print this
-
-For more information, visit <https://github.com/senekor/ec2hx>"
-        );
-        exit(1);
-    }
+    let _args = CliArgs::parse();
 
     let Ok(editorconfig) = std::fs::read_to_string(".editorconfig") else {
         println!("ERROR: Failed to read the .editorconfig file.");

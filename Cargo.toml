@@ -3,7 +3,7 @@ name = "ec2hx"
 version = "1.0.0"
 edition = "2021"
 authors = ["Remo Senekowitsch <remo@buenzli.dev>"]
-description = "Convert EditorConfig to Helix configuration"
+description = "convert EditorConfig to Helix configuration"
 readme = "README.md"
 repository = "https://github.com/senekor/ec2hx"
 license = "Unlicense"
@@ -13,6 +13,7 @@ categories = ["command-line-utilities"]
 exclude = [".github", "test_data", "src/snapshots"]
 
 [dependencies]
+clap = { version = "4.5.26", features = ["derive"] }
 
 [dev-dependencies]
 insta = { version = "1.42.0", features = ["glob"] }
