@@ -4,9 +4,25 @@
 
 ## [Unreleased]
 
+### Breaking
+
 ### Changed
 
 ### Added
+
+- If the EditorConfig file only specifies one of `indent_style` and `indent_size`
+  globally or for a specific language, the values in the default `languages.toml`
+  of Helix will be used to fill in the gaps and generate a complete configuration
+  for more languages. For example, consider the following EditorConfig:
+  ```editorconfig
+  [Makefile]
+  indent_size = 8
+  ```
+  This will now result in the following Helix configuration, because the default
+  `languages.toml` already specifies that Makefile should be indented with tabs.
+  ```toml
+  indent = { tab-width = 8, unit = "\t" }
+  ```
 
 ### Fixed
 

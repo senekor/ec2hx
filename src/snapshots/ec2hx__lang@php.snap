@@ -29,6 +29,10 @@ name = "d"
 indent = { unit = "\t", tab-width = 4 }
 
 [[language]]
+name = "diff"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
 name = "dtd"
 indent = { unit = "    ", tab-width = 4 }
 
@@ -105,6 +109,10 @@ indent = { unit = "    ", tab-width = 4 }
 [[language]]
 name = "html"
 indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "markdown"
+indent = { unit = "  ", tab-width = 2 }
 
 [[language]]
 name = "php"

@@ -75,14 +75,6 @@ I think this should be fine, since changes to this file are about rather niche l
 
 TODO:
 
-- `indent_style` and `indent_size` are currently expected to both be present.
-  If only one of them is present, it's ignored.
-  (Helix _requires_ both `unit` and `tab-width` to be explicitly configured at the same time.)
-  This could be handled better in some cases.
-  See for example the [cockroach editorconfig](./test_data/cockroach):
-  - Globally, only `indent_size` is set.
-    We may be able to combine that with the unit by parsing the default languages.toml.
-
 - The key `trim_trailing_whitespace` could become supported by helix in the future.
   See for exmaple [this PR](https://github.com/helix-editor/helix/pull/8366) for progress.
   An alternative would be to bundle a simple formatter with the CLI.

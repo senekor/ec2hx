@@ -17,6 +17,10 @@ name = "javascript"
 indent = { unit = "  ", tab-width = 2 }
 
 [[language]]
+name = "markdown"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
 name = "python"
 indent = { unit = "    ", tab-width = 4 }
 

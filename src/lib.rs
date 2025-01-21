@@ -1,10 +1,13 @@
 use std::{collections::BTreeMap, fmt::Write};
 
 pub mod lang {
-    #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+    use crate::IndentCfg;
+
+    #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
     pub(crate) struct Language {
         pub(crate) name: &'static str,
         pub(crate) file_types: &'static [&'static str],
+        pub(crate) indent: IndentCfg,
     }
 
     /// Language name-to-file-types pairings parsed from Helix' default
@@ -38,8 +41,7 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
         }
 
         // language-specific settings, use global values as default
-        indent_cfg.with_default_size(global_indent_cfg.size);
-        indent_cfg.with_default_style(global_indent_cfg.style);
+        indent_cfg.with_defaults_from(&global_indent_cfg);
 
         for lang in extract_langs_from_header(header) {
             let mut short_lang = lang.as_str();
@@ -59,9 +61,13 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
                     // use potential previous matching section as default values,
                     // see for example ../test_data/python
                     if let Some(prev_indent_cfg) = hx_lang_cfg.get(&matched_name) {
-                        indent_cfg.with_default_size(prev_indent_cfg.size);
-                        indent_cfg.with_default_style(prev_indent_cfg.style);
+                        indent_cfg.with_defaults_from(prev_indent_cfg);
                     }
+                    // Use values from default languages.toml as default, for
+                    // configurations where only on size or style is specified.
+                    // See for example ../test_data/cockroach where only
+                    // indent_size if set in the global config.
+                    indent_cfg.with_defaults_from(&supported_lang.indent);
 
                     hx_lang_cfg.insert(matched_name, indent_cfg);
                     break;
@@ -82,8 +88,7 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
                 // use potential previous matching section as default values,
                 // see for example ../test_data/python
                 if let Some(prev_indent_cfg) = hx_lang_cfg.get(&name) {
-                    indent_cfg.with_default_size(prev_indent_cfg.size);
-                    indent_cfg.with_default_style(prev_indent_cfg.style);
+                    indent_cfg.with_defaults_from(prev_indent_cfg);
                 }
 
                 hx_lang_cfg.insert(name, indent_cfg);
@@ -91,54 +96,55 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
         }
     }
 
-    let languages_toml = match (global_indent_cfg.size, global_indent_cfg.style) {
-        (Some(_), Some(_)) => {
-            let mut hx_global_lang_cfg = BTreeMap::new();
-            for lang in lang::LANGUAGES {
-                hx_global_lang_cfg.insert(lang.name, global_indent_cfg.clone());
-            }
+    let languages_toml = if global_indent_cfg.size.is_some() || global_indent_cfg.style.is_some() {
+        let mut hx_global_lang_cfg = BTreeMap::new();
+        for lang in lang::LANGUAGES {
+            let mut indent_cfg = global_indent_cfg.clone();
+            indent_cfg.with_defaults_from(&lang.indent);
+            hx_global_lang_cfg.insert(lang.name, indent_cfg);
+        }
 
-            // global fallback plain text language configuration
-            global_indent_cfg.file_types.extend(fallback_globs);
-            if !global_indent_cfg.file_types.contains(&"*.txt".into()) {
-                global_indent_cfg.file_types.push("*.txt".into());
-            }
-            hx_global_lang_cfg.insert("ec2hx-global-fallback-plain-text", global_indent_cfg);
+        // global fallback plain text language configuration
+        global_indent_cfg.file_types.extend(fallback_globs);
+        if !global_indent_cfg.file_types.contains(&"*.txt".into()) {
+            global_indent_cfg.file_types.push("*.txt".into());
+        }
+        hx_global_lang_cfg.insert("ec2hx-global-fallback-plain-text", global_indent_cfg);
 
-            // to not apply global settings to languages with overrides
-            for lang in hx_lang_cfg.keys() {
-                hx_global_lang_cfg.remove(lang.as_str());
-            }
+        // to not apply global settings to languages with overrides
+        for lang in hx_lang_cfg.keys() {
+            hx_global_lang_cfg.remove(lang.as_str());
+        }
 
-            ["\
+        ["\
 # language-specific settings:
 
 "
-            .to_string()]
-            .into_iter()
-            .chain(
-                hx_lang_cfg
-                    .into_iter()
-                    .map(|(name, cfg)| cfg.to_languages_toml(&name)),
-            )
-            .chain(["\
+        .to_string()]
+        .into_iter()
+        .chain(
+            hx_lang_cfg
+                .into_iter()
+                .map(|(name, cfg)| cfg.to_languages_toml(&name)),
+        )
+        .chain(["\
 ################################################################################
 
 # global settings, applied equally to all remaining languages:
 
 "
-            .to_string()])
-            .chain(
-                hx_global_lang_cfg
-                    .into_iter()
-                    .map(|(name, cfg)| cfg.to_languages_toml(name)),
-            )
-            .collect()
-        }
-        _ => hx_lang_cfg
+        .to_string()])
+        .chain(
+            hx_global_lang_cfg
+                .into_iter()
+                .map(|(name, cfg)| cfg.to_languages_toml(name)),
+        )
+        .collect()
+    } else {
+        hx_lang_cfg
             .into_iter()
             .map(|(name, cfg)| cfg.to_languages_toml(&name))
-            .collect(),
+            .collect()
     };
 
     (hx_editor_cfg.to_config_toml(), languages_toml)
@@ -326,7 +332,7 @@ impl HxEditorCfg {
     }
 }
 
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Default)]
 pub struct IndentCfg {
     size: Option<usize>,
     style: Option<&'static str>,
@@ -353,6 +359,11 @@ impl IndentCfg {
             _ => None,
         });
         self
+    }
+
+    fn with_defaults_from(&mut self, other: &Self) -> &mut Self {
+        self.with_default_size(other.size)
+            .with_default_style(other.style)
     }
 
     fn from(section: &BTreeMap<Key, &str>) -> Self {
@@ -442,4 +453,19 @@ fn snapshot() {
         insta::assert_snapshot!("conf", config_toml);
         insta::assert_snapshot!("lang", languages_toml);
     });
+}
+
+#[test]
+fn sparse_editorconfig() {
+    let input = "\
+[Makefile]
+indent_size = 8
+    ";
+    let expected = r#"[[language]]
+name = "make"
+indent = { unit = "\t", tab-width = 8 }
+
+"#;
+    let (_, languages_toml) = ec2hx(input, vec![]);
+    assert_eq!(languages_toml, expected);
 }
