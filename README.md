@@ -73,15 +73,6 @@ In order to match the EditorConfig section header with a Helix language, the def
 The URL is pinned to a stable release of Helix and needs to be updated manually.
 I think this should be fine, since changes to this file are about rather niche languages at this point.
 
-TODO:
-
-- The key `trim_trailing_whitespace` could become supported by helix in the future.
-  See for exmaple [this PR](https://github.com/helix-editor/helix/pull/8366) for progress.
-  An alternative would be to bundle a simple formatter with the CLI.
-  Then parse the the output of `hx --health` to determine which languages don't already have a formatter.
-  (wouldn't want to override a more powerful, language-specific formatter that probably already trims whitespace)
-  Add this generic formatter to the language config where appropriate.
-
 [^1]: While indentation style can only be configured once per language in Helix, it is technically possible to define arbitrary custom languages.
       That means one could define one pseudo language for every different idententation style in the same project.
       Most language configuration options are copied from the real one, except for the `file-types` key, which is set to the desired glob.
