@@ -1,0 +1,5 @@
+# Not from a project. Tests that indent_style = tab is inferred from default
+# languages.toml.
+
+[Makefile]
+indent_size = 8

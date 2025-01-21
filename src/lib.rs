@@ -454,18 +454,3 @@ fn snapshot() {
         insta::assert_snapshot!("lang", languages_toml);
     });
 }
-
-#[test]
-fn sparse_editorconfig() {
-    let input = "\
-[Makefile]
-indent_size = 8
-    ";
-    let expected = r#"[[language]]
-name = "make"
-indent = { unit = "\t", tab-width = 8 }
-
-"#;
-    let (_, languages_toml) = ec2hx(input, vec![]);
-    assert_eq!(languages_toml, expected);
-}

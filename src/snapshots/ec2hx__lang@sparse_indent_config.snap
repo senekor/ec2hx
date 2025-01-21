@@ -1,0 +1,9 @@
+---
+source: src/lib.rs
+expression: languages_toml
+input_file: test_data/sparse_indent_config
+snapshot_kind: text
+---
+[[language]]
+name = "make"
+indent = { unit = "\t", tab-width = 8 }
