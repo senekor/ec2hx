@@ -12,6 +12,18 @@ scope = "text.plain"
 file-types = [{ glob = "ChangeLog" },]
 indent = { unit = "\t", tab-width = 8 }
 
+[[language]]
+name = "ec2hx-unknown-lang-c]"
+scope = "text.plain"
+file-types = [{ glob = "*.c]" },]
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-unknown-lang-h]"
+scope = "text.plain"
+file-types = [{ glob = "*.h]" },]
+indent = { unit = "\t", tab-width = 4 }
+
 ################################################################################
 
 # global settings, applied equally to all remaining languages:

@@ -24,6 +24,9 @@
   indent = { tab-width = 8, unit = "\t" }
   ```
 
+- Square brackets in section header globs are now supported. For example,
+  C-files can be configured with the header `[*.[ch]]`.
+
 ### Fixed
 
 ## [1.1.0] - 2025-01-21

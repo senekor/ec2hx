@@ -151,8 +151,7 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
 }
 
 fn extract_langs_from_header(header: &str) -> Vec<String> {
-    if header.contains(['/', '?', '[', ']', '!']) || header.contains("**") || header.contains("..")
-    {
+    if header.contains(['/', '?', '!']) || header.contains("**") || header.contains("..") {
         // deranged section detected, give up
         return Vec::new();
     }
@@ -163,7 +162,7 @@ fn extract_langs_from_header(header: &str) -> Vec<String> {
 
     'outer: loop {
         for i in 0..=rest.len() {
-            if i == rest.len() || matches!(rest.as_bytes()[i], b'{' | b',' | b'}') {
+            if i == rest.len() || b"{,}[".contains(&rest.as_bytes()[i]) {
                 if should_expanded_at_next_delimiter {
                     should_expanded_at_next_delimiter = false;
                     let fragments = stack.pop().unwrap();
@@ -180,6 +179,18 @@ fn extract_langs_from_header(header: &str) -> Vec<String> {
                 match rest.as_bytes().get(i) {
                     Some(b'{') => stack.push(Vec::new()), // recurse deeper
                     Some(b'}') => should_expanded_at_next_delimiter = true,
+                    Some(b'[') => {
+                        // process charset
+                        let mut charset = Vec::new();
+                        rest = &rest[i + 1..];
+                        while rest.as_bytes()[0] != b']' {
+                            charset.extend(rest.chars().take(1).map(String::from));
+                            rest = &rest[1..];
+                        }
+                        stack.push(charset);
+                        should_expanded_at_next_delimiter = true;
+                        continue 'outer;
+                    }
                     None => break 'outer,
                     _ => {} // b','
                 }

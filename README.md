@@ -40,13 +40,18 @@ Supporting multiple `.editorconfig` files in a directory hierarchy leads to the 
 ### Glob expressions:
 
 Only globs that look like they map cleanly to one or several file types are supported, including for example:
+
+A limited number of glob directives are supported, including: `*`, `{}`, `[]`
+
+Examples of supported section headers:
 - `[Makefile]`
 - `[*.py]`
 - `[*.{json,js}]`
-- and even `[{*.{awk,c,dts,dtsi,dtso,h,mk,s,S},Kconfig,Makefile,Makefile.*}]`
+- `[*.[ch]]`
+- `[{*.{awk,c,dts},Kconfig,Makefile}]` (nested `{}`)
 
-Globs that don't map to a set of file types are not supported.[^1]
-For simplicity, any section that includes the following special characters is ignored: `/`, `**`, `?`, `..`, `[`, `]`, `!`, `\`.
+Globs which match against paths (i.e. which contain `/` or `**`) are not supported.[^1]
+For simplicity, any section that includes the following special characters is ignored: , `?`, `..`, `!`, `\`.
 If you think some application of these special characters can and should be supported, feel free to open an issue about it.
 
 ### File types:
