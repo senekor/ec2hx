@@ -1,2 +1,5 @@
 /target
 .helix
+
+# It's nice to be able to run ec2hx normally for quick-and-dirty debugging.
+.editorconfig
