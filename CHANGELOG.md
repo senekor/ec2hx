@@ -12,6 +12,14 @@
 
 ### Added
 
+### Fixed
+
+## 1.2.0 - 2025-02-07
+
+[compare changes][diff-1.2.0]
+
+### Added
+
 - If the EditorConfig file only specifies one of `indent_style` and `indent_size`
   globally or for a specific language, the values in the default `languages.toml`
   of Helix will be used to fill in the gaps and generate a complete configuration
@@ -59,5 +67,6 @@
 - First version.
 
 [diff-unreleased]: https://github.com/senekor/ec2hx/compare/v1.1.0...HEAD
+[diff-1.2.0]: https://github.com/senekor/ec2hx/compare/v1.1.0...v1.2.0
 [diff-1.1.0]: https://github.com/senekor/ec2hx/compare/v1.0.0...v1.1.0
 [diff-1.0.0]: https://github.com/senekor/ec2hx/tree/v1.0.0
