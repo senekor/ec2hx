@@ -35,21 +35,21 @@ fn main() {
             let size = indent.get("tab-width").unwrap().as_integer().unwrap();
             let unit = indent.get("unit").unwrap().as_str().unwrap();
             let style = if unit.starts_with(' ') {
-                "space"
+                "Space"
             } else {
                 // This is exactly how Helix behaves, everything that's not a
                 // space is a tab.
-                "tab"
+                "Tab"
             };
             writeln!(
                 buffer,
-                "indent: IndentCfg {{ size: Some({size}), style: Some({style:?}), file_types: vec![] }},"
+                "indent: IndentCfg {{ size: Some({size}), style: Some({style}), file_types: vec![], tab_width: None }},"
             )
             .unwrap();
         } else {
             writeln!(
                 buffer,
-                "indent: IndentCfg {{ size: None, style: None, file_types: vec![] }},"
+                "indent: IndentCfg {{ size: None, style: None, file_types: vec![], tab_width: None }},"
             )
             .unwrap();
         }

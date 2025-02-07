@@ -1,7 +1,7 @@
 use std::{collections::BTreeMap, fmt::Write};
 
 pub mod lang {
-    use crate::IndentCfg;
+    use crate::*;
 
     #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
     pub(crate) struct Language {
@@ -64,10 +64,10 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
                         indent_cfg.with_defaults_from(prev_indent_cfg);
                     }
                     // Use values from default languages.toml as default, for
-                    // configurations where only on size or style is specified.
+                    // configurations where only size or style is specified.
                     // See for example ../test_data/cockroach where only
-                    // indent_size if set in the global config.
-                    indent_cfg.with_defaults_from(&supported_lang.indent);
+                    // indent_size is set in the global config.
+                    indent_cfg.with_defaults_respecting_tab_width(&supported_lang.indent);
 
                     hx_lang_cfg.insert(matched_name, indent_cfg);
                     break;
@@ -96,11 +96,18 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
         }
     }
 
-    let languages_toml = if global_indent_cfg.size.is_some() || global_indent_cfg.style.is_some() {
+    let tab_langs_are_customized = global_indent_cfg.tab_width.is_some();
+    let all_langs_are_customized =
+        global_indent_cfg.size.is_some() || global_indent_cfg.style.is_some();
+
+    let languages_toml = if all_langs_are_customized || tab_langs_are_customized {
         let mut hx_global_lang_cfg = BTreeMap::new();
         for lang in lang::LANGUAGES {
+            if lang.indent.style != Some(Tab) && !all_langs_are_customized {
+                continue;
+            }
             let mut indent_cfg = global_indent_cfg.clone();
-            indent_cfg.with_defaults_from(&lang.indent);
+            indent_cfg.with_defaults_respecting_tab_width(&lang.indent);
             hx_global_lang_cfg.insert(lang.name, indent_cfg);
         }
 
@@ -343,64 +350,104 @@ impl HxEditorCfg {
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+enum IndentStyle {
+    Space,
+    Tab,
+}
+use IndentStyle::*;
+
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Default)]
 pub struct IndentCfg {
     size: Option<usize>,
-    style: Option<&'static str>,
+    style: Option<IndentStyle>,
+    tab_width: Option<usize>,
     /// to generate custom configs for languages unsupported by Helix
     file_types: Vec<String>,
 }
 
 impl IndentCfg {
-    fn with_default_size(&mut self, size: Option<usize>) -> &mut Self {
-        if self.size.is_some() {
-            return self;
-        }
-        self.size = size;
-        self
-    }
-
-    fn with_default_style(&mut self, style: Option<&str>) -> &mut Self {
-        if self.style.is_some() {
-            return self;
-        }
-        self.style = style.and_then(|s| match s.to_lowercase().as_str() {
-            "tab" => Some("tab"),
-            "space" => Some("space"),
+    fn parse_style(style: &str) -> Option<IndentStyle> {
+        match style.to_lowercase().as_str() {
+            "tab" => Some(Tab),
+            "space" => Some(Space),
             _ => None,
-        });
-        self
+        }
     }
 
     fn with_defaults_from(&mut self, other: &Self) -> &mut Self {
-        self.with_default_size(other.size)
-            .with_default_style(other.style)
+        if self.size.is_none() {
+            self.size = other.size
+        }
+        if self.style.is_none() {
+            self.style = other.style
+        }
+        if self.tab_width.is_none() {
+            self.tab_width = other.tab_width
+        }
+        self
+    }
+
+    fn with_defaults_respecting_tab_width(&mut self, other_indent: &IndentCfg) -> &mut Self {
+        if self.tab_width.is_some() && self.style != Some(Space) {
+            if self.style == Some(Tab) {
+                // Do nothing. indent_size has precedence over
+                // tab_width if they both come from .editorconfig,
+                // but we don't want to override an editorconfig's
+                // tab_width with an indent_size from the default
+                // languages.toml.
+            } else {
+                match other_indent.style {
+                    Some(Tab) => self.style = Some(Tab),
+                    Some(Space) => {
+                        // self.style is none and other style is space.
+                        // tab_width will be overruled.
+                        self.with_defaults_from(other_indent);
+                    }
+                    None => {}
+                }
+            }
+        } else {
+            // Use values from default languages.toml as default, for
+            // configurations where only on size or style is specified.
+            // See for example ../test_data/cockroach where only
+            // indent_size if set in the global config.
+            self.with_defaults_from(other_indent);
+        }
+        self
     }
 
     fn from(section: &BTreeMap<Key, &str>) -> Self {
-        let mut res = Self::default();
         let size = section
             .get(&Key::IndentSize)
             .copied()
             .and_then(|s| s.parse::<usize>().ok());
-        res.with_default_size(size);
-        res.with_default_style(section.get(&Key::IndentStyle).copied());
-        res
+        let tab_width = section
+            .get(&Key::TabWidth)
+            .copied()
+            .and_then(|s| s.parse::<usize>().ok());
+        let style = section
+            .get(&Key::IndentStyle)
+            .copied()
+            .and_then(Self::parse_style);
+        Self {
+            size,
+            style,
+            tab_width,
+            file_types: vec![],
+        }
     }
 }
 
 impl IndentCfg {
     fn to_languages_toml(&self, lang: &str) -> String {
-        let Some(tab_width) = self.size else {
-            return String::new();
-        };
         let Some(indent_style) = self.style else {
             return String::new();
         };
-        let unit = match indent_style {
-            "tab" => "\t".into(),
-            "space" => " ".repeat(tab_width),
-            _ => return String::new(),
+        let (unit, tab_width) = match (indent_style, self.size, self.tab_width) {
+            (Space, Some(size), _) => (" ".repeat(size), size), // tab_width doesn't affect space
+            (Tab, Some(size), _) | (Tab, None, Some(size)) => ("\t".into(), size),
+            (Space, None, _) | (Tab, None, None) => return String::new(),
         };
 
         let mut f = String::new();

@@ -27,6 +27,8 @@
 - Square brackets in section header globs are now supported. For example,
   C-files can be configured with the header `[*.[ch]]`.
 
+- The `tab_width` key is now supported.
+
 ### Fixed
 
 ## [1.1.0] - 2025-01-21

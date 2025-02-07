@@ -4,6 +4,8 @@ expression: languages_toml
 input_file: test_data/php
 snapshot_kind: text
 ---
+# language-specific settings:
+
 [[language]]
 name = "awk"
 indent = { unit = "\t", tab-width = 4 }
@@ -125,3 +127,87 @@ indent = { unit = "    ", tab-width = 4 }
 [[language]]
 name = "yaml"
 indent = { unit = "  ", tab-width = 2 }
+
+################################################################################
+
+# global settings, applied equally to all remaining languages:
+
+[[language]]
+name = "bibtex"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "c-sharp"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "cue"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "devicetree"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "env"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "gdscript"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "git-config"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "git-rebase"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "go"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "godot-resource"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "gomod"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "gowork"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "hare"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "ini"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "latex"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "make"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "odin"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "openscad"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "supercollider"
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "v"
+indent = { unit = "\t", tab-width = 4 }

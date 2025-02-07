@@ -1,0 +1,14 @@
+# Not from a project. Tests that tab_width is correctly respected.
+
+# should be inherited by all languages that have unit = "\t" in languages.toml
+[*]
+tab_width = 9
+
+# specific override that also has default unit = "\t"
+[Makefile]
+tab_width = 11
+
+# set tab_width for a language that _doesn't_ have unit = "\t"
+[*.rs]
+indent_style = tab
+tab_width = 13
