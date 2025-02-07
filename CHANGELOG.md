@@ -31,6 +31,8 @@
 
 ### Fixed
 
+- Properly ignore sections that contain `\` in the header.
+
 ## [1.1.0] - 2025-01-21
 
 ### Changed

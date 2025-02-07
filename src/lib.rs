@@ -158,7 +158,7 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
 }
 
 fn extract_langs_from_header(header: &str) -> Vec<String> {
-    if header.contains(['/', '?', '!']) || header.contains("**") || header.contains("..") {
+    if header.contains(['/', '?', '!', '\\']) || header.contains("**") || header.contains("..") {
         // deranged section detected, give up
         return Vec::new();
     }
