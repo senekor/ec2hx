@@ -4,7 +4,7 @@
 
 ## Unreleased
 
-[compare changes](https://github.com/senekor/ec2hx/compare/v1.1.0...HEAD)
+[compare changes](https://github.com/senekor/ec2hx/compare/v1.3.0...HEAD)
 
 ### Breaking
 
@@ -12,12 +12,18 @@
 
 ### Added
 
+### Fixed
+
+## 1.3.0 - 2025-02-07
+
+[compare changes](https://github.com/senekor/ec2hx/compare/v1.2.0...v1.3.0)
+
+### Added
+
 - The `max_line_length` key is now supported. From the Helix documentation:
   > Used for the `:reflow` command and soft-wrapping if `soft-wrap.wrap-at-text-width` is set
 
 - A new CLI flag `--rulers` adds rulers matching `max_line_length`.
-
-### Fixed
 
 ## 1.2.0 - 2025-02-07
 
