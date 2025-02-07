@@ -4,7 +4,7 @@
 
 ## Unreleased
 
-[compare changes][diff-unreleased]
+[compare changes](https://github.com/senekor/ec2hx/compare/v1.1.0...HEAD)
 
 ### Breaking
 
@@ -16,7 +16,7 @@
 
 ## 1.2.0 - 2025-02-07
 
-[compare changes][diff-1.2.0]
+[compare changes](https://github.com/senekor/ec2hx/compare/v1.1.0...v1.2.0)
 
 ### Added
 
@@ -45,7 +45,7 @@
 
 ## 1.1.0 - 2025-01-21
 
-[compare changes][diff-1.1.0]
+[compare changes](https://github.com/senekor/ec2hx/compare/v1.0.0...v1.1.0)
 
 ### Changed
 
@@ -60,13 +60,8 @@
 
 ## 1.0.0 - 2025-01-17
 
-[compare changes][diff-1.0.0]
+[compare changes](https://github.com/senekor/ec2hx/tree/v1.0.0)
 
 ### Added
 
 - First version.
-
-[diff-unreleased]: https://github.com/senekor/ec2hx/compare/v1.1.0...HEAD
-[diff-1.2.0]: https://github.com/senekor/ec2hx/compare/v1.1.0...v1.2.0
-[diff-1.1.0]: https://github.com/senekor/ec2hx/compare/v1.0.0...v1.1.0
-[diff-1.0.0]: https://github.com/senekor/ec2hx/tree/v1.0.0
