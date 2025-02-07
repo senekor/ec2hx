@@ -14,6 +14,20 @@ This is a CLI tool that translates an [EditorConfig] file to a project-specific 
 
 3. Start Helix / reload its config.
 
+## Upstream support
+
+At the time of writing, Helix does not support EditorConfig.
+The maintainers don't want to add it in core, they want a plugin to handle it.
+However, the plugin system is still a work in progress.
+That's why `ec2hx` may be your best option at the moment.
+
+Subscribe to the following issues and PRs to stay up-to-date with developments upstream:
+- [issue: Support for EditorConfig](https://github.com/helix-editor/helix/issues/279)
+- [PR: Implement EditorConfig support](https://github.com/helix-editor/helix/pull/1777)
+- [PR: :trim to remove trailing whitespace](https://github.com/helix-editor/helix/pull/8366)
+- [issue: tracking issue: Switch to a scheme based config](https://github.com/helix-editor/helix/issues/10389)
+- [PR: Add Steel as an optional plugin system](https://github.com/helix-editor/helix/pull/8675)
+
 ## Setting expectations
 
 EditorConfig is much more flexible than the config of Helix, which means support is only partial.
