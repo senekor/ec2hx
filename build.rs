@@ -19,8 +19,10 @@ fn main() {
     for lang in languages.iter() {
         let lang = lang.as_table().unwrap();
         buffer.push_str("Language {\n");
+
         let name = lang.get("name").unwrap().as_str().unwrap();
         writeln!(buffer, "name: {name:?},",).unwrap();
+
         buffer.push_str("file_types: &[");
         for file_type in lang.get("file-types").unwrap().as_array().unwrap().iter() {
             if let Some(file_type) = file_type.as_str() {
@@ -31,7 +33,8 @@ fn main() {
             }
         }
         buffer.push_str("],\n");
-        if let Some(indent) = lang.get("indent") {
+
+        let indent = if let Some(indent) = lang.get("indent") {
             let size = indent.get("tab-width").unwrap().as_integer().unwrap();
             let unit = indent.get("unit").unwrap().as_str().unwrap();
             let style = if unit.starts_with(' ') {
@@ -41,18 +44,17 @@ fn main() {
                 // space is a tab.
                 "Tab"
             };
-            writeln!(
-                buffer,
-                "indent: IndentCfg {{ size: Some({size}), style: Some({style}), file_types: vec![], tab_width: None }},"
-            )
-            .unwrap();
+            format!("size: Some({size}), style: Some({style}), tab_width: None")
         } else {
-            writeln!(
-                buffer,
-                "indent: IndentCfg {{ size: None, style: None, file_types: vec![], tab_width: None }},"
-            )
-            .unwrap();
-        }
+            "size: None, style: None, tab_width: None".into()
+        };
+
+        writeln!(
+            buffer,
+            "cfg: LangCfg {{ {indent}, max_line_length: None, file_types: vec![] }},"
+        )
+        .unwrap();
+
         buffer.push_str("},\n");
     }
     buffer.push(']');

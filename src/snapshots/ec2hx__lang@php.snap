@@ -107,6 +107,7 @@ indent = { unit = "\t", tab-width = 4 }
 [[language]]
 name = "git-commit"
 indent = { unit = "    ", tab-width = 4 }
+text-width = 80
 
 [[language]]
 name = "html"
@@ -115,10 +116,15 @@ indent = { unit = "    ", tab-width = 4 }
 [[language]]
 name = "markdown"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "php"
 indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "rst"
+text-width = 100
 
 [[language]]
 name = "xml"

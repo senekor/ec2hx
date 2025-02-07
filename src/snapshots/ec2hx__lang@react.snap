@@ -9,10 +9,12 @@ snapshot_kind: text
 [[language]]
 name = "git-commit"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 0
 
 [[language]]
 name = "markdown"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 0
 
 ################################################################################
 

@@ -7,7 +7,7 @@ pub mod lang {
     pub(crate) struct Language {
         pub(crate) name: &'static str,
         pub(crate) file_types: &'static [&'static str],
-        pub(crate) indent: IndentCfg,
+        pub(crate) cfg: LangCfg,
     }
 
     /// Language name-to-file-types pairings parsed from Helix' default
@@ -22,26 +22,29 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
     // don't care about preample (usually just "root = true")
     let (_, _preample) = editorconfig.sections.remove(0);
 
-    let mut global_indent_cfg = IndentCfg::default();
+    let mut global_lang_cfg = LangCfg::default();
 
     let mut hx_editor_cfg = HxEditorCfg::default();
-    let mut hx_lang_cfg = BTreeMap::<String, IndentCfg>::new();
+    let mut hx_lang_cfg = BTreeMap::<String, LangCfg>::new();
 
     for (header, section) in editorconfig.sections {
-        let mut indent_cfg = IndentCfg::from(&section);
+        let mut lang_cfg = LangCfg::from(&section);
 
         if header == "*" {
             // apply global editor settings
             hx_editor_cfg = HxEditorCfg::from(&section);
 
             // remember global defaults for language-specific stuff
-            global_indent_cfg = indent_cfg;
+            global_lang_cfg = lang_cfg;
+
+            // already configured globally, no need to override for each lang
+            global_lang_cfg.max_line_length = None;
 
             continue;
         }
 
         // language-specific settings, use global values as default
-        indent_cfg.with_defaults_from(&global_indent_cfg);
+        lang_cfg.with_defaults_from(&global_lang_cfg);
 
         for lang in extract_langs_from_header(header) {
             let mut short_lang = lang.as_str();
@@ -56,7 +59,7 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
                 {
                     found_match = true;
                     let matched_name = supported_lang.name.into();
-                    let mut indent_cfg = indent_cfg.clone();
+                    let mut indent_cfg = lang_cfg.clone();
 
                     // use potential previous matching section as default values,
                     // see for example ../test_data/python
@@ -67,7 +70,7 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
                     // configurations where only size or style is specified.
                     // See for example ../test_data/cockroach where only
                     // indent_size is set in the global config.
-                    indent_cfg.with_defaults_respecting_tab_width(&supported_lang.indent);
+                    indent_cfg.with_defaults_respecting_tab_width(&supported_lang.cfg);
 
                     hx_lang_cfg.insert(matched_name, indent_cfg);
                     break;
@@ -82,7 +85,7 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
                 // Helix with just the indent configuration.
                 // An example for this situation: Linux Kconfig files
                 let name = format!("ec2hx-unknown-lang-{short_lang}");
-                let mut indent_cfg = indent_cfg.clone();
+                let mut indent_cfg = lang_cfg.clone();
                 indent_cfg.file_types.push(lang);
 
                 // use potential previous matching section as default values,
@@ -96,32 +99,30 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
         }
     }
 
-    let tab_langs_are_customized = global_indent_cfg.tab_width.is_some();
+    let tab_langs_are_customized = global_lang_cfg.tab_width.is_some();
     let all_langs_are_customized =
-        global_indent_cfg.size.is_some() || global_indent_cfg.style.is_some();
+        global_lang_cfg.size.is_some() || global_lang_cfg.style.is_some();
 
     let languages_toml = if all_langs_are_customized || tab_langs_are_customized {
         let mut hx_global_lang_cfg = BTreeMap::new();
         for lang in lang::LANGUAGES {
-            if lang.indent.style != Some(Tab) && !all_langs_are_customized {
+            if hx_lang_cfg.contains_key(lang.name) {
                 continue;
             }
-            let mut indent_cfg = global_indent_cfg.clone();
-            indent_cfg.with_defaults_respecting_tab_width(&lang.indent);
+            if lang.cfg.style != Some(Tab) && !all_langs_are_customized {
+                continue;
+            }
+            let mut indent_cfg = global_lang_cfg.clone();
+            indent_cfg.with_defaults_respecting_tab_width(&lang.cfg);
             hx_global_lang_cfg.insert(lang.name, indent_cfg);
         }
 
         // global fallback plain text language configuration
-        global_indent_cfg.file_types.extend(fallback_globs);
-        if !global_indent_cfg.file_types.contains(&"*.txt".into()) {
-            global_indent_cfg.file_types.push("*.txt".into());
+        global_lang_cfg.file_types.extend(fallback_globs);
+        if !global_lang_cfg.file_types.contains(&"*.txt".into()) {
+            global_lang_cfg.file_types.push("*.txt".into());
         }
-        hx_global_lang_cfg.insert("ec2hx-global-fallback-plain-text", global_indent_cfg);
-
-        // to not apply global settings to languages with overrides
-        for lang in hx_lang_cfg.keys() {
-            hx_global_lang_cfg.remove(lang.as_str());
-        }
+        hx_global_lang_cfg.insert("ec2hx-global-fallback-plain-text", global_lang_cfg);
 
         ["\
 # language-specific settings:
@@ -216,6 +217,7 @@ struct EditorConfig<'a> {
     sections: Vec<(&'a str, BTreeMap<Key, &'a str>)>,
 }
 
+/// see https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 enum Key {
     IndentStyle,
@@ -227,6 +229,7 @@ enum Key {
     TrimTrailingWhitespace,
     InsertFinalNewline,
     Root,
+    MaxLineLength,
     Unknown,
 }
 
@@ -243,6 +246,7 @@ impl From<&str> for Key {
             "trim_trailing_whitespace" => TrimTrailingWhitespace,
             "insert_final_newline" => InsertFinalNewline,
             "root" => Root,
+            "max_line_length" => MaxLineLength,
             _ => Unknown,
         }
     }
@@ -312,32 +316,29 @@ impl EditorConfigStrExtension for str {
 pub struct HxEditorCfg {
     default_line_ending: Option<&'static str>,
     insert_final_newline: Option<bool>,
+    max_line_length: Option<usize>,
 }
 
 impl HxEditorCfg {
     fn from(section: &BTreeMap<Key, &str>) -> Self {
-        let mut res = Self::default();
-        if let Some(line_ending) = section.get(&Key::EndOfLine) {
-            let line_ending = line_ending.to_lowercase();
-            match line_ending.as_str() {
-                "lf" => res.default_line_ending = Some("lf"),
-                "crlf" => res.default_line_ending = Some("crlf"),
-                _ => {}
-            }
+        let default_line_ending = section.get(&Key::EndOfLine).and_then(|s| match *s {
+            "lf" => Some("lf"),
+            "crlf" => Some("crlf"),
+            _ => None,
+        });
+        let insert_final_newline = section
+            .get(&Key::InsertFinalNewline)
+            .and_then(|s| s.parse().ok());
+        let max_line_length = section
+            .get(&Key::MaxLineLength)
+            .and_then(|s| s.parse().ok());
+        Self {
+            default_line_ending,
+            insert_final_newline,
+            max_line_length,
         }
-        if let Some(insert_final_newline) = section.get(&Key::InsertFinalNewline) {
-            let insert_final_newline = insert_final_newline.to_lowercase();
-            match insert_final_newline.as_str() {
-                "true" => res.insert_final_newline = Some(true),
-                "false" => res.insert_final_newline = Some(false),
-                _ => {}
-            }
-        }
-        res
     }
-}
 
-impl HxEditorCfg {
     fn to_config_toml(&self) -> String {
         let mut f = String::new();
         if let Some(default_line_ending) = self.default_line_ending {
@@ -345,6 +346,9 @@ impl HxEditorCfg {
         }
         if let Some(insert_final_newline) = self.insert_final_newline {
             writeln!(f, "editor.insert-final-newline = {insert_final_newline}").unwrap();
+        }
+        if let Some(max_line_length) = self.max_line_length {
+            writeln!(f, "editor.text-width = {max_line_length}").unwrap();
         }
         f
     }
@@ -358,16 +362,17 @@ enum IndentStyle {
 use IndentStyle::*;
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Default)]
-pub struct IndentCfg {
+pub struct LangCfg {
     size: Option<usize>,
     style: Option<IndentStyle>,
     tab_width: Option<usize>,
+    max_line_length: Option<usize>,
     /// to generate custom configs for languages unsupported by Helix
     file_types: Vec<String>,
 }
 
-impl IndentCfg {
-    fn parse_style(style: &str) -> Option<IndentStyle> {
+impl LangCfg {
+    fn parse_style(style: &&str) -> Option<IndentStyle> {
         match style.to_lowercase().as_str() {
             "tab" => Some(Tab),
             "space" => Some(Space),
@@ -385,10 +390,13 @@ impl IndentCfg {
         if self.tab_width.is_none() {
             self.tab_width = other.tab_width
         }
+        if self.max_line_length.is_none() {
+            self.max_line_length = other.max_line_length;
+        }
         self
     }
 
-    fn with_defaults_respecting_tab_width(&mut self, other_indent: &IndentCfg) -> &mut Self {
+    fn with_defaults_respecting_tab_width(&mut self, other: &Self) -> &mut Self {
         if self.tab_width.is_some() && self.style != Some(Space) {
             if self.style == Some(Tab) {
                 // Do nothing. indent_size has precedence over
@@ -397,12 +405,12 @@ impl IndentCfg {
                 // tab_width with an indent_size from the default
                 // languages.toml.
             } else {
-                match other_indent.style {
+                match other.style {
                     Some(Tab) => self.style = Some(Tab),
                     Some(Space) => {
                         // self.style is none and other style is space.
                         // tab_width will be overruled.
-                        self.with_defaults_from(other_indent);
+                        self.with_defaults_from(other);
                     }
                     None => {}
                 }
@@ -412,43 +420,44 @@ impl IndentCfg {
             // configurations where only on size or style is specified.
             // See for example ../test_data/cockroach where only
             // indent_size if set in the global config.
-            self.with_defaults_from(other_indent);
+            self.with_defaults_from(other);
+        }
+        if self.max_line_length.is_none() {
+            self.max_line_length = other.max_line_length;
         }
         self
     }
 
     fn from(section: &BTreeMap<Key, &str>) -> Self {
-        let size = section
-            .get(&Key::IndentSize)
-            .copied()
-            .and_then(|s| s.parse::<usize>().ok());
-        let tab_width = section
-            .get(&Key::TabWidth)
-            .copied()
-            .and_then(|s| s.parse::<usize>().ok());
-        let style = section
-            .get(&Key::IndentStyle)
-            .copied()
-            .and_then(Self::parse_style);
+        let size = section.get(&Key::IndentSize).and_then(|s| s.parse().ok());
+        let tab_width = section.get(&Key::TabWidth).and_then(|s| s.parse().ok());
+        let style = section.get(&Key::IndentStyle).and_then(Self::parse_style);
+        let max_line_length = section
+            .get(&Key::MaxLineLength)
+            .and_then(|s| s.parse().ok());
         Self {
             size,
             style,
             tab_width,
+            max_line_length,
             file_types: vec![],
         }
     }
-}
 
-impl IndentCfg {
     fn to_languages_toml(&self, lang: &str) -> String {
-        let Some(indent_style) = self.style else {
+        let indent = 'indent: {
+            let Some(indent_style) = self.style else {
+                break 'indent None;
+            };
+            match (indent_style, self.size, self.tab_width) {
+                (Space, Some(size), _) => Some((" ".repeat(size), size)), // tab_width doesn't affect space
+                (Tab, Some(size), _) | (Tab, None, Some(size)) => Some(("\t".into(), size)),
+                (Space, None, _) | (Tab, None, None) => None,
+            }
+        };
+        if indent.is_none() && self.max_line_length.is_none() {
             return String::new();
-        };
-        let (unit, tab_width) = match (indent_style, self.size, self.tab_width) {
-            (Space, Some(size), _) => (" ".repeat(size), size), // tab_width doesn't affect space
-            (Tab, Some(size), _) | (Tab, None, Some(size)) => ("\t".into(), size),
-            (Space, None, _) | (Tab, None, None) => return String::new(),
-        };
+        }
 
         let mut f = String::new();
 
@@ -466,10 +475,15 @@ impl IndentCfg {
             writeln!(f, "]").unwrap();
         }
 
-        f.push_str(&format!(
-            "indent = {{ unit = {unit:?}, tab-width = {tab_width} }}\n\n"
-        ));
+        if let Some((unit, tab_width)) = indent {
+            writeln!(f, "indent = {{ unit = {unit:?}, tab-width = {tab_width} }}").unwrap();
+        }
 
+        if let Some(max_line_length) = self.max_line_length {
+            writeln!(f, "text-width = {max_line_length}").unwrap();
+        }
+
+        f.push('\n');
         f
     }
 }

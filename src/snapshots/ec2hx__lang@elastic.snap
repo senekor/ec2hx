@@ -13,10 +13,12 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "groovy"
 indent = { unit = "    ", tab-width = 4 }
+text-width = 140
 
 [[language]]
 name = "java"
 indent = { unit = "    ", tab-width = 4 }
+text-width = 140
 
 [[language]]
 name = "json"
@@ -25,6 +27,7 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "markdown"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "python"

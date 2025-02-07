@@ -17,6 +17,7 @@ indent = { unit = "    ", tab-width = 4 }
 [[language]]
 name = "rust"
 indent = { unit = "    ", tab-width = 4 }
+text-width = 100
 
 [[language]]
 name = "yaml"

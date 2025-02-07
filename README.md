@@ -31,6 +31,8 @@ This section describes in detail what is and isn't supported.
   Therefore, sections that contain arbitrary globs are ignored.
   Only sections that look like they cleanly map to a set of file types are considered.
   (These keys are represented in the file `.helix/languages.toml`.)
+- The key `max_line_length` is supported. From the Helix documentation:
+  > Used for the `:reflow` command and soft-wrapping if `soft-wrap.wrap-at-text-width` is set
 - All other keys do not map to a config in Helix, so they will be ignored.
 
 ### File processing:
