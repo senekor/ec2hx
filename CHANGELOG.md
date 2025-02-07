@@ -2,7 +2,9 @@
 
 <!-- https://keepachangelog.com/en/1.1.0/ -->
 
-## [Unreleased]
+## Unreleased
+
+[compare changes][diff-unreleased]
 
 ### Breaking
 
@@ -33,7 +35,9 @@
 
 - Properly ignore sections that contain `\` in the header.
 
-## [1.1.0] - 2025-01-21
+## 1.1.0 - 2025-01-21
+
+[compare changes][diff-1.1.0]
 
 ### Changed
 
@@ -46,12 +50,14 @@
   be specified on the command line with `--fallback-globs`. Without this option,
   global configuration is only applied to languages Helix knows about.
 
-## [1.0.0] - 2025-01-17
+## 1.0.0 - 2025-01-17
+
+[compare changes][diff-1.0.0]
 
 ### Added
 
 - First version.
 
-[Unreleased]: https://github.com/senekor/ec2hx/compare/v1.1.0...HEAD
-[1.1.0]: https://github.com/senekor/ec2hx/compare/v1.0.0...v1.1.0
-[1.0.0]: https://github.com/senekor/ec2hx/releases/tag/v1.0.0
+[diff-unreleased]: https://github.com/senekor/ec2hx/compare/v1.1.0...HEAD
+[diff-1.1.0]: https://github.com/senekor/ec2hx/compare/v1.0.0...v1.1.0
+[diff-1.0.0]: https://github.com/senekor/ec2hx/tree/v1.0.0
