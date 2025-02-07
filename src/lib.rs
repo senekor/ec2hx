@@ -538,9 +538,9 @@ fn rulers() {
     // global rulers
     let input = std::fs::read_to_string("test_data/webpack").unwrap();
     let (config_toml, _) = ec2hx(&input, vec![], true);
-    insta::assert_snapshot!("conf", config_toml);
+    insta::assert_snapshot!("rulers-conf", config_toml);
     // language rulers
     let input = std::fs::read_to_string("test_data/php").unwrap();
     let (_, languages_toml) = ec2hx(&input, vec![], true);
-    insta::assert_snapshot!("lang", languages_toml);
+    insta::assert_snapshot!("rulers-lang", languages_toml);
 }
