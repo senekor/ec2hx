@@ -24,6 +24,9 @@ struct CliArgs {
     /// additional file types to configure
     #[arg(long, value_delimiter=',', long_help = FALLBACK_GLOBS_HELP)]
     fallback_globs: Vec<String>,
+    /// add rulers matching max_line_length
+    #[arg(long)]
+    rulers: bool,
 }
 
 const FALLBACK_GLOBS_HELP: &str = "\
@@ -51,7 +54,8 @@ fn main() {
         exit(1);
     };
 
-    let (config_toml, languages_toml) = ec2hx::ec2hx(&editorconfig, args.fallback_globs);
+    let (config_toml, languages_toml) =
+        ec2hx::ec2hx(&editorconfig, args.fallback_globs, args.rulers);
 
     fs::create_dir_all(".helix").expect("failed to create .helix directory");
 

@@ -26,13 +26,19 @@ This section describes in detail what is and isn't supported.
   That means the keys will only be translated to the Helix config if they appear in the global `[*]` section.
   If they appear in any other section, they will be ignored.
   (These keys are represented in the file `.helix/config.toml`.)
+
 - The keys `indent_style`, `indent_size` and `tab_width` are supported per-language.
   However, they cannot be applied multiple times to the same language with different values.[^1]
   Therefore, sections that contain arbitrary globs are ignored.
   Only sections that look like they cleanly map to a set of file types are considered.
   (These keys are represented in the file `.helix/languages.toml`.)
+
 - The key `max_line_length` is supported. From the Helix documentation:
+
   > Used for the `:reflow` command and soft-wrapping if `soft-wrap.wrap-at-text-width` is set
+
+  (Use the CLI flag `--rulers` to add matching rulers.)
+
 - All other keys do not map to a config in Helix, so they will be ignored.
 
 ### File processing:

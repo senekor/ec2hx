@@ -16,7 +16,7 @@ pub mod lang {
 }
 
 /// The returned tuple has the contents of config.toml and languages.toml.
-pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
+pub fn ec2hx(input: &str, fallback_globs: Vec<String>, rulers: bool) -> (String, String) {
     let mut editorconfig = EditorConfig::from(input);
 
     // don't care about preample (usually just "root = true")
@@ -133,7 +133,7 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
         .chain(
             hx_lang_cfg
                 .into_iter()
-                .map(|(name, cfg)| cfg.to_languages_toml(&name)),
+                .map(|(name, cfg)| cfg.to_languages_toml(&name, rulers)),
         )
         .chain(["\
 ################################################################################
@@ -145,17 +145,17 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>) -> (String, String) {
         .chain(
             hx_global_lang_cfg
                 .into_iter()
-                .map(|(name, cfg)| cfg.to_languages_toml(name)),
+                .map(|(name, cfg)| cfg.to_languages_toml(name, rulers)),
         )
         .collect()
     } else {
         hx_lang_cfg
             .into_iter()
-            .map(|(name, cfg)| cfg.to_languages_toml(&name))
+            .map(|(name, cfg)| cfg.to_languages_toml(&name, rulers))
             .collect()
     };
 
-    (hx_editor_cfg.to_config_toml(), languages_toml)
+    (hx_editor_cfg.to_config_toml(rulers), languages_toml)
 }
 
 fn extract_langs_from_header(header: &str) -> Vec<String> {
@@ -339,7 +339,7 @@ impl HxEditorCfg {
         }
     }
 
-    fn to_config_toml(&self) -> String {
+    fn to_config_toml(&self, rulers: bool) -> String {
         let mut f = String::new();
         if let Some(default_line_ending) = self.default_line_ending {
             writeln!(f, "editor.default-line-ending = {default_line_ending:?}").unwrap();
@@ -349,6 +349,9 @@ impl HxEditorCfg {
         }
         if let Some(max_line_length) = self.max_line_length {
             writeln!(f, "editor.text-width = {max_line_length}").unwrap();
+            if rulers {
+                writeln!(f, "editor.rulers = [{}]", max_line_length + 1).unwrap();
+            }
         }
         f
     }
@@ -444,7 +447,7 @@ impl LangCfg {
         }
     }
 
-    fn to_languages_toml(&self, lang: &str) -> String {
+    fn to_languages_toml(&self, lang: &str, rulers: bool) -> String {
         let indent = 'indent: {
             let Some(indent_style) = self.style else {
                 break 'indent None;
@@ -481,6 +484,9 @@ impl LangCfg {
 
         if let Some(max_line_length) = self.max_line_length {
             writeln!(f, "text-width = {max_line_length}").unwrap();
+            if rulers {
+                writeln!(f, "rulers = [{}]", max_line_length + 1).unwrap();
+            }
         }
 
         f.push('\n');
@@ -521,8 +527,20 @@ fn extract_langs() {
 fn snapshot() {
     insta::glob!("..", "test_data/*", |path| {
         let input = std::fs::read_to_string(path).unwrap();
-        let (config_toml, languages_toml) = ec2hx(&input, vec!["*.foo".into()]);
+        let (config_toml, languages_toml) = ec2hx(&input, vec!["*.foo".into()], false);
         insta::assert_snapshot!("conf", config_toml);
         insta::assert_snapshot!("lang", languages_toml);
     });
+}
+
+#[test]
+fn rulers() {
+    // global rulers
+    let input = std::fs::read_to_string("test_data/webpack").unwrap();
+    let (config_toml, _) = ec2hx(&input, vec![], true);
+    insta::assert_snapshot!("conf", config_toml);
+    // language rulers
+    let input = std::fs::read_to_string("test_data/php").unwrap();
+    let (_, languages_toml) = ec2hx(&input, vec![], true);
+    insta::assert_snapshot!("lang", languages_toml);
 }

@@ -1,0 +1,8 @@
+---
+source: src/lib.rs
+expression: config_toml
+snapshot_kind: text
+---
+editor.insert-final-newline = true
+editor.text-width = 80
+editor.rulers = [81]
