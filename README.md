@@ -17,7 +17,8 @@ This is a CLI tool that translates an [EditorConfig] file to a project-specific 
 ## Setting expectations
 
 EditorConfig is much more flexible than the config of Helix, which means support is only partial.
-Here is a list of notable limitations:
+However, I believe the support is more than sufficient for "sane" configurations.
+This section describes in detail what is and isn't supported.
 
 ### Supported keys:
 
@@ -25,7 +26,7 @@ Here is a list of notable limitations:
   That means the keys will only be translated to the Helix config if they appear in the global `[*]` section.
   If they appear in any other section, they will be ignored.
   (These keys are represented in the file `.helix/config.toml`.)
-- The keys `indent_style` and `indent_size` are supported per-language.
+- The keys `indent_style`, `indent_size` and `tab_width` are supported per-language.
   However, they cannot be applied multiple times to the same language with different values.[^1]
   Therefore, sections that contain arbitrary globs are ignored.
   Only sections that look like they cleanly map to a set of file types are considered.
@@ -39,9 +40,8 @@ Supporting multiple `.editorconfig` files in a directory hierarchy leads to the 
 
 ### Glob expressions:
 
-Only globs that look like they map cleanly to one or several file types are supported, including for example:
-
-A limited number of glob directives are supported, including: `*`, `{}`, `[]`
+Only globs that look like they map cleanly to one or several file types are supported.
+The supported glob characters are: `*`, `{}`, `[]`
 
 Examples of supported section headers:
 - `[Makefile]`
@@ -51,8 +51,10 @@ Examples of supported section headers:
 - `[{*.{awk,c,dts},Kconfig,Makefile}]` (nested `{}`)
 
 Globs which match against paths (i.e. which contain `/` or `**`) are not supported.[^1]
-For simplicity, any section that includes the following special characters is ignored: , `?`, `..`, `!`, `\`.
-If you think some application of these special characters can and should be supported, feel free to open an issue about it.
+
+The following special characters aren't used in any config I'm testing against: `?`, `..`, `!`, `\`.
+Sections which contain them in the header will be ignored.
+If you think one of these characters should be supported, please open an issue about it and ideally provide an example config that uses it.
 
 ### File types:
 
