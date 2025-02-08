@@ -39,15 +39,14 @@ This section describes in detail what is and isn't supported.
 - The keys `end_of_line` and `insert_final_newline` are only supported as a global setting, not per-language.
   That means the keys will only be translated to the Helix config if they appear in the global `[*]` section.
   If they appear in any other section, they will be ignored.
-  (These keys are represented in the file `.helix/config.toml`.)
 
 - The keys `indent_style`, `indent_size` and `tab_width` are supported per-language.
   However, they cannot be applied multiple times to the same language with different values.[^1]
   Therefore, sections that contain arbitrary globs are ignored.
   Only sections that look like they cleanly map to a set of file types are considered.
-  (These keys are represented in the file `.helix/languages.toml`.)
 
-- The key `max_line_length` is supported. From the Helix documentation:
+- The key `max_line_length` is supported, both globally and per-language.
+  From the Helix documentation:
 
   > Used for the `:reflow` command and soft-wrapping if `soft-wrap.wrap-at-text-width` is set
 
@@ -101,13 +100,12 @@ As mentioned in the "supported keys" section, in Helix, indentation can only be 
 If indentation is configured in the global EditorConfig section (`[*]`), the generated Helix config will have a section for _all_ its supported languages.
 However, that's still not perfect!
 Languages that don't appear in the default languages.toml of Helix are left out.
-The CLI hardcodes some additional ones just for this purpose, for example `.txt`.
-You can specify additional file globs to which the global config should apply via the CLI, for example:
+`*.txt` is a hardcoded exception and you can specify additional file globs to which the global config should apply via the CLI, for example:
 ```sh
 ec2hx --fallback-globs '*.foo,*.bar'
 ```
 
-(If you have a file extension that appears explicitly in a section header, e.g. `[*.foobar]`, the CLI should already generate an appropriate custom language definition for you.)
+If you have a file extension that appears explicitly in a section header, e.g. `[*.foobar]`, the CLI should already generate an appropriate custom language definition for you.
 
 ## Contributing
 

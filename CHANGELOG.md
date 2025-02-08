@@ -51,6 +51,7 @@
 ### Added
 
 - The `max_line_length` key is now supported. From the Helix documentation:
+
   > Used for the `:reflow` command and soft-wrapping if `soft-wrap.wrap-at-text-width` is set
 
 - A new CLI flag `--rulers` adds rulers matching `max_line_length`.
