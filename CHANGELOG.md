@@ -23,6 +23,11 @@
   `ec2hx` will now generate `text-width` overrides for every language in
   addition to the global setting.
 
+- In some cases, `ec2hx` could generate project-specific configuration that's
+  simply copied from the global Helix configuration. This doesn't do any damage
+  immediately, but if the user later changes their Helix config, that change
+  won't be respected in the project where `ec2hx` was used. This is fixed.
+
 ## 1.3.0 - 2025-02-07
 
 [compare changes](https://github.com/senekor/ec2hx/compare/v1.2.0...v1.3.0)

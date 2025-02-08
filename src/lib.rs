@@ -78,7 +78,7 @@ pub fn ec2hx(
                     // configurations where only size or style is specified.
                     // See for example ../test_data/cockroach where only
                     // indent_size is set in the global config.
-                    lang_cfg.with_defaults_respecting_tab_width(&supported_lang.cfg);
+                    lang_cfg.with_defaults_from_hx_config(&supported_lang.cfg);
 
                     hx_lang_cfg.insert(matched_name, lang_cfg);
                     break;
@@ -121,7 +121,7 @@ pub fn ec2hx(
                 continue;
             }
             let mut lang_cfg = global_lang_cfg.clone();
-            lang_cfg.with_defaults_respecting_tab_width(&lang.cfg);
+            lang_cfg.with_defaults_from_hx_config(&lang.cfg);
             // I previously thought it would be a good idea to not generate
             // overrides for languages where the editorconfig already matches
             // the default or user helix config. However, if the user changes
@@ -420,7 +420,11 @@ impl LangCfg {
         self
     }
 
-    fn with_defaults_respecting_tab_width(&mut self, other: &Self) -> &mut Self {
+    /// This adds some defaults to the language configuration based on the Helix
+    /// configuration. It's more conservative than [Self::with_defaults_from],
+    /// because we only want to fill in the gaps of an indent configuration and
+    /// not generate unnecessary overrides that match the Helix config anyway.
+    fn with_defaults_from_hx_config(&mut self, other: &Self) -> &mut Self {
         if self.tab_width.is_some() && self.style != Some(Space) {
             if self.style == Some(Tab) {
                 // Do nothing. indent_size has precedence over
@@ -434,20 +438,25 @@ impl LangCfg {
                     Some(Space) => {
                         // self.style is none and other style is space.
                         // tab_width will be overruled.
-                        self.with_defaults_from(other);
+                        self.style = Some(Space);
+                        if self.size.is_none() {
+                            self.size = other.size;
+                        }
                     }
                     None => {}
                 }
             }
-        } else {
+        } else if self.style.is_some() || self.size.is_some() {
             // Use values from default languages.toml as default, for
-            // configurations where only on size or style is specified.
+            // configurations where only size or style is specified.
             // See for example ../test_data/cockroach where only
             // indent_size if set in the global config.
-            self.with_defaults_from(other);
-        }
-        if self.max_line_length.is_none() {
-            self.max_line_length = other.max_line_length;
+            if self.size.is_none() {
+                self.size = other.size
+            }
+            if self.style.is_none() {
+                self.style = other.style
+            }
         }
         self
     }
