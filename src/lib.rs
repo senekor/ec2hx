@@ -60,20 +60,20 @@ pub fn ec2hx(
                 {
                     found_match = true;
                     let matched_name = supported_lang.name.to_string();
-                    let mut indent_cfg = lang_cfg.clone();
+                    let mut lang_cfg = lang_cfg.clone();
 
                     // use potential previous matching section as default values,
                     // see for example ../test_data/python
-                    if let Some(prev_indent_cfg) = hx_lang_cfg.get(&matched_name) {
-                        indent_cfg.with_defaults_from(prev_indent_cfg);
+                    if let Some(prev_lang_cfg) = hx_lang_cfg.get(&matched_name) {
+                        lang_cfg.with_defaults_from(prev_lang_cfg);
                     }
                     // Use values from default languages.toml as default, for
                     // configurations where only size or style is specified.
                     // See for example ../test_data/cockroach where only
                     // indent_size is set in the global config.
-                    indent_cfg.with_defaults_respecting_tab_width(&supported_lang.cfg);
+                    lang_cfg.with_defaults_respecting_tab_width(&supported_lang.cfg);
 
-                    hx_lang_cfg.insert(matched_name, indent_cfg);
+                    hx_lang_cfg.insert(matched_name, lang_cfg);
                     break;
                 }
             }
@@ -86,16 +86,16 @@ pub fn ec2hx(
                 // Helix with just the indent configuration.
                 // An example for this situation: Linux Kconfig files
                 let name = format!("ec2hx-unknown-lang-{short_lang}");
-                let mut indent_cfg = lang_cfg.clone();
-                indent_cfg.file_types.push(lang);
+                let mut lang_cfg = lang_cfg.clone();
+                lang_cfg.file_types.push(lang);
 
                 // use potential previous matching section as default values,
                 // see for example ../test_data/python
-                if let Some(prev_indent_cfg) = hx_lang_cfg.get(&name) {
-                    indent_cfg.with_defaults_from(prev_indent_cfg);
+                if let Some(prev_lang_cfg) = hx_lang_cfg.get(&name) {
+                    lang_cfg.with_defaults_from(prev_lang_cfg);
                 }
 
-                hx_lang_cfg.insert(name, indent_cfg);
+                hx_lang_cfg.insert(name, lang_cfg);
             }
         }
     }
@@ -113,9 +113,9 @@ pub fn ec2hx(
             if lang.cfg.style != Some(Tab) && !all_langs_are_customized {
                 continue;
             }
-            let mut indent_cfg = global_lang_cfg.clone();
-            indent_cfg.with_defaults_respecting_tab_width(&lang.cfg);
-            hx_global_lang_cfg.insert(lang.name.clone(), indent_cfg);
+            let mut lang_cfg = global_lang_cfg.clone();
+            lang_cfg.with_defaults_respecting_tab_width(&lang.cfg);
+            hx_global_lang_cfg.insert(lang.name.clone(), lang_cfg);
         }
 
         // global fallback plain text language configuration
