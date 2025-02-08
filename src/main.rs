@@ -1,4 +1,4 @@
-use std::{fs, process::exit};
+use std::{fs, path::Path, process::exit, time::Duration};
 
 use clap::Parser;
 
@@ -54,7 +54,10 @@ fn main() {
         exit(1);
     };
 
-    let languages = ec2hx::parse::languages(ec2hx::DEFAULT_LANGUAGES);
+    let languages = match fetch_and_cache_languages() {
+        Some(l) => ec2hx::parse::languages(&l),
+        None => ec2hx::parse::languages(ec2hx::DEFAULT_LANGUAGES),
+    };
 
     let (config_toml, languages_toml) =
         ec2hx::ec2hx(&languages, &editorconfig, args.fallback_globs, args.rulers);
@@ -66,6 +69,61 @@ fn main() {
     }
     try_write(".helix/languages.toml", languages_toml);
     try_write(".helix/config.toml", config_toml);
+}
+
+fn fetch_and_cache_languages() -> Option<String> {
+    let cache_path = directories::ProjectDirs::from("dev", "buenzli", "ec2hx")?
+        .cache_dir()
+        .join("languages.toml");
+
+    let stale_cache = match read_cache(&cache_path) {
+        Some(CacheContent::Fresh(content)) => return Some(content),
+        Some(CacheContent::Stale(content)) => Some(content),
+        None => None,
+    };
+
+    let Some(fetched_languages) = fetch_languages() else {
+        return stale_cache;
+    };
+
+    // try to update cache, ignore failure
+    let _ = std::fs::create_dir_all(cache_path.parent().unwrap());
+    let _ = std::fs::write(cache_path, &fetched_languages);
+
+    Some(fetched_languages)
+}
+
+enum CacheContent {
+    Fresh(String),
+    Stale(String),
+}
+
+fn read_cache(cache_path: &Path) -> Option<CacheContent> {
+    let content = std::fs::read_to_string(cache_path).ok()?;
+
+    let cache_metadata = std::fs::metadata(cache_path).ok()?;
+    let mtime = cache_metadata.modified().ok()?;
+    let one_week = Duration::from_secs(60 * 60 * 24 * 7);
+
+    if mtime.elapsed().ok()? < one_week {
+        Some(CacheContent::Fresh(content))
+    } else {
+        Some(CacheContent::Stale(content))
+    }
+}
+
+fn fetch_languages() -> Option<String> {
+    reqwest::blocking::Client::builder()
+        .timeout(std::time::Duration::from_secs(1))
+        .build()
+        .ok()?
+        .get(
+            "https://raw.githubusercontent.com/helix-editor/helix/refs/heads/master/languages.toml",
+        )
+        .send()
+        .ok()?
+        .text()
+        .ok()
 }
 
 fn try_write(name: &str, contents: String) {

@@ -12,6 +12,11 @@
 
 ### Added
 
+- `ec2hx` now attempts to fetch and cache the latest version of Helix' default
+  languages.toml file. While a pinned version is still embedded as fallback,
+  this will reduce the need to publish updated versions of `ec2hx` as more
+  languages are added upstream. The cache is refreshed up to once per week.
+
 ### Fixed
 
 ## 1.3.0 - 2025-02-07

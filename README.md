@@ -98,10 +98,6 @@ A good way to contribute is to provide an example EditorConfig file that you thi
 You can open an issue about it or a PR adding it to the `test_data/` directory next to the other examples.
 It will automatically be picked up by the snapshot tests (using [insta](https://insta.rs/)).
 
-In order to match the EditorConfig section header with a Helix language, the default languages.toml is parsed in a build script.
-The URL is pinned to a stable release of Helix and needs to be updated manually.
-I think this should be fine, since changes to this file are about rather niche languages at this point.
-
 [^1]: While indentation style can only be configured once per language in Helix, it is technically possible to define arbitrary custom languages.
       That means one could define one pseudo language for every different idententation style in the same project.
       Most language configuration options are copied from the real one, except for the `file-types` key, which is set to the desired glob.
