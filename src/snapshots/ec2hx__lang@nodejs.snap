@@ -7,6 +7,54 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
+name = "ec2hx-unknown-lang-deps/**"
+scope = "text.plain"
+file-types = [{ glob = "deps/**" }]
+indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-unknown-lang-test/fixtures/**"
+scope = "text.plain"
+file-types = [{ glob = "test/fixtures/**" }]
+indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-unknown-lang-tools/eslint/node_modules/**"
+scope = "text.plain"
+file-types = [{ glob = "tools/eslint/node_modules/**" }]
+indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-unknown-lang-tools/gyp/**"
+scope = "text.plain"
+file-types = [{ glob = "tools/gyp/**" }]
+indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-unknown-lang-tools/icu/**"
+scope = "text.plain"
+file-types = [{ glob = "tools/icu/**" }]
+indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-unknown-lang-tools/msvs/**"
+scope = "text.plain"
+file-types = [{ glob = "tools/msvs/**" }]
+indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
 name = "ec2hx-unknown-lang-vcbuild.bat"
 scope = "text.plain"
 file-types = [{ glob = "vcbuild.bat" }]

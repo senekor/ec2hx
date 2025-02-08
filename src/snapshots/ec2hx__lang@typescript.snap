@@ -4,4 +4,34 @@ expression: languages_toml
 input_file: test_data/typescript
 snapshot_kind: text
 ---
+[[language]]
+name = "ec2hx-unknown-lang-scripts/**.js"
+scope = "text.plain"
+file-types = [{ glob = "scripts/**.js" }]
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
+[[language]]
+name = "ec2hx-unknown-lang-scripts/**.json"
+scope = "text.plain"
+file-types = [{ glob = "scripts/**.json" }]
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-unknown-lang-scripts/**.ts"
+scope = "text.plain"
+file-types = [{ glob = "scripts/**.ts" }]
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-unknown-lang-src/**."
+scope = "text.plain"
+file-types = [{ glob = "src/**." }]
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true

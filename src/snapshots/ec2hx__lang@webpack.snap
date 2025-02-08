@@ -14,6 +14,33 @@ indent = { unit = "\t", tab-width = 2 }
 text-width = 80
 
 [[language]]
+name = "ec2hx-unknown-lang-test/cases/parsing/bom/bomfile.css"
+scope = "text.plain"
+file-types = [{ glob = "test/cases/parsing/bom/bomfile.css" }]
+indent = { unit = "\t", tab-width = 2 }
+text-width = 80
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-unknown-lang-test/cases/parsing/bom/bomfile.js"
+scope = "text.plain"
+file-types = [{ glob = "test/cases/parsing/bom/bomfile.js" }]
+indent = { unit = "\t", tab-width = 2 }
+text-width = 80
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-unknown-lang-test/configCases/css/no-extra-runtime-in-js/source.text"
+scope = "text.plain"
+file-types = [{ glob = "test/configCases/css/no-extra-runtime-in-js/source.text" }]
+indent = { unit = "\t", tab-width = 2 }
+text-width = 80
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
 name = "json"
 indent = { unit = "  ", tab-width = 2 }
 text-width = 80

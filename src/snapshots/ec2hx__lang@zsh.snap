@@ -7,6 +7,12 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
+name = "ec2hx-unknown-lang-**/Makefile*"
+scope = "text.plain"
+file-types = [{ glob = "**/Makefile*" }]
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
 name = "ec2hx-unknown-lang-*.c]"
 scope = "text.plain"
 file-types = [{ glob = "*.c]" }]
@@ -23,6 +29,12 @@ name = "ec2hx-unknown-lang-ChangeLog"
 scope = "text.plain"
 file-types = [{ glob = "ChangeLog" }]
 indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "ec2hx-unknown-lang-Functions/VCS_Info/**/*"
+scope = "text.plain"
+file-types = [{ glob = "Functions/VCS_Info/**/*" }]
+indent = { unit = "    ", tab-width = 4 }
 
 ################################################################################
 

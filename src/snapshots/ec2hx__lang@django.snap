@@ -7,10 +7,35 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
+name = "ec2hx-unknown-lang-**.min.js"
+scope = "text.plain"
+file-types = [{ glob = "**.min.js" }]
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-unknown-lang-**/admin/js/vendor/**"
+scope = "text.plain"
+file-types = [{ glob = "**/admin/js/vendor/**" }]
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
 name = "ec2hx-unknown-lang-*.bat"
 scope = "text.plain"
 file-types = [{ glob = "*.bat" }]
 indent = { unit = "\t", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-unknown-lang-docs/**.txt"
+scope = "text.plain"
+file-types = [{ glob = "docs/**.txt" }]
+indent = { unit = "    ", tab-width = 4 }
+text-width = 79
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 

@@ -39,6 +39,30 @@ file-types = [{ glob = "Makefile.*" }]
 indent = { unit = "\t", tab-width = 8 }
 
 [[language]]
+name = "ec2hx-unknown-lang-tools/perf/**.py"
+scope = "text.plain"
+file-types = [{ glob = "tools/perf/**.py" }]
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "ec2hx-unknown-lang-tools/power/**.py"
+scope = "text.plain"
+file-types = [{ glob = "tools/power/**.py" }]
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "ec2hx-unknown-lang-tools/rcu/**.py"
+scope = "text.plain"
+file-types = [{ glob = "tools/rcu/**.py" }]
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "ec2hx-unknown-lang-tools/testing/kunit/**.py"
+scope = "text.plain"
+file-types = [{ glob = "tools/testing/kunit/**.py" }]
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
 name = "gas"
 indent = { unit = "\t", tab-width = 8 }
 

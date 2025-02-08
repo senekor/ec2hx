@@ -231,7 +231,7 @@ pub fn ec2hx(
 }
 
 fn extract_langs_from_header(header: &str) -> Vec<String> {
-    if header.contains(['/', '?', '!', '\\']) || header.contains("**") || header.contains("..") {
+    if header.contains(['!', '\\']) || header.contains("..") {
         // deranged section detected, give up
         return Vec::new();
     }
@@ -280,7 +280,10 @@ fn extract_langs_from_header(header: &str) -> Vec<String> {
         }
     }
 
-    stack.pop().unwrap()
+    let mut res = stack.pop().unwrap();
+    // Linux has a weird section header with a comma at the end
+    res.retain(|l| !l.is_empty());
+    res
 }
 
 #[derive(Debug, Clone, Default)]
@@ -640,6 +643,15 @@ fn extract_langs() {
         "Kconfig",
         "Makefile",
         "Makefile.*",
+    ];
+    assert_eq!(actual, expected);
+
+    let actual = extract_langs_from_header("tools/{perf,power,rcu,testing/kunit}/**.py");
+    let expected = vec![
+        "tools/perf/**.py",
+        "tools/power/**.py",
+        "tools/rcu/**.py",
+        "tools/testing/kunit/**.py",
     ];
     assert_eq!(actual, expected);
 }

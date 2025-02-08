@@ -23,6 +23,12 @@ formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 
 [[language]]
+name = "ec2hx-unknown-lang-test/*"
+scope = "text.plain"
+file-types = [{ glob = "test/*" }]
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
 name = "markdown"
 indent = { unit = "  ", tab-width = 2 }
 
