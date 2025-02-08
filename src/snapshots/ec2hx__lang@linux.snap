@@ -21,6 +21,46 @@ name = "devicetree"
 indent = { unit = "\t", tab-width = 8 }
 
 [[language]]
+name = "ec2hx-glob-lang-tools/perf/**.py"
+scope = "source.python"
+file-types = [{ glob = "tools/perf/**.py" }]
+shebangs = ["python", "uv"]
+roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json"]
+comment-token = "#"
+language-servers = ["ruff", "jedi", "pylsp"]
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "ec2hx-glob-lang-tools/power/**.py"
+scope = "source.python"
+file-types = [{ glob = "tools/power/**.py" }]
+shebangs = ["python", "uv"]
+roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json"]
+comment-token = "#"
+language-servers = ["ruff", "jedi", "pylsp"]
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "ec2hx-glob-lang-tools/rcu/**.py"
+scope = "source.python"
+file-types = [{ glob = "tools/rcu/**.py" }]
+shebangs = ["python", "uv"]
+roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json"]
+comment-token = "#"
+language-servers = ["ruff", "jedi", "pylsp"]
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
+name = "ec2hx-glob-lang-tools/testing/kunit/**.py"
+scope = "source.python"
+file-types = [{ glob = "tools/testing/kunit/**.py" }]
+shebangs = ["python", "uv"]
+roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json"]
+comment-token = "#"
+language-servers = ["ruff", "jedi", "pylsp"]
+indent = { unit = "\t", tab-width = 8 }
+
+[[language]]
 name = "ec2hx-unknown-lang-*.dtso"
 scope = "text.plain"
 file-types = [{ glob = "*.dtso" }]
@@ -36,30 +76,6 @@ indent = { unit = "\t", tab-width = 8 }
 name = "ec2hx-unknown-lang-Makefile.*"
 scope = "text.plain"
 file-types = [{ glob = "Makefile.*" }]
-indent = { unit = "\t", tab-width = 8 }
-
-[[language]]
-name = "ec2hx-unknown-lang-tools/perf/**.py"
-scope = "text.plain"
-file-types = [{ glob = "tools/perf/**.py" }]
-indent = { unit = "\t", tab-width = 8 }
-
-[[language]]
-name = "ec2hx-unknown-lang-tools/power/**.py"
-scope = "text.plain"
-file-types = [{ glob = "tools/power/**.py" }]
-indent = { unit = "\t", tab-width = 8 }
-
-[[language]]
-name = "ec2hx-unknown-lang-tools/rcu/**.py"
-scope = "text.plain"
-file-types = [{ glob = "tools/rcu/**.py" }]
-indent = { unit = "\t", tab-width = 8 }
-
-[[language]]
-name = "ec2hx-unknown-lang-tools/testing/kunit/**.py"
-scope = "text.plain"
-file-types = [{ glob = "tools/testing/kunit/**.py" }]
 indent = { unit = "\t", tab-width = 8 }
 
 [[language]]

@@ -7,29 +7,34 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
+name = "ec2hx-glob-lang-test/cases/parsing/bom/bomfile.css"
+scope = "source.css"
+file-types = [{ glob = "test/cases/parsing/bom/bomfile.css" }]
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "vscode-css-language-server" ]
+auto-format = true
+indent = { unit = "\t", tab-width = 2 }
+text-width = 80
+
+[[language]]
+name = "ec2hx-glob-lang-test/cases/parsing/bom/bomfile.js"
+scope = "source.js"
+language-id = "javascript"
+file-types = [{ glob = "test/cases/parsing/bom/bomfile.js" }]
+shebangs = ["node"]
+roots = [ "package.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { unit = "\t", tab-width = 2 }
+text-width = 80
+
+[[language]]
 name = "ec2hx-unknown-lang-*.snap"
 scope = "text.plain"
 file-types = [{ glob = "*.snap" }]
 indent = { unit = "\t", tab-width = 2 }
 text-width = 80
-
-[[language]]
-name = "ec2hx-unknown-lang-test/cases/parsing/bom/bomfile.css"
-scope = "text.plain"
-file-types = [{ glob = "test/cases/parsing/bom/bomfile.css" }]
-indent = { unit = "\t", tab-width = 2 }
-text-width = 80
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
-
-[[language]]
-name = "ec2hx-unknown-lang-test/cases/parsing/bom/bomfile.js"
-scope = "text.plain"
-file-types = [{ glob = "test/cases/parsing/bom/bomfile.js" }]
-indent = { unit = "\t", tab-width = 2 }
-text-width = 80
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "ec2hx-unknown-lang-test/configCases/css/no-extra-runtime-in-js/source.text"

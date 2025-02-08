@@ -7,12 +7,12 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
-name = "ec2hx-unknown-lang-package.json"
-scope = "text.plain"
+name = "ec2hx-glob-lang-package.json"
+scope = "source.json"
 file-types = [{ glob = "package.json" }]
-indent = { unit = "  ", tab-width = 2 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+language-servers = [ "vscode-json-language-server" ]
 auto-format = true
+indent = { unit = "  ", tab-width = 2 }
 
 [[language]]
 name = "yaml"

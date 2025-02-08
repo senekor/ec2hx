@@ -89,15 +89,47 @@ pub fn ec2hx(
         lang_cfg.with_defaults_from(&global_lang_cfg);
 
         'header_lang_loop: for lang in extract_langs_from_header(header) {
-            let mut short_lang = lang.as_str();
-            short_lang = short_lang.strip_prefix("*.").unwrap_or(short_lang);
+            let contains_glob_char = |l: &str| ["/", "**", "?"].iter().any(|c| l.contains(c));
+
+            // homebrew example: [**.md] - this could just be [*.md] and
+            // shouldn't be treated as a glob
+            let lang_is_stupid_extension_glob = lang.starts_with("**.") && {
+                let extension = lang.strip_prefix("**.").unwrap();
+                !contains_glob_char(extension)
+            };
+
+            let basename = {
+                let b = lang.rsplit_once('/').unwrap_or(("", &lang)).1;
+                match b.rsplit_once("**") {
+                    Some((_, n)) => format!("*{n}"),
+                    None => b.into(),
+                }
+            };
+
+            // We want to recognize "package.json" as json so we can copy its
+            // config. However, we don't want to treat it exactly like json,
+            // otherwise we'd override general "*.json" configuration.
+            let basename_is_more_than_extension =
+                basename.rsplit_once('.').is_some_and(|(pre, _)| pre != "*");
+
+            let is_path_glob = !lang_is_stupid_extension_glob && contains_glob_char(&lang)
+                || basename_is_more_than_extension;
+
+            let ft_candidates = [
+                basename
+                    .rsplit_once('.')
+                    .map(|(_, ext)| ext)
+                    .unwrap_or(&basename)
+                    .to_string(),
+                basename,
+            ];
 
             for supported_lang in languages {
                 if supported_lang
                     .file_types
                     .iter()
                     .flatten()
-                    .any(|ft| *ft == short_lang || *ft == lang)
+                    .any(|ft| ft_candidates.contains(ft))
                 {
                     let matched_name = supported_lang.name.to_string();
                     let mut lang_cfg = lang_cfg.clone();
@@ -117,7 +149,16 @@ pub fn ec2hx(
                         lang_cfg.trim_trailing_whitespace = Some(false);
                     }
 
-                    hx_lang_cfg.insert(matched_name, lang_cfg);
+                    if is_path_glob {
+                        let name = format!("ec2hx-glob-lang-{lang}");
+                        let mut raw_toml = supported_lang.raw_toml.clone();
+                        raw_toml.remove("injection-regex");
+                        lang_cfg.raw_toml = Some(raw_toml);
+                        lang_cfg.file_types = Some(vec![lang]);
+                        hx_lang_cfg.insert(name, lang_cfg);
+                    } else {
+                        hx_lang_cfg.insert(matched_name, lang_cfg);
+                    }
                     continue 'header_lang_loop;
                 }
             }
@@ -572,9 +613,11 @@ impl LangCfg {
         t.insert("name", lang.into());
 
         if let Some(file_types) = self.file_types.as_ref() {
-            // language is unsupported by Helix, generate necessary config
-            // for custom language
-            t.insert("scope", "text.plain".into());
+            if self.raw_toml.is_none() {
+                // language is unsupported by Helix, generate necessary config
+                // for custom language
+                t.insert("scope", "text.plain".into());
+            }
 
             let file_types = file_types
                 .iter()

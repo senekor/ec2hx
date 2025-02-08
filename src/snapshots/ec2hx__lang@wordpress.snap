@@ -7,16 +7,19 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
+name = "ec2hx-glob-lang-wp-config-sample.php"
+scope = "source.php"
+file-types = [{ glob = "wp-config-sample.php" }]
+shebangs = ["php"]
+roots = ["composer.json", "index.php"]
+comment-token = "//"
+language-servers = [ "intelephense" ]
+indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
 name = "ec2hx-unknown-lang-*.txt"
 scope = "text.plain"
 file-types = [{ glob = "*.txt" }]
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
-
-[[language]]
-name = "ec2hx-unknown-lang-wp-config-sample.php"
-scope = "text.plain"
-file-types = [{ glob = "wp-config-sample.php" }]
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 

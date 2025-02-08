@@ -17,15 +17,23 @@ name = "cpp"
 indent = { unit = "    ", tab-width = 4 }
 
 [[language]]
-name = "ec2hx-unknown-lang-*.c.inc"
-scope = "text.plain"
+name = "ec2hx-glob-lang-*.c.inc"
+scope = "source.php"
 file-types = [{ glob = "*.c.inc" }]
+shebangs = ["php"]
+roots = ["composer.json", "index.php"]
+comment-token = "//"
+language-servers = [ "intelephense" ]
 indent = { unit = "    ", tab-width = 4 }
 
 [[language]]
-name = "ec2hx-unknown-lang-*.h.inc"
-scope = "text.plain"
+name = "ec2hx-glob-lang-*.h.inc"
+scope = "source.php"
 file-types = [{ glob = "*.h.inc" }]
+shebangs = ["php"]
+roots = ["composer.json", "index.php"]
+comment-token = "//"
+language-servers = [ "intelephense" ]
 indent = { unit = "    ", tab-width = 4 }
 
 [[language]]
