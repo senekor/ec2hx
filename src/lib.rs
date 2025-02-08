@@ -7,8 +7,31 @@ pub static DEFAULT_LANGUAGES: &str = include_str!("../languages.toml");
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Language {
     name: String,
-    file_types: Vec<String>,
     cfg: LangCfg,
+}
+
+pub fn merge_languages(languages: &mut Vec<Language>, mut user_languages: Vec<Language>) {
+    for lang in languages.iter_mut() {
+        let Some(user_lang_pos) = user_languages.iter().position(|l| l.name == lang.name) else {
+            continue;
+        };
+        let user_lang = user_languages.remove(user_lang_pos);
+
+        let cfg = &mut lang.cfg;
+        let user_cfg = user_lang.cfg;
+
+        if let Some(size) = user_cfg.size {
+            cfg.size = Some(size);
+            cfg.style = user_cfg.style;
+        }
+        if let Some(max_line_length) = user_cfg.max_line_length {
+            cfg.max_line_length = Some(max_line_length);
+        }
+        if let Some(file_types) = user_cfg.file_types {
+            cfg.file_types = Some(file_types);
+        }
+    }
+    languages.extend(user_languages);
 }
 
 /// The returned tuple has the contents of config.toml and languages.toml.
@@ -61,8 +84,10 @@ pub fn ec2hx(
             let mut found_match = false;
             for supported_lang in languages {
                 if supported_lang
+                    .cfg
                     .file_types
                     .iter()
+                    .flatten()
                     .any(|ft| *ft == short_lang || *ft == lang)
                 {
                     found_match = true;
@@ -94,7 +119,7 @@ pub fn ec2hx(
                 // An example for this situation: Linux Kconfig files
                 let name = format!("ec2hx-unknown-lang-{short_lang}");
                 let mut lang_cfg = lang_cfg.clone();
-                lang_cfg.file_types.push(lang);
+                lang_cfg.file_types = Some(vec![lang]);
 
                 // use potential previous matching section as default values,
                 // see for example ../test_data/python
@@ -139,10 +164,12 @@ pub fn ec2hx(
         }
 
         // global fallback plain text language configuration
-        global_lang_cfg.file_types.extend(fallback_globs);
-        if !global_lang_cfg.file_types.contains(&"*.txt".into()) {
-            global_lang_cfg.file_types.push("*.txt".into());
+        let mut file_types = vec![];
+        file_types.extend(fallback_globs);
+        if !file_types.contains(&"*.txt".into()) {
+            file_types.push("*.txt".into());
         }
+        global_lang_cfg.file_types = Some(file_types);
         hx_global_lang_cfg.insert("ec2hx-global-fallback-plain-text".into(), global_lang_cfg);
 
         ["\
@@ -391,8 +418,7 @@ pub struct LangCfg {
     style: Option<IndentStyle>,
     tab_width: Option<usize>,
     max_line_length: Option<usize>,
-    /// to generate custom configs for languages unsupported by Helix
-    file_types: Vec<String>,
+    file_types: Option<Vec<String>>,
 }
 
 impl LangCfg {
@@ -473,7 +499,7 @@ impl LangCfg {
             style,
             tab_width,
             max_line_length,
-            file_types: vec![],
+            file_types: None,
         }
     }
 
@@ -497,12 +523,12 @@ impl LangCfg {
         f.push_str("[[language]]\n");
         writeln!(f, "name = {lang:?}").unwrap();
 
-        if !self.file_types.is_empty() {
+        if let Some(file_types) = self.file_types.as_ref() {
             // language is unsupported by Helix, generate necessary config
             // for custom language
             writeln!(f, r#"scope = "text.plain""#).unwrap();
             write!(f, "file-types = [").unwrap();
-            for ft in self.file_types.iter() {
+            for ft in file_types {
                 write!(f, "{{ glob = {ft:?} }},").unwrap();
             }
             writeln!(f, "]").unwrap();
@@ -575,4 +601,87 @@ fn rulers() {
     let input = std::fs::read_to_string("test_data/php").unwrap();
     let (_, languages_toml) = ec2hx(&languages, &input, vec![], true);
     insta::assert_snapshot!("rulers-lang", languages_toml);
+}
+
+#[test]
+fn merge_langs() {
+    let mut languages = vec![
+        Language {
+            name: "unchanged".into(),
+            cfg: LangCfg {
+                size: Some(2),
+                style: Some(Space),
+                tab_width: None,
+                max_line_length: None,
+                file_types: Some(vec!["*.unchanged".into()]),
+            },
+        },
+        Language {
+            name: "partial".into(),
+            cfg: LangCfg {
+                size: None,
+                style: None,
+                tab_width: None,
+                max_line_length: Some(110),
+                file_types: Some(vec!["*.partial".into()]),
+            },
+        },
+    ];
+    let user_languages = vec![
+        Language {
+            name: "partial".into(),
+            cfg: LangCfg {
+                size: Some(4),
+                style: Some(Space),
+                tab_width: None,
+                max_line_length: None,
+                file_types: Some(vec!["*.partial".into(), "*.partial.local".into()]),
+            },
+        },
+        Language {
+            name: "new".into(),
+            cfg: LangCfg {
+                size: Some(3),
+                style: Some(Tab),
+                tab_width: None,
+                max_line_length: None,
+                file_types: Some(vec!["*.new".into()]),
+            },
+        },
+    ];
+    let expected = vec![
+        Language {
+            name: "unchanged".into(),
+            cfg: LangCfg {
+                size: Some(2),
+                style: Some(Space),
+                tab_width: None,
+                max_line_length: None,
+                file_types: Some(vec!["*.unchanged".into()]),
+            },
+        },
+        Language {
+            name: "partial".into(),
+            cfg: LangCfg {
+                size: Some(4),
+                style: Some(Space),
+                tab_width: None,
+                max_line_length: Some(110),
+                file_types: Some(vec!["*.partial".into(), "*.partial.local".into()]),
+            },
+        },
+        Language {
+            name: "new".into(),
+            cfg: LangCfg {
+                size: Some(3),
+                style: Some(Tab),
+                tab_width: None,
+                max_line_length: None,
+                file_types: Some(vec!["*.new".into()]),
+            },
+        },
+    ];
+    merge_languages(&mut languages, user_languages);
+
+    assert_eq!(languages, expected);
 }

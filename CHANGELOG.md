@@ -17,6 +17,10 @@
   this will reduce the need to publish updated versions of `ec2hx` as more
   languages are added upstream. The cache is refreshed up to once per week.
 
+- User configuration of Helix is now considered. For example, if you have
+  custom languages defined in `~/.config/helix/languages.toml`, `ec2hx` will now
+  generate the appropriate configuration for those as well.
+
 ### Fixed
 
 - If `max_line_length` is only set in the global `[*]` editorconfig section,

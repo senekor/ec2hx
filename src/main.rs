@@ -1,6 +1,7 @@
 use std::{fs, path::Path, process::exit, time::Duration};
 
 use clap::Parser;
+use etcetera::base_strategy::{choose_base_strategy, BaseStrategy};
 
 /// ec2hx - convert EditorConfig to Helix configuration
 ///
@@ -54,10 +55,13 @@ fn main() {
         exit(1);
     };
 
-    let languages = match fetch_and_cache_languages() {
+    let mut languages = match fetch_and_cache_languages() {
         Some(l) => ec2hx::parse::languages(&l),
         None => ec2hx::parse::languages(ec2hx::DEFAULT_LANGUAGES),
     };
+    if let Some(user_languages) = read_user_languages() {
+        ec2hx::merge_languages(&mut languages, user_languages);
+    }
 
     let (config_toml, languages_toml) =
         ec2hx::ec2hx(&languages, &editorconfig, args.fallback_globs, args.rulers);
@@ -124,6 +128,20 @@ fn fetch_languages() -> Option<String> {
         .ok()?
         .text()
         .ok()
+}
+
+/// copied from helix-loader/src/lib.rs to match Helix' behavior
+fn helix_config_dir() -> std::path::PathBuf {
+    let strategy = choose_base_strategy().expect("Unable to find the config directory!");
+    let mut path = strategy.config_dir();
+    path.push("helix");
+    path
+}
+
+fn read_user_languages() -> Option<Vec<ec2hx::Language>> {
+    let path = helix_config_dir().join("languages.toml");
+    let content = std::fs::read_to_string(&path).ok()?;
+    Some(ec2hx::parse::languages(&content))
 }
 
 fn try_write(name: &str, contents: String) {
