@@ -1,6 +1,6 @@
 [package]
 name = "ec2hx"
-version = "1.4.0"
+version = "1.4.1"
 edition = "2021"
 authors = ["Remo Senekowitsch <remo@buenzli.dev>"]
 description = "convert EditorConfig to Helix configuration"
