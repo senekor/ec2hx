@@ -1,6 +1,6 @@
-use crate::{IndentStyle, LangCfg, Language};
+use crate::{HelixLangCfg, IndentStyle};
 
-pub fn languages(input: &str) -> Vec<Language> {
+pub fn languages(input: &str) -> Vec<HelixLangCfg> {
     let input = toml::from_str::<toml::Table>(input).unwrap();
     input["language"]
         .as_array()
@@ -26,7 +26,7 @@ pub fn languages(input: &str) -> Vec<Language> {
                     .collect()
             });
 
-            let (size, style) = if let Some(indent) = lang.get("indent") {
+            let indent = if let Some(indent) = lang.get("indent") {
                 let size = indent
                     .get("tab-width")
                     .unwrap()
@@ -42,20 +42,15 @@ pub fn languages(input: &str) -> Vec<Language> {
                     // space is a tab.
                     IndentStyle::Tab
                 };
-                (Some(size), Some(style))
+                Some((size, style))
             } else {
-                (None, None)
+                None
             };
 
-            Language {
+            HelixLangCfg {
                 name,
-                cfg: LangCfg {
-                    size,
-                    style,
-                    tab_width: None,
-                    max_line_length: None,
-                    file_types,
-                },
+                indent,
+                file_types,
             }
         })
         .collect()

@@ -5,27 +5,21 @@ pub mod parse;
 pub static DEFAULT_LANGUAGES: &str = include_str!("../languages.toml");
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
-pub struct Language {
+pub struct HelixLangCfg {
     name: String,
-    cfg: LangCfg,
+    indent: Option<(usize, IndentStyle)>,
+    file_types: Option<Vec<String>>,
 }
 
-pub fn merge_languages(languages: &mut Vec<Language>, mut user_languages: Vec<Language>) {
-    for lang in languages.iter_mut() {
-        let Some(user_lang_pos) = user_languages.iter().position(|l| l.name == lang.name) else {
+pub fn merge_languages(languages: &mut Vec<HelixLangCfg>, mut user_languages: Vec<HelixLangCfg>) {
+    for cfg in languages.iter_mut() {
+        let Some(user_lang_pos) = user_languages.iter().position(|l| l.name == cfg.name) else {
             continue;
         };
-        let user_lang = user_languages.remove(user_lang_pos);
+        let user_cfg = user_languages.remove(user_lang_pos);
 
-        let cfg = &mut lang.cfg;
-        let user_cfg = user_lang.cfg;
-
-        if let Some(size) = user_cfg.size {
-            cfg.size = Some(size);
-            cfg.style = user_cfg.style;
-        }
-        if let Some(max_line_length) = user_cfg.max_line_length {
-            cfg.max_line_length = Some(max_line_length);
+        if let Some(indent) = user_cfg.indent {
+            cfg.indent = Some(indent);
         }
         if let Some(file_types) = user_cfg.file_types {
             cfg.file_types = Some(file_types);
@@ -36,7 +30,7 @@ pub fn merge_languages(languages: &mut Vec<Language>, mut user_languages: Vec<La
 
 /// The returned tuple has the contents of config.toml and languages.toml.
 pub fn ec2hx(
-    languages: &[Language],
+    languages: &[HelixLangCfg],
     input: &str,
     fallback_globs: Vec<String>,
     rulers: bool,
@@ -84,7 +78,6 @@ pub fn ec2hx(
             let mut found_match = false;
             for supported_lang in languages {
                 if supported_lang
-                    .cfg
                     .file_types
                     .iter()
                     .flatten()
@@ -103,7 +96,7 @@ pub fn ec2hx(
                     // configurations where only size or style is specified.
                     // See for example ../test_data/cockroach where only
                     // indent_size is set in the global config.
-                    lang_cfg.with_defaults_from_hx_config(&supported_lang.cfg);
+                    lang_cfg.with_defaults_from_hx_config(supported_lang);
 
                     hx_lang_cfg.insert(matched_name, lang_cfg);
                     break;
@@ -142,11 +135,11 @@ pub fn ec2hx(
             if hx_lang_cfg.contains_key(&lang.name) {
                 continue;
             }
-            if lang.cfg.style != Some(Tab) && !all_langs_are_customized {
+            if !matches!(lang.indent, Some((_, Tab))) && !all_langs_are_customized {
                 continue;
             }
             let mut lang_cfg = global_lang_cfg.clone();
-            lang_cfg.with_defaults_from_hx_config(&lang.cfg);
+            lang_cfg.with_defaults_from_hx_config(lang);
             // I previously thought it would be a good idea to not generate
             // overrides for languages where the editorconfig already matches
             // the default or user helix config. However, if the user changes
@@ -418,6 +411,8 @@ pub struct LangCfg {
     style: Option<IndentStyle>,
     tab_width: Option<usize>,
     max_line_length: Option<usize>,
+    // not part of editorconfig, used to generate custom configs for languages
+    // unsupported by Helix
     file_types: Option<Vec<String>>,
 }
 
@@ -450,7 +445,10 @@ impl LangCfg {
     /// configuration. It's more conservative than [Self::with_defaults_from],
     /// because we only want to fill in the gaps of an indent configuration and
     /// not generate unnecessary overrides that match the Helix config anyway.
-    fn with_defaults_from_hx_config(&mut self, other: &Self) -> &mut Self {
+    fn with_defaults_from_hx_config(&mut self, other: &HelixLangCfg) -> &mut Self {
+        let Some((other_size, other_style)) = other.indent else {
+            return self;
+        };
         if self.tab_width.is_some() && self.style != Some(Space) {
             if self.style == Some(Tab) {
                 // Do nothing. indent_size has precedence over
@@ -459,17 +457,16 @@ impl LangCfg {
                 // tab_width with an indent_size from the default
                 // languages.toml.
             } else {
-                match other.style {
-                    Some(Tab) => self.style = Some(Tab),
-                    Some(Space) => {
+                match other_style {
+                    Tab => self.style = Some(Tab),
+                    Space => {
                         // self.style is none and other style is space.
                         // tab_width will be overruled.
                         self.style = Some(Space);
                         if self.size.is_none() {
-                            self.size = other.size;
+                            self.size = Some(other_size);
                         }
                     }
-                    None => {}
                 }
             }
         } else if self.style.is_some() || self.size.is_some() {
@@ -478,10 +475,10 @@ impl LangCfg {
             // See for example ../test_data/cockroach where only
             // indent_size if set in the global config.
             if self.size.is_none() {
-                self.size = other.size
+                self.size = Some(other_size)
             }
             if self.style.is_none() {
-                self.style = other.style
+                self.style = Some(other_style)
             }
         }
         self
@@ -606,79 +603,59 @@ fn rulers() {
 #[test]
 fn merge_langs() {
     let mut languages = vec![
-        Language {
+        HelixLangCfg {
             name: "unchanged".into(),
-            cfg: LangCfg {
-                size: Some(2),
-                style: Some(Space),
-                tab_width: None,
-                max_line_length: None,
-                file_types: Some(vec!["*.unchanged".into()]),
-            },
+            indent: Some((2, Space)),
+            file_types: Some(vec!["*.unchanged".into()]),
         },
-        Language {
+        HelixLangCfg {
             name: "partial".into(),
-            cfg: LangCfg {
-                size: None,
-                style: None,
-                tab_width: None,
-                max_line_length: Some(110),
-                file_types: Some(vec!["*.partial".into()]),
-            },
+            indent: None,
+            file_types: Some(vec!["*.partial".into()]),
+        },
+        HelixLangCfg {
+            name: "partial2".into(),
+            indent: Some((6, Space)),
+            file_types: Some(vec!["*.partial2".into()]),
         },
     ];
     let user_languages = vec![
-        Language {
+        HelixLangCfg {
             name: "partial".into(),
-            cfg: LangCfg {
-                size: Some(4),
-                style: Some(Space),
-                tab_width: None,
-                max_line_length: None,
-                file_types: Some(vec!["*.partial".into(), "*.partial.local".into()]),
-            },
+            indent: Some((4, Space)),
+            file_types: Some(vec!["*.partial".into(), "*.partial.local".into()]),
         },
-        Language {
+        HelixLangCfg {
+            name: "partial2".into(),
+            indent: None,
+            file_types: Some(vec!["*.partial2".into(), "*.partial2.local".into()]),
+        },
+        HelixLangCfg {
             name: "new".into(),
-            cfg: LangCfg {
-                size: Some(3),
-                style: Some(Tab),
-                tab_width: None,
-                max_line_length: None,
-                file_types: Some(vec!["*.new".into()]),
-            },
+            indent: Some((3, Tab)),
+            file_types: Some(vec!["*.new".into()]),
         },
     ];
     let expected = vec![
-        Language {
+        HelixLangCfg {
             name: "unchanged".into(),
-            cfg: LangCfg {
-                size: Some(2),
-                style: Some(Space),
-                tab_width: None,
-                max_line_length: None,
-                file_types: Some(vec!["*.unchanged".into()]),
-            },
+            indent: Some((2, Space)),
+            file_types: Some(vec!["*.unchanged".into()]),
         },
-        Language {
+        HelixLangCfg {
             name: "partial".into(),
-            cfg: LangCfg {
-                size: Some(4),
-                style: Some(Space),
-                tab_width: None,
-                max_line_length: Some(110),
-                file_types: Some(vec!["*.partial".into(), "*.partial.local".into()]),
-            },
+            indent: Some((4, Space)),
+            file_types: Some(vec!["*.partial".into(), "*.partial.local".into()]),
         },
-        Language {
+        HelixLangCfg {
+            name: "partial2".into(),
+            indent: Some((6, Space)),
+            file_types: Some(vec!["*.partial2".into(), "*.partial2.local".into()]),
+        },
+        HelixLangCfg {
             name: "new".into(),
-            cfg: LangCfg {
-                size: Some(3),
-                style: Some(Tab),
-                tab_width: None,
-                max_line_length: None,
-                file_types: Some(vec!["*.new".into()]),
-            },
+            indent: Some((3, Tab)),
+            file_types: Some(vec!["*.new".into()]),
         },
     ];
     merge_languages(&mut languages, user_languages);

@@ -138,7 +138,7 @@ fn helix_config_dir() -> std::path::PathBuf {
     path
 }
 
-fn read_user_languages() -> Option<Vec<ec2hx::Language>> {
+fn read_user_languages() -> Option<Vec<ec2hx::HelixLangCfg>> {
     let path = helix_config_dir().join("languages.toml");
     let content = std::fs::read_to_string(&path).ok()?;
     Some(ec2hx::parse::languages(&content))
