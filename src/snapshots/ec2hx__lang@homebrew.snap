@@ -7,7 +7,7 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
-name = "ec2hx-glob-lang-Library/Homebrew/**.rb"
+name = "ec2hx-glob-lang-Library-Homebrew-**.rb"
 scope = "source.ruby"
 file-types = [{ glob = "Library/Homebrew/**.rb" }]
 shebangs = ["ruby"]
@@ -16,7 +16,7 @@ language-servers = [ "solargraph" ]
 indent = { unit = "  ", tab-width = 2 }
 
 [[language]]
-name = "ec2hx-glob-lang-Library/Taps/**.rb"
+name = "ec2hx-glob-lang-Library-Taps-**.rb"
 scope = "source.ruby"
 file-types = [{ glob = "Library/Taps/**.rb" }]
 shebangs = ["ruby"]

@@ -5,7 +5,7 @@ input_file: test_data/typescript
 snapshot_kind: text
 ---
 [[language]]
-name = "ec2hx-glob-lang-scripts/**.js"
+name = "ec2hx-glob-lang-scripts-**.js"
 scope = "source.js"
 language-id = "javascript"
 file-types = [{ glob = "scripts/**.js" }]
@@ -17,7 +17,7 @@ language-servers = [ "typescript-language-server" ]
 indent = { unit = "    ", tab-width = 4 }
 
 [[language]]
-name = "ec2hx-glob-lang-scripts/**.json"
+name = "ec2hx-glob-lang-scripts-**.json"
 scope = "source.json"
 file-types = [{ glob = "scripts/**.json" }]
 language-servers = [ "vscode-json-language-server" ]
@@ -25,7 +25,7 @@ auto-format = true
 indent = { unit = "    ", tab-width = 4 }
 
 [[language]]
-name = "ec2hx-glob-lang-scripts/**.ts"
+name = "ec2hx-glob-lang-scripts-**.ts"
 scope = "source.ts"
 language-id = "typescript"
 file-types = [{ glob = "scripts/**.ts" }]
@@ -37,7 +37,7 @@ language-servers = [ "typescript-language-server" ]
 indent = { unit = "    ", tab-width = 4 }
 
 [[language]]
-name = "ec2hx-unknown-lang-src/**."
+name = "ec2hx-unknown-lang-src-**."
 scope = "text.plain"
 file-types = [{ glob = "src/**." }]
 indent = { unit = "    ", tab-width = 4 }

@@ -7,7 +7,7 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
-name = "ec2hx-glob-lang-test/cases/parsing/bom/bomfile.css"
+name = "ec2hx-glob-lang-test-cases-parsing-bom-bomfile.css"
 scope = "source.css"
 file-types = [{ glob = "test/cases/parsing/bom/bomfile.css" }]
 block-comment-tokens = { start = "/*", end = "*/" }
@@ -17,7 +17,7 @@ indent = { unit = "\t", tab-width = 2 }
 text-width = 80
 
 [[language]]
-name = "ec2hx-glob-lang-test/cases/parsing/bom/bomfile.js"
+name = "ec2hx-glob-lang-test-cases-parsing-bom-bomfile.js"
 scope = "source.js"
 language-id = "javascript"
 file-types = [{ glob = "test/cases/parsing/bom/bomfile.js" }]
@@ -37,7 +37,7 @@ indent = { unit = "\t", tab-width = 2 }
 text-width = 80
 
 [[language]]
-name = "ec2hx-unknown-lang-test/configCases/css/no-extra-runtime-in-js/source.text"
+name = "ec2hx-unknown-lang-test-configCases-css-no-extra-runtime-in-js-source.text"
 scope = "text.plain"
 file-types = [{ glob = "test/configCases/css/no-extra-runtime-in-js/source.text" }]
 indent = { unit = "\t", tab-width = 2 }

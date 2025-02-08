@@ -150,7 +150,7 @@ pub fn ec2hx(
                     }
 
                     if is_path_glob {
-                        let name = format!("ec2hx-glob-lang-{lang}");
+                        let name = make_synthetic_lang_name("glob", &lang);
                         let mut raw_toml = supported_lang.raw_toml.clone();
                         raw_toml.remove("injection-regex");
                         lang_cfg.raw_toml = Some(raw_toml);
@@ -169,7 +169,7 @@ pub fn ec2hx(
             // reason may be, let's generate a custom language for
             // Helix with just the indent configuration.
             // An example for this situation: Linux Kconfig files
-            let name = format!("ec2hx-unknown-lang-{lang}");
+            let name = make_synthetic_lang_name("unknown", &lang);
             let mut lang_cfg = lang_cfg.clone();
             lang_cfg.file_types = Some(vec![lang]);
 
@@ -269,6 +269,11 @@ pub fn ec2hx(
     };
 
     (hx_editor_cfg.to_config_toml(rulers), languages_toml)
+}
+
+fn make_synthetic_lang_name(kind: &str, lang: &str) -> String {
+    let sanitized_glob = lang.replace(['/'], "-");
+    format!("ec2hx-{kind}-lang-{sanitized_glob}")
 }
 
 fn extract_langs_from_header(header: &str) -> Vec<String> {
