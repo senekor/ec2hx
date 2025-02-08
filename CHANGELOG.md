@@ -14,6 +14,8 @@
 
 ### Fixed
 
+- `rustls` is now used instead of `openssl` to fix the CI builds.
+
 ## 1.4.0 - 2025-02-08
 
 [compare changes](https://github.com/senekor/ec2hx/compare/v1.3.0...v1.4.0)
