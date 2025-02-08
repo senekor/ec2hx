@@ -9,14 +9,14 @@ snapshot_kind: text
 [[language]]
 name = "ec2hx-unknown-lang-*.txt"
 scope = "text.plain"
-file-types = [{ glob = "*.txt" },]
+file-types = [{ glob = "*.txt" }]
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 
 [[language]]
 name = "ec2hx-unknown-lang-wp-config-sample.php"
 scope = "text.plain"
-file-types = [{ glob = "wp-config-sample.php" },]
+file-types = [{ glob = "wp-config-sample.php" }]
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 
@@ -231,7 +231,7 @@ indent = { unit = "\t", tab-width = 2 }
 [[language]]
 name = "ec2hx-global-fallback-plain-text"
 scope = "text.plain"
-file-types = [{ glob = "*.foo" },{ glob = "*.txt" },]
+file-types = [{ glob = "*.foo" }, { glob = "*.txt" }]
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 

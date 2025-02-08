@@ -238,7 +238,7 @@ text-width = 80
 [[language]]
 name = "ec2hx-global-fallback-plain-text"
 scope = "text.plain"
-file-types = [{ glob = "*.foo" },{ glob = "*.txt" },]
+file-types = [{ glob = "*.foo" }, { glob = "*.txt" }]
 indent = { unit = "  ", tab-width = 2 }
 text-width = 80
 

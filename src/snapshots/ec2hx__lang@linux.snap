@@ -23,19 +23,19 @@ indent = { unit = "\t", tab-width = 8 }
 [[language]]
 name = "ec2hx-unknown-lang-*.dtso"
 scope = "text.plain"
-file-types = [{ glob = "*.dtso" },]
+file-types = [{ glob = "*.dtso" }]
 indent = { unit = "\t", tab-width = 8 }
 
 [[language]]
 name = "ec2hx-unknown-lang-Kconfig"
 scope = "text.plain"
-file-types = [{ glob = "Kconfig" },]
+file-types = [{ glob = "Kconfig" }]
 indent = { unit = "\t", tab-width = 8 }
 
 [[language]]
 name = "ec2hx-unknown-lang-Makefile.*"
 scope = "text.plain"
-file-types = [{ glob = "Makefile.*" },]
+file-types = [{ glob = "Makefile.*" }]
 indent = { unit = "\t", tab-width = 8 }
 
 [[language]]

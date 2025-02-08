@@ -19,19 +19,19 @@ indent = { unit = "    ", tab-width = 4 }
 [[language]]
 name = "ec2hx-unknown-lang-*.c.inc"
 scope = "text.plain"
-file-types = [{ glob = "*.c.inc" },]
+file-types = [{ glob = "*.c.inc" }]
 indent = { unit = "    ", tab-width = 4 }
 
 [[language]]
 name = "ec2hx-unknown-lang-*.h.inc"
 scope = "text.plain"
-file-types = [{ glob = "*.h.inc" },]
+file-types = [{ glob = "*.h.inc" }]
 indent = { unit = "    ", tab-width = 4 }
 
 [[language]]
 name = "ec2hx-unknown-lang-Makefile*"
 scope = "text.plain"
-file-types = [{ glob = "Makefile*" },]
+file-types = [{ glob = "Makefile*" }]
 indent = { unit = "\t", tab-width = 8 }
 
 [[language]]

@@ -42,7 +42,7 @@ auto-format = true
 [[language]]
 name = "ec2hx-unknown-lang-*.ac"
 scope = "text.plain"
-file-types = [{ glob = "*.ac" },]
+file-types = [{ glob = "*.ac" }]
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -50,7 +50,7 @@ auto-format = true
 [[language]]
 name = "ec2hx-unknown-lang-*.bat"
 scope = "text.plain"
-file-types = [{ glob = "*.bat" },]
+file-types = [{ glob = "*.bat" }]
 indent = { unit = "\t", tab-width = 4 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -58,7 +58,7 @@ auto-format = true
 [[language]]
 name = "ec2hx-unknown-lang-*.dasc"
 scope = "text.plain"
-file-types = [{ glob = "*.dasc" },]
+file-types = [{ glob = "*.dasc" }]
 indent = { unit = "\t", tab-width = 4 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -66,7 +66,7 @@ auto-format = true
 [[language]]
 name = "ec2hx-unknown-lang-*.m4"
 scope = "text.plain"
-file-types = [{ glob = "*.m4" },]
+file-types = [{ glob = "*.m4" }]
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -74,7 +74,7 @@ auto-format = true
 [[language]]
 name = "ec2hx-unknown-lang-*.phpt"
 scope = "text.plain"
-file-types = [{ glob = "*.phpt" },]
+file-types = [{ glob = "*.phpt" }]
 indent = { unit = "    ", tab-width = 4 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -82,7 +82,7 @@ auto-format = true
 [[language]]
 name = "ec2hx-unknown-lang-*.re"
 scope = "text.plain"
-file-types = [{ glob = "*.re" },]
+file-types = [{ glob = "*.re" }]
 indent = { unit = "\t", tab-width = 4 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -90,7 +90,7 @@ auto-format = true
 [[language]]
 name = "ec2hx-unknown-lang-*.skl"
 scope = "text.plain"
-file-types = [{ glob = "*.skl" },]
+file-types = [{ glob = "*.skl" }]
 indent = { unit = "\t", tab-width = 4 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -98,7 +98,7 @@ auto-format = true
 [[language]]
 name = "ec2hx-unknown-lang-*.w32"
 scope = "text.plain"
-file-types = [{ glob = "*.w32" },]
+file-types = [{ glob = "*.w32" }]
 indent = { unit = "\t", tab-width = 4 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -106,7 +106,7 @@ auto-format = true
 [[language]]
 name = "ec2hx-unknown-lang-*.xsl"
 scope = "text.plain"
-file-types = [{ glob = "*.xsl" },]
+file-types = [{ glob = "*.xsl" }]
 indent = { unit = "    ", tab-width = 4 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -114,7 +114,7 @@ auto-format = true
 [[language]]
 name = "ec2hx-unknown-lang-*.y"
 scope = "text.plain"
-file-types = [{ glob = "*.y" },]
+file-types = [{ glob = "*.y" }]
 indent = { unit = "\t", tab-width = 4 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -122,7 +122,7 @@ auto-format = true
 [[language]]
 name = "ec2hx-unknown-lang-Makefile*"
 scope = "text.plain"
-file-types = [{ glob = "Makefile*" },]
+file-types = [{ glob = "Makefile*" }]
 indent = { unit = "\t", tab-width = 4 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -261,7 +261,7 @@ auto-format = true
 [[language]]
 name = "ec2hx-global-fallback-plain-text"
 scope = "text.plain"
-file-types = [{ glob = "*.txt" },]
+file-types = [{ glob = "*.txt" }]
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 

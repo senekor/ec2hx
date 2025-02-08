@@ -5,12 +5,22 @@ pub mod parse;
 
 pub static DEFAULT_LANGUAGES: &str = include_str!("../languages.toml");
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Clone)]
 pub struct HelixLangCfg {
     name: String,
     indent: Option<(usize, IndentStyle)>,
     file_types: Option<Vec<String>>,
     has_formatter: bool,
+    raw_toml: toml_edit::Table,
+}
+
+impl PartialEq for HelixLangCfg {
+    fn eq(&self, other: &Self) -> bool {
+        self.name == other.name
+            && self.indent == other.indent
+            && self.file_types == other.file_types
+            && self.has_formatter == other.has_formatter
+    }
 }
 
 pub fn merge_languages(languages: &mut Vec<HelixLangCfg>, mut user_languages: Vec<HelixLangCfg>) {
@@ -27,6 +37,10 @@ pub fn merge_languages(languages: &mut Vec<HelixLangCfg>, mut user_languages: Ve
             cfg.file_types = Some(file_types);
         }
         cfg.has_formatter |= user_cfg.has_formatter;
+
+        for (k, v) in user_cfg.raw_toml {
+            cfg.raw_toml.insert(k.as_str(), v);
+        }
     }
     languages.extend(user_languages);
 }
@@ -422,7 +436,7 @@ enum IndentStyle {
 }
 use IndentStyle::*;
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Default)]
+#[derive(Debug, Clone, Default)]
 pub struct LangCfg {
     size: Option<usize>,
     style: Option<IndentStyle>,
@@ -432,6 +446,9 @@ pub struct LangCfg {
     // not part of editorconfig, used to generate custom configs for languages
     // unsupported by Helix
     file_types: Option<Vec<String>>,
+    // not part of editorconfig, used to generate custom configs for synthetic
+    // languages used to support arbitrary path globs
+    raw_toml: Option<toml_edit::Table>,
 }
 
 impl LangCfg {
@@ -522,6 +539,7 @@ impl LangCfg {
             max_line_length,
             trim_trailing_whitespace,
             file_types: None,
+            raw_toml: None,
         }
     }
 
@@ -543,42 +561,57 @@ impl LangCfg {
             return String::new();
         }
 
-        let mut f = String::new();
+        let mut t = match self.raw_toml.clone() {
+            Some(t) => t,
+            None => toml_edit::Table::new(),
+        };
 
-        f.push_str("[[language]]\n");
-        writeln!(f, "name = {lang:?}").unwrap();
+        t.insert("name", lang.into());
 
         if let Some(file_types) = self.file_types.as_ref() {
             // language is unsupported by Helix, generate necessary config
             // for custom language
-            writeln!(f, r#"scope = "text.plain""#).unwrap();
-            write!(f, "file-types = [").unwrap();
-            for ft in file_types {
-                write!(f, "{{ glob = {ft:?} }},").unwrap();
-            }
-            writeln!(f, "]").unwrap();
+            t.insert("scope", "text.plain".into());
+
+            let file_types = file_types
+                .iter()
+                .map(|ft| {
+                    let mut m = toml_edit::InlineTable::new();
+                    m.insert("glob", ft.as_str().into());
+                    m
+                })
+                .collect::<toml_edit::Array>()
+                .into();
+            t.insert("file-types", file_types);
         }
 
         if let Some((unit, tab_width)) = indent {
-            writeln!(f, "indent = {{ unit = {unit:?}, tab-width = {tab_width} }}").unwrap();
+            let mut m = toml_edit::InlineTable::new();
+            m.insert("unit", unit.into());
+            m.insert("tab-width", (tab_width as i64).into());
+            t.insert("indent", m.into());
         }
 
         if let Some(max_line_length) = self.max_line_length {
-            writeln!(f, "text-width = {max_line_length}").unwrap();
+            t.insert("text-width", (max_line_length as i64).into());
             if rulers {
-                writeln!(f, "rulers = [{}]", max_line_length + 1).unwrap();
+                let len: toml_edit::Value = ((max_line_length + 1) as i64).into();
+                let array: toml_edit::Array = [len].into_iter().collect();
+                t.insert("rulers", array.into());
             }
         }
 
         if let Some(true) = self.trim_trailing_whitespace {
-            f.push_str(
-                "formatter = { command = \"ec2hx\", args = [\"trim-trailing-whitespace\"] }\n",
-            );
-            f.push_str("auto-format = true\n");
+            let mut m = toml_edit::InlineTable::new();
+            m.insert("command", "ec2hx".into());
+            let arg = toml_edit::Value::from("trim-trailing-whitespace");
+            let args: toml_edit::Array = [arg].into_iter().collect();
+            m.insert("args", args.into());
+            t.insert("formatter", m.into());
+            t.insert("auto-format", true.into());
         }
 
-        f.push('\n');
-        f
+        format!("[[language]]\n{t}\n")
     }
 }
 
@@ -643,12 +676,14 @@ fn merge_langs() {
             indent: Some((2, Space)),
             file_types: Some(vec!["*.unchanged".into()]),
             has_formatter: false,
+            raw_toml: toml_edit::Table::new(),
         },
         HelixLangCfg {
             name: "partial".into(),
             indent: None,
             file_types: Some(vec!["*.partial".into()]),
             has_formatter: true,
+            raw_toml: toml_edit::Table::new(),
         },
     ];
     let user_languages = vec![
@@ -657,12 +692,14 @@ fn merge_langs() {
             indent: Some((4, Space)),
             file_types: Some(vec!["*.partial".into(), "*.partial.local".into()]),
             has_formatter: false,
+            raw_toml: toml_edit::Table::new(),
         },
         HelixLangCfg {
             name: "new".into(),
             indent: Some((3, Tab)),
             file_types: Some(vec!["*.new".into()]),
             has_formatter: false,
+            raw_toml: toml_edit::Table::new(),
         },
     ];
     let expected = vec![
@@ -671,18 +708,21 @@ fn merge_langs() {
             indent: Some((2, Space)),
             file_types: Some(vec!["*.unchanged".into()]),
             has_formatter: false,
+            raw_toml: toml_edit::Table::new(),
         },
         HelixLangCfg {
             name: "partial".into(),
             indent: Some((4, Space)),
             file_types: Some(vec!["*.partial".into(), "*.partial.local".into()]),
             has_formatter: true,
+            raw_toml: toml_edit::Table::new(),
         },
         HelixLangCfg {
             name: "new".into(),
             indent: Some((3, Tab)),
             file_types: Some(vec!["*.new".into()]),
             has_formatter: false,
+            raw_toml: toml_edit::Table::new(),
         },
     ];
     merge_languages(&mut languages, user_languages);

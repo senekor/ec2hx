@@ -9,19 +9,19 @@ snapshot_kind: text
 [[language]]
 name = "ec2hx-unknown-lang-*.c]"
 scope = "text.plain"
-file-types = [{ glob = "*.c]" },]
+file-types = [{ glob = "*.c]" }]
 indent = { unit = "\t", tab-width = 4 }
 
 [[language]]
 name = "ec2hx-unknown-lang-*.h]"
 scope = "text.plain"
-file-types = [{ glob = "*.h]" },]
+file-types = [{ glob = "*.h]" }]
 indent = { unit = "\t", tab-width = 4 }
 
 [[language]]
 name = "ec2hx-unknown-lang-ChangeLog"
 scope = "text.plain"
-file-types = [{ glob = "ChangeLog" },]
+file-types = [{ glob = "ChangeLog" }]
 indent = { unit = "\t", tab-width = 8 }
 
 ################################################################################
@@ -203,7 +203,7 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "ec2hx-global-fallback-plain-text"
 scope = "text.plain"
-file-types = [{ glob = "*.foo" },{ glob = "*.txt" },]
+file-types = [{ glob = "*.foo" }, { glob = "*.txt" }]
 indent = { unit = "  ", tab-width = 2 }
 
 [[language]]

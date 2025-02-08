@@ -18,7 +18,7 @@ directories = "6.0.0"
 etcetera = "0.8.0"
 reqwest = { version = "0.12.12", default-features = false, features = ["blocking", "rustls-tls"] }
 serde = "1.0.217"
-toml = "0.8.19"
+toml_edit = "0.22.23"
 
 [dev-dependencies]
 insta = { version = "1.42.0", features = ["glob"] }

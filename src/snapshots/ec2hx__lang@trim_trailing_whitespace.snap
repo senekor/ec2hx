@@ -88,7 +88,7 @@ auto-format = true
 [[language]]
 name = "ec2hx-global-fallback-plain-text"
 scope = "text.plain"
-file-types = [{ glob = "*.foo" },{ glob = "*.txt" },]
+file-types = [{ glob = "*.foo" }, { glob = "*.txt" }]
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 

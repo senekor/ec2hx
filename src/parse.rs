@@ -1,13 +1,15 @@
+use std::str::FromStr;
+
 use crate::{HelixLangCfg, IndentStyle};
 
 pub fn languages(input: &str) -> Vec<HelixLangCfg> {
-    let input = toml::from_str::<toml::Table>(input).unwrap();
+    let input = toml_edit::DocumentMut::from_str(input).unwrap();
     input["language"]
-        .as_array()
+        .as_array_of_tables()
         .unwrap()
         .iter()
-        .map(|lang| {
-            let lang = lang.as_table().unwrap();
+        .map(|raw_toml| {
+            let lang = raw_toml;
 
             let name = lang.get("name").unwrap().as_str().unwrap().to_string();
 
@@ -19,7 +21,8 @@ pub fn languages(input: &str) -> Vec<HelixLangCfg> {
                         if let Some(file_type) = file_type.as_str() {
                             file_type.to_string()
                         } else {
-                            let file_type = file_type.as_table().unwrap().get("glob").unwrap();
+                            let file_type =
+                                file_type.as_inline_table().unwrap().get("glob").unwrap();
                             file_type.as_str().unwrap().to_string()
                         }
                     })
@@ -55,6 +58,7 @@ pub fn languages(input: &str) -> Vec<HelixLangCfg> {
                 indent,
                 file_types,
                 has_formatter,
+                raw_toml: lang.clone(),
             }
         })
         .collect()

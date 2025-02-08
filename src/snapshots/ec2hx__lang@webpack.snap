@@ -9,7 +9,7 @@ snapshot_kind: text
 [[language]]
 name = "ec2hx-unknown-lang-*.snap"
 scope = "text.plain"
-file-types = [{ glob = "*.snap" },]
+file-types = [{ glob = "*.snap" }]
 indent = { unit = "\t", tab-width = 2 }
 text-width = 80
 
@@ -280,7 +280,7 @@ text-width = 80
 [[language]]
 name = "ec2hx-global-fallback-plain-text"
 scope = "text.plain"
-file-types = [{ glob = "*.foo" },{ glob = "*.txt" },]
+file-types = [{ glob = "*.foo" }, { glob = "*.txt" }]
 indent = { unit = "\t", tab-width = 2 }
 text-width = 80
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }

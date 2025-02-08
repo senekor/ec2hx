@@ -9,7 +9,7 @@ snapshot_kind: text
 [[language]]
 name = "ec2hx-unknown-lang-*.docx"
 scope = "text.plain"
-file-types = [{ glob = "*.docx" },]
+file-types = [{ glob = "*.docx" }]
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -17,7 +17,7 @@ auto-format = true
 [[language]]
 name = "ec2hx-unknown-lang-*.zip"
 scope = "text.plain"
-file-types = [{ glob = "*.zip" },]
+file-types = [{ glob = "*.zip" }]
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -235,7 +235,7 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "ec2hx-global-fallback-plain-text"
 scope = "text.plain"
-file-types = [{ glob = "*.foo" },{ glob = "*.txt" },]
+file-types = [{ glob = "*.foo" }, { glob = "*.txt" }]
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
