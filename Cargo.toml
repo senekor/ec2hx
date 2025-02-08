@@ -14,13 +14,11 @@ exclude = [".github", "test_data", "src/snapshots"]
 
 [dependencies]
 clap = { version = "4.5.26", features = ["derive"] }
+serde = "1.0.217"
+toml = "0.8.19"
 
 [dev-dependencies]
 insta = { version = "1.42.0", features = ["glob"] }
-
-[build-dependencies]
-serde = "1.0.217"
-toml = "0.8.19"
 
 # The profile that 'dist' will build with
 [profile.dist]

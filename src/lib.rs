@@ -1,22 +1,23 @@
 use std::{collections::BTreeMap, fmt::Write};
 
-pub mod lang {
-    use crate::*;
+pub mod parse;
 
-    #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
-    pub(crate) struct Language {
-        pub(crate) name: &'static str,
-        pub(crate) file_types: &'static [&'static str],
-        pub(crate) cfg: LangCfg,
-    }
+pub static DEFAULT_LANGUAGES: &str = include_str!("../languages.toml");
 
-    /// Language name-to-file-types pairings parsed from Helix' default
-    /// languages.toml. See this crate's build script.
-    pub(crate) static LANGUAGES: &[Language] = include!(concat!(env!("OUT_DIR"), "/lang.rs"));
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub struct Language {
+    name: String,
+    file_types: Vec<String>,
+    cfg: LangCfg,
 }
 
 /// The returned tuple has the contents of config.toml and languages.toml.
-pub fn ec2hx(input: &str, fallback_globs: Vec<String>, rulers: bool) -> (String, String) {
+pub fn ec2hx(
+    languages: &[Language],
+    input: &str,
+    fallback_globs: Vec<String>,
+    rulers: bool,
+) -> (String, String) {
     let mut editorconfig = EditorConfig::from(input);
 
     // don't care about preample (usually just "root = true")
@@ -51,14 +52,14 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>, rulers: bool) -> (String,
             short_lang = short_lang.strip_prefix("*.").unwrap_or(short_lang);
 
             let mut found_match = false;
-            for supported_lang in lang::LANGUAGES {
+            for supported_lang in languages {
                 if supported_lang
                     .file_types
                     .iter()
                     .any(|ft| *ft == short_lang || *ft == lang)
                 {
                     found_match = true;
-                    let matched_name = supported_lang.name.into();
+                    let matched_name = supported_lang.name.to_string();
                     let mut indent_cfg = lang_cfg.clone();
 
                     // use potential previous matching section as default values,
@@ -105,8 +106,8 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>, rulers: bool) -> (String,
 
     let languages_toml = if all_langs_are_customized || tab_langs_are_customized {
         let mut hx_global_lang_cfg = BTreeMap::new();
-        for lang in lang::LANGUAGES {
-            if hx_lang_cfg.contains_key(lang.name) {
+        for lang in languages {
+            if hx_lang_cfg.contains_key(&lang.name) {
                 continue;
             }
             if lang.cfg.style != Some(Tab) && !all_langs_are_customized {
@@ -114,7 +115,7 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>, rulers: bool) -> (String,
             }
             let mut indent_cfg = global_lang_cfg.clone();
             indent_cfg.with_defaults_respecting_tab_width(&lang.cfg);
-            hx_global_lang_cfg.insert(lang.name, indent_cfg);
+            hx_global_lang_cfg.insert(lang.name.clone(), indent_cfg);
         }
 
         // global fallback plain text language configuration
@@ -122,7 +123,7 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>, rulers: bool) -> (String,
         if !global_lang_cfg.file_types.contains(&"*.txt".into()) {
             global_lang_cfg.file_types.push("*.txt".into());
         }
-        hx_global_lang_cfg.insert("ec2hx-global-fallback-plain-text", global_lang_cfg);
+        hx_global_lang_cfg.insert("ec2hx-global-fallback-plain-text".into(), global_lang_cfg);
 
         ["\
 # language-specific settings:
@@ -145,7 +146,7 @@ pub fn ec2hx(input: &str, fallback_globs: Vec<String>, rulers: bool) -> (String,
         .chain(
             hx_global_lang_cfg
                 .into_iter()
-                .map(|(name, cfg)| cfg.to_languages_toml(name, rulers)),
+                .map(|(name, cfg)| cfg.to_languages_toml(&name, rulers)),
         )
         .collect()
     } else {
@@ -525,9 +526,10 @@ fn extract_langs() {
 
 #[test]
 fn snapshot() {
+    let languages = parse::languages(DEFAULT_LANGUAGES);
     insta::glob!("..", "test_data/*", |path| {
         let input = std::fs::read_to_string(path).unwrap();
-        let (config_toml, languages_toml) = ec2hx(&input, vec!["*.foo".into()], false);
+        let (config_toml, languages_toml) = ec2hx(&languages, &input, vec!["*.foo".into()], false);
         insta::assert_snapshot!("conf", config_toml);
         insta::assert_snapshot!("lang", languages_toml);
     });
@@ -535,12 +537,13 @@ fn snapshot() {
 
 #[test]
 fn rulers() {
+    let languages = parse::languages(DEFAULT_LANGUAGES);
     // global rulers
     let input = std::fs::read_to_string("test_data/webpack").unwrap();
-    let (config_toml, _) = ec2hx(&input, vec![], true);
+    let (config_toml, _) = ec2hx(&languages, &input, vec![], true);
     insta::assert_snapshot!("rulers-conf", config_toml);
     // language rulers
     let input = std::fs::read_to_string("test_data/php").unwrap();
-    let (_, languages_toml) = ec2hx(&input, vec![], true);
+    let (_, languages_toml) = ec2hx(&languages, &input, vec![], true);
     insta::assert_snapshot!("rulers-lang", languages_toml);
 }

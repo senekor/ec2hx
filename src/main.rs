@@ -54,8 +54,10 @@ fn main() {
         exit(1);
     };
 
+    let languages = ec2hx::parse::languages(ec2hx::DEFAULT_LANGUAGES);
+
     let (config_toml, languages_toml) =
-        ec2hx::ec2hx(&editorconfig, args.fallback_globs, args.rulers);
+        ec2hx::ec2hx(&languages, &editorconfig, args.fallback_globs, args.rulers);
 
     fs::create_dir_all(".helix").expect("failed to create .helix directory");
 
