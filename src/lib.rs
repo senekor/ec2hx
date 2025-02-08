@@ -38,8 +38,15 @@ pub fn ec2hx(
             // remember global defaults for language-specific stuff
             global_lang_cfg = lang_cfg;
 
-            // already configured globally, no need to override for each lang
-            global_lang_cfg.max_line_length = None;
+            // I previously thought it would be a good idea to not
+            // generate overrides for each language in presence of a global
+            // max_line_length config. It seemed redundant to me. However, we
+            // still want the global editorconfig section to override default
+            // or user configurations of per-language max_line_length. Therefore
+            // we do need to generate this (mostly redundant) config for every
+            // language.
+            //
+            // global_lang_cfg.max_line_length = None;
 
             continue;
         }
@@ -115,6 +122,19 @@ pub fn ec2hx(
             }
             let mut lang_cfg = global_lang_cfg.clone();
             lang_cfg.with_defaults_respecting_tab_width(&lang.cfg);
+            // I previously thought it would be a good idea to not generate
+            // overrides for languages where the editorconfig already matches
+            // the default or user helix config. However, if the user changes
+            // their helix config, we still want editorconfig to take precedence
+            // over that. So we do need to generate this (mostly redundant)
+            // config for languages that are already configured that way.
+            //
+            // global_lang_cfg.max_line_length = None;
+            // if lang_cfg.size == lang.cfg.size && lang_cfg.style == lang.cfg.style {
+            //     // No need to override values that match the default
+            //     lang_cfg.size = None;
+            //     lang_cfg.style = None;
+            // }
             hx_global_lang_cfg.insert(lang.name.clone(), lang_cfg);
         }
 

@@ -19,6 +19,10 @@
 
 ### Fixed
 
+- If `max_line_length` is only set in the global `[*]` editorconfig section,
+  `ec2hx` will now generate `text-width` overrides for every language in
+  addition to the global setting.
+
 ## 1.3.0 - 2025-02-07
 
 [compare changes](https://github.com/senekor/ec2hx/compare/v1.2.0...v1.3.0)

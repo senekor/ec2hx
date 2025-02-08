@@ -23,977 +23,1221 @@ text-width = 0
 [[language]]
 name = "ada"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "adl"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "agda"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "amber"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "astro"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "awk"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "bash"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "bass"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "beancount"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "bibtex"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "bicep"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "bitbake"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "blade"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "blueprint"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "c"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "c-sharp"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "cabal"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "cairo"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "capnp"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "cel"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "circom"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "clojure"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "cmake"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "comment"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "common-lisp"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "cpon"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "cpp"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "crystal"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "css"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "cue"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "cylc"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "d"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "dart"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "dbml"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "devicetree"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "dhall"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "diff"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "docker-compose"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "dockerfile"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "dot"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "dtd"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "dune"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "earthfile"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "ec2hx-global-fallback-plain-text"
 scope = "text.plain"
 file-types = [{ glob = "*.foo" },{ glob = "*.txt" },]
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "edoc"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "eex"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "ejs"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "elisp"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "elixir"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "elm"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "elvish"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "env"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "erb"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "erlang"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "esdl"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "fidl"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "fish"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "forth"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "fortran"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "fsharp"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "gas"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "gdscript"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "gemini"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "gherkin"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "git-attributes"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "git-config"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "git-ignore"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "git-rebase"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "gjs"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "gleam"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "glimmer"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "glsl"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "gn"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "go"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "godot-resource"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "gomod"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "gotmpl"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "gowork"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "gpr"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "graphql"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "groovy"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "gts"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "hare"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "haskell"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "haskell-persistent"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "hcl"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "heex"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "helm"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "hocon"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "hoon"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "hosts"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "html"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "hurl"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "hyprlang"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "idris"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "iex"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "ini"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "inko"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "janet"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "java"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "javascript"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "jinja"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "jjdescription"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "jq"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "jsdoc"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "json"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "json5"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "jsonc"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "jsonnet"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "jsx"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "julia"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "just"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "kdl"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "koka"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "kotlin"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "koto"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "latex"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "ld"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "ldif"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "lean"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "ledger"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "llvm"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "llvm-mir"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "llvm-mir-yaml"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "log"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "lpf"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "lua"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "make"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "markdoc"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "markdown.inline"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "matlab"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "mermaid"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "meson"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "mint"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "mojo"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "move"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "msbuild"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "nasm"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "nestedtext"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "nginx"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "nickel"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "nim"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "nix"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "nu"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "nunjucks"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "ocaml"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "ocaml-interface"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "odin"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "ohm"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "opencl"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "openscad"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "org"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "pascal"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "passwd"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "pem"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "perl"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "pest"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "php"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "php-only"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "pkgbuild"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "pkl"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "po"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "pod"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "ponylang"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "powershell"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "prisma"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "prolog"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "protobuf"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "prql"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "purescript"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "python"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "qml"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "quint"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "r"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "racket"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "regex"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "rego"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "rescript"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "rmarkdown"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "robot"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "ron"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "rst"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "ruby"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "rust"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "sage"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "scala"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "scheme"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "scss"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "slint"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "smali"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "smithy"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "sml"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "snakemake"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "solidity"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "spade"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "spicedb"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "sql"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "sshclientconfig"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "starlark"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "strace"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "supercollider"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "svelte"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "sway"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "swift"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "t32"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "tablegen"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "tact"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "task"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "tcl"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "teal"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "templ"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "textproto"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "tfvars"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "thrift"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "todotxt"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "toml"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "tsq"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "tsx"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "twig"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "typescript"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "typespec"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "typst"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "ungrammar"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "unison"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "uxntal"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "v"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "vala"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "vento"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "verilog"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "vhdl"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "vhs"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "vue"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "wast"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "wat"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "webc"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "wgsl"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "wit"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "wren"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "xit"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "xml"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "xtc"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "yaml"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "yuck"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
 
 [[language]]
 name = "zig"
 indent = { unit = "  ", tab-width = 2 }
+text-width = 80
