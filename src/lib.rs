@@ -1,5 +1,6 @@
 use std::{collections::BTreeMap, fmt::Write};
 
+pub mod fmt;
 pub mod parse;
 
 pub static DEFAULT_LANGUAGES: &str = include_str!("../languages.toml");
@@ -9,6 +10,7 @@ pub struct HelixLangCfg {
     name: String,
     indent: Option<(usize, IndentStyle)>,
     file_types: Option<Vec<String>>,
+    has_formatter: bool,
 }
 
 pub fn merge_languages(languages: &mut Vec<HelixLangCfg>, mut user_languages: Vec<HelixLangCfg>) {
@@ -24,6 +26,7 @@ pub fn merge_languages(languages: &mut Vec<HelixLangCfg>, mut user_languages: Ve
         if let Some(file_types) = user_cfg.file_types {
             cfg.file_types = Some(file_types);
         }
+        cfg.has_formatter |= user_cfg.has_formatter;
     }
     languages.extend(user_languages);
 }
@@ -126,19 +129,33 @@ pub fn ec2hx(
     }
 
     let tab_langs_are_customized = global_lang_cfg.tab_width.is_some();
+    let langs_without_formatters_are_customized =
+        global_lang_cfg.trim_trailing_whitespace == Some(true);
     let all_langs_are_customized =
         global_lang_cfg.size.is_some() || global_lang_cfg.style.is_some();
 
-    let languages_toml = if all_langs_are_customized || tab_langs_are_customized {
+    let languages_toml = if all_langs_are_customized
+        || tab_langs_are_customized
+        || langs_without_formatters_are_customized
+    {
         let mut hx_global_lang_cfg = BTreeMap::new();
         for lang in languages {
             if hx_lang_cfg.contains_key(&lang.name) {
                 continue;
             }
-            if !matches!(lang.indent, Some((_, Tab))) && !all_langs_are_customized {
+            if all_langs_are_customized
+                || tab_langs_are_customized && matches!(lang.indent, Some((_, Tab)))
+                || langs_without_formatters_are_customized && !lang.has_formatter
+            {
+                // language is eligible for customization
+            } else {
                 continue;
             }
             let mut lang_cfg = global_lang_cfg.clone();
+            if lang.has_formatter {
+                // Do not add formatter if language already has one.
+                lang_cfg.trim_trailing_whitespace = Some(false);
+            }
             lang_cfg.with_defaults_from_hx_config(lang);
             // I previously thought it would be a good idea to not generate
             // overrides for languages where the editorconfig already matches
@@ -411,6 +428,7 @@ pub struct LangCfg {
     style: Option<IndentStyle>,
     tab_width: Option<usize>,
     max_line_length: Option<usize>,
+    trim_trailing_whitespace: Option<bool>,
     // not part of editorconfig, used to generate custom configs for languages
     // unsupported by Helix
     file_types: Option<Vec<String>>,
@@ -437,6 +455,9 @@ impl LangCfg {
         }
         if self.max_line_length.is_none() {
             self.max_line_length = other.max_line_length;
+        }
+        if self.trim_trailing_whitespace.is_none() {
+            self.trim_trailing_whitespace = other.trim_trailing_whitespace;
         }
         self
     }
@@ -491,11 +512,15 @@ impl LangCfg {
         let max_line_length = section
             .get(&Key::MaxLineLength)
             .and_then(|s| s.parse().ok());
+        let trim_trailing_whitespace = section
+            .get(&Key::TrimTrailingWhitespace)
+            .and_then(|s| s.parse().ok());
         Self {
             size,
             style,
             tab_width,
             max_line_length,
+            trim_trailing_whitespace,
             file_types: None,
         }
     }
@@ -511,7 +536,10 @@ impl LangCfg {
                 (Space, None, _) | (Tab, None, None) => None,
             }
         };
-        if indent.is_none() && self.max_line_length.is_none() {
+        if indent.is_none()
+            && self.max_line_length.is_none()
+            && self.trim_trailing_whitespace != Some(true)
+        {
             return String::new();
         }
 
@@ -540,6 +568,13 @@ impl LangCfg {
             if rulers {
                 writeln!(f, "rulers = [{}]", max_line_length + 1).unwrap();
             }
+        }
+
+        if let Some(true) = self.trim_trailing_whitespace {
+            f.push_str(
+                "formatter = { command = \"ec2hx\", args = [\"trim-trailing-whitespace\"] }\n",
+            );
+            f.push_str("auto-format = true\n");
         }
 
         f.push('\n');
@@ -607,16 +642,13 @@ fn merge_langs() {
             name: "unchanged".into(),
             indent: Some((2, Space)),
             file_types: Some(vec!["*.unchanged".into()]),
+            has_formatter: false,
         },
         HelixLangCfg {
             name: "partial".into(),
             indent: None,
             file_types: Some(vec!["*.partial".into()]),
-        },
-        HelixLangCfg {
-            name: "partial2".into(),
-            indent: Some((6, Space)),
-            file_types: Some(vec!["*.partial2".into()]),
+            has_formatter: true,
         },
     ];
     let user_languages = vec![
@@ -624,16 +656,13 @@ fn merge_langs() {
             name: "partial".into(),
             indent: Some((4, Space)),
             file_types: Some(vec!["*.partial".into(), "*.partial.local".into()]),
-        },
-        HelixLangCfg {
-            name: "partial2".into(),
-            indent: None,
-            file_types: Some(vec!["*.partial2".into(), "*.partial2.local".into()]),
+            has_formatter: false,
         },
         HelixLangCfg {
             name: "new".into(),
             indent: Some((3, Tab)),
             file_types: Some(vec!["*.new".into()]),
+            has_formatter: false,
         },
     ];
     let expected = vec![
@@ -641,21 +670,19 @@ fn merge_langs() {
             name: "unchanged".into(),
             indent: Some((2, Space)),
             file_types: Some(vec!["*.unchanged".into()]),
+            has_formatter: false,
         },
         HelixLangCfg {
             name: "partial".into(),
             indent: Some((4, Space)),
             file_types: Some(vec!["*.partial".into(), "*.partial.local".into()]),
-        },
-        HelixLangCfg {
-            name: "partial2".into(),
-            indent: Some((6, Space)),
-            file_types: Some(vec!["*.partial2".into(), "*.partial2.local".into()]),
+            has_formatter: true,
         },
         HelixLangCfg {
             name: "new".into(),
             indent: Some((3, Tab)),
             file_types: Some(vec!["*.new".into()]),
+            has_formatter: false,
         },
     ];
     merge_languages(&mut languages, user_languages);

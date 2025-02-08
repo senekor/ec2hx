@@ -53,6 +53,23 @@ This section describes in detail what is and isn't supported.
 
   (Use the CLI flag `--rulers` to add matching rulers.)
 
+- The `trim_trailing_whitespace` key is supported.
+  This is achieved with a built-in formatter that does the trimming.
+  `ec2hx` configures Helix to call `ec2hx trim-trailing-whitespace` to format files.
+
+  There is a limitation to this approach:
+  `ec2hx` doesn't override any formatters or LSPs from the default or user Helix configuration, because they may already handle formatting.
+  Unfortunately, you may not even have these installed, or some LSP may be installed but it doesn't support formatting.
+  So, there are many false negatives where `ec2hx` won't automatically generate the formatter config for a language even if it might be safe.
+
+  You can fix this by manually adding the below formatter config to either your user configuration (`~/.config/helix/languages.toml`) or the project-specific configuration (`proj-dir/.helix/languages.toml`).
+  The latter is what `ec2hx` generates, but don't worry, it won't write over manual changes you have made if you run it twice.
+
+  ```toml
+  formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+  auto-format = true
+  ```
+
 - All other keys do not map to a config in Helix, so they will be ignored.
 
 ### File processing:

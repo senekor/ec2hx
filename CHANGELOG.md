@@ -21,6 +21,18 @@
   custom languages defined in `~/.config/helix/languages.toml`, `ec2hx` will now
   generate the appropriate configuration for those as well.
 
+- The `trim_trailing_whitespace` key is now supported. This is achieved with a
+  built-in formatter that does the trimming. However, the configuration for this
+  formatter is only generated for languages which don't already have an LSP or
+  formatter configured. If you do not have the preconfigured LSP or formatter
+  for some language installed and would like to use this generic one, consider
+  manually adding the below formatter config to the language of your choice,
+  either in your user configuration or the project-specific one.
+  ```toml
+  formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+  auto-format = true
+  ```
+
 ### Fixed
 
 - If `max_line_length` is only set in the global `[*]` editorconfig section,

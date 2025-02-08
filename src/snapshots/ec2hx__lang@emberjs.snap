@@ -15,6 +15,8 @@ name = "ec2hx-unknown-lang-hbs"
 scope = "text.plain"
 file-types = [{ glob = "*.hbs" },]
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "markdown"
@@ -31,18 +33,26 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "adl"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "agda"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "amber"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "astro"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "awk"
@@ -59,6 +69,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "beancount"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "bibtex"
@@ -75,6 +87,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "blade"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "blueprint"
@@ -99,10 +113,14 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "capnp"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "cel"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "circom"
@@ -119,6 +137,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "comment"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "common-lisp"
@@ -127,6 +147,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "cpon"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "cpp"
@@ -147,6 +169,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "cylc"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "d"
@@ -159,10 +183,14 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "dbml"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "devicetree"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "dhall"
@@ -183,6 +211,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "dtd"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "dune"
@@ -197,22 +227,32 @@ name = "ec2hx-global-fallback-plain-text"
 scope = "text.plain"
 file-types = [{ glob = "*.foo" },{ glob = "*.txt" },]
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "edoc"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "eex"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "ejs"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "elisp"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "elixir"
@@ -229,10 +269,14 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "env"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "erb"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "erlang"
@@ -241,10 +285,14 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "esdl"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "fidl"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "fish"
@@ -265,6 +313,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "gas"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "gdscript"
@@ -273,30 +323,44 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "gemini"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "gherkin"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "git-attributes"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "git-commit"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "git-config"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "git-ignore"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "git-rebase"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "gjs"
@@ -325,6 +389,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "godot-resource"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "gomod"
@@ -349,6 +415,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "groovy"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "gts"
@@ -357,6 +425,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "hare"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "haskell"
@@ -365,6 +435,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "haskell-persistent"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "hcl"
@@ -381,14 +453,20 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "hocon"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "hoon"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "hosts"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "html"
@@ -409,10 +487,14 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "iex"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "ini"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "inko"
@@ -433,10 +515,14 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "jinja"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "jjdescription"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "jq"
@@ -445,6 +531,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "jsdoc"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "json"
@@ -473,10 +561,14 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "just"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "kdl"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "koka"
@@ -497,10 +589,14 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "ld"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "ldif"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "lean"
@@ -509,26 +605,38 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "ledger"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "llvm"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "llvm-mir"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "llvm-mir-yaml"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "log"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "lpf"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "lua"
@@ -537,6 +645,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "make"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "markdoc"
@@ -545,14 +655,20 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "markdown.inline"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "matlab"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "mermaid"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "meson"
@@ -573,18 +689,26 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "msbuild"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "nasm"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "nestedtext"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "nginx"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "nickel"
@@ -605,6 +729,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "nunjucks"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "ocaml"
@@ -621,6 +747,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "ohm"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "opencl"
@@ -633,6 +761,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "org"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "pascal"
@@ -641,10 +771,14 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "passwd"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "pem"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "perl"
@@ -661,6 +795,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "php-only"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "pkgbuild"
@@ -669,22 +805,32 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "pkl"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "po"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "pod"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "ponylang"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "powershell"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "prisma"
@@ -701,6 +847,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "prql"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "purescript"
@@ -729,6 +877,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "regex"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "rego"
@@ -749,10 +899,14 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "ron"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "rst"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "ruby"
@@ -765,6 +919,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "sage"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "scala"
@@ -773,6 +929,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "scheme"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "scss"
@@ -785,6 +943,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "smali"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "smithy"
@@ -793,6 +953,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "sml"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "snakemake"
@@ -809,26 +971,38 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "spicedb"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "sql"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "sshclientconfig"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "starlark"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "strace"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "supercollider"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "svelte"
@@ -845,22 +1019,32 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "t32"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "tablegen"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "tact"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "task"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "tcl"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "teal"
@@ -881,6 +1065,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "thrift"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "todotxt"
@@ -901,6 +1087,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "twig"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "typescript"
@@ -917,14 +1105,20 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "ungrammar"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "unison"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "uxntal"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "v"
@@ -937,6 +1131,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "vento"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "verilog"
@@ -949,6 +1145,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "vhs"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "vue"
@@ -957,14 +1155,20 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "wast"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "wat"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "webc"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "wgsl"
@@ -973,22 +1177,32 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "wit"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "wren"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "xit"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "xml"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "xtc"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "yaml"
@@ -997,6 +1211,8 @@ indent = { unit = "  ", tab-width = 2 }
 [[language]]
 name = "yuck"
 indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "zig"

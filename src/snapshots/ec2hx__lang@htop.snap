@@ -7,7 +7,11 @@ snapshot_kind: text
 [[language]]
 name = "c"
 indent = { unit = "   ", tab-width = 3 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
 
 [[language]]
 name = "cpp"
 indent = { unit = "   ", tab-width = 3 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true

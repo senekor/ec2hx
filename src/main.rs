@@ -1,26 +1,16 @@
-use std::{fs, path::Path, process::exit, time::Duration};
+use std::{
+    fs,
+    io::{stdin, Read},
+    path::Path,
+    process::exit,
+    time::Duration,
+};
 
 use clap::Parser;
 use etcetera::base_strategy::{choose_base_strategy, BaseStrategy};
 
-/// ec2hx - convert EditorConfig to Helix configuration
-///
-/// Simply run ec2hx in a directory with a .editorconfig file and a .helix
-/// directory will be generated for you. It contains configuration to match
-/// EditorConfig as closely as possible.
-///
-/// Due to limitations in the configuration of Helix, not all EditorConfig
-/// features are supported, but the important ones should work fine
-/// (indentation, line ending, final newline).
-///
-/// The .helix directory will ignore itself using a .helix/.gitignore file, so
-/// don't worry about accidentally committing these files to version control.
-/// Existing files won't be clobbered, to preserve any manual adjustments you
-/// have made.
-///
-/// For more information, visit <https://github.com/senekor/ec2hx>
 #[derive(Debug, clap::Parser)]
-#[command(version, about, long_about)]
+#[command(version, about, long_about = LONG_ABOUT)]
 struct CliArgs {
     /// additional file types to configure
     #[arg(long, value_delimiter=',', long_help = FALLBACK_GLOBS_HELP)]
@@ -28,7 +18,30 @@ struct CliArgs {
     /// add rulers matching max_line_length
     #[arg(long)]
     rulers: bool,
+    #[command(subcommand)]
+    cmd: Option<Subcommand>,
 }
+
+#[derive(Debug, clap::Subcommand)]
+enum Subcommand {
+    /// used internally to apply trim_trailing_withspace via a formatter
+    #[command(hide = true)]
+    TrimTrailingWhitespace,
+}
+
+const LONG_ABOUT: &str = "\
+ec2hx - convert EditorConfig to Helix configuration
+Simply run ec2hx in a directory with a .editorconfig file and a .helix
+directory will be generated for you. It contains configuration to match
+EditorConfig as closely as possible.
+Due to limitations in the configuration of Helix, not all EditorConfig
+features are supported, but the important ones should work fine
+(indentation, line ending, final newline).
+The .helix directory will ignore itself using a .helix/.gitignore file, so
+don't worry about accidentally committing these files to version control.
+Existing files won't be clobbered, to preserve any manual adjustments you
+have made.
+For more information, visit <https://github.com/senekor/ec2hx>";
 
 const FALLBACK_GLOBS_HELP: &str = "\
 additional file types to configure
@@ -48,6 +61,17 @@ Example: --fallback-globs '*.foo,*.bar'";
 
 fn main() {
     let args = CliArgs::parse();
+
+    if let Some(Subcommand::TrimTrailingWhitespace) = args.cmd {
+        let mut input = String::new();
+        if let Err(err) = stdin().read_to_string(&mut input) {
+            eprintln!("failed to read from stdin: {err}");
+            exit(1);
+        };
+        let output = ec2hx::fmt::trim_trailing_whitespace(&input);
+        print!("{output}");
+        exit(0);
+    }
 
     let Ok(editorconfig) = std::fs::read_to_string(".editorconfig") else {
         println!("ERROR: Failed to read the .editorconfig file.");

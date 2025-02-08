@@ -47,10 +47,14 @@ pub fn languages(input: &str) -> Vec<HelixLangCfg> {
                 None
             };
 
+            let has_formatter =
+                lang.get("language-servers").is_some() || lang.get("formatter").is_some();
+
             HelixLangCfg {
                 name,
                 indent,
                 file_types,
+                has_formatter,
             }
         })
         .collect()
