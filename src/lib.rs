@@ -74,11 +74,10 @@ pub fn ec2hx(
         // language-specific settings, use global values as default
         lang_cfg.with_defaults_from(&global_lang_cfg);
 
-        for lang in extract_langs_from_header(header) {
+        'header_lang_loop: for lang in extract_langs_from_header(header) {
             let mut short_lang = lang.as_str();
             short_lang = short_lang.strip_prefix("*.").unwrap_or(short_lang);
 
-            let mut found_match = false;
             for supported_lang in languages {
                 if supported_lang
                     .file_types
@@ -86,7 +85,6 @@ pub fn ec2hx(
                     .flatten()
                     .any(|ft| *ft == short_lang || *ft == lang)
                 {
-                    found_match = true;
                     let matched_name = supported_lang.name.to_string();
                     let mut lang_cfg = lang_cfg.clone();
 
@@ -106,29 +104,27 @@ pub fn ec2hx(
                     }
 
                     hx_lang_cfg.insert(matched_name, lang_cfg);
-                    break;
+                    continue 'header_lang_loop;
                 }
             }
-            if !found_match {
-                // The language in question doesn't seem to match any of
-                // the languages supported by Helix. Probably the language
-                // has neither an LSP nor a tree-sitter grammar, so there's
-                // little reason to support it in Helix. Whatever the
-                // reason may be, let's generate a custom language for
-                // Helix with just the indent configuration.
-                // An example for this situation: Linux Kconfig files
-                let name = format!("ec2hx-unknown-lang-{lang}");
-                let mut lang_cfg = lang_cfg.clone();
-                lang_cfg.file_types = Some(vec![lang]);
+            // The language in question doesn't seem to match any of
+            // the languages supported by Helix. Probably the language
+            // has neither an LSP nor a tree-sitter grammar, so there's
+            // little reason to support it in Helix. Whatever the
+            // reason may be, let's generate a custom language for
+            // Helix with just the indent configuration.
+            // An example for this situation: Linux Kconfig files
+            let name = format!("ec2hx-unknown-lang-{lang}");
+            let mut lang_cfg = lang_cfg.clone();
+            lang_cfg.file_types = Some(vec![lang]);
 
-                // use potential previous matching section as default values,
-                // see for example ../test_data/python
-                if let Some(prev_lang_cfg) = hx_lang_cfg.get(&name) {
-                    lang_cfg.with_defaults_from(prev_lang_cfg);
-                }
-
-                hx_lang_cfg.insert(name, lang_cfg);
+            // use potential previous matching section as default values,
+            // see for example ../test_data/python
+            if let Some(prev_lang_cfg) = hx_lang_cfg.get(&name) {
+                lang_cfg.with_defaults_from(prev_lang_cfg);
             }
+
+            hx_lang_cfg.insert(name, lang_cfg);
         }
     }
 
