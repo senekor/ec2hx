@@ -101,6 +101,10 @@ pub fn ec2hx(
                     // indent_size is set in the global config.
                     lang_cfg.with_defaults_from_hx_config(supported_lang);
 
+                    if supported_lang.has_formatter {
+                        lang_cfg.trim_trailing_whitespace = Some(false);
+                    }
+
                     hx_lang_cfg.insert(matched_name, lang_cfg);
                     break;
                 }

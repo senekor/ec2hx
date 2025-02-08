@@ -14,6 +14,11 @@
 
 ### Fixed
 
+- The formatter config for `trim_trailing_whitespace` was applied to languages
+  that appear explicitly in the `.editorconfig` file without checking if the
+  language already has a formatter or LSP configured. That could lead to these
+  configs being overwritten erroneously, which is now fixed.
+
 ## 1.4.1 - 2025-02-08
 
 [compare changes](https://github.com/senekor/ec2hx/compare/v1.4.0...v1.4.1)

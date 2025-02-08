@@ -8,38 +8,26 @@ snapshot_kind: text
 [[language]]
 name = "awk"
 indent = { unit = "\t", tab-width = 4 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "bash"
 indent = { unit = "  ", tab-width = 2 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "c"
 indent = { unit = "\t", tab-width = 4 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "common-lisp"
 indent = { unit = "\t", tab-width = 4 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "cpp"
 indent = { unit = "\t", tab-width = 4 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "d"
 indent = { unit = "\t", tab-width = 4 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "diff"
@@ -150,22 +138,16 @@ auto-format = true
 [[language]]
 name = "html"
 indent = { unit = "    ", tab-width = 4 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "markdown"
 indent = { unit = "  ", tab-width = 2 }
 text-width = 80
 rulers = [81]
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "php"
 indent = { unit = "    ", tab-width = 4 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "rst"
@@ -183,8 +165,6 @@ auto-format = true
 [[language]]
 name = "yaml"
 indent = { unit = "  ", tab-width = 2 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 ################################################################################
 

@@ -17,8 +17,6 @@ text-width = 80
 name = "json"
 indent = { unit = "  ", tab-width = 2 }
 text-width = 80
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "markdown"
@@ -29,8 +27,6 @@ text-width = 80
 name = "yaml"
 indent = { unit = "  ", tab-width = 2 }
 text-width = 80
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 ################################################################################
 

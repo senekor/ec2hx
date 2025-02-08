@@ -7,32 +7,22 @@ snapshot_kind: text
 [[language]]
 name = "c"
 indent = { unit = "    ", tab-width = 4 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "cpp"
 indent = { unit = "    ", tab-width = 4 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "javascript"
 indent = { unit = "  ", tab-width = 2 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "markdown"
 indent = { unit = "  ", tab-width = 2 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "python"
 indent = { unit = "    ", tab-width = 4 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "rst"
@@ -43,5 +33,3 @@ auto-format = true
 [[language]]
 name = "yaml"
 indent = { unit = "  ", tab-width = 2 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
