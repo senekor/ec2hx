@@ -113,7 +113,7 @@ pub fn ec2hx(
                 // reason may be, let's generate a custom language for
                 // Helix with just the indent configuration.
                 // An example for this situation: Linux Kconfig files
-                let name = format!("ec2hx-unknown-lang-{short_lang}");
+                let name = format!("ec2hx-unknown-lang-{lang}");
                 let mut lang_cfg = lang_cfg.clone();
                 lang_cfg.file_types = Some(vec![lang]);
 

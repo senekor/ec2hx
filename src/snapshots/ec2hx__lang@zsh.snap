@@ -7,22 +7,22 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
-name = "ec2hx-unknown-lang-ChangeLog"
-scope = "text.plain"
-file-types = [{ glob = "ChangeLog" },]
-indent = { unit = "\t", tab-width = 8 }
-
-[[language]]
-name = "ec2hx-unknown-lang-c]"
+name = "ec2hx-unknown-lang-*.c]"
 scope = "text.plain"
 file-types = [{ glob = "*.c]" },]
 indent = { unit = "\t", tab-width = 4 }
 
 [[language]]
-name = "ec2hx-unknown-lang-h]"
+name = "ec2hx-unknown-lang-*.h]"
 scope = "text.plain"
 file-types = [{ glob = "*.h]" },]
 indent = { unit = "\t", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-unknown-lang-ChangeLog"
+scope = "text.plain"
+file-types = [{ glob = "ChangeLog" },]
+indent = { unit = "\t", tab-width = 8 }
 
 ################################################################################
 

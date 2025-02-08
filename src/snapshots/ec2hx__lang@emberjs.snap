@@ -11,7 +11,7 @@ name = "diff"
 indent = { unit = "  ", tab-width = 2 }
 
 [[language]]
-name = "ec2hx-unknown-lang-hbs"
+name = "ec2hx-unknown-lang-*.hbs"
 scope = "text.plain"
 file-types = [{ glob = "*.hbs" },]
 indent = { unit = "  ", tab-width = 2 }

@@ -7,7 +7,7 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
-name = "ec2hx-unknown-lang-opt"
+name = "ec2hx-unknown-lang-*.opt"
 scope = "text.plain"
 file-types = [{ glob = "*.opt" },]
 indent = { unit = "    ", tab-width = 4 }

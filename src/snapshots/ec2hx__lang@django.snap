@@ -7,7 +7,7 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
-name = "ec2hx-unknown-lang-bat"
+name = "ec2hx-unknown-lang-*.bat"
 scope = "text.plain"
 file-types = [{ glob = "*.bat" },]
 indent = { unit = "\t", tab-width = 4 }

@@ -7,7 +7,7 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
-name = "ec2hx-unknown-lang-txt"
+name = "ec2hx-unknown-lang-*.txt"
 scope = "text.plain"
 file-types = [{ glob = "*.txt" },]
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }

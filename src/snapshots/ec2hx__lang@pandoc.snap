@@ -7,7 +7,7 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
-name = "ec2hx-unknown-lang-docx"
+name = "ec2hx-unknown-lang-*.docx"
 scope = "text.plain"
 file-types = [{ glob = "*.docx" },]
 indent = { unit = "  ", tab-width = 2 }
@@ -15,7 +15,7 @@ formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 
 [[language]]
-name = "ec2hx-unknown-lang-zip"
+name = "ec2hx-unknown-lang-*.zip"
 scope = "text.plain"
 file-types = [{ glob = "*.zip" },]
 indent = { unit = "  ", tab-width = 2 }
