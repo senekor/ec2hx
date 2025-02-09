@@ -12,7 +12,7 @@ This is a CLI tool that translates an [EditorConfig] file to a project-specific 
 
 2. Run `ec2hx` in your project directory.
 
-3. Start Helix / reload its config.
+3. Start Helix or run `:config-reload`.
 
 ## Upstream support
 
@@ -30,95 +30,135 @@ Subscribe to the following issues and PRs to stay up-to-date with developments u
 
 ## Setting expectations
 
-EditorConfig is much more flexible than the config of Helix, which means support is only partial.
-However, I believe the support is more than sufficient for "sane" configurations.
+EditorConfig is more flexible than the config of Helix, which means support is only partial.
+However, I believe the support is more than sufficient for "sane" configurations and even a couple insane ones.
 This section describes in detail what is and isn't supported.
 
-### Supported keys:
+### Properties
 
-- The keys `end_of_line` and `insert_final_newline` are only supported as a global setting, not per-language.
-  That means the keys will only be translated to the Helix config if they appear in the global `[*]` section.
-  If they appear in any other section, they will be ignored.
+Almost all properties are supported, but there are some caveats.
+The only unsupported key is `charset`, which doesn't have a matching Helix configuration key.
+For reference, here is the [list of official EditorConfig properties](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties).
 
-- The keys `indent_style`, `indent_size` and `tab_width` are supported per-language.
-  However, they cannot be applied multiple times to the same language with different values.[^1]
-  Therefore, sections that contain arbitrary globs are ignored.
-  Only sections that look like they cleanly map to a set of file types are considered.
+- `indent_style` (fully supported)
 
-- The key `max_line_length` is supported, both globally and per-language.
-  From the Helix documentation:
+- `indent_size` (fully supported)
 
-  > Used for the `:reflow` command and soft-wrapping if `soft-wrap.wrap-at-text-width` is set
+- `tab_width` (overruled by `indent_size`, weird setups where the two don't match are not supported)
 
-  (Use the CLI flag `--rulers` to add matching rulers.)
+- `max_line_length` (use the CLI flag `--rulers` to add matching rulers)
 
-- The `trim_trailing_whitespace` key is supported.
-  This is achieved with a built-in formatter that does the trimming.
+- `end_of_line` (only in the global `[*]` section, not per-language)
+
+- `insert_final_newline` (only in the global `[*]` section, not per-language)
+
+- `trim_trailing_whitespace` has some support.
+
+  It is achieved with a built-in formatter that does the trimming.
   `ec2hx` configures Helix to call `ec2hx trim-trailing-whitespace` to format files.
 
-  There is a limitation to this approach:
-  `ec2hx` doesn't override any formatters or LSPs from the default or user Helix configuration, because they may already handle formatting.
+  However, `ec2hx` doesn't override any formatters or LSPs from the default or user Helix configuration, because they may already handle formatting.
   Unfortunately, you may not even have these installed, or some LSP may be installed but it doesn't support formatting.
   So, there are many false negatives where `ec2hx` won't automatically generate the formatter config for a language even if it might be safe.
 
-  You can fix this by manually adding the below formatter config to either your user configuration (`~/.config/helix/languages.toml`) or the project-specific configuration (`proj-dir/.helix/languages.toml`).
-  The latter is what `ec2hx` generates, but don't worry, it won't write over manual changes you have made if you run it twice.
+  You can fix this by manually adding the below formatter config to either your user configuration (`~/.config/helix/languages.toml`) or the project-specific configuration (`$proj_dir/.helix/languages.toml`).
+  The latter is what `ec2hx` generates, but don't worry, it won't write over your manual changes if you run it twice.
 
   ```toml
   formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
   auto-format = true
   ```
 
-- All other keys do not map to a config in Helix, so they will be ignored.
-
 ### File processing:
 
 The CLI only reads the toplevel `.editorconfig`.
-Supporting multiple `.editorconfig` files in a directory hierarchy leads to the same problem as arbitrary globs in section headers.[^1]
+Adding support for `.editorconfig` files in parent or subdirectories is technically feasible, but I'm not aware of this feature being used in the wild.
+Please [open an issue] if you would like this to be supported.
 
 ### Glob expressions:
 
-Only globs that look like they map cleanly to one or several file types are supported.
-The supported glob characters are: `*`, `{}`, `[]`
-
-Examples of supported section headers:
+Glob expressions are generally supported.
+However, the best support is for section headers that cleanly map to a set of file types.
+Examples of such well-supported section headers are:
 - `[Makefile]`
 - `[*.py]`
 - `[*.{json,js}]`
 - `[*.[ch]]`
-- `[{*.{awk,c,dts},Kconfig,Makefile}]` (nested `{}`)
+- `[{*.{awk,c,dts},Kconfig,Makefile}]`
 
-Globs which match against paths (i.e. which contain `/` or `**`) are not supported.[^1]
+Globs which match against paths (e.g. when they contain `/` or `**`) are also supported, but there some caveats.
 
-The following special characters aren't used in any config I'm testing against: `?`, `..`, `!`, `\`.
+<details>
+<summary>click here if you're interested in how that even works in the first place</summary>
+
+Helix does not directly support configuring properties based on file globs.
+It's only possible to set these properties either globally for for a specific language.
+
+The trick is that you can define a custom language which matches against a weirdly specific glob with its file-types key.
+
+So, what `ec2hx` does is first try to figure out the actual file type the glob matches against.
+Then it will copy the existing Helix configuration for that language (even respecting your user configuration) to a new artificial language definition.
+
+Helix will then recognize files that match this glob as the synthetic language and apply the appropriate config.
+
+One slightly unfortunate downside of this approach is that syntax highlighting only works for languages that have appropriate queries in the Helix runtime directory.
+At the time of writing, Helix doesn't support project specific runtime files.
+Therefore, `ec2hx` will generate the necessary queries into your user configuration directory.
+For example, that would be `~/.config/helix/runtime/queries` on Linux.
+The directories generated by `ec2hx` are prefixed with `ec2hx-glob-lang-`, so there shouldn't be any conflicts.
+
+If you don't like it when programs vomit auto-generated garbage into your config directory...
+I agree with you and I'm sorry!
+[If Helix adds support for it](https://github.com/helix-editor/helix/issues/12821), it might be possible to avoid this in the future.
+
+</details>
+
+#### No inheritance between path glob sections
+
+Path glob sections don't inhert configuration from previous path glob sections that also match the same files.
+They only inherit configuration from previous sections that cleanly map to a file type.
+Consider the following example:
+
+```ini
+[*.md]
+indent_size = 4
+indent_style = tab
+
+[docs/**.md]
+indent_size = 2
+
+[docs/internal/**.md]
+indent_style = space
+```
+
+According to the EditorConfig specification, the `[docs/internal/**.md]` section should inherit `indent_size = 2` from the `[docs/**.md]` section, but it only inherits `indent_size = 4` from the `[*.md]` section.
+
+#### Rare special characters are unsupported
+
+The characters `!`, `..` and `\` aren't used in any configuration I'm testing against.
 Sections which contain them in the header will be ignored.
-If you think one of these characters should be supported, please open an issue about it and ideally provide an example config that uses it.
+I don't think it's possible to support `!`, but `..` and `\` are technically feasible.
+Please [open an issue] if you would like them to be supported.
 
 ### File types:
 
-As mentioned in the "supported keys" section, in Helix, indentation can only be configured for a specific language.
-If indentation is configured in the global EditorConfig section (`[*]`), the generated Helix config will have a section for _all_ its supported languages.
-However, that's still not perfect!
-Languages that don't appear in the default languages.toml of Helix are left out.
-`*.txt` is a hardcoded exception and you can specify additional file globs to which the global config should apply via the CLI, for example:
+Some of the properties like `indent_size` and `indent_style` can only be configured per-language in Helix.
+So what happens if they appear in a section that applies to all file types, not just specific ones?
+(examples for such sections: `[*]`, `src/**`, `[docs/**]`)
+
+`ec2hx` will generate a language configuration with these properties for _every single language Helix supports_.
+Unfortunately, that means this configuration won't apply to file types Helix doesn't recognize.
+`*.txt` is a hardcoded exception and you can specify additional file globs to which such config should apply via the CLI, for example:
 ```sh
 ec2hx --fallback-globs '*.foo,*.bar'
 ```
 
-If you have a file extension that appears explicitly in a section header, e.g. `[*.foobar]`, the CLI should already generate an appropriate custom language definition for you.
-
 ## Contributing
 
 A good way to contribute is to provide an example EditorConfig file that you think could be handled better.
-You can open an issue about it or a PR adding it to the `test_data/` directory next to the other examples.
+You can [open an issue] about it or a PR adding it to the `test_data/` directory next to the other examples.
 It will automatically be picked up by the snapshot tests (using [insta](https://insta.rs/)).
-
-[^1]: While indentation style can only be configured once per language in Helix, it is technically possible to define arbitrary custom languages.
-      That means one could define one pseudo language for every different idententation style in the same project.
-      Most language configuration options are copied from the real one, except for the `file-types` key, which is set to the desired glob.
-      Out of morbid curiosity, I confirmed that this actually works.
-      However, I'm not gonna implement that cursed idea.
-      People working on projects with a deranged `.editorconfig` (_cough_ [linux kernel](https://github.com/torvalds/linux/blob/7da9dfdd5a3dbfd3d2450d9c6a3d1d699d625c43/.editorconfig) _cough_) can simply write that godforsaken Helix config by hand.
 
 [EditorConfig]: https://editorconfig.org/
 [Helix]: https://helix-editor.com/
+[open an issue]: https://github.com/senekor/ec2hx/issues/new

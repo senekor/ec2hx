@@ -12,6 +12,8 @@
 
 ### Added
 
+- Arbitrary path globs in editorconfig section headers are now supported.
+
 ### Fixed
 
 ## 1.4.2 - 2025-02-08
