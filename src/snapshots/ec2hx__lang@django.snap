@@ -7,6 +7,2577 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-ada"
+scope = "source.ada"
+file-types = [{ glob = "**/admin/js/vendor/**/*.adb" }, { glob = "**/admin/js/vendor/**/*.ads" }]
+roots = ["alire.toml"]
+comment-token = "--"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["ada-language-server"]
+grammar = "ada"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-adl"
+scope = "source.adl"
+file-types = [{ glob = "**/admin/js/vendor/**/*.adl" }]
+roots = []
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "adl"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-agda"
+scope = "source.agda"
+file-types = [{ glob = "**/admin/js/vendor/**/*.agda" }]
+roots = []
+comment-token = "--"
+auto-format = true
+indent = { unit = "    ", tab-width = 4 }
+grammar = "agda"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-amber"
+scope = "source.ab"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ab" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "amber"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-astro"
+scope = "source.astro"
+file-types = [{ glob = "**/admin/js/vendor/**/*.astro" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "astro"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-awk"
+scope = "source.awk"
+file-types = [{ glob = "**/admin/js/vendor/**/*.awk" }, { glob = "**/admin/js/vendor/**/*.gawk" }, { glob = "**/admin/js/vendor/**/*.nawk" }, { glob = "**/admin/js/vendor/**/*.mawk" }]
+comment-token = "#"
+language-servers = [ "awk-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "awk"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-bash"
+scope = "source.bash"
+file-types = [{ glob = "**/admin/js/vendor/**/*.sh" }, { glob = "**/admin/js/vendor/**/*.bash" }, { glob = "**/admin/js/vendor/**/*.ash" }, { glob = "**/admin/js/vendor/**/*.dash" }, { glob = "**/admin/js/vendor/**/*.ksh" }, { glob = "**/admin/js/vendor/**/*.mksh" }, { glob = "**/admin/js/vendor/**/*.zsh" }, { glob = "**/admin/js/vendor/**/*.zshenv" }, { glob = "**/admin/js/vendor/**/*.zlogin" }, { glob = "**/admin/js/vendor/**/*.zlogout" }, { glob = "**/admin/js/vendor/**/*.zprofile" }, { glob = "**/admin/js/vendor/**/*.zshrc" }, { glob = "**/admin/js/vendor/**/*.eclass" }, { glob = "**/admin/js/vendor/**/*.ebuild" }, { glob = "**/admin/js/vendor/**/*.bazelrc" }, { glob = "**/admin/js/vendor/**/*.Renviron" }, { glob = "**/admin/js/vendor/**/*.zsh-theme" }, { glob = "**/admin/js/vendor/**/*.cshrc" }, { glob = "**/admin/js/vendor/**/*.tcshrc" }, { glob = "**/admin/js/vendor/**/*.bashrc_Apple_Terminal" }, { glob = "**/admin/js/vendor/**/*.zshrc_Apple_Terminal" }, { glob = "**/admin/js/vendor/**/i3/config" }, { glob = "**/admin/js/vendor/**/sway/config" }, { glob = "**/admin/js/vendor/**/tmux.conf" }, { glob = "**/admin/js/vendor/**/.bash_history" }, { glob = "**/admin/js/vendor/**/.bash_login" }, { glob = "**/admin/js/vendor/**/.bash_logout" }, { glob = "**/admin/js/vendor/**/.bash_profile" }, { glob = "**/admin/js/vendor/**/.bashrc" }, { glob = "**/admin/js/vendor/**/.profile" }, { glob = "**/admin/js/vendor/**/.zshenv" }, { glob = "**/admin/js/vendor/**/.zlogin" }, { glob = "**/admin/js/vendor/**/.zlogout" }, { glob = "**/admin/js/vendor/**/.zprofile" }, { glob = "**/admin/js/vendor/**/.zshrc" }, { glob = "**/admin/js/vendor/**/.zimrc" }, { glob = "**/admin/js/vendor/**/APKBUILD" }, { glob = "**/admin/js/vendor/**/.bash_aliases" }, { glob = "**/admin/js/vendor/**/.Renviron" }, { glob = "**/admin/js/vendor/**/.xprofile" }, { glob = "**/admin/js/vendor/**/.xsession" }, { glob = "**/admin/js/vendor/**/.xsessionrc" }, { glob = "**/admin/js/vendor/**/.yashrc" }, { glob = "**/admin/js/vendor/**/.yash_profile" }, { glob = "**/admin/js/vendor/**/.hushlogin" }]
+shebangs = ["sh", "bash", "dash", "zsh"]
+comment-token = "#"
+language-servers = [ "bash-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "bash"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-bass"
+scope = "source.bass"
+file-types = [{ glob = "**/admin/js/vendor/**/*.bass" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "bass" ]
+grammar = "bass"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-beancount"
+scope = "source.beancount"
+file-types = [{ glob = "**/admin/js/vendor/**/*.beancount" }, { glob = "**/admin/js/vendor/**/*.bean" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "beancount"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-bibtex"
+scope = "source.bib"
+file-types = [{ glob = "**/admin/js/vendor/**/*.bib" }]
+comment-token = "%"
+language-servers = [ "texlab" ]
+indent = { unit = "    ", tab-width = 4 }
+auto-format = true
+grammar = "bibtex"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-bicep"
+scope = "source.bicep"
+file-types = [{ glob = "**/admin/js/vendor/**/*.bicep" }, { glob = "**/admin/js/vendor/**/*.bicepparam" }]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "bicep-langserver" ]
+grammar = "bicep"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-bitbake"
+language-servers = [ "bitbake-language-server" ]
+scope = "source.bitbake"
+file-types = [{ glob = "**/admin/js/vendor/**/*.bb" }, { glob = "**/admin/js/vendor/**/*.bbappend" }, { glob = "**/admin/js/vendor/**/*.bbclass" }, { glob = "**/admin/js/vendor/**/conf/*.conf" }, { glob = "**/admin/js/vendor/**/conf/*/*.{inc,conf}" }, { glob = "**/admin/js/vendor/**/recipe-*/*/*.inc" }]
+comment-token = "#"
+grammar = "bitbake"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-blade"
+scope = "source.blade.php"
+file-types = [{ glob = "**/admin/js/vendor/**/*.blade.php" }, { glob = "**/admin/js/vendor/**/*.blade" }]
+roots = ["composer.json", "index.php"]
+grammar = "blade"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-blueprint"
+scope = "source.blueprint"
+file-types = [{ glob = "**/admin/js/vendor/**/*.blp" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "blueprint-compiler" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "blueprint"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-c"
+scope = "source.c"
+file-types = [{ glob = "**/admin/js/vendor/**/*.c" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "clangd" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "c"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-c-sharp"
+scope = "source.csharp"
+file-types = [{ glob = "**/admin/js/vendor/**/*.cs" }, { glob = "**/admin/js/vendor/**/*.csx" }, { glob = "**/admin/js/vendor/**/*.cake" }]
+roots = ["sln", "csproj"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "omnisharp" ]
+grammar = "c-sharp"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-cabal"
+scope = "source.cabal"
+file-types = [{ glob = "**/admin/js/vendor/**/*.cabal" }]
+roots = ["cabal.project", "Setup.hs"]
+indent = { unit = "    ", tab-width = 4 }
+comment-token = "--"
+language-servers = [ "haskell-language-server" ]
+grammar = "cabal"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-cairo"
+scope = "source.cairo"
+file-types = [{ glob = "**/admin/js/vendor/**/*.cairo" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+# auto-format = true
+language-servers = [ "cairo-language-server" ]
+grammar = "cairo"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-capnp"
+scope = "source.capnp"
+file-types = [{ glob = "**/admin/js/vendor/**/*.capnp" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "capnp"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-cel"
+scope = "source.cel"
+file-types = [{ glob = "**/admin/js/vendor/**/*.cel" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "cel"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-circom"
+scope            = "source.circom"
+file-types = [{ glob = "**/admin/js/vendor/**/*.circom" }]
+roots            = ["package.json"]
+comment-tokens   = "//"
+indent = { unit = "    ", tab-width = 4 }
+auto-format      = false
+language-servers = ["circom-lsp"]
+grammar = "circom"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-clojure"
+scope = "source.clojure"
+file-types = [{ glob = "**/admin/js/vendor/**/*.clj" }, { glob = "**/admin/js/vendor/**/*.cljs" }, { glob = "**/admin/js/vendor/**/*.cljc" }, { glob = "**/admin/js/vendor/**/*.clje" }, { glob = "**/admin/js/vendor/**/*.cljr" }, { glob = "**/admin/js/vendor/**/*.cljx" }, { glob = "**/admin/js/vendor/**/*.edn" }, { glob = "**/admin/js/vendor/**/*.boot" }]
+roots = ["project.clj", "build.boot", "deps.edn", "shadow-cljs.edn"]
+comment-token = ";"
+language-servers = [ "clojure-lsp" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "clojure"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-cmake"
+scope = "source.cmake"
+file-types = [{ glob = "**/admin/js/vendor/**/*.cmake" }, { glob = "**/admin/js/vendor/**/CMakeLists.txt" }]
+comment-token = "#"
+block-comment-tokens = { start = "#[[", end = "]]" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "cmake-language-server" ]
+grammar = "cmake"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-comment"
+scope = "scope.comment"
+file-types = []
+grammar = "comment"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-common-lisp"
+scope = "source.lisp"
+file-types = [{ glob = "**/admin/js/vendor/**/*.lisp" }, { glob = "**/admin/js/vendor/**/*.asd" }, { glob = "**/admin/js/vendor/**/*.cl" }, { glob = "**/admin/js/vendor/**/*.l" }, { glob = "**/admin/js/vendor/**/*.lsp" }, { glob = "**/admin/js/vendor/**/*.ny" }, { glob = "**/admin/js/vendor/**/*.podsl" }, { glob = "**/admin/js/vendor/**/*.sexp" }]
+shebangs = ["lisp", "sbcl", "ccl", "clisp", "ecl"]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "cl-lsp" ]
+grammar = "common-lisp"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-cpon"
+scope = "scope.cpon"
+file-types = [{ glob = "**/admin/js/vendor/**/*.cpon" }, { glob = "**/admin/js/vendor/**/*.cp" }]
+auto-format = true
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "cpon"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-cpp"
+scope = "source.cpp"
+file-types = [{ glob = "**/admin/js/vendor/**/*.cc" }, { glob = "**/admin/js/vendor/**/*.hh" }, { glob = "**/admin/js/vendor/**/*.c++" }, { glob = "**/admin/js/vendor/**/*.cpp" }, { glob = "**/admin/js/vendor/**/*.hpp" }, { glob = "**/admin/js/vendor/**/*.h" }, { glob = "**/admin/js/vendor/**/*.ipp" }, { glob = "**/admin/js/vendor/**/*.tpp" }, { glob = "**/admin/js/vendor/**/*.cxx" }, { glob = "**/admin/js/vendor/**/*.hxx" }, { glob = "**/admin/js/vendor/**/*.ixx" }, { glob = "**/admin/js/vendor/**/*.txx" }, { glob = "**/admin/js/vendor/**/*.ino" }, { glob = "**/admin/js/vendor/**/*.C" }, { glob = "**/admin/js/vendor/**/*.H" }, { glob = "**/admin/js/vendor/**/*.cu" }, { glob = "**/admin/js/vendor/**/*.cuh" }, { glob = "**/admin/js/vendor/**/*.cppm" }, { glob = "**/admin/js/vendor/**/*.h++" }, { glob = "**/admin/js/vendor/**/*.ii" }, { glob = "**/admin/js/vendor/**/*.inl" }, { glob = "**/admin/js/vendor/**/.hpp.in" }, { glob = "**/admin/js/vendor/**/.h.in" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "clangd" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "cpp"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-crystal"
+scope = "source.cr"
+file-types = [{ glob = "**/admin/js/vendor/**/*.cr" }]
+roots = ["shard.yml", "shard.lock"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "crystal"
+language-servers = [ "crystalline" ]
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-css"
+scope = "source.css"
+file-types = [{ glob = "**/admin/js/vendor/**/*.css" }, { glob = "**/admin/js/vendor/**/*.scss" }]
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "vscode-css-language-server" ]
+auto-format = true
+indent = { unit = "    ", tab-width = 4 }
+grammar = "css"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-cue"
+scope = "source.cue"
+file-types = [{ glob = "**/admin/js/vendor/**/*.cue" }]
+roots = ["cue.mod"]
+auto-format = true
+comment-token = "//"
+language-servers = [ "cuelsp" ]
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "cue", args = ["fmt", "-"] }
+grammar = "cue"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-cylc"
+scope = "source.cylc"
+file-types = [{ glob = "**/admin/js/vendor/**/*.cylc" }, { glob = "**/admin/js/vendor/**/suite.rc" }]
+comment-tokens = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "cylc"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-d"
+scope = "source.d"
+file-types = [{ glob = "**/admin/js/vendor/**/*.d" }, { glob = "**/admin/js/vendor/**/*.dd" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "serve-d" ]
+formatter = { command = "dfmt" }
+grammar = "d"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-dart"
+scope = "source.dart"
+file-types = [{ glob = "**/admin/js/vendor/**/*.dart" }]
+roots = ["pubspec.yaml"]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "dart" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "dart"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-dbml"
+scope = "source.dbml"
+file-types = [{ glob = "**/admin/js/vendor/**/*.dbml" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "dbml"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-devicetree"
+scope = "source.devicetree"
+file-types = [{ glob = "**/admin/js/vendor/**/*.dts" }, { glob = "**/admin/js/vendor/**/*.dtsi" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "devicetree"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-dhall"
+scope = "source.dhall"
+file-types = [{ glob = "**/admin/js/vendor/**/*.dhall" }]
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "dhall-lsp-server" ]
+formatter = { command = "dhall" , args = ["format"] }
+grammar = "dhall"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-diff"
+scope = "source.diff"
+file-types = [{ glob = "**/admin/js/vendor/**/*.diff" }, { glob = "**/admin/js/vendor/**/*.patch" }, { glob = "**/admin/js/vendor/**/*.rej" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "diff"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-docker-compose"
+scope = "source.yaml.docker-compose"
+roots = ["docker-compose.yaml", "docker-compose.yml"]
+language-servers = [ "docker-compose-langserver", "yaml-language-server" ]
+file-types = [{ glob = "**/admin/js/vendor/**/docker-compose.yaml" }, { glob = "**/admin/js/vendor/**/docker-compose.yml" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "docker-compose"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-dockerfile"
+scope = "source.dockerfile"
+roots = ["Dockerfile", "Containerfile"]
+file-types = [{ glob = "**/admin/js/vendor/**/*.Dockerfile" }, { glob = "**/admin/js/vendor/**/Dockerfile" }, { glob = "**/admin/js/vendor/**/Dockerfile.*" }, { glob = "**/admin/js/vendor/**/*.dockerfile" }, { glob = "**/admin/js/vendor/**/dockerfile" }, { glob = "**/admin/js/vendor/**/dockerfile.*" }, { glob = "**/admin/js/vendor/**/*.Containerfile" }, { glob = "**/admin/js/vendor/**/Containerfile" }, { glob = "**/admin/js/vendor/**/Containerfile.*" }, { glob = "**/admin/js/vendor/**/*.containerfile" }, { glob = "**/admin/js/vendor/**/containerfile" }, { glob = "**/admin/js/vendor/**/containerfile.*" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "docker-langserver" ]
+grammar = "dockerfile"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-dot"
+scope = "source.dot"
+file-types = [{ glob = "**/admin/js/vendor/**/*.dot" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "dot-language-server" ]
+grammar = "dot"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-dtd"
+scope = "source.dtd"
+file-types = [{ glob = "**/admin/js/vendor/**/*.dtd" }, { glob = "**/admin/js/vendor/**/*.ent" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "dtd"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-dune"
+scope = "source.dune"
+roots = ["dune-project"]
+file-types = [{ glob = "**/admin/js/vendor/**/dune-project" }, { glob = "**/admin/js/vendor/**/dune" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "dune"
+auto-format = true
+formatter = { command = "dune", args = ["format-dune-file"] }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-earthfile"
+scope = "source.earthfile"
+roots = ["Earthfile"]
+file-types = [{ glob = "**/admin/js/vendor/**/Earthfile" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["earthlyls"]
+grammar = "earthfile"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-edoc"
+scope = "source.edoc"
+file-types = [{ glob = "**/admin/js/vendor/**/*.edoc" }, { glob = "**/admin/js/vendor/**/*.edoc.in" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "edoc"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-eex"
+scope = "source.eex"
+file-types = [{ glob = "**/admin/js/vendor/**/*.eex" }]
+roots = ["mix.exs", "mix.lock"]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "eex"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-ejs"
+scope = "text.html.ejs"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ejs" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ejs"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-elisp"
+scope = "source.elisp"
+file-types = [{ glob = "**/admin/js/vendor/**/*.el" }]
+comment-tokens = [";"]
+grammar = "elisp"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-elixir"
+scope = "source.elixir"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ex" }, { glob = "**/admin/js/vendor/**/*.exs" }, { glob = "**/admin/js/vendor/**/mix.lock" }]
+shebangs = ["elixir"]
+roots = ["mix.exs", "mix.lock"]
+comment-token = "#"
+language-servers = [ "elixir-ls" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "elixir"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-elm"
+scope = "source.elm"
+file-types = [{ glob = "**/admin/js/vendor/**/*.elm" }]
+roots = ["elm.json"]
+auto-format = true
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+language-servers = [ "elm-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "elm"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-elvish"
+scope = "source.elvish"
+shebangs = ["elvish"]
+file-types = [{ glob = "**/admin/js/vendor/**/*.elv" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "elvish" ]
+grammar = "elvish"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-env"
+scope = "source.env"
+file-types = [{ glob = "**/admin/js/vendor/**/.env" }, { glob = "**/admin/js/vendor/**/.env.*" }, { glob = "**/admin/js/vendor/**/.envrc" }, { glob = "**/admin/js/vendor/**/.envrc.*" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "env"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-erb"
+scope = "text.html.erb"
+file-types = [{ glob = "**/admin/js/vendor/**/*.erb" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "erb"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-erlang"
+scope = "source.erlang"
+file-types = [{ glob = "**/admin/js/vendor/**/*.erl" }, { glob = "**/admin/js/vendor/**/*.hrl" }, { glob = "**/admin/js/vendor/**/*.app" }, { glob = "**/admin/js/vendor/**/rebar.config" }, { glob = "**/admin/js/vendor/**/rebar.lock" }, { glob = "**/admin/js/vendor/**/*.app.src" }]
+roots = ["rebar.config"]
+shebangs = ["escript"]
+comment-token = "%%"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "erlang-ls", "elp" ]
+grammar = "erlang"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-esdl"
+scope = "source.esdl"
+file-types = [{ glob = "**/admin/js/vendor/**/*.esdl" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+roots = ["edgedb.toml"]
+grammar = "esdl"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-fidl"
+scope = "source.fidl"
+file-types = [{ glob = "**/admin/js/vendor/**/*.fidl" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "fidl"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-fish"
+scope = "source.fish"
+file-types = [{ glob = "**/admin/js/vendor/**/*.fish" }]
+shebangs = ["fish"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+auto-format = true
+formatter = { command = "fish_indent" }
+grammar = "fish"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-forth"
+scope = "source.forth"
+file-types = [{ glob = "**/admin/js/vendor/**/*.fs" }, { glob = "**/admin/js/vendor/**/*.forth" }, { glob = "**/admin/js/vendor/**/*.fth" }, { glob = "**/admin/js/vendor/**/*.4th" }]
+comment-token = "\\"
+language-servers = [ "forth-lsp" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "forth"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-fortran"
+scope = "source.fortran"
+file-types = [{ glob = "**/admin/js/vendor/**/*.f" }, { glob = "**/admin/js/vendor/**/*.for" }, { glob = "**/admin/js/vendor/**/*.f90" }, { glob = "**/admin/js/vendor/**/*.f95" }, { glob = "**/admin/js/vendor/**/*.f03" }]
+roots = ["fpm.toml"]
+comment-token = "!"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "fortls" ]
+grammar = "fortran"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-fsharp"
+scope = "source.fs"
+roots = ["sln", "fsproj"]
+file-types = [{ glob = "**/admin/js/vendor/**/*.fs" }, { glob = "**/admin/js/vendor/**/*.fsx" }, { glob = "**/admin/js/vendor/**/*.fsi" }, { glob = "**/admin/js/vendor/**/*.fsscript" }]
+comment-token = "//"
+block-comment-tokens = { start = "(*", end = "*)" }
+indent = { unit = "    ", tab-width = 4 }
+auto-format = true
+language-servers = ["fsharp-ls"]
+grammar = "fsharp"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-gas"
+scope = "source.gas"
+file-types = [{ glob = "**/admin/js/vendor/**/*.s" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gas"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-gdscript"
+scope = "source.gdscript"
+file-types = [{ glob = "**/admin/js/vendor/**/*.gd" }]
+shebangs = []
+roots = ["project.godot"]
+auto-format = true
+formatter = { command = "gdformat", args = ["-"] }
+comment-tokens = ["#", "##"]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gdscript"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-gemini"
+scope = "source.gmi"
+file-types = [{ glob = "**/admin/js/vendor/**/*.gmi" }]
+grammar = "gemini"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-gherkin"
+scope = "source.feature"
+file-types = [{ glob = "**/admin/js/vendor/**/*.feature" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gherkin"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-git-attributes"
+scope = "source.gitattributes"
+file-types = [{ glob = "**/admin/js/vendor/**/.gitattributes" }]
+comment-token = "#"
+grammar = "git-attributes"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-git-commit"
+scope = "git.commitmsg"
+file-types = [{ glob = "**/admin/js/vendor/**/COMMIT_EDITMSG" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+rulers = [51, 73]
+text-width = 72
+grammar = "git-commit"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-git-config"
+scope = "source.gitconfig"
+file-types = [{ glob = "**/admin/js/vendor/**/.gitmodules" }, { glob = "**/admin/js/vendor/**/.gitconfig" }, { glob = "**/admin/js/vendor/**/.git/config" }, { glob = "**/admin/js/vendor/**/.config/git/config" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "git-config"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-git-ignore"
+scope = "source.gitignore"
+file-types = [{ glob = "**/admin/js/vendor/**/.gitignore_global" }, { glob = "**/admin/js/vendor/**/git/ignore" }, { glob = "**/admin/js/vendor/**/.ignore" }, { glob = "**/admin/js/vendor/**/CODEOWNERS" }, { glob = "**/admin/js/vendor/**/.config/helix/ignore" }, { glob = "**/admin/js/vendor/**/.helix/ignore" }, { glob = "**/admin/js/vendor/**/.*ignore" }]
+comment-token = "#"
+grammar = "git-ignore"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-git-rebase"
+scope = "source.gitrebase"
+file-types = [{ glob = "**/admin/js/vendor/**/git-rebase-todo" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "git-rebase"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-gjs"
+scope = "source.gjs"
+file-types = [{ glob = "**/admin/js/vendor/**/*.gjs" }]
+roots = ["package.json", "ember-cli-build.js"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [
+    { except-features = [
+        "format", "diagnostics",
+    ], name = "typescript-language-server" },
+    "vscode-eslint-language-server",
+    "ember-language-server",
+]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gjs"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-gleam"
+scope = "source.gleam"
+file-types = [{ glob = "**/admin/js/vendor/**/*.gleam" }]
+roots = ["gleam.toml"]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "gleam" ]
+auto-format = true
+grammar = "gleam"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-glimmer"
+scope = "source.glimmer"
+file-types = [{ glob = "**/admin/js/vendor/**/{app,addon}/{components,templates}/*.hbs" }]
+block-comment-tokens = { start = "{{!", end = "}}" }
+roots = ["package.json", "ember-cli-build.js"]
+grammar = "glimmer"
+language-servers = ["ember-language-server"]
+formatter = { command = "prettier", args = ['--parser', 'glimmer'] }
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-glsl"
+scope = "source.glsl"
+file-types = [{ glob = "**/admin/js/vendor/**/*.glsl" }, { glob = "**/admin/js/vendor/**/*.vert" }, { glob = "**/admin/js/vendor/**/*.tesc" }, { glob = "**/admin/js/vendor/**/*.tese" }, { glob = "**/admin/js/vendor/**/*.geom" }, { glob = "**/admin/js/vendor/**/*.frag" }, { glob = "**/admin/js/vendor/**/*.comp" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "glsl_analyzer" ]
+grammar = "glsl"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-gn"
+scope = "source.gn"
+file-types = [{ glob = "**/admin/js/vendor/**/*.gn" }, { glob = "**/admin/js/vendor/**/*.gni" }]
+roots = []
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "gn", args = ["format", "--stdin"] }
+grammar = "gn"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-go"
+scope = "source.go"
+file-types = [{ glob = "**/admin/js/vendor/**/*.go" }]
+roots = ["go.work", "go.mod"]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "gopls", "golangci-lint-lsp" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "go"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-godot-resource"
+scope = "source.tscn"
+file-types = [{ glob = "**/admin/js/vendor/**/*.tscn" }, { glob = "**/admin/js/vendor/**/*.tres" }, { glob = "**/admin/js/vendor/**/*.godot" }, { glob = "**/admin/js/vendor/**/*.gdextension" }]
+shebangs = []
+roots = ["project.godot"]
+auto-format = true
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "godot-resource"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-gomod"
+scope = "source.gomod"
+file-types = [{ glob = "**/admin/js/vendor/**/go.mod" }]
+auto-format = true
+comment-token = "//"
+language-servers = [ "gopls" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gomod"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-gotmpl"
+scope = "source.gotmpl"
+file-types = [{ glob = "**/admin/js/vendor/**/*.gotmpl" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "gopls" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gotmpl"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-gowork"
+scope = "source.gowork"
+file-types = [{ glob = "**/admin/js/vendor/**/go.work" }]
+auto-format = true
+comment-token = "//"
+language-servers = [ "gopls" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gowork"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-gpr"
+scope = "source.gpr"
+file-types = [{ glob = "**/admin/js/vendor/**/*.gpr" }]
+roots = ["alire.toml"]
+comment-token = "--"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["ada-gpr-language-server"]
+grammar = "gpr"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-graphql"
+scope = "source.graphql"
+file-types = [{ glob = "**/admin/js/vendor/**/*.gql" }, { glob = "**/admin/js/vendor/**/*.graphql" }, { glob = "**/admin/js/vendor/**/*.graphqls" }]
+language-servers = [ "graphql-language-service" ]
+comment-token = "#"
+block-comment-tokens = { start = "\"\"\"", end = "\"\"\"" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "graphql"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-groovy"
+language-id = "groovy"
+scope = "source.groovy"
+file-types = [{ glob = "**/admin/js/vendor/**/*.gradle" }, { glob = "**/admin/js/vendor/**/*.groovy" }, { glob = "**/admin/js/vendor/**/*.jenkinsfile" }, { glob = "**/admin/js/vendor/**/Jenkinsfile" }, { glob = "**/admin/js/vendor/**/Jenkinsfile.*" }]
+shebangs = ["groovy"]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "groovy"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-gts"
+scope = "source.gts"
+file-types = [{ glob = "**/admin/js/vendor/**/*.gts" }]
+roots = ["package.json", "ember-cli-build.js"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [
+    { except-features = [
+        "format", "diagnostics",
+    ], name = "typescript-language-server" },
+    "vscode-eslint-language-server",
+    "ember-language-server",
+]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gts"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-hare"
+scope = "source.hare"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ha" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "hare"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-haskell"
+scope = "source.haskell"
+file-types = [{ glob = "**/admin/js/vendor/**/*.hs" }, { glob = "**/admin/js/vendor/**/*.hs-boot" }, { glob = "**/admin/js/vendor/**/*.hsc" }]
+roots = ["Setup.hs", "stack.yaml", "cabal.project"]
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+language-servers = [ "haskell-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "haskell"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-haskell-persistent"
+scope = "source.persistentmodels"
+file-types = [{ glob = "**/admin/js/vendor/**/*.persistentmodels" }]
+comment-token = "--"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "haskell-persistent"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-hcl"
+scope = "source.hcl"
+language-id = "terraform"
+file-types = [{ glob = "**/admin/js/vendor/**/*.hcl" }, { glob = "**/admin/js/vendor/**/*.tf" }, { glob = "**/admin/js/vendor/**/*.nomad" }]
+comment-token = "#"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "terraform-ls" ]
+auto-format = true
+grammar = "hcl"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-heex"
+scope = "source.heex"
+file-types = [{ glob = "**/admin/js/vendor/**/*.heex" }]
+roots = ["mix.exs", "mix.lock"]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "elixir-ls" ]
+grammar = "heex"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-helm"
+grammar = "helm"
+scope = "source.helm"
+roots = ["Chart.yaml"]
+comment-token = "#"
+language-servers = ["helm_ls"]
+file-types = [{ glob = "**/admin/js/vendor/**/templates/*.yaml" }, { glob = "**/admin/js/vendor/**/templates/*.yml" }, { glob = "**/admin/js/vendor/**/templates/_*.tpl" }, { glob = "**/admin/js/vendor/**/templates/NOTES.txt" }]
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-hocon"
+scope = "source.conf"
+file-types = [{ glob = "**/admin/js/vendor/**/**/src/*/resources/**/*.conf" }, { glob = "**/admin/js/vendor/**/*scalafmt*.conf" }, { glob = "**/admin/js/vendor/**/*scalafix*.conf" }]
+comment-token = "#"
+auto-format = true
+indent = { unit = "    ", tab-width = 4 }
+grammar = "hocon"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-hoon"
+scope = "source.hoon"
+file-types = [{ glob = "**/admin/js/vendor/**/*.hoon" }]
+comment-token = "::"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "hoon"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-hosts"
+scope = "source.hosts"
+file-types = [{ glob = "**/admin/js/vendor/**/hosts" }]
+comment-token = "#"
+grammar = "hosts"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-html"
+scope = "text.html.basic"
+file-types = [{ glob = "**/admin/js/vendor/**/*.html" }, { glob = "**/admin/js/vendor/**/*.htm" }, { glob = "**/admin/js/vendor/**/*.shtml" }, { glob = "**/admin/js/vendor/**/*.xhtml" }, { glob = "**/admin/js/vendor/**/*.xht" }, { glob = "**/admin/js/vendor/**/*.jsp" }, { glob = "**/admin/js/vendor/**/*.asp" }, { glob = "**/admin/js/vendor/**/*.aspx" }, { glob = "**/admin/js/vendor/**/*.jshtm" }, { glob = "**/admin/js/vendor/**/*.volt" }, { glob = "**/admin/js/vendor/**/*.rhtml" }, { glob = "**/admin/js/vendor/**/*.cshtml" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+language-servers = [ "vscode-html-language-server", "superhtml" ]
+auto-format = true
+indent = { unit = "    ", tab-width = 4 }
+grammar = "html"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-hurl"
+scope = "source.hurl"
+file-types = [{ glob = "**/admin/js/vendor/**/*.hurl" }]
+comment-token = "#"
+formatter = { command = "hurlfmt" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "hurl"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-hyprlang"
+scope = "source.hyprlang"
+roots = ["hyprland.conf"]
+file-types = [{ glob = "**/admin/js/vendor/**/hypr/*.conf" }]
+comment-token = "#"
+grammar = "hyprlang"
+language-servers = ["hyprls"]
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-idris"
+scope = "source.idr"
+file-types = [{ glob = "**/admin/js/vendor/**/*.idr" }]
+shebangs = []
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "idris2-lsp" ]
+grammar = "idris"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-iex"
+scope = "source.iex"
+file-types = [{ glob = "**/admin/js/vendor/**/*.iex" }]
+comment-token = "#"
+grammar = "iex"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-ini"
+scope = "source.ini"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ini" }, { glob = "**/admin/js/vendor/**/*.service" }, { glob = "**/admin/js/vendor/**/*.automount" }, { glob = "**/admin/js/vendor/**/*.device" }, { glob = "**/admin/js/vendor/**/*.mount" }, { glob = "**/admin/js/vendor/**/*.path" }, { glob = "**/admin/js/vendor/**/*.service" }, { glob = "**/admin/js/vendor/**/*.slice" }, { glob = "**/admin/js/vendor/**/*.socket" }, { glob = "**/admin/js/vendor/**/*.swap" }, { glob = "**/admin/js/vendor/**/*.target" }, { glob = "**/admin/js/vendor/**/*.timer" }, { glob = "**/admin/js/vendor/**/*.container" }, { glob = "**/admin/js/vendor/**/*.volume" }, { glob = "**/admin/js/vendor/**/*.kube" }, { glob = "**/admin/js/vendor/**/*.network" }, { glob = "**/admin/js/vendor/**/.editorconfig" }, { glob = "**/admin/js/vendor/**/.npmrc" }, { glob = "**/admin/js/vendor/**/npmrc" }, { glob = "**/admin/js/vendor/**/rclone.conf" }, { glob = "**/admin/js/vendor/**/*.properties" }, { glob = "**/admin/js/vendor/**/*.cfg" }, { glob = "**/admin/js/vendor/**/*.directory" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ini"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-inko"
+auto-format = true
+scope = "source.inko"
+file-types = [{ glob = "**/admin/js/vendor/**/*.inko" }]
+roots = ["inko.pkg"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "inko", args = ["fmt", "-"] }
+grammar = "inko"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-janet"
+scope = "source.janet"
+file-types = [{ glob = "**/admin/js/vendor/**/*.cgen" }, { glob = "**/admin/js/vendor/**/*.janet" }, { glob = "**/admin/js/vendor/**/*.jdn" }]
+shebangs = ["janet"]
+roots = ["project.janet"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "janet-format" }
+grammar = "janet"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-java"
+scope = "source.java"
+file-types = [{ glob = "**/admin/js/vendor/**/*.java" }, { glob = "**/admin/js/vendor/**/*.jav" }, { glob = "**/admin/js/vendor/**/*.pde" }]
+roots = ["pom.xml", "build.gradle", "build.gradle.kts"]
+language-servers = [ "jdtls" ]
+indent = { unit = "    ", tab-width = 4 }
+comment-tokens = ["//"]
+block-comment-tokens = { start = "/*", end = "*/" }
+grammar = "java"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-javascript"
+scope = "source.js"
+language-id = "javascript"
+file-types = [{ glob = "**/admin/js/vendor/**/*.js" }, { glob = "**/admin/js/vendor/**/*.mjs" }, { glob = "**/admin/js/vendor/**/*.cjs" }, { glob = "**/admin/js/vendor/**/*.rules" }, { glob = "**/admin/js/vendor/**/*.es6" }, { glob = "**/admin/js/vendor/**/*.pac" }, { glob = "**/admin/js/vendor/**/.node_repl_history" }, { glob = "**/admin/js/vendor/**/jakefile" }]
+shebangs = ["node"]
+roots = [ "package.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "javascript"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-jinja"
+scope = "text.html.jinja"
+file-types = [{ glob = "**/admin/js/vendor/**/*.jinja" }, { glob = "**/admin/js/vendor/**/*.jinja2" }, { glob = "**/admin/js/vendor/**/*.j2" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "jinja"
+block-comment-tokens = { start = "{#", end = "#}" }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-jjdescription"
+scope = "jj.description"
+file-types = [{ glob = "**/admin/js/vendor/**/*.jjdescription" }]
+comment-token = "JJ:"
+indent = { unit = "    ", tab-width = 4 }
+rulers = [51, 73]
+text-width = 72
+grammar = "jjdescription"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-jq"
+scope = "source.jq"
+file-types = [{ glob = "**/admin/js/vendor/**/*.jq" }]
+comment-token = "#"
+language-servers = ["jq-lsp"]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "jq"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-jsdoc"
+scope = "source.jsdoc"
+file-types = [{ glob = "**/admin/js/vendor/**/*.jsdoc" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "jsdoc"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-json"
+scope = "source.json"
+file-types = [{ glob = "**/admin/js/vendor/**/*.json" }, { glob = "**/admin/js/vendor/**/*.arb" }, { glob = "**/admin/js/vendor/**/*.ipynb" }, { glob = "**/admin/js/vendor/**/*.geojson" }, { glob = "**/admin/js/vendor/**/*.gltf" }, { glob = "**/admin/js/vendor/**/*.webmanifest" }, { glob = "**/admin/js/vendor/**/flake.lock" }, { glob = "**/admin/js/vendor/**/.babelrc" }, { glob = "**/admin/js/vendor/**/.bowerrc" }, { glob = "**/admin/js/vendor/**/.jscrc" }, { glob = "**/admin/js/vendor/**/*.js.map" }, { glob = "**/admin/js/vendor/**/*.ts.map" }, { glob = "**/admin/js/vendor/**/*.css.map" }, { glob = "**/admin/js/vendor/**/.jslintrc" }, { glob = "**/admin/js/vendor/**/*.jsonl" }, { glob = "**/admin/js/vendor/**/*.jsonld" }, { glob = "**/admin/js/vendor/**/.vuerc" }, { glob = "**/admin/js/vendor/**/composer.lock" }, { glob = "**/admin/js/vendor/**/.watchmanconfig" }, { glob = "**/admin/js/vendor/**/*.avsc" }, { glob = "**/admin/js/vendor/**/*.ldtk" }, { glob = "**/admin/js/vendor/**/*.ldtkl" }, { glob = "**/admin/js/vendor/**/.swift-format" }]
+language-servers = [ "vscode-json-language-server" ]
+auto-format = true
+indent = { unit = "    ", tab-width = 4 }
+grammar = "json"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-json5"
+scope = "source.json5"
+file-types = [{ glob = "**/admin/js/vendor/**/*.json5" }]
+language-servers = []
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "json5"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-jsonc"
+scope = "source.json"
+file-types = [{ glob = "**/admin/js/vendor/**/*.jsonc" }, { glob = "**/admin/js/vendor/**/tsconfig.json" }]
+grammar = "jsonc"
+language-servers = [ "vscode-json-language-server" ]
+auto-format = true
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-jsonnet"
+scope = "source.jsonnet"
+file-types = [{ glob = "**/admin/js/vendor/**/*.libsonnet" }, { glob = "**/admin/js/vendor/**/*.jsonnet" }]
+roots = ["jsonnetfile.json"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "jsonnet-language-server" ]
+grammar = "jsonnet"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-jsx"
+scope = "source.jsx"
+language-id = "javascriptreact"
+file-types = [{ glob = "**/admin/js/vendor/**/*.jsx" }]
+roots = [ "package.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "jsx"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-julia"
+scope = "source.julia"
+file-types = [{ glob = "**/admin/js/vendor/**/*.jl" }]
+shebangs = ["julia"]
+roots = ["Manifest.toml", "Project.toml"]
+comment-token = "#"
+block-comment-tokens = { start = "#=", end = "=#" }
+language-servers = [ "julia" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "julia"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-just"
+scope = "source.just"
+file-types = [{ glob = "**/admin/js/vendor/**/*.just" }, { glob = "**/admin/js/vendor/**/justfile" }, { glob = "**/admin/js/vendor/**/Justfile" }, { glob = "**/admin/js/vendor/**/.justfile" }, { glob = "**/admin/js/vendor/**/.Justfile" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "just"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-kdl"
+scope = "source.kdl"
+file-types = [{ glob = "**/admin/js/vendor/**/*.kdl" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+grammar = "kdl"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-koka"
+scope = "source.koka"
+file-types = [{ glob = "**/admin/js/vendor/**/*.kk" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["koka"]
+grammar = "koka"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-kotlin"
+scope = "source.kotlin"
+file-types = [{ glob = "**/admin/js/vendor/**/*.kt" }, { glob = "**/admin/js/vendor/**/*.kts" }]
+roots = ["settings.gradle", "settings.gradle.kts"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "kotlin-language-server" ]
+grammar = "kotlin"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-koto"
+scope = "source.koto"
+file-types = [{ glob = "**/admin/js/vendor/**/*.koto" }]
+comment-token = "#"
+block-comment-tokens = ["#-", "-#"]
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["koto-ls"]
+grammar = "koto"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-latex"
+scope = "source.tex"
+file-types = [{ glob = "**/admin/js/vendor/**/*.tex" }, { glob = "**/admin/js/vendor/**/*.sty" }, { glob = "**/admin/js/vendor/**/*.cls" }, { glob = "**/admin/js/vendor/**/*.Rd" }, { glob = "**/admin/js/vendor/**/*.bbx" }, { glob = "**/admin/js/vendor/**/*.cbx" }]
+comment-token = "%"
+language-servers = [ "texlab" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "latex"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-ld"
+scope = "source.ld"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ld" }]
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ld"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-ldif"
+scope = "source.ldif"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ldif" }]
+comment-token = "#"
+grammar = "ldif"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-lean"
+scope = "source.lean"
+file-types = [{ glob = "**/admin/js/vendor/**/*.lean" }]
+roots = [ "lakefile.lean" ]
+comment-token = "--"
+block-comment-tokens = { start = "/-", end = "-/" }
+language-servers = [ "lean" ]
+indent = { unit = "    ", tab-width = 4 }
+rulers = [101]
+text-width = 100
+grammar = "lean"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-ledger"
+scope = "source.ledger"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ldg" }, { glob = "**/admin/js/vendor/**/*.ledger" }, { glob = "**/admin/js/vendor/**/*.journal" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ledger"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-llvm"
+scope = "source.llvm"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ll" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "llvm"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-llvm-mir"
+scope = "source.llvm_mir"
+file-types = []
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "llvm-mir"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-llvm-mir-yaml"
+# TODO allow languages to point to their grammar like so:
+#
+#     grammar = "yaml"
+scope = "source.yaml"
+file-types = [{ glob = "**/admin/js/vendor/**/*.mir" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "llvm-mir-yaml"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-log"
+scope = "source.log"
+file-types = [{ glob = "**/admin/js/vendor/**/*.log" }]
+grammar = "log"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-lpf"
+comment-token = "#"
+scope = "source.lpf"
+file-types = [{ glob = "**/admin/js/vendor/**/*.lpf" }]
+grammar = "lpf"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-lua"
+scope = "source.lua"
+file-types = [{ glob = "**/admin/js/vendor/**/*.lua" }]
+shebangs = ["lua", "luajit"]
+roots = [".luarc.json", ".luacheckrc", ".stylua.toml", "selene.toml", ".git"]
+comment-token = "--"
+block-comment-tokens = { start = "--[[", end = "--]]" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "lua-language-server" ]
+grammar = "lua"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-make"
+scope = "source.make"
+file-types = [{ glob = "**/admin/js/vendor/**/Makefile" }, { glob = "**/admin/js/vendor/**/makefile" }, { glob = "**/admin/js/vendor/**/*.make" }, { glob = "**/admin/js/vendor/**/*.mk" }, { glob = "**/admin/js/vendor/**/*.mak" }, { glob = "**/admin/js/vendor/**/GNUmakefile" }, { glob = "**/admin/js/vendor/**/OCamlMakefile" }]
+shebangs = ["make", "gmake"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "make"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-markdoc"
+scope = "text.markdoc"
+block-comment-tokens = { start = "<!--", end = "-->" }
+file-types = [{ glob = "**/admin/js/vendor/**/*.mdoc" }]
+language-servers = [ "markdoc-ls" ]
+grammar = "markdoc"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-markdown"
+scope = "source.md"
+file-types = [{ glob = "**/admin/js/vendor/**/*.md" }, { glob = "**/admin/js/vendor/**/*.livemd" }, { glob = "**/admin/js/vendor/**/*.markdown" }, { glob = "**/admin/js/vendor/**/*.mdx" }, { glob = "**/admin/js/vendor/**/*.mkd" }, { glob = "**/admin/js/vendor/**/*.mkdn" }, { glob = "**/admin/js/vendor/**/*.mdwn" }, { glob = "**/admin/js/vendor/**/*.mdown" }, { glob = "**/admin/js/vendor/**/*.markdn" }, { glob = "**/admin/js/vendor/**/*.mdtxt" }, { glob = "**/admin/js/vendor/**/*.mdtext" }, { glob = "**/admin/js/vendor/**/*.workbook" }, { glob = "**/admin/js/vendor/**/PULLREQ_EDITMSG" }]
+roots = [".marksman.toml"]
+language-servers = [ "marksman", "markdown-oxide" ]
+indent = { unit = "    ", tab-width = 4 }
+block-comment-tokens = { start = "<!--", end = "-->" }
+grammar = "markdown"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-markdown.inline"
+scope = "source.markdown.inline"
+file-types = []
+grammar = "markdown.inline"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-matlab"
+scope = "source.m"
+file-types = [{ glob = "**/admin/js/vendor/**/*.m" }]
+comment-token = "%"
+shebangs = ["octave-cli", "matlab"]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "matlab"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-mermaid"
+scope = "source.mermaid"
+file-types = [{ glob = "**/admin/js/vendor/**/*.mermaid" }, { glob = "**/admin/js/vendor/**/*.mmd" }]
+comment-token = "%%"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "mermaid"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-meson"
+scope = "source.meson"
+file-types = [{ glob = "**/admin/js/vendor/**/meson.build" }, { glob = "**/admin/js/vendor/**/meson.options" }, { glob = "**/admin/js/vendor/**/meson_options.txt" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["mesonlsp"]
+grammar = "meson"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-mint"
+scope = "source.mint"
+file-types = [{ glob = "**/admin/js/vendor/**/*.mint" }]
+shebangs = []
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "mint" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "mint"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-mojo"
+scope = "source.mojo"
+roots = ["__init__.mojo"]
+file-types = [{ glob = "**/admin/js/vendor/**/*.mojo" }, { glob = "**/admin/js/vendor/**/*.🔥" }]
+language-servers = [ "mojo-lsp" ]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+auto-format = true
+formatter = { command = "magic", args = ["run", "mojo" , "format", "-q", "-"]}
+grammar = "mojo"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-move"
+scope = "source.move"
+roots = ["Move.toml"]
+file-types = [{ glob = "**/admin/js/vendor/**/*.move" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = []
+grammar = "move"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-msbuild"
+scope = "source.msbuild"
+file-types = [{ glob = "**/admin/js/vendor/**/*.proj" }, { glob = "**/admin/js/vendor/**/*.vbproj" }, { glob = "**/admin/js/vendor/**/*.csproj" }, { glob = "**/admin/js/vendor/**/*.fsproj" }, { glob = "**/admin/js/vendor/**/*.targets" }, { glob = "**/admin/js/vendor/**/*.props" }]
+indent = { unit = "    ", tab-width = 4 }
+block-comment-tokens = { start = "<!--", end = "-->" }
+grammar = "msbuild"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-nasm"
+scope = "source.nasm"
+file-types = [{ glob = "**/admin/js/vendor/**/*.asm" }, { glob = "**/admin/js/vendor/**/*.S" }, { glob = "**/admin/js/vendor/**/*.nasm" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "nasm"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-nestedtext"
+scope = "text.nested"
+file-types = [{ glob = "**/admin/js/vendor/**/*.nt" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "nestedtext"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-nginx"
+scope = "source.nginx"
+file-types = [{ glob = "**/admin/js/vendor/**/sites-available/*.conf" }, { glob = "**/admin/js/vendor/**/sites-enabled/*.conf" }, { glob = "**/admin/js/vendor/**/nginx.conf" }, { glob = "**/admin/js/vendor/**/conf.d/*.conf" }]
+roots = ["nginx.conf"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "nginx"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-nickel"
+scope = "source.nickel"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ncl" }]
+shebangs = []
+comment-token = "#"
+language-servers = [ "nls" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "nickel"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-nim"
+scope = "source.nim"
+file-types = [{ glob = "**/admin/js/vendor/**/*.nim" }, { glob = "**/admin/js/vendor/**/*.nims" }, { glob = "**/admin/js/vendor/**/*.nimble" }]
+shebangs = []
+comment-token = "#"
+block-comment-tokens = { start = "#[", end = "]#" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "nimlangserver" ]
+grammar = "nim"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-nix"
+scope = "source.nix"
+file-types = [{ glob = "**/admin/js/vendor/**/*.nix" }]
+shebangs = []
+comment-token = "#"
+language-servers = [ "nil", "nixd" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "nix"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-nu"
+scope = "source.nu"
+file-types = [{ glob = "**/admin/js/vendor/**/*.nu" }, { glob = "**/admin/js/vendor/**/*.nuon" }]
+shebangs = ["nu"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "nu-lsp" ]
+grammar = "nu"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-nunjucks"
+scope = "text.html.nunjucks"
+file-types = [{ glob = "**/admin/js/vendor/**/*.njk" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "nunjucks"
+block-comment-tokens = { start = "{#", end = "#}" }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-ocaml"
+scope = "source.ocaml"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ml" }]
+shebangs = ["ocaml", "ocamlrun", "ocamlscript"]
+block-comment-tokens = { start = "(*", end = "*)" }
+language-servers = [ "ocamllsp" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ocaml"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-ocaml-interface"
+scope = "source.ocaml.interface"
+file-types = [{ glob = "**/admin/js/vendor/**/*.mli" }]
+shebangs = []
+block-comment-tokens = { start = "(*", end = "*)" }
+comment-token = "(**)"
+language-servers = [ "ocamllsp" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ocaml-interface"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-odin"
+auto-format = true
+scope = "source.odin"
+file-types = [{ glob = "**/admin/js/vendor/**/*.odin" }]
+roots = ["ols.json", "main.odin"]
+language-servers = [ "ols" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "odinfmt", args = [ "-stdin" ] }
+grammar = "odin"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-ohm"
+scope = "source.ohm"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ohm" }]
+comment-token = "//"
+block-comment-tokens = [
+  { start = "/*", end = "*/" },
+  { start = "/**", end = "*/" },
+]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ohm"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-opencl"
+scope = "source.cl"
+file-types = [{ glob = "**/admin/js/vendor/**/*.cl" }]
+comment-token = "//"
+language-servers = [ "clangd" ]
+grammar = "opencl"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-openscad"
+scope = "source.openscad"
+file-types = [{ glob = "**/admin/js/vendor/**/*.scad" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "openscad-lsp" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "openscad"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-org"
+scope = "source.org"
+file-types = [{ glob = "**/admin/js/vendor/**/*.org" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "org"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-pascal"
+scope = "source.pascal"
+file-types = [{ glob = "**/admin/js/vendor/**/*.pas" }, { glob = "**/admin/js/vendor/**/*.pp" }, { glob = "**/admin/js/vendor/**/*.inc" }, { glob = "**/admin/js/vendor/**/*.lpr" }, { glob = "**/admin/js/vendor/**/*.lfm" }]
+comment-token = "//"
+block-comment-tokens = { start = "{", end = "}" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "pasls" ]
+grammar = "pascal"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-passwd"
+scope = "source.passwd"
+file-types = [{ glob = "**/admin/js/vendor/**/passwd" }]
+grammar = "passwd"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-pem"
+scope = "source.pem"
+file-types = [{ glob = "**/admin/js/vendor/**/*.pem" }, { glob = "**/admin/js/vendor/**/*.cert" }, { glob = "**/admin/js/vendor/**/*.crt" }]
+grammar = "pem"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-perl"
+scope = "source.perl"
+file-types = [{ glob = "**/admin/js/vendor/**/*.pl" }, { glob = "**/admin/js/vendor/**/*.pm" }, { glob = "**/admin/js/vendor/**/*.t" }, { glob = "**/admin/js/vendor/**/*.psgi" }, { glob = "**/admin/js/vendor/**/*.raku" }, { glob = "**/admin/js/vendor/**/*.rakumod" }, { glob = "**/admin/js/vendor/**/*.rakutest" }, { glob = "**/admin/js/vendor/**/*.rakudoc" }, { glob = "**/admin/js/vendor/**/*.nqp" }, { glob = "**/admin/js/vendor/**/*.p6" }, { glob = "**/admin/js/vendor/**/*.pl6" }, { glob = "**/admin/js/vendor/**/*.pm6" }]
+shebangs = ["perl"]
+comment-token = "#"
+language-servers = [ "perlnavigator" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "perl"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-pest"
+scope = "source.pest"
+file-types = [{ glob = "**/admin/js/vendor/**/*.pest" }]
+comment-tokens = ["//", "///", "//!"]
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["pest-language-server"]
+grammar = "pest"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-php"
+scope = "source.php"
+file-types = [{ glob = "**/admin/js/vendor/**/*.php" }, { glob = "**/admin/js/vendor/**/*.inc" }, { glob = "**/admin/js/vendor/**/*.php4" }, { glob = "**/admin/js/vendor/**/*.php5" }, { glob = "**/admin/js/vendor/**/*.phtml" }, { glob = "**/admin/js/vendor/**/*.ctp" }]
+shebangs = ["php"]
+roots = ["composer.json", "index.php"]
+comment-token = "//"
+language-servers = [ "intelephense" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "php"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-php-only"
+scope = "source.php-only"
+file-types = []
+indent = { unit = "    ", tab-width = 4 }
+roots = ["composer.json", "index.php"]
+grammar = "php-only"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-pkgbuild"
+scope = "source.bash"
+file-types = [{ glob = "**/admin/js/vendor/**/PKGBUILD" }]
+comment-token = "#"
+grammar = "pkgbuild"
+language-servers = [
+  "pkgbuild-language-server",
+  { except-features = [
+    "diagnostics",
+  ], name = "bash-language-server" },
+]
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-pkl"
+scope = "source.pkl"
+file-types = [{ glob = "**/admin/js/vendor/**/*.pkl" }, { glob = "**/admin/js/vendor/**/*.pcf" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "pkl"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-po"
+scope = "source.po"
+file-types = [{ glob = "**/admin/js/vendor/**/*.po" }, { glob = "**/admin/js/vendor/**/*.pot" }]
+comment-token = "#"
+grammar = "po"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-pod"
+scope = "source.pod"
+file-types = [{ glob = "**/admin/js/vendor/**/*.pod" }]
+grammar = "pod"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-ponylang"
+scope = "source.pony"
+file-types = [{ glob = "**/admin/js/vendor/**/*.pony" }]
+roots = ["corral.json", "lock.json"]
+indent = { unit = "    ", tab-width = 4 }
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+grammar = "ponylang"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-powershell"
+scope = "source.powershell"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ps1" }, { glob = "**/admin/js/vendor/**/*.psm1" }, { glob = "**/admin/js/vendor/**/*.psd1" }, { glob = "**/admin/js/vendor/**/*.pscc" }, { glob = "**/admin/js/vendor/**/*.psrc" }]
+shebangs = [ "pwsh", "powershell" ]
+comment-token = '#'
+block-comment-tokens = { start = "<#", end = "#>" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "powershell"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-prisma"
+scope = "source.prisma"
+file-types = [{ glob = "**/admin/js/vendor/**/*.prisma" }]
+roots = ["package.json"]
+comment-token = "//"
+language-servers = [ "prisma-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "prisma"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-prolog"
+scope = "source.prolog"
+file-types = [{ glob = "**/admin/js/vendor/**/*.pl" }, { glob = "**/admin/js/vendor/**/*.prolog" }]
+shebangs = ["swipl"]
+comment-token = "%"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "swipl" ]
+grammar = "prolog"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-protobuf"
+scope = "source.proto"
+file-types = [{ glob = "**/admin/js/vendor/**/*.proto" }]
+language-servers = [ "bufls", "pbkit" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "protobuf"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-prql"
+scope = "source.prql"
+file-types = [{ glob = "**/admin/js/vendor/**/*.prql" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "prql"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-purescript"
+scope = "source.purescript"
+file-types = [{ glob = "**/admin/js/vendor/**/*.purs" }]
+roots = ["spago.yaml", "spago.dhall", "bower.json"]
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+language-servers = [ "purescript-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+auto-format = true
+formatter = { command = "purs-tidy", args = ["format"] }
+grammar = "purescript"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-python"
+scope = "source.python"
+file-types = [{ glob = "**/admin/js/vendor/**/*.py" }, { glob = "**/admin/js/vendor/**/*.pyi" }, { glob = "**/admin/js/vendor/**/*.py3" }, { glob = "**/admin/js/vendor/**/*.pyw" }, { glob = "**/admin/js/vendor/**/*.ptl" }, { glob = "**/admin/js/vendor/**/*.rpy" }, { glob = "**/admin/js/vendor/**/*.cpy" }, { glob = "**/admin/js/vendor/**/*.ipy" }, { glob = "**/admin/js/vendor/**/*.pyt" }, { glob = "**/admin/js/vendor/**/.python_history" }, { glob = "**/admin/js/vendor/**/.pythonstartup" }, { glob = "**/admin/js/vendor/**/.pythonrc" }, { glob = "**/admin/js/vendor/**/SConstruct" }, { glob = "**/admin/js/vendor/**/SConscript" }]
+shebangs = ["python", "uv"]
+roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json"]
+comment-token = "#"
+language-servers = ["ruff", "jedi", "pylsp"]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "python"
+text-width = 88
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-qml"
+scope = "source.qml"
+file-types = [{ glob = "**/admin/js/vendor/**/*.qml" }]
+language-servers = [ "qmlls" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "qml"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-quint"
+scope = "source.quint"
+file-types = [{ glob = "**/admin/js/vendor/**/*.qnt" }]
+language-servers = ["quint-language-server"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "quint"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-r"
+scope = "source.r"
+file-types = [{ glob = "**/admin/js/vendor/**/*.r" }, { glob = "**/admin/js/vendor/**/*.R" }, { glob = "**/admin/js/vendor/**/.Rprofile" }, { glob = "**/admin/js/vendor/**/Rprofile.site" }, { glob = "**/admin/js/vendor/**/.RHistory" }]
+shebangs = ["r", "R"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "r" ]
+grammar = "r"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-racket"
+scope = "source.racket"
+file-types = [{ glob = "**/admin/js/vendor/**/*.rkt" }, { glob = "**/admin/js/vendor/**/*.rktd" }, { glob = "**/admin/js/vendor/**/*.rktl" }, { glob = "**/admin/js/vendor/**/*.scrbl" }]
+shebangs = ["racket"]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+block-comment-tokens = { start = "#|", end = "|#" }
+language-servers = [ "racket" ]
+grammar = "racket"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-regex"
+scope = "source.regex"
+file-types = [{ glob = "**/admin/js/vendor/**/*.regex" }, { glob = "**/admin/js/vendor/**/.Rbuildignore" }]
+grammar = "regex"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-rego"
+scope = "source.rego"
+file-types = [{ glob = "**/admin/js/vendor/**/*.rego" }]
+auto-format = true
+comment-token = "#"
+language-servers = [ "regols" ]
+grammar = "rego"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-rescript"
+scope = "source.rescript"
+file-types = [{ glob = "**/admin/js/vendor/**/*.res" }]
+roots = ["bsconfig.json"]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "rescript-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "rescript"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-rmarkdown"
+scope = "source.rmd"
+language-id = "rmd"
+file-types = [{ glob = "**/admin/js/vendor/**/*.rmd" }, { glob = "**/admin/js/vendor/**/*.Rmd" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "rmarkdown"
+block-comment-tokens = { start = "<!--", end = "-->" }
+language-servers = [ "r" ]
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-robot"
+scope = "source.robot"
+file-types = [{ glob = "**/admin/js/vendor/**/*.robot" }, { glob = "**/admin/js/vendor/**/*.resource" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "robotframework_ls" ]
+grammar = "robot"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-ron"
+scope = "source.ron"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ron" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ron"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-rst"
+scope = "source.rst"
+comment-token = ".."
+file-types = [{ glob = "**/admin/js/vendor/**/*.rst" }]
+grammar = "rst"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-ruby"
+scope = "source.ruby"
+file-types = [{ glob = "**/admin/js/vendor/**/*.rb" }, { glob = "**/admin/js/vendor/**/*.rake" }, { glob = "**/admin/js/vendor/**/*.irb" }, { glob = "**/admin/js/vendor/**/*.gemspec" }, { glob = "**/admin/js/vendor/**/*.rabl" }, { glob = "**/admin/js/vendor/**/*.jbuilder" }, { glob = "**/admin/js/vendor/**/*.jb" }, { glob = "**/admin/js/vendor/**/*.podspec" }, { glob = "**/admin/js/vendor/**/*.rjs" }, { glob = "**/admin/js/vendor/**/*.rbi" }, { glob = "**/admin/js/vendor/**/*.rbs" }, { glob = "**/admin/js/vendor/**/rakefile" }, { glob = "**/admin/js/vendor/**/gemfile" }, { glob = "**/admin/js/vendor/**/Rakefile" }, { glob = "**/admin/js/vendor/**/Gemfile" }, { glob = "**/admin/js/vendor/**/Podfile" }, { glob = "**/admin/js/vendor/**/Vagrantfile" }, { glob = "**/admin/js/vendor/**/Brewfile" }, { glob = "**/admin/js/vendor/**/Guardfile" }, { glob = "**/admin/js/vendor/**/Capfile" }, { glob = "**/admin/js/vendor/**/Cheffile" }, { glob = "**/admin/js/vendor/**/Hobofile" }, { glob = "**/admin/js/vendor/**/Appraisals" }, { glob = "**/admin/js/vendor/**/Rantfile" }, { glob = "**/admin/js/vendor/**/Berksfile" }, { glob = "**/admin/js/vendor/**/Berksfile.lock" }, { glob = "**/admin/js/vendor/**/Thorfile" }, { glob = "**/admin/js/vendor/**/Puppetfile" }, { glob = "**/admin/js/vendor/**/Fastfile" }, { glob = "**/admin/js/vendor/**/Appfile" }, { glob = "**/admin/js/vendor/**/Deliverfile" }, { glob = "**/admin/js/vendor/**/Matchfile" }, { glob = "**/admin/js/vendor/**/Scanfile" }, { glob = "**/admin/js/vendor/**/Snapfile" }, { glob = "**/admin/js/vendor/**/Gymfile" }]
+shebangs = ["ruby"]
+comment-token = "#"
+language-servers = [ "solargraph" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ruby"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-rust"
+scope = "source.rust"
+file-types = [{ glob = "**/admin/js/vendor/**/*.rs" }]
+roots = ["Cargo.toml", "Cargo.lock"]
+shebangs = ["rust-script", "cargo"]
+auto-format = true
+comment-tokens = ["//", "///", "//!"]
+block-comment-tokens = [
+  { start = "/*", end = "*/" },
+  { start = "/**", end = "*/" },
+  { start = "/*!", end = "*/" },
+]
+language-servers = [ "rust-analyzer" ]
+indent = { unit = "    ", tab-width = 4 }
+persistent-diagnostic-sources = ["rustc", "clippy"]
+grammar = "rust"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-sage"
+scope = "source.sage"
+file-types = [{ glob = "**/admin/js/vendor/**/*.sage" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "sage"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-scala"
+scope = "source.scala"
+roots = ["build.sbt", "build.sc", "build.gradle", "build.gradle.kts", "pom.xml", ".scala-build"]
+file-types = [{ glob = "**/admin/js/vendor/**/*.scala" }, { glob = "**/admin/js/vendor/**/*.sbt" }, { glob = "**/admin/js/vendor/**/*.sc" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "metals" ]
+grammar = "scala"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-scheme"
+scope = "source.scheme"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ss" }, { glob = "**/admin/js/vendor/**/*.scm" }]
+shebangs = ["scheme", "guile", "chicken"]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "scheme"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-scss"
+scope = "source.scss"
+file-types = [{ glob = "**/admin/js/vendor/**/*.scss" }]
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "vscode-css-language-server" ]
+auto-format = true
+indent = { unit = "    ", tab-width = 4 }
+grammar = "scss"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-slint"
+scope = "source.slint"
+file-types = [{ glob = "**/admin/js/vendor/**/*.slint" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "slint-lsp" ]
+grammar = "slint"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-smali"
+scope = "source.smali"
+file-types = [{ glob = "**/admin/js/vendor/**/*.smali" }]
+comment-token = "#"
+roots = []
+indent = { unit = "    ", tab-width = 4 }
+grammar = "smali"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-smithy"
+scope = "source.smithy"
+file-types = [{ glob = "**/admin/js/vendor/**/*.smithy" }]
+roots = ["smithy-build.json"]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "cs" ]
+grammar = "smithy"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-sml"
+scope = "source.sml"
+file-types = [{ glob = "**/admin/js/vendor/**/*.sml" }]
+block-comment-tokens = { start = "(*", end = "*)" }
+grammar = "sml"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-snakemake"
+scope = "source.snakemake"
+roots = ["Snakefile", "config.yaml", "environment.yaml", "workflow/"]
+file-types = [{ glob = "**/admin/js/vendor/**/*.smk" }, { glob = "**/admin/js/vendor/**/Snakefile" }]
+comment-tokens = ["#", "##"]
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["pylsp" ]
+grammar = "snakemake"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-solidity"
+scope = "source.sol"
+file-types = [{ glob = "**/admin/js/vendor/**/*.sol" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "solc" ]
+grammar = "solidity"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-spade"
+scope = "source.spade"
+roots = ["swim.toml"]
+file-types = [{ glob = "**/admin/js/vendor/**/*.spade" }]
+comment-tokens = ["//", "///"]
+block-comment-tokens = [
+  { start = "/*", end = "*/" },
+  { start = "/**", end = "*/" },
+]
+language-servers = [ "spade-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "spade"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-spicedb"
+scope = "source.zed"
+file-types = [{ glob = "**/admin/js/vendor/**/*.zed" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "spicedb"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-sql"
+scope = "source.sql"
+file-types = [{ glob = "**/admin/js/vendor/**/*.sql" }, { glob = "**/admin/js/vendor/**/*.dsql" }]
+comment-token = "--"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "sql"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-sshclientconfig"
+scope = "source.sshclientconfig"
+file-types = [{ glob = "**/admin/js/vendor/**/.ssh/config" }, { glob = "**/admin/js/vendor/**//etc/ssh/ssh_config" }, { glob = "**/admin/js/vendor/**/ssh_config.d/*.conf" }]
+comment-token = "#"
+grammar = "sshclientconfig"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-starlark"
+scope = "source.starlark"
+file-types = [{ glob = "**/admin/js/vendor/**/*.bzl" }, { glob = "**/admin/js/vendor/**/*.bazel" }, { glob = "**/admin/js/vendor/**/*.star" }, { glob = "**/admin/js/vendor/**/BUILD" }, { glob = "**/admin/js/vendor/**/BUILD.*" }, { glob = "**/admin/js/vendor/**/Tiltfile" }, { glob = "**/admin/js/vendor/**/WORKSPACE" }, { glob = "**/admin/js/vendor/**/WORKSPACE.bzlmod" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "starlark"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-strace"
+scope = "source.strace"
+file-types = [{ glob = "**/admin/js/vendor/**/*.strace" }]
+grammar = "strace"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-supercollider"
+scope = "source.supercollider"
+file-types = [{ glob = "**/admin/js/vendor/**/*.scd" }, { glob = "**/admin/js/vendor/**/*.sc" }, { glob = "**/admin/js/vendor/**/*.quark" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "supercollider"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-svelte"
+scope = "source.svelte"
+file-types = [{ glob = "**/admin/js/vendor/**/*.svelte" }]
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "svelteserver" ]
+grammar = "svelte"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-sway"
+scope = "source.sway"
+file-types = [{ glob = "**/admin/js/vendor/**/*.sw" }]
+language-servers = [ "forc" ]
+roots = ["Forc.toml", "Forc.lock"]
+indent = { unit = "    ", tab-width = 4 }
+comment-token = "//"
+grammar = "sway"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-swift"
+scope = "source.swift"
+file-types = [{ glob = "**/admin/js/vendor/**/*.swift" }, { glob = "**/admin/js/vendor/**/*.swiftinterface" }]
+roots = [ "Package.swift" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+formatter = { command = "swift-format" }
+language-servers = [ "sourcekit-lsp" ]
+grammar = "swift"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-t32"
+scope = "source.t32"
+file-types = [{ glob = "**/admin/js/vendor/**/*.cmm" }, { glob = "**/admin/js/vendor/**/*.t32" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "t32"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-tablegen"
+scope = "source.tablegen"
+file-types = [{ glob = "**/admin/js/vendor/**/*.td" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "tablegen"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-tact"
+scope = "source.tact"
+file-types = [{ glob = "**/admin/js/vendor/**/*.tact" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "tact"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-task"
+scope = "source.task"
+file-types = [{ glob = "**/admin/js/vendor/**/*.task" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "task"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-tcl"
+scope = "source.tcl"
+file-types = [{ glob = "**/admin/js/vendor/**/*.tcl" }]
+shebangs = [ "tclsh", "tclish", "jimsh", "wish" ]
+comment-token = '#'
+grammar = "tcl"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-teal"
+scope = "source.tl"
+file-types = [{ glob = "**/admin/js/vendor/**/*.tl" }]
+comment-tokens = "--"
+block-comment-tokens = { start = "--[[", end = "--]]" }
+roots = [ "tlconfig.lua" ]
+language-servers = [ "teal-lsp" ]
+grammar = "teal"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-templ"
+scope = "source.templ"
+file-types = [{ glob = "**/admin/js/vendor/**/*.templ" }]
+roots = ["go.work", "go.mod"]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "templ" ]
+grammar = "templ"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-textproto"
+file-types = [{ glob = "**/admin/js/vendor/**/*.txtpb" }, { glob = "**/admin/js/vendor/**/*.textpb" }, { glob = "**/admin/js/vendor/**/*.textproto" }]
+comment-token = "#"
+scope = "source.textproto"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "txtpbfmt" }
+auto-format = true
+grammar = "textproto"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-tfvars"
+scope = "source.tfvars"
+language-id = "terraform-vars"
+file-types = [{ glob = "**/admin/js/vendor/**/*.tfvars" }]
+comment-token = "#"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "terraform-ls" ]
+auto-format = true
+grammar = "tfvars"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-thrift"
+scope = "source.thrift"
+file-types = [{ glob = "**/admin/js/vendor/**/*.thrift" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "thrift"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-todotxt"
+scope = "text.todotxt"
+file-types = [{ glob = "**/admin/js/vendor/**/*.todo.txt" }, { glob = "**/admin/js/vendor/**/*.todotxt" }]
+formatter = { command = "sort" }
+auto-format = true
+grammar = "todotxt"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-toml"
+scope = "source.toml"
+file-types = [{ glob = "**/admin/js/vendor/**/*.toml" }, { glob = "**/admin/js/vendor/**/pdm.lock" }, { glob = "**/admin/js/vendor/**/poetry.lock" }, { glob = "**/admin/js/vendor/**/Cargo.lock" }, { glob = "**/admin/js/vendor/**/uv.lock" }]
+comment-token = "#"
+language-servers = [ "taplo" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "toml"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-tsq"
+scope = "source.tsq"
+file-types = [{ glob = "**/admin/js/vendor/**/queries/*.scm" }, { glob = "**/admin/js/vendor/**/injections.scm" }, { glob = "**/admin/js/vendor/**/highlights.scm" }, { glob = "**/admin/js/vendor/**/indents.scm" }, { glob = "**/admin/js/vendor/**/textobjects.scm" }, { glob = "**/admin/js/vendor/**/locals.scm" }, { glob = "**/admin/js/vendor/**/tags.scm" }]
+comment-token = ";"
+language-servers = ["ts_query_ls"]
+grammar = "tsq"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-tsx"
+scope = "source.tsx"
+language-id = "typescriptreact"
+file-types = [{ glob = "**/admin/js/vendor/**/*.tsx" }]
+roots = [ "package.json", "tsconfig.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "tsx"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-twig"
+scope = "source.twig"
+file-types = [{ glob = "**/admin/js/vendor/**/*.twig" }]
+block-comment-tokens = { start = "{#", end = "#}" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "twig"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-typescript"
+scope = "source.ts"
+language-id = "typescript"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ts" }, { glob = "**/admin/js/vendor/**/*.mts" }, { glob = "**/admin/js/vendor/**/*.cts" }]
+shebangs = ["deno", "bun", "ts-node"]
+roots = [ "package.json", "tsconfig.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "typescript"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-typespec"
+scope = "source.typespec"
+language-id = "typespec"
+file-types = [{ glob = "**/admin/js/vendor/**/*.tsp" }]
+roots = ["tspconfig.yaml"]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = ["typespec"]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "typespec"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-typst"
+scope = "source.typst"
+file-types = [{ glob = "**/admin/js/vendor/**/*.typst" }, { glob = "**/admin/js/vendor/**/*.typ" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = ["tinymist", "typst-lsp"]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "typst"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-ungrammar"
+scope = "source.ungrammar"
+file-types = [{ glob = "**/admin/js/vendor/**/*.ungram" }, { glob = "**/admin/js/vendor/**/*.ungrammar" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ungrammar"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-unison"
+scope = "source.unison"
+file-types = [{ glob = "**/admin/js/vendor/**/*.u" }]
+shebangs = []
+auto-format = true
+comment-token = "--"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "unison"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-unknown"
+scope = "text.plain"
+file-types = [{ glob = "*.foo" }, { glob = "*.txt" }]
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-uxntal"
+scope = "source.tal"
+file-types = [{ glob = "**/admin/js/vendor/**/*.tal" }]
+auto-format = true
+block-comment-tokens = { start = "(", end = ")" }
+grammar = "uxntal"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-v"
+scope = "source.v"
+file-types = [{ glob = "**/admin/js/vendor/**/*.v" }, { glob = "**/admin/js/vendor/**/*.vv" }, { glob = "**/admin/js/vendor/**/*.vsh" }]
+shebangs = ["v run"]
+roots = ["v.mod"]
+language-servers = [ "vlang-language-server" ]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "v"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-vala"
+scope = "source.vala"
+file-types = [{ glob = "**/admin/js/vendor/**/*.vala" }, { glob = "**/admin/js/vendor/**/*.vapi" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "vala-language-server" ]
+grammar = "vala"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-vento"
+scope = "text.html.vto"
+file-types = [{ glob = "**/admin/js/vendor/**/*.vto" }]
+block-comment-tokens = { start = "{{#", end = "#}}" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "vento"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-verilog"
+scope = "source.verilog"
+file-types = [{ glob = "**/admin/js/vendor/**/*.v" }, { glob = "**/admin/js/vendor/**/*.vh" }, { glob = "**/admin/js/vendor/**/*.sv" }, { glob = "**/admin/js/vendor/**/*.svh" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "svlangserver" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "verilog"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-vhdl"
+scope = "source.vhdl"
+file-types = [{ glob = "**/admin/js/vendor/**/*.vhd" }, { glob = "**/admin/js/vendor/**/*.vhdl" }]
+comment-token = "--"
+language-servers = [ "vhdl_ls" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "vhdl"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-vhs"
+scope = "source.vhs"
+file-types = [{ glob = "**/admin/js/vendor/**/*.tape" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "vhs"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-vue"
+scope = "source.vue"
+file-types = [{ glob = "**/admin/js/vendor/**/*.vue" }]
+roots = ["package.json"]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "vuels" ]
+grammar = "vue"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-wast"
+scope = "source.wast"
+comment-token = ";;"
+block-comment-tokens = { start = "(;", end = ";)" }
+file-types = [{ glob = "**/admin/js/vendor/**/*.wast" }]
+grammar = "wast"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-wat"
+scope = "source.wat"
+comment-token = ";;"
+block-comment-tokens = { start = "(;", end = ";)" }
+file-types = [{ glob = "**/admin/js/vendor/**/*.wat" }]
+grammar = "wat"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-webc"
+scope = "text.html.webc"
+file-types = [{ glob = "**/admin/js/vendor/**/*.webc" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "webc"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-wgsl"
+scope = "source.wgsl"
+file-types = [{ glob = "**/admin/js/vendor/**/*.wgsl" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "wgsl_analyzer" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "wgsl"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-wit"
+scope = "source.wit"
+file-types = [{ glob = "**/admin/js/vendor/**/*.wit" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "wit"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-wren"
+scope = "source.wren"
+file-types = [{ glob = "**/admin/js/vendor/**/*.wren" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "wren"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-xit"
+scope = "source.xit"
+file-types = [{ glob = "**/admin/js/vendor/**/*.xit" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "xit"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-xml"
+scope = "source.xml"
+file-types = [{ glob = "**/admin/js/vendor/**/*.xml" }, { glob = "**/admin/js/vendor/**/*.mobileconfig" }, { glob = "**/admin/js/vendor/**/*.plist" }, { glob = "**/admin/js/vendor/**/*.xib" }, { glob = "**/admin/js/vendor/**/*.storyboard" }, { glob = "**/admin/js/vendor/**/*.svg" }, { glob = "**/admin/js/vendor/**/*.xsd" }, { glob = "**/admin/js/vendor/**/*.gml" }, { glob = "**/admin/js/vendor/**/*.xaml" }, { glob = "**/admin/js/vendor/**/*.gir" }, { glob = "**/admin/js/vendor/**/*.rss" }, { glob = "**/admin/js/vendor/**/*.atom" }, { glob = "**/admin/js/vendor/**/*.opml" }, { glob = "**/admin/js/vendor/**/*.policy" }, { glob = "**/admin/js/vendor/**/*.ascx" }, { glob = "**/admin/js/vendor/**/*.axml" }, { glob = "**/admin/js/vendor/**/*.axaml" }, { glob = "**/admin/js/vendor/**/*.bpmn" }, { glob = "**/admin/js/vendor/**/*.cpt" }, { glob = "**/admin/js/vendor/**/*.csl" }, { glob = "**/admin/js/vendor/**/*.csproj.user" }, { glob = "**/admin/js/vendor/**/*.dita" }, { glob = "**/admin/js/vendor/**/*.ditamap" }, { glob = "**/admin/js/vendor/**/*.dtml" }, { glob = "**/admin/js/vendor/**/*.fxml" }, { glob = "**/admin/js/vendor/**/*.iml" }, { glob = "**/admin/js/vendor/**/*.isml" }, { glob = "**/admin/js/vendor/**/*.jmx" }, { glob = "**/admin/js/vendor/**/*.launch" }, { glob = "**/admin/js/vendor/**/*.menu" }, { glob = "**/admin/js/vendor/**/*.mxml" }, { glob = "**/admin/js/vendor/**/*.nuspec" }, { glob = "**/admin/js/vendor/**/*.osc" }, { glob = "**/admin/js/vendor/**/*.osm" }, { glob = "**/admin/js/vendor/**/*.pt" }, { glob = "**/admin/js/vendor/**/*.publishsettings" }, { glob = "**/admin/js/vendor/**/*.pubxml" }, { glob = "**/admin/js/vendor/**/*.pubxml.user" }, { glob = "**/admin/js/vendor/**/*.rbxlx" }, { glob = "**/admin/js/vendor/**/*.rbxmx" }, { glob = "**/admin/js/vendor/**/*.rng" }, { glob = "**/admin/js/vendor/**/*.shproj" }, { glob = "**/admin/js/vendor/**/*.tld" }, { glob = "**/admin/js/vendor/**/*.tmx" }, { glob = "**/admin/js/vendor/**/*.vbproj.user" }, { glob = "**/admin/js/vendor/**/*.vcxproj" }, { glob = "**/admin/js/vendor/**/*.vcxproj.filters" }, { glob = "**/admin/js/vendor/**/*.wsdl" }, { glob = "**/admin/js/vendor/**/*.wxi" }, { glob = "**/admin/js/vendor/**/*.wxs" }, { glob = "**/admin/js/vendor/**/*.xbl" }, { glob = "**/admin/js/vendor/**/*.xlf" }, { glob = "**/admin/js/vendor/**/*.xliff" }, { glob = "**/admin/js/vendor/**/*.xpdl" }, { glob = "**/admin/js/vendor/**/*.xul" }, { glob = "**/admin/js/vendor/**/*.xoml" }, { glob = "**/admin/js/vendor/**/*.musicxml" }, { glob = "**/admin/js/vendor/**/*.glif" }, { glob = "**/admin/js/vendor/**/*.ui" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "xml"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-xtc"
+scope = "source.xtc"
+file-types = [{ glob = "**/admin/js/vendor/**/*.xtc" }, { glob = "**/admin/js/vendor/**/*.xpc" }, { glob = "**/admin/js/vendor/**/*.xoa" }]
+comment-token = ";"
+grammar = "xtc"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-yaml"
+scope = "source.yaml"
+file-types = [{ glob = "**/admin/js/vendor/**/*.yml" }, { glob = "**/admin/js/vendor/**/*.yaml" }, { glob = "**/admin/js/vendor/**/.prettierrc" }, { glob = "**/admin/js/vendor/**/.clangd" }, { glob = "**/admin/js/vendor/**/.clang-format" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "yaml-language-server", "ansible-language-server" ]
+grammar = "yaml"
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-yuck"
+scope = "source.yuck"
+file-types = [{ glob = "**/admin/js/vendor/**/*.yuck" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "yuck"
+formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
+auto-format = true
+
+[[language]]
+name = "ec2hx-glob-lang-**-admin-js-vendor-**-zig"
+scope = "source.zig"
+file-types = [{ glob = "**/admin/js/vendor/**/*.zig" }, { glob = "**/admin/js/vendor/**/*.zon" }]
+roots = ["build.zig"]
+auto-format = true
+comment-tokens = ["//", "///", "//!"]
+language-servers = [ "zls" ]
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "zig" , args = ["fmt", "--stdin"] }
+grammar = "zig"
+
+[[language]]
 name = "ec2hx-glob-lang-**.min.js"
 scope = "source.js"
 language-id = "javascript"
@@ -18,14 +2589,6 @@ block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "typescript-language-server" ]
 indent = { unit = "    ", tab-width = 4 }
 grammar = "javascript"
-
-[[language]]
-name = "ec2hx-unknown-lang-**-admin-js-vendor-**"
-scope = "text.plain"
-file-types = [{ glob = "**/admin/js/vendor/**" }]
-indent = { unit = "    ", tab-width = 4 }
-formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
-auto-format = true
 
 [[language]]
 name = "ec2hx-unknown-lang-*.bat"

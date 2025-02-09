@@ -7,6 +7,2368 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
+name = "ec2hx-glob-lang-test-*-ada"
+scope = "source.ada"
+file-types = [{ glob = "test/*.adb" }, { glob = "test/*.ads" }]
+roots = ["alire.toml"]
+comment-token = "--"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = ["ada-language-server"]
+grammar = "ada"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-adl"
+scope = "source.adl"
+file-types = [{ glob = "test/*.adl" }]
+roots = []
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "adl"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-agda"
+scope = "source.agda"
+file-types = [{ glob = "test/*.agda" }]
+roots = []
+comment-token = "--"
+# language-servers = [ "als" ]
+# the agda language server is of questionable functionality.
+auto-format = false
+indent = { unit = "  ", tab-width = 2 }
+grammar = "agda"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-amber"
+scope = "source.ab"
+file-types = [{ glob = "test/*.ab" }]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "amber"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-astro"
+scope = "source.astro"
+file-types = [{ glob = "test/*.astro" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "astro"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-awk"
+scope = "source.awk"
+file-types = [{ glob = "test/*.awk" }, { glob = "test/*.gawk" }, { glob = "test/*.nawk" }, { glob = "test/*.mawk" }]
+comment-token = "#"
+language-servers = [ "awk-language-server" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "awk"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-bash"
+scope = "source.bash"
+file-types = [{ glob = "test/*.sh" }, { glob = "test/*.bash" }, { glob = "test/*.ash" }, { glob = "test/*.dash" }, { glob = "test/*.ksh" }, { glob = "test/*.mksh" }, { glob = "test/*.zsh" }, { glob = "test/*.zshenv" }, { glob = "test/*.zlogin" }, { glob = "test/*.zlogout" }, { glob = "test/*.zprofile" }, { glob = "test/*.zshrc" }, { glob = "test/*.eclass" }, { glob = "test/*.ebuild" }, { glob = "test/*.bazelrc" }, { glob = "test/*.Renviron" }, { glob = "test/*.zsh-theme" }, { glob = "test/*.cshrc" }, { glob = "test/*.tcshrc" }, { glob = "test/*.bashrc_Apple_Terminal" }, { glob = "test/*.zshrc_Apple_Terminal" }, { glob = "test/i3/config" }, { glob = "test/sway/config" }, { glob = "test/tmux.conf" }, { glob = "test/.bash_history" }, { glob = "test/.bash_login" }, { glob = "test/.bash_logout" }, { glob = "test/.bash_profile" }, { glob = "test/.bashrc" }, { glob = "test/.profile" }, { glob = "test/.zshenv" }, { glob = "test/.zlogin" }, { glob = "test/.zlogout" }, { glob = "test/.zprofile" }, { glob = "test/.zshrc" }, { glob = "test/.zimrc" }, { glob = "test/APKBUILD" }, { glob = "test/.bash_aliases" }, { glob = "test/.Renviron" }, { glob = "test/.xprofile" }, { glob = "test/.xsession" }, { glob = "test/.xsessionrc" }, { glob = "test/.yashrc" }, { glob = "test/.yash_profile" }, { glob = "test/.hushlogin" }]
+shebangs = ["sh", "bash", "dash", "zsh"]
+comment-token = "#"
+language-servers = [ "bash-language-server" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "bash"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-bass"
+scope = "source.bass"
+file-types = [{ glob = "test/*.bass" }]
+comment-token = ";"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "bass" ]
+grammar = "bass"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-beancount"
+scope = "source.beancount"
+file-types = [{ glob = "test/*.beancount" }, { glob = "test/*.bean" }]
+comment-token = ";"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "beancount"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-bibtex"
+scope = "source.bib"
+file-types = [{ glob = "test/*.bib" }]
+comment-token = "%"
+language-servers = [ "texlab" ]
+indent = { unit = "  ", tab-width = 2 }
+auto-format = true
+grammar = "bibtex"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-bicep"
+scope = "source.bicep"
+file-types = [{ glob = "test/*.bicep" }, { glob = "test/*.bicepparam" }]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "bicep-langserver" ]
+grammar = "bicep"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-bitbake"
+language-servers = [ "bitbake-language-server" ]
+scope = "source.bitbake"
+file-types = [{ glob = "test/*.bb" }, { glob = "test/*.bbappend" }, { glob = "test/*.bbclass" }, { glob = "test/conf/*.conf" }, { glob = "test/conf/*/*.{inc,conf}" }, { glob = "test/recipe-*/*/*.inc" }]
+comment-token = "#"
+grammar = "bitbake"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-blade"
+scope = "source.blade.php"
+file-types = [{ glob = "test/*.blade.php" }, { glob = "test/*.blade" }]
+roots = ["composer.json", "index.php"]
+grammar = "blade"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-blueprint"
+scope = "source.blueprint"
+file-types = [{ glob = "test/*.blp" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "blueprint-compiler" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "blueprint"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-c"
+scope = "source.c"
+file-types = [{ glob = "test/*.c" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "clangd" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "c"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-c-sharp"
+scope = "source.csharp"
+file-types = [{ glob = "test/*.cs" }, { glob = "test/*.csx" }, { glob = "test/*.cake" }]
+roots = ["sln", "csproj"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "omnisharp" ]
+grammar = "c-sharp"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-cabal"
+scope = "source.cabal"
+file-types = [{ glob = "test/*.cabal" }]
+roots = ["cabal.project", "Setup.hs"]
+indent = { unit = "  ", tab-width = 2 }
+comment-token = "--"
+language-servers = [ "haskell-language-server" ]
+grammar = "cabal"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-cairo"
+scope = "source.cairo"
+file-types = [{ glob = "test/*.cairo" }]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+# auto-format = true
+language-servers = [ "cairo-language-server" ]
+grammar = "cairo"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-capnp"
+scope = "source.capnp"
+file-types = [{ glob = "test/*.capnp" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "capnp"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-cel"
+scope = "source.cel"
+file-types = [{ glob = "test/*.cel" }]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "cel"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-circom"
+scope            = "source.circom"
+file-types = [{ glob = "test/*.circom" }]
+roots            = ["package.json"]
+comment-tokens   = "//"
+indent = { unit = "  ", tab-width = 2 }
+auto-format      = false
+language-servers = ["circom-lsp"]
+grammar = "circom"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-clojure"
+scope = "source.clojure"
+file-types = [{ glob = "test/*.clj" }, { glob = "test/*.cljs" }, { glob = "test/*.cljc" }, { glob = "test/*.clje" }, { glob = "test/*.cljr" }, { glob = "test/*.cljx" }, { glob = "test/*.edn" }, { glob = "test/*.boot" }]
+roots = ["project.clj", "build.boot", "deps.edn", "shadow-cljs.edn"]
+comment-token = ";"
+language-servers = [ "clojure-lsp" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "clojure"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-cmake"
+scope = "source.cmake"
+file-types = [{ glob = "test/*.cmake" }, { glob = "test/CMakeLists.txt" }]
+comment-token = "#"
+block-comment-tokens = { start = "#[[", end = "]]" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "cmake-language-server" ]
+grammar = "cmake"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-comment"
+scope = "scope.comment"
+file-types = []
+grammar = "comment"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-common-lisp"
+scope = "source.lisp"
+file-types = [{ glob = "test/*.lisp" }, { glob = "test/*.asd" }, { glob = "test/*.cl" }, { glob = "test/*.l" }, { glob = "test/*.lsp" }, { glob = "test/*.ny" }, { glob = "test/*.podsl" }, { glob = "test/*.sexp" }]
+shebangs = ["lisp", "sbcl", "ccl", "clisp", "ecl"]
+comment-token = ";"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "cl-lsp" ]
+grammar = "common-lisp"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-cpon"
+scope = "scope.cpon"
+file-types = [{ glob = "test/*.cpon" }, { glob = "test/*.cp" }]
+auto-format = true
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "cpon"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-cpp"
+scope = "source.cpp"
+file-types = [{ glob = "test/*.cc" }, { glob = "test/*.hh" }, { glob = "test/*.c++" }, { glob = "test/*.cpp" }, { glob = "test/*.hpp" }, { glob = "test/*.h" }, { glob = "test/*.ipp" }, { glob = "test/*.tpp" }, { glob = "test/*.cxx" }, { glob = "test/*.hxx" }, { glob = "test/*.ixx" }, { glob = "test/*.txx" }, { glob = "test/*.ino" }, { glob = "test/*.C" }, { glob = "test/*.H" }, { glob = "test/*.cu" }, { glob = "test/*.cuh" }, { glob = "test/*.cppm" }, { glob = "test/*.h++" }, { glob = "test/*.ii" }, { glob = "test/*.inl" }, { glob = "test/.hpp.in" }, { glob = "test/.h.in" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "clangd" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "cpp"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-crystal"
+scope = "source.cr"
+file-types = [{ glob = "test/*.cr" }]
+roots = ["shard.yml", "shard.lock"]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "crystal"
+language-servers = [ "crystalline" ]
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-css"
+scope = "source.css"
+file-types = [{ glob = "test/*.css" }, { glob = "test/*.scss" }]
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "vscode-css-language-server" ]
+auto-format = true
+indent = { unit = "  ", tab-width = 2 }
+grammar = "css"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-cue"
+scope = "source.cue"
+file-types = [{ glob = "test/*.cue" }]
+roots = ["cue.mod"]
+auto-format = true
+comment-token = "//"
+language-servers = [ "cuelsp" ]
+indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "cue", args = ["fmt", "-"] }
+grammar = "cue"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-cylc"
+scope = "source.cylc"
+file-types = [{ glob = "test/*.cylc" }, { glob = "test/suite.rc" }]
+comment-tokens = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "cylc"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-d"
+scope = "source.d"
+file-types = [{ glob = "test/*.d" }, { glob = "test/*.dd" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "serve-d" ]
+formatter = { command = "dfmt" }
+grammar = "d"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-dart"
+scope = "source.dart"
+file-types = [{ glob = "test/*.dart" }]
+roots = ["pubspec.yaml"]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "dart" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "dart"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-dbml"
+scope = "source.dbml"
+file-types = [{ glob = "test/*.dbml" }]
+comment-token = ";"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "dbml"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-devicetree"
+scope = "source.devicetree"
+file-types = [{ glob = "test/*.dts" }, { glob = "test/*.dtsi" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "devicetree"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-dhall"
+scope = "source.dhall"
+file-types = [{ glob = "test/*.dhall" }]
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "dhall-lsp-server" ]
+formatter = { command = "dhall" , args = ["format"] }
+grammar = "dhall"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-diff"
+scope = "source.diff"
+file-types = [{ glob = "test/*.diff" }, { glob = "test/*.patch" }, { glob = "test/*.rej" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "diff"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-docker-compose"
+scope = "source.yaml.docker-compose"
+roots = ["docker-compose.yaml", "docker-compose.yml"]
+language-servers = [ "docker-compose-langserver", "yaml-language-server" ]
+file-types = [{ glob = "test/docker-compose.yaml" }, { glob = "test/docker-compose.yml" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "docker-compose"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-dockerfile"
+scope = "source.dockerfile"
+roots = ["Dockerfile", "Containerfile"]
+file-types = [{ glob = "test/*.Dockerfile" }, { glob = "test/Dockerfile" }, { glob = "test/Dockerfile.*" }, { glob = "test/*.dockerfile" }, { glob = "test/dockerfile" }, { glob = "test/dockerfile.*" }, { glob = "test/*.Containerfile" }, { glob = "test/Containerfile" }, { glob = "test/Containerfile.*" }, { glob = "test/*.containerfile" }, { glob = "test/containerfile" }, { glob = "test/containerfile.*" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "docker-langserver" ]
+grammar = "dockerfile"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-dot"
+scope = "source.dot"
+file-types = [{ glob = "test/*.dot" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "dot-language-server" ]
+grammar = "dot"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-dtd"
+scope = "source.dtd"
+file-types = [{ glob = "test/*.dtd" }, { glob = "test/*.ent" }]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "dtd"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-dune"
+scope = "source.dune"
+roots = ["dune-project"]
+file-types = [{ glob = "test/dune-project" }, { glob = "test/dune" }]
+comment-token = ";"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "dune"
+auto-format = true
+formatter = { command = "dune", args = ["format-dune-file"] }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-earthfile"
+scope = "source.earthfile"
+roots = ["Earthfile"]
+file-types = [{ glob = "test/Earthfile" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = ["earthlyls"]
+grammar = "earthfile"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-edoc"
+scope = "source.edoc"
+file-types = [{ glob = "test/*.edoc" }, { glob = "test/*.edoc.in" }]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "edoc"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-eex"
+scope = "source.eex"
+file-types = [{ glob = "test/*.eex" }]
+roots = ["mix.exs", "mix.lock"]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "eex"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-ejs"
+scope = "text.html.ejs"
+file-types = [{ glob = "test/*.ejs" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "ejs"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-elisp"
+scope = "source.elisp"
+file-types = [{ glob = "test/*.el" }]
+comment-tokens = [";"]
+grammar = "elisp"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-elixir"
+scope = "source.elixir"
+file-types = [{ glob = "test/*.ex" }, { glob = "test/*.exs" }, { glob = "test/mix.lock" }]
+shebangs = ["elixir"]
+roots = ["mix.exs", "mix.lock"]
+comment-token = "#"
+language-servers = [ "elixir-ls" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "elixir"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-elm"
+scope = "source.elm"
+file-types = [{ glob = "test/*.elm" }]
+roots = ["elm.json"]
+auto-format = true
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+language-servers = [ "elm-language-server" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "elm"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-elvish"
+scope = "source.elvish"
+shebangs = ["elvish"]
+file-types = [{ glob = "test/*.elv" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "elvish" ]
+grammar = "elvish"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-env"
+scope = "source.env"
+file-types = [{ glob = "test/.env" }, { glob = "test/.env.*" }, { glob = "test/.envrc" }, { glob = "test/.envrc.*" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "env"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-erb"
+scope = "text.html.erb"
+file-types = [{ glob = "test/*.erb" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "erb"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-erlang"
+scope = "source.erlang"
+file-types = [{ glob = "test/*.erl" }, { glob = "test/*.hrl" }, { glob = "test/*.app" }, { glob = "test/rebar.config" }, { glob = "test/rebar.lock" }, { glob = "test/*.app.src" }]
+roots = ["rebar.config"]
+shebangs = ["escript"]
+comment-token = "%%"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "erlang-ls", "elp" ]
+grammar = "erlang"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-esdl"
+scope = "source.esdl"
+file-types = [{ glob = "test/*.esdl" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+roots = ["edgedb.toml"]
+grammar = "esdl"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-fidl"
+scope = "source.fidl"
+file-types = [{ glob = "test/*.fidl" }]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "fidl"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-fish"
+scope = "source.fish"
+file-types = [{ glob = "test/*.fish" }]
+shebangs = ["fish"]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+auto-format = true
+formatter = { command = "fish_indent" }
+grammar = "fish"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-forth"
+scope = "source.forth"
+file-types = [{ glob = "test/*.fs" }, { glob = "test/*.forth" }, { glob = "test/*.fth" }, { glob = "test/*.4th" }]
+comment-token = "\\"
+language-servers = [ "forth-lsp" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "forth"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-fortran"
+scope = "source.fortran"
+file-types = [{ glob = "test/*.f" }, { glob = "test/*.for" }, { glob = "test/*.f90" }, { glob = "test/*.f95" }, { glob = "test/*.f03" }]
+roots = ["fpm.toml"]
+comment-token = "!"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "fortls" ]
+grammar = "fortran"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-fsharp"
+scope = "source.fs"
+roots = ["sln", "fsproj"]
+file-types = [{ glob = "test/*.fs" }, { glob = "test/*.fsx" }, { glob = "test/*.fsi" }, { glob = "test/*.fsscript" }]
+comment-token = "//"
+block-comment-tokens = { start = "(*", end = "*)" }
+indent = { unit = "  ", tab-width = 2 }
+auto-format = true
+language-servers = ["fsharp-ls"]
+grammar = "fsharp"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-gas"
+scope = "source.gas"
+file-types = [{ glob = "test/*.s" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "gas"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-gdscript"
+scope = "source.gdscript"
+file-types = [{ glob = "test/*.gd" }]
+shebangs = []
+roots = ["project.godot"]
+auto-format = true
+formatter = { command = "gdformat", args = ["-"] }
+comment-tokens = ["#", "##"]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "gdscript"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-gemini"
+scope = "source.gmi"
+file-types = [{ glob = "test/*.gmi" }]
+grammar = "gemini"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-gherkin"
+scope = "source.feature"
+file-types = [{ glob = "test/*.feature" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "gherkin"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-git-attributes"
+scope = "source.gitattributes"
+file-types = [{ glob = "test/.gitattributes" }]
+comment-token = "#"
+grammar = "git-attributes"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-git-commit"
+scope = "git.commitmsg"
+file-types = [{ glob = "test/COMMIT_EDITMSG" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+rulers = [51, 73]
+text-width = 72
+grammar = "git-commit"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-git-config"
+scope = "source.gitconfig"
+file-types = [{ glob = "test/.gitmodules" }, { glob = "test/.gitconfig" }, { glob = "test/.git/config" }, { glob = "test/.config/git/config" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "git-config"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-git-ignore"
+scope = "source.gitignore"
+file-types = [{ glob = "test/.gitignore_global" }, { glob = "test/git/ignore" }, { glob = "test/.ignore" }, { glob = "test/CODEOWNERS" }, { glob = "test/.config/helix/ignore" }, { glob = "test/.helix/ignore" }, { glob = "test/.*ignore" }]
+comment-token = "#"
+grammar = "git-ignore"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-git-rebase"
+scope = "source.gitrebase"
+file-types = [{ glob = "test/git-rebase-todo" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "git-rebase"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-gjs"
+scope = "source.gjs"
+file-types = [{ glob = "test/*.gjs" }]
+roots = ["package.json", "ember-cli-build.js"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [
+    { except-features = [
+        "format", "diagnostics",
+    ], name = "typescript-language-server" },
+    "vscode-eslint-language-server",
+    "ember-language-server",
+]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "gjs"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-gleam"
+scope = "source.gleam"
+file-types = [{ glob = "test/*.gleam" }]
+roots = ["gleam.toml"]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "gleam" ]
+auto-format = true
+grammar = "gleam"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-glimmer"
+scope = "source.glimmer"
+file-types = [{ glob = "test/{app,addon}/{components,templates}/*.hbs" }]
+block-comment-tokens = { start = "{{!", end = "}}" }
+roots = ["package.json", "ember-cli-build.js"]
+grammar = "glimmer"
+language-servers = ["ember-language-server"]
+formatter = { command = "prettier", args = ['--parser', 'glimmer'] }
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-glsl"
+scope = "source.glsl"
+file-types = [{ glob = "test/*.glsl" }, { glob = "test/*.vert" }, { glob = "test/*.tesc" }, { glob = "test/*.tese" }, { glob = "test/*.geom" }, { glob = "test/*.frag" }, { glob = "test/*.comp" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "glsl_analyzer" ]
+grammar = "glsl"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-gn"
+scope = "source.gn"
+file-types = [{ glob = "test/*.gn" }, { glob = "test/*.gni" }]
+roots = []
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "gn", args = ["format", "--stdin"] }
+grammar = "gn"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-go"
+scope = "source.go"
+file-types = [{ glob = "test/*.go" }]
+roots = ["go.work", "go.mod"]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "gopls", "golangci-lint-lsp" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "go"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-godot-resource"
+scope = "source.tscn"
+file-types = [{ glob = "test/*.tscn" }, { glob = "test/*.tres" }, { glob = "test/*.godot" }, { glob = "test/*.gdextension" }]
+shebangs = []
+roots = ["project.godot"]
+auto-format = false
+comment-token = ";"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "godot-resource"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-gomod"
+scope = "source.gomod"
+file-types = [{ glob = "test/go.mod" }]
+auto-format = true
+comment-token = "//"
+language-servers = [ "gopls" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "gomod"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-gotmpl"
+scope = "source.gotmpl"
+file-types = [{ glob = "test/*.gotmpl" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "gopls" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "gotmpl"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-gowork"
+scope = "source.gowork"
+file-types = [{ glob = "test/go.work" }]
+auto-format = true
+comment-token = "//"
+language-servers = [ "gopls" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "gowork"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-gpr"
+scope = "source.gpr"
+file-types = [{ glob = "test/*.gpr" }]
+roots = ["alire.toml"]
+comment-token = "--"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = ["ada-gpr-language-server"]
+grammar = "gpr"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-graphql"
+scope = "source.graphql"
+file-types = [{ glob = "test/*.gql" }, { glob = "test/*.graphql" }, { glob = "test/*.graphqls" }]
+language-servers = [ "graphql-language-service" ]
+comment-token = "#"
+block-comment-tokens = { start = "\"\"\"", end = "\"\"\"" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "graphql"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-groovy"
+language-id = "groovy"
+scope = "source.groovy"
+file-types = [{ glob = "test/*.gradle" }, { glob = "test/*.groovy" }, { glob = "test/*.jenkinsfile" }, { glob = "test/Jenkinsfile" }, { glob = "test/Jenkinsfile.*" }]
+shebangs = ["groovy"]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "groovy"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-gts"
+scope = "source.gts"
+file-types = [{ glob = "test/*.gts" }]
+roots = ["package.json", "ember-cli-build.js"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [
+    { except-features = [
+        "format", "diagnostics",
+    ], name = "typescript-language-server" },
+    "vscode-eslint-language-server",
+    "ember-language-server",
+]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "gts"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-hare"
+scope = "source.hare"
+file-types = [{ glob = "test/*.ha" }]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "hare"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-haskell"
+scope = "source.haskell"
+file-types = [{ glob = "test/*.hs" }, { glob = "test/*.hs-boot" }, { glob = "test/*.hsc" }]
+roots = ["Setup.hs", "stack.yaml", "cabal.project"]
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+language-servers = [ "haskell-language-server" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "haskell"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-haskell-persistent"
+scope = "source.persistentmodels"
+file-types = [{ glob = "test/*.persistentmodels" }]
+comment-token = "--"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "haskell-persistent"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-hcl"
+scope = "source.hcl"
+language-id = "terraform"
+file-types = [{ glob = "test/*.hcl" }, { glob = "test/*.tf" }, { glob = "test/*.nomad" }]
+comment-token = "#"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "terraform-ls" ]
+auto-format = true
+grammar = "hcl"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-heex"
+scope = "source.heex"
+file-types = [{ glob = "test/*.heex" }]
+roots = ["mix.exs", "mix.lock"]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "elixir-ls" ]
+grammar = "heex"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-helm"
+grammar = "helm"
+scope = "source.helm"
+roots = ["Chart.yaml"]
+comment-token = "#"
+language-servers = ["helm_ls"]
+file-types = [{ glob = "test/templates/*.yaml" }, { glob = "test/templates/*.yml" }, { glob = "test/templates/_*.tpl" }, { glob = "test/templates/NOTES.txt" }]
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-hocon"
+scope = "source.conf"
+file-types = [{ glob = "test/**/src/*/resources/**/*.conf" }, { glob = "test/*scalafmt*.conf" }, { glob = "test/*scalafix*.conf" }]
+comment-token = "#"
+auto-format = true
+indent = { unit = "  ", tab-width = 2 }
+grammar = "hocon"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-hoon"
+scope = "source.hoon"
+file-types = [{ glob = "test/*.hoon" }]
+comment-token = "::"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "hoon"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-hosts"
+scope = "source.hosts"
+file-types = [{ glob = "test/hosts" }]
+comment-token = "#"
+grammar = "hosts"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-html"
+scope = "text.html.basic"
+file-types = [{ glob = "test/*.html" }, { glob = "test/*.htm" }, { glob = "test/*.shtml" }, { glob = "test/*.xhtml" }, { glob = "test/*.xht" }, { glob = "test/*.jsp" }, { glob = "test/*.asp" }, { glob = "test/*.aspx" }, { glob = "test/*.jshtm" }, { glob = "test/*.volt" }, { glob = "test/*.rhtml" }, { glob = "test/*.cshtml" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+language-servers = [ "vscode-html-language-server", "superhtml" ]
+auto-format = true
+indent = { unit = "  ", tab-width = 2 }
+grammar = "html"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-hurl"
+scope = "source.hurl"
+file-types = [{ glob = "test/*.hurl" }]
+comment-token = "#"
+formatter = { command = "hurlfmt" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "hurl"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-hyprlang"
+scope = "source.hyprlang"
+roots = ["hyprland.conf"]
+file-types = [{ glob = "test/hypr/*.conf" }]
+comment-token = "#"
+grammar = "hyprlang"
+language-servers = ["hyprls"]
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-idris"
+scope = "source.idr"
+file-types = [{ glob = "test/*.idr" }]
+shebangs = []
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "idris2-lsp" ]
+grammar = "idris"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-iex"
+scope = "source.iex"
+file-types = [{ glob = "test/*.iex" }]
+comment-token = "#"
+grammar = "iex"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-ini"
+scope = "source.ini"
+file-types = [{ glob = "test/*.ini" }, { glob = "test/*.service" }, { glob = "test/*.automount" }, { glob = "test/*.device" }, { glob = "test/*.mount" }, { glob = "test/*.path" }, { glob = "test/*.service" }, { glob = "test/*.slice" }, { glob = "test/*.socket" }, { glob = "test/*.swap" }, { glob = "test/*.target" }, { glob = "test/*.timer" }, { glob = "test/*.container" }, { glob = "test/*.volume" }, { glob = "test/*.kube" }, { glob = "test/*.network" }, { glob = "test/.editorconfig" }, { glob = "test/.npmrc" }, { glob = "test/npmrc" }, { glob = "test/rclone.conf" }, { glob = "test/*.properties" }, { glob = "test/*.cfg" }, { glob = "test/*.directory" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "ini"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-inko"
+auto-format = true
+scope = "source.inko"
+file-types = [{ glob = "test/*.inko" }]
+roots = ["inko.pkg"]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "inko", args = ["fmt", "-"] }
+grammar = "inko"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-janet"
+scope = "source.janet"
+file-types = [{ glob = "test/*.cgen" }, { glob = "test/*.janet" }, { glob = "test/*.jdn" }]
+shebangs = ["janet"]
+roots = ["project.janet"]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "janet-format" }
+grammar = "janet"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-java"
+scope = "source.java"
+file-types = [{ glob = "test/*.java" }, { glob = "test/*.jav" }, { glob = "test/*.pde" }]
+roots = ["pom.xml", "build.gradle", "build.gradle.kts"]
+language-servers = [ "jdtls" ]
+indent = { unit = "  ", tab-width = 2 }
+comment-tokens = ["//"]
+block-comment-tokens = { start = "/*", end = "*/" }
+grammar = "java"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-javascript"
+scope = "source.js"
+language-id = "javascript"
+file-types = [{ glob = "test/*.js" }, { glob = "test/*.mjs" }, { glob = "test/*.cjs" }, { glob = "test/*.rules" }, { glob = "test/*.es6" }, { glob = "test/*.pac" }, { glob = "test/.node_repl_history" }, { glob = "test/jakefile" }]
+shebangs = ["node"]
+roots = [ "package.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "javascript"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-jinja"
+scope = "text.html.jinja"
+file-types = [{ glob = "test/*.jinja" }, { glob = "test/*.jinja2" }, { glob = "test/*.j2" }]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "jinja"
+block-comment-tokens = { start = "{#", end = "#}" }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-jjdescription"
+scope = "jj.description"
+file-types = [{ glob = "test/*.jjdescription" }]
+comment-token = "JJ:"
+indent = { unit = "  ", tab-width = 2 }
+rulers = [51, 73]
+text-width = 72
+grammar = "jjdescription"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-jq"
+scope = "source.jq"
+file-types = [{ glob = "test/*.jq" }]
+comment-token = "#"
+language-servers = ["jq-lsp"]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "jq"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-jsdoc"
+scope = "source.jsdoc"
+file-types = [{ glob = "test/*.jsdoc" }]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "jsdoc"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-json"
+scope = "source.json"
+file-types = [{ glob = "test/*.json" }, { glob = "test/*.arb" }, { glob = "test/*.ipynb" }, { glob = "test/*.geojson" }, { glob = "test/*.gltf" }, { glob = "test/*.webmanifest" }, { glob = "test/flake.lock" }, { glob = "test/.babelrc" }, { glob = "test/.bowerrc" }, { glob = "test/.jscrc" }, { glob = "test/*.js.map" }, { glob = "test/*.ts.map" }, { glob = "test/*.css.map" }, { glob = "test/.jslintrc" }, { glob = "test/*.jsonl" }, { glob = "test/*.jsonld" }, { glob = "test/.vuerc" }, { glob = "test/composer.lock" }, { glob = "test/.watchmanconfig" }, { glob = "test/*.avsc" }, { glob = "test/*.ldtk" }, { glob = "test/*.ldtkl" }, { glob = "test/.swift-format" }]
+language-servers = [ "vscode-json-language-server" ]
+auto-format = true
+indent = { unit = "  ", tab-width = 2 }
+grammar = "json"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-json5"
+scope = "source.json5"
+file-types = [{ glob = "test/*.json5" }]
+language-servers = []
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "json5"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-jsonc"
+scope = "source.json"
+file-types = [{ glob = "test/*.jsonc" }, { glob = "test/tsconfig.json" }]
+grammar = "jsonc"
+language-servers = [ "vscode-json-language-server" ]
+auto-format = true
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-jsonnet"
+scope = "source.jsonnet"
+file-types = [{ glob = "test/*.libsonnet" }, { glob = "test/*.jsonnet" }]
+roots = ["jsonnetfile.json"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "jsonnet-language-server" ]
+grammar = "jsonnet"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-jsx"
+scope = "source.jsx"
+language-id = "javascriptreact"
+file-types = [{ glob = "test/*.jsx" }]
+roots = [ "package.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "jsx"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-julia"
+scope = "source.julia"
+file-types = [{ glob = "test/*.jl" }]
+shebangs = ["julia"]
+roots = ["Manifest.toml", "Project.toml"]
+comment-token = "#"
+block-comment-tokens = { start = "#=", end = "=#" }
+language-servers = [ "julia" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "julia"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-just"
+scope = "source.just"
+file-types = [{ glob = "test/*.just" }, { glob = "test/justfile" }, { glob = "test/Justfile" }, { glob = "test/.justfile" }, { glob = "test/.Justfile" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "just"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-kdl"
+scope = "source.kdl"
+file-types = [{ glob = "test/*.kdl" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+grammar = "kdl"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-koka"
+scope = "source.koka"
+file-types = [{ glob = "test/*.kk" }]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = ["koka"]
+grammar = "koka"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-kotlin"
+scope = "source.kotlin"
+file-types = [{ glob = "test/*.kt" }, { glob = "test/*.kts" }]
+roots = ["settings.gradle", "settings.gradle.kts"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "kotlin-language-server" ]
+grammar = "kotlin"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-koto"
+scope = "source.koto"
+file-types = [{ glob = "test/*.koto" }]
+comment-token = "#"
+block-comment-tokens = ["#-", "-#"]
+indent = { unit = "  ", tab-width = 2 }
+language-servers = ["koto-ls"]
+grammar = "koto"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-latex"
+scope = "source.tex"
+file-types = [{ glob = "test/*.tex" }, { glob = "test/*.sty" }, { glob = "test/*.cls" }, { glob = "test/*.Rd" }, { glob = "test/*.bbx" }, { glob = "test/*.cbx" }]
+comment-token = "%"
+language-servers = [ "texlab" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "latex"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-ld"
+scope = "source.ld"
+file-types = [{ glob = "test/*.ld" }]
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "ld"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-ldif"
+scope = "source.ldif"
+file-types = [{ glob = "test/*.ldif" }]
+comment-token = "#"
+grammar = "ldif"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-lean"
+scope = "source.lean"
+file-types = [{ glob = "test/*.lean" }]
+roots = [ "lakefile.lean" ]
+comment-token = "--"
+block-comment-tokens = { start = "/-", end = "-/" }
+language-servers = [ "lean" ]
+indent = { unit = "  ", tab-width = 2 }
+rulers = [101]
+text-width = 100
+grammar = "lean"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-ledger"
+scope = "source.ledger"
+file-types = [{ glob = "test/*.ldg" }, { glob = "test/*.ledger" }, { glob = "test/*.journal" }]
+comment-token = ";"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "ledger"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-llvm"
+scope = "source.llvm"
+file-types = [{ glob = "test/*.ll" }]
+comment-token = ";"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "llvm"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-llvm-mir"
+scope = "source.llvm_mir"
+file-types = []
+comment-token = ";"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "llvm-mir"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-llvm-mir-yaml"
+# TODO allow languages to point to their grammar like so:
+#
+#     grammar = "yaml"
+scope = "source.yaml"
+file-types = [{ glob = "test/*.mir" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "llvm-mir-yaml"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-log"
+scope = "source.log"
+file-types = [{ glob = "test/*.log" }]
+grammar = "log"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-lpf"
+comment-token = "#"
+scope = "source.lpf"
+file-types = [{ glob = "test/*.lpf" }]
+grammar = "lpf"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-lua"
+scope = "source.lua"
+file-types = [{ glob = "test/*.lua" }]
+shebangs = ["lua", "luajit"]
+roots = [".luarc.json", ".luacheckrc", ".stylua.toml", "selene.toml", ".git"]
+comment-token = "--"
+block-comment-tokens = { start = "--[[", end = "--]]" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "lua-language-server" ]
+grammar = "lua"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-make"
+scope = "source.make"
+file-types = [{ glob = "test/Makefile" }, { glob = "test/makefile" }, { glob = "test/*.make" }, { glob = "test/*.mk" }, { glob = "test/*.mak" }, { glob = "test/GNUmakefile" }, { glob = "test/OCamlMakefile" }]
+shebangs = ["make", "gmake"]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "make"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-markdoc"
+scope = "text.markdoc"
+block-comment-tokens = { start = "<!--", end = "-->" }
+file-types = [{ glob = "test/*.mdoc" }]
+language-servers = [ "markdoc-ls" ]
+grammar = "markdoc"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-markdown"
+scope = "source.md"
+file-types = [{ glob = "test/*.md" }, { glob = "test/*.livemd" }, { glob = "test/*.markdown" }, { glob = "test/*.mdx" }, { glob = "test/*.mkd" }, { glob = "test/*.mkdn" }, { glob = "test/*.mdwn" }, { glob = "test/*.mdown" }, { glob = "test/*.markdn" }, { glob = "test/*.mdtxt" }, { glob = "test/*.mdtext" }, { glob = "test/*.workbook" }, { glob = "test/PULLREQ_EDITMSG" }]
+roots = [".marksman.toml"]
+language-servers = [ "marksman", "markdown-oxide" ]
+indent = { unit = "  ", tab-width = 2 }
+block-comment-tokens = { start = "<!--", end = "-->" }
+grammar = "markdown"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-markdown.inline"
+scope = "source.markdown.inline"
+file-types = []
+grammar = "markdown.inline"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-matlab"
+scope = "source.m"
+file-types = [{ glob = "test/*.m" }]
+comment-token = "%"
+shebangs = ["octave-cli", "matlab"]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "matlab"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-mermaid"
+scope = "source.mermaid"
+file-types = [{ glob = "test/*.mermaid" }, { glob = "test/*.mmd" }]
+comment-token = "%%"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "mermaid"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-meson"
+scope = "source.meson"
+file-types = [{ glob = "test/meson.build" }, { glob = "test/meson.options" }, { glob = "test/meson_options.txt" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = ["mesonlsp"]
+grammar = "meson"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-mint"
+scope = "source.mint"
+file-types = [{ glob = "test/*.mint" }]
+shebangs = []
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "mint" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "mint"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-mojo"
+scope = "source.mojo"
+roots = ["__init__.mojo"]
+file-types = [{ glob = "test/*.mojo" }, { glob = "test/*.🔥" }]
+language-servers = [ "mojo-lsp" ]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+auto-format = true
+formatter = { command = "magic", args = ["run", "mojo" , "format", "-q", "-"]}
+grammar = "mojo"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-move"
+scope = "source.move"
+roots = ["Move.toml"]
+file-types = [{ glob = "test/*.move" }]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = []
+grammar = "move"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-msbuild"
+scope = "source.msbuild"
+file-types = [{ glob = "test/*.proj" }, { glob = "test/*.vbproj" }, { glob = "test/*.csproj" }, { glob = "test/*.fsproj" }, { glob = "test/*.targets" }, { glob = "test/*.props" }]
+indent = { unit = "  ", tab-width = 2 }
+block-comment-tokens = { start = "<!--", end = "-->" }
+grammar = "msbuild"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-nasm"
+scope = "source.nasm"
+file-types = [{ glob = "test/*.asm" }, { glob = "test/*.S" }, { glob = "test/*.nasm" }]
+comment-token = ";"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "nasm"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-nestedtext"
+scope = "text.nested"
+file-types = [{ glob = "test/*.nt" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "nestedtext"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-nginx"
+scope = "source.nginx"
+file-types = [{ glob = "test/sites-available/*.conf" }, { glob = "test/sites-enabled/*.conf" }, { glob = "test/nginx.conf" }, { glob = "test/conf.d/*.conf" }]
+roots = ["nginx.conf"]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "nginx"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-nickel"
+scope = "source.nickel"
+file-types = [{ glob = "test/*.ncl" }]
+shebangs = []
+comment-token = "#"
+language-servers = [ "nls" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "nickel"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-nim"
+scope = "source.nim"
+file-types = [{ glob = "test/*.nim" }, { glob = "test/*.nims" }, { glob = "test/*.nimble" }]
+shebangs = []
+comment-token = "#"
+block-comment-tokens = { start = "#[", end = "]#" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "nimlangserver" ]
+grammar = "nim"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-nix"
+scope = "source.nix"
+file-types = [{ glob = "test/*.nix" }]
+shebangs = []
+comment-token = "#"
+language-servers = [ "nil", "nixd" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "nix"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-nu"
+scope = "source.nu"
+file-types = [{ glob = "test/*.nu" }, { glob = "test/*.nuon" }]
+shebangs = ["nu"]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "nu-lsp" ]
+grammar = "nu"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-nunjucks"
+scope = "text.html.nunjucks"
+file-types = [{ glob = "test/*.njk" }]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "nunjucks"
+block-comment-tokens = { start = "{#", end = "#}" }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-ocaml"
+scope = "source.ocaml"
+file-types = [{ glob = "test/*.ml" }]
+shebangs = ["ocaml", "ocamlrun", "ocamlscript"]
+block-comment-tokens = { start = "(*", end = "*)" }
+language-servers = [ "ocamllsp" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "ocaml"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-ocaml-interface"
+scope = "source.ocaml.interface"
+file-types = [{ glob = "test/*.mli" }]
+shebangs = []
+block-comment-tokens = { start = "(*", end = "*)" }
+comment-token = "(**)"
+language-servers = [ "ocamllsp" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "ocaml-interface"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-odin"
+auto-format = true
+scope = "source.odin"
+file-types = [{ glob = "test/*.odin" }]
+roots = ["ols.json", "main.odin"]
+language-servers = [ "ols" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "odinfmt", args = [ "-stdin" ] }
+grammar = "odin"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-ohm"
+scope = "source.ohm"
+file-types = [{ glob = "test/*.ohm" }]
+comment-token = "//"
+block-comment-tokens = [
+  { start = "/*", end = "*/" },
+  { start = "/**", end = "*/" },
+]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "ohm"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-opencl"
+scope = "source.cl"
+file-types = [{ glob = "test/*.cl" }]
+comment-token = "//"
+language-servers = [ "clangd" ]
+grammar = "opencl"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-openscad"
+scope = "source.openscad"
+file-types = [{ glob = "test/*.scad" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "openscad-lsp" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "openscad"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-org"
+scope = "source.org"
+file-types = [{ glob = "test/*.org" }]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "org"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-pascal"
+scope = "source.pascal"
+file-types = [{ glob = "test/*.pas" }, { glob = "test/*.pp" }, { glob = "test/*.inc" }, { glob = "test/*.lpr" }, { glob = "test/*.lfm" }]
+comment-token = "//"
+block-comment-tokens = { start = "{", end = "}" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "pasls" ]
+grammar = "pascal"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-passwd"
+scope = "source.passwd"
+file-types = [{ glob = "test/passwd" }]
+grammar = "passwd"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-pem"
+scope = "source.pem"
+file-types = [{ glob = "test/*.pem" }, { glob = "test/*.cert" }, { glob = "test/*.crt" }]
+grammar = "pem"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-perl"
+scope = "source.perl"
+file-types = [{ glob = "test/*.pl" }, { glob = "test/*.pm" }, { glob = "test/*.t" }, { glob = "test/*.psgi" }, { glob = "test/*.raku" }, { glob = "test/*.rakumod" }, { glob = "test/*.rakutest" }, { glob = "test/*.rakudoc" }, { glob = "test/*.nqp" }, { glob = "test/*.p6" }, { glob = "test/*.pl6" }, { glob = "test/*.pm6" }]
+shebangs = ["perl"]
+comment-token = "#"
+language-servers = [ "perlnavigator" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "perl"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-pest"
+scope = "source.pest"
+file-types = [{ glob = "test/*.pest" }]
+comment-tokens = ["//", "///", "//!"]
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = ["pest-language-server"]
+grammar = "pest"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-php"
+scope = "source.php"
+file-types = [{ glob = "test/*.php" }, { glob = "test/*.inc" }, { glob = "test/*.php4" }, { glob = "test/*.php5" }, { glob = "test/*.phtml" }, { glob = "test/*.ctp" }]
+shebangs = ["php"]
+roots = ["composer.json", "index.php"]
+comment-token = "//"
+language-servers = [ "intelephense" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "php"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-php-only"
+scope = "source.php-only"
+file-types = []
+indent = { unit = "  ", tab-width = 2 }
+roots = ["composer.json", "index.php"]
+grammar = "php-only"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-pkgbuild"
+scope = "source.bash"
+file-types = [{ glob = "test/PKGBUILD" }]
+comment-token = "#"
+grammar = "pkgbuild"
+language-servers = [
+  "pkgbuild-language-server",
+  { except-features = [
+    "diagnostics",
+  ], name = "bash-language-server" },
+]
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-pkl"
+scope = "source.pkl"
+file-types = [{ glob = "test/*.pkl" }, { glob = "test/*.pcf" }]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "pkl"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-po"
+scope = "source.po"
+file-types = [{ glob = "test/*.po" }, { glob = "test/*.pot" }]
+comment-token = "#"
+grammar = "po"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-pod"
+scope = "source.pod"
+file-types = [{ glob = "test/*.pod" }]
+grammar = "pod"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-ponylang"
+scope = "source.pony"
+file-types = [{ glob = "test/*.pony" }]
+roots = ["corral.json", "lock.json"]
+indent = { unit = "  ", tab-width = 2 }
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+grammar = "ponylang"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-powershell"
+scope = "source.powershell"
+file-types = [{ glob = "test/*.ps1" }, { glob = "test/*.psm1" }, { glob = "test/*.psd1" }, { glob = "test/*.pscc" }, { glob = "test/*.psrc" }]
+shebangs = [ "pwsh", "powershell" ]
+comment-token = '#'
+block-comment-tokens = { start = "<#", end = "#>" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "powershell"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-prisma"
+scope = "source.prisma"
+file-types = [{ glob = "test/*.prisma" }]
+roots = ["package.json"]
+comment-token = "//"
+language-servers = [ "prisma-language-server" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "prisma"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-prolog"
+scope = "source.prolog"
+file-types = [{ glob = "test/*.pl" }, { glob = "test/*.prolog" }]
+shebangs = ["swipl"]
+comment-token = "%"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "swipl" ]
+grammar = "prolog"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-protobuf"
+scope = "source.proto"
+file-types = [{ glob = "test/*.proto" }]
+language-servers = [ "bufls", "pbkit" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "protobuf"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-prql"
+scope = "source.prql"
+file-types = [{ glob = "test/*.prql" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "prql"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-purescript"
+scope = "source.purescript"
+file-types = [{ glob = "test/*.purs" }]
+roots = ["spago.yaml", "spago.dhall", "bower.json"]
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+language-servers = [ "purescript-language-server" ]
+indent = { unit = "  ", tab-width = 2 }
+auto-format = true
+formatter = { command = "purs-tidy", args = ["format"] }
+grammar = "purescript"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-python"
+scope = "source.python"
+file-types = [{ glob = "test/*.py" }, { glob = "test/*.pyi" }, { glob = "test/*.py3" }, { glob = "test/*.pyw" }, { glob = "test/*.ptl" }, { glob = "test/*.rpy" }, { glob = "test/*.cpy" }, { glob = "test/*.ipy" }, { glob = "test/*.pyt" }, { glob = "test/.python_history" }, { glob = "test/.pythonstartup" }, { glob = "test/.pythonrc" }, { glob = "test/SConstruct" }, { glob = "test/SConscript" }]
+shebangs = ["python", "uv"]
+roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json"]
+comment-token = "#"
+language-servers = ["ruff", "jedi", "pylsp"]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "python"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-qml"
+scope = "source.qml"
+file-types = [{ glob = "test/*.qml" }]
+language-servers = [ "qmlls" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "qml"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-quint"
+scope = "source.quint"
+file-types = [{ glob = "test/*.qnt" }]
+language-servers = ["quint-language-server"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "quint"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-r"
+scope = "source.r"
+file-types = [{ glob = "test/*.r" }, { glob = "test/*.R" }, { glob = "test/.Rprofile" }, { glob = "test/Rprofile.site" }, { glob = "test/.RHistory" }]
+shebangs = ["r", "R"]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "r" ]
+grammar = "r"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-racket"
+scope = "source.racket"
+file-types = [{ glob = "test/*.rkt" }, { glob = "test/*.rktd" }, { glob = "test/*.rktl" }, { glob = "test/*.scrbl" }]
+shebangs = ["racket"]
+comment-token = ";"
+indent = { unit = "  ", tab-width = 2 }
+block-comment-tokens = { start = "#|", end = "|#" }
+language-servers = [ "racket" ]
+grammar = "racket"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-regex"
+scope = "source.regex"
+file-types = [{ glob = "test/*.regex" }, { glob = "test/.Rbuildignore" }]
+grammar = "regex"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-rego"
+scope = "source.rego"
+file-types = [{ glob = "test/*.rego" }]
+auto-format = true
+comment-token = "#"
+language-servers = [ "regols" ]
+grammar = "rego"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-rescript"
+scope = "source.rescript"
+file-types = [{ glob = "test/*.res" }]
+roots = ["bsconfig.json"]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "rescript-language-server" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "rescript"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-rmarkdown"
+scope = "source.rmd"
+language-id = "rmd"
+file-types = [{ glob = "test/*.rmd" }, { glob = "test/*.Rmd" }]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "rmarkdown"
+block-comment-tokens = { start = "<!--", end = "-->" }
+language-servers = [ "r" ]
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-robot"
+scope = "source.robot"
+file-types = [{ glob = "test/*.robot" }, { glob = "test/*.resource" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "robotframework_ls" ]
+grammar = "robot"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-ron"
+scope = "source.ron"
+file-types = [{ glob = "test/*.ron" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "ron"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-rst"
+scope = "source.rst"
+comment-token = ".."
+file-types = [{ glob = "test/*.rst" }]
+grammar = "rst"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-ruby"
+scope = "source.ruby"
+file-types = [{ glob = "test/*.rb" }, { glob = "test/*.rake" }, { glob = "test/*.irb" }, { glob = "test/*.gemspec" }, { glob = "test/*.rabl" }, { glob = "test/*.jbuilder" }, { glob = "test/*.jb" }, { glob = "test/*.podspec" }, { glob = "test/*.rjs" }, { glob = "test/*.rbi" }, { glob = "test/*.rbs" }, { glob = "test/rakefile" }, { glob = "test/gemfile" }, { glob = "test/Rakefile" }, { glob = "test/Gemfile" }, { glob = "test/Podfile" }, { glob = "test/Vagrantfile" }, { glob = "test/Brewfile" }, { glob = "test/Guardfile" }, { glob = "test/Capfile" }, { glob = "test/Cheffile" }, { glob = "test/Hobofile" }, { glob = "test/Appraisals" }, { glob = "test/Rantfile" }, { glob = "test/Berksfile" }, { glob = "test/Berksfile.lock" }, { glob = "test/Thorfile" }, { glob = "test/Puppetfile" }, { glob = "test/Fastfile" }, { glob = "test/Appfile" }, { glob = "test/Deliverfile" }, { glob = "test/Matchfile" }, { glob = "test/Scanfile" }, { glob = "test/Snapfile" }, { glob = "test/Gymfile" }]
+shebangs = ["ruby"]
+comment-token = "#"
+language-servers = [ "solargraph" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "ruby"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-rust"
+scope = "source.rust"
+file-types = [{ glob = "test/*.rs" }]
+roots = ["Cargo.toml", "Cargo.lock"]
+shebangs = ["rust-script", "cargo"]
+auto-format = true
+comment-tokens = ["//", "///", "//!"]
+block-comment-tokens = [
+  { start = "/*", end = "*/" },
+  { start = "/**", end = "*/" },
+  { start = "/*!", end = "*/" },
+]
+language-servers = [ "rust-analyzer" ]
+indent = { unit = "  ", tab-width = 2 }
+persistent-diagnostic-sources = ["rustc", "clippy"]
+grammar = "rust"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-sage"
+scope = "source.sage"
+file-types = [{ glob = "test/*.sage" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "sage"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-scala"
+scope = "source.scala"
+roots = ["build.sbt", "build.sc", "build.gradle", "build.gradle.kts", "pom.xml", ".scala-build"]
+file-types = [{ glob = "test/*.scala" }, { glob = "test/*.sbt" }, { glob = "test/*.sc" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "metals" ]
+grammar = "scala"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-scheme"
+scope = "source.scheme"
+file-types = [{ glob = "test/*.ss" }, { glob = "test/*.scm" }]
+shebangs = ["scheme", "guile", "chicken"]
+comment-token = ";"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "scheme"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-scss"
+scope = "source.scss"
+file-types = [{ glob = "test/*.scss" }]
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "vscode-css-language-server" ]
+auto-format = true
+indent = { unit = "  ", tab-width = 2 }
+grammar = "scss"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-slint"
+scope = "source.slint"
+file-types = [{ glob = "test/*.slint" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "slint-lsp" ]
+grammar = "slint"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-smali"
+scope = "source.smali"
+file-types = [{ glob = "test/*.smali" }]
+comment-token = "#"
+roots = []
+indent = { unit = "  ", tab-width = 2 }
+grammar = "smali"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-smithy"
+scope = "source.smithy"
+file-types = [{ glob = "test/*.smithy" }]
+roots = ["smithy-build.json"]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "cs" ]
+grammar = "smithy"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-sml"
+scope = "source.sml"
+file-types = [{ glob = "test/*.sml" }]
+block-comment-tokens = { start = "(*", end = "*)" }
+grammar = "sml"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-snakemake"
+scope = "source.snakemake"
+roots = ["Snakefile", "config.yaml", "environment.yaml", "workflow/"]
+file-types = [{ glob = "test/*.smk" }, { glob = "test/Snakefile" }]
+comment-tokens = ["#", "##"]
+indent = { unit = "  ", tab-width = 2 }
+language-servers = ["pylsp" ]
+grammar = "snakemake"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-solidity"
+scope = "source.sol"
+file-types = [{ glob = "test/*.sol" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "solc" ]
+grammar = "solidity"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-spade"
+scope = "source.spade"
+roots = ["swim.toml"]
+file-types = [{ glob = "test/*.spade" }]
+comment-tokens = ["//", "///"]
+block-comment-tokens = [
+  { start = "/*", end = "*/" },
+  { start = "/**", end = "*/" },
+]
+language-servers = [ "spade-language-server" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "spade"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-spicedb"
+scope = "source.zed"
+file-types = [{ glob = "test/*.zed" }]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "spicedb"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-sql"
+scope = "source.sql"
+file-types = [{ glob = "test/*.sql" }, { glob = "test/*.dsql" }]
+comment-token = "--"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "sql"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-sshclientconfig"
+scope = "source.sshclientconfig"
+file-types = [{ glob = "test/.ssh/config" }, { glob = "test//etc/ssh/ssh_config" }, { glob = "test/ssh_config.d/*.conf" }]
+comment-token = "#"
+grammar = "sshclientconfig"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-starlark"
+scope = "source.starlark"
+file-types = [{ glob = "test/*.bzl" }, { glob = "test/*.bazel" }, { glob = "test/*.star" }, { glob = "test/BUILD" }, { glob = "test/BUILD.*" }, { glob = "test/Tiltfile" }, { glob = "test/WORKSPACE" }, { glob = "test/WORKSPACE.bzlmod" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "starlark"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-strace"
+scope = "source.strace"
+file-types = [{ glob = "test/*.strace" }]
+grammar = "strace"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-supercollider"
+scope = "source.supercollider"
+file-types = [{ glob = "test/*.scd" }, { glob = "test/*.sc" }, { glob = "test/*.quark" }]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "supercollider"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-svelte"
+scope = "source.svelte"
+file-types = [{ glob = "test/*.svelte" }]
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "svelteserver" ]
+grammar = "svelte"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-sway"
+scope = "source.sway"
+file-types = [{ glob = "test/*.sw" }]
+language-servers = [ "forc" ]
+roots = ["Forc.toml", "Forc.lock"]
+indent = { unit = "  ", tab-width = 2 }
+comment-token = "//"
+grammar = "sway"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-swift"
+scope = "source.swift"
+file-types = [{ glob = "test/*.swift" }, { glob = "test/*.swiftinterface" }]
+roots = [ "Package.swift" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+formatter = { command = "swift-format" }
+language-servers = [ "sourcekit-lsp" ]
+grammar = "swift"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-t32"
+scope = "source.t32"
+file-types = [{ glob = "test/*.cmm" }, { glob = "test/*.t32" }]
+comment-token = ";"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "t32"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-tablegen"
+scope = "source.tablegen"
+file-types = [{ glob = "test/*.td" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "tablegen"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-tact"
+scope = "source.tact"
+file-types = [{ glob = "test/*.tact" }]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "tact"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-task"
+scope = "source.task"
+file-types = [{ glob = "test/*.task" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "task"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-tcl"
+scope = "source.tcl"
+file-types = [{ glob = "test/*.tcl" }]
+shebangs = [ "tclsh", "tclish", "jimsh", "wish" ]
+comment-token = '#'
+grammar = "tcl"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-teal"
+scope = "source.tl"
+file-types = [{ glob = "test/*.tl" }]
+comment-tokens = "--"
+block-comment-tokens = { start = "--[[", end = "--]]" }
+roots = [ "tlconfig.lua" ]
+language-servers = [ "teal-lsp" ]
+grammar = "teal"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-templ"
+scope = "source.templ"
+file-types = [{ glob = "test/*.templ" }]
+roots = ["go.work", "go.mod"]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "templ" ]
+grammar = "templ"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-textproto"
+file-types = [{ glob = "test/*.txtpb" }, { glob = "test/*.textpb" }, { glob = "test/*.textproto" }]
+comment-token = "#"
+scope = "source.textproto"
+indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "txtpbfmt" }
+auto-format = true
+grammar = "textproto"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-tfvars"
+scope = "source.tfvars"
+language-id = "terraform-vars"
+file-types = [{ glob = "test/*.tfvars" }]
+comment-token = "#"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "terraform-ls" ]
+auto-format = true
+grammar = "tfvars"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-thrift"
+scope = "source.thrift"
+file-types = [{ glob = "test/*.thrift" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "thrift"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-todotxt"
+scope = "text.todotxt"
+file-types = [{ glob = "test/*.todo.txt" }, { glob = "test/*.todotxt" }]
+formatter = { command = "sort" }
+auto-format = true
+grammar = "todotxt"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-toml"
+scope = "source.toml"
+file-types = [{ glob = "test/*.toml" }, { glob = "test/pdm.lock" }, { glob = "test/poetry.lock" }, { glob = "test/Cargo.lock" }, { glob = "test/uv.lock" }]
+comment-token = "#"
+language-servers = [ "taplo" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "toml"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-tsq"
+scope = "source.tsq"
+file-types = [{ glob = "test/queries/*.scm" }, { glob = "test/injections.scm" }, { glob = "test/highlights.scm" }, { glob = "test/indents.scm" }, { glob = "test/textobjects.scm" }, { glob = "test/locals.scm" }, { glob = "test/tags.scm" }]
+comment-token = ";"
+language-servers = ["ts_query_ls"]
+grammar = "tsq"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-tsx"
+scope = "source.tsx"
+language-id = "typescriptreact"
+file-types = [{ glob = "test/*.tsx" }]
+roots = [ "package.json", "tsconfig.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "tsx"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-twig"
+scope = "source.twig"
+file-types = [{ glob = "test/*.twig" }]
+block-comment-tokens = { start = "{#", end = "#}" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "twig"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-typescript"
+scope = "source.ts"
+language-id = "typescript"
+file-types = [{ glob = "test/*.ts" }, { glob = "test/*.mts" }, { glob = "test/*.cts" }]
+shebangs = ["deno", "bun", "ts-node"]
+roots = [ "package.json", "tsconfig.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "typescript"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-typespec"
+scope = "source.typespec"
+language-id = "typespec"
+file-types = [{ glob = "test/*.tsp" }]
+roots = ["tspconfig.yaml"]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = ["typespec"]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "typespec"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-typst"
+scope = "source.typst"
+file-types = [{ glob = "test/*.typst" }, { glob = "test/*.typ" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = ["tinymist", "typst-lsp"]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "typst"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-ungrammar"
+scope = "source.ungrammar"
+file-types = [{ glob = "test/*.ungram" }, { glob = "test/*.ungrammar" }]
+comment-token = "//"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "ungrammar"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-unison"
+scope = "source.unison"
+file-types = [{ glob = "test/*.u" }]
+shebangs = []
+auto-format = false
+comment-token = "--"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "unison"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-unknown"
+scope = "text.plain"
+file-types = [{ glob = "*.foo" }, { glob = "*.txt" }]
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-uxntal"
+scope = "source.tal"
+file-types = [{ glob = "test/*.tal" }]
+auto-format = false
+block-comment-tokens = { start = "(", end = ")" }
+grammar = "uxntal"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-v"
+scope = "source.v"
+file-types = [{ glob = "test/*.v" }, { glob = "test/*.vv" }, { glob = "test/*.vsh" }]
+shebangs = ["v run"]
+roots = ["v.mod"]
+language-servers = [ "vlang-language-server" ]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "v"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-vala"
+scope = "source.vala"
+file-types = [{ glob = "test/*.vala" }, { glob = "test/*.vapi" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "vala-language-server" ]
+grammar = "vala"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-vento"
+scope = "text.html.vto"
+file-types = [{ glob = "test/*.vto" }]
+block-comment-tokens = { start = "{{#", end = "#}}" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "vento"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-verilog"
+scope = "source.verilog"
+file-types = [{ glob = "test/*.v" }, { glob = "test/*.vh" }, { glob = "test/*.sv" }, { glob = "test/*.svh" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "svlangserver" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "verilog"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-vhdl"
+scope = "source.vhdl"
+file-types = [{ glob = "test/*.vhd" }, { glob = "test/*.vhdl" }]
+comment-token = "--"
+language-servers = [ "vhdl_ls" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "vhdl"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-vhs"
+scope = "source.vhs"
+file-types = [{ glob = "test/*.tape" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "vhs"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-vue"
+scope = "source.vue"
+file-types = [{ glob = "test/*.vue" }]
+roots = ["package.json"]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "vuels" ]
+grammar = "vue"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-wast"
+scope = "source.wast"
+comment-token = ";;"
+block-comment-tokens = { start = "(;", end = ";)" }
+file-types = [{ glob = "test/*.wast" }]
+grammar = "wast"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-wat"
+scope = "source.wat"
+comment-token = ";;"
+block-comment-tokens = { start = "(;", end = ";)" }
+file-types = [{ glob = "test/*.wat" }]
+grammar = "wat"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-webc"
+scope = "text.html.webc"
+file-types = [{ glob = "test/*.webc" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "webc"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-wgsl"
+scope = "source.wgsl"
+file-types = [{ glob = "test/*.wgsl" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "wgsl_analyzer" ]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "wgsl"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-wit"
+scope = "source.wit"
+file-types = [{ glob = "test/*.wit" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "wit"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-wren"
+scope = "source.wren"
+file-types = [{ glob = "test/*.wren" }]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "wren"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-xit"
+scope = "source.xit"
+file-types = [{ glob = "test/*.xit" }]
+indent = { unit = "  ", tab-width = 2 }
+grammar = "xit"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-xml"
+scope = "source.xml"
+file-types = [{ glob = "test/*.xml" }, { glob = "test/*.mobileconfig" }, { glob = "test/*.plist" }, { glob = "test/*.xib" }, { glob = "test/*.storyboard" }, { glob = "test/*.svg" }, { glob = "test/*.xsd" }, { glob = "test/*.gml" }, { glob = "test/*.xaml" }, { glob = "test/*.gir" }, { glob = "test/*.rss" }, { glob = "test/*.atom" }, { glob = "test/*.opml" }, { glob = "test/*.policy" }, { glob = "test/*.ascx" }, { glob = "test/*.axml" }, { glob = "test/*.axaml" }, { glob = "test/*.bpmn" }, { glob = "test/*.cpt" }, { glob = "test/*.csl" }, { glob = "test/*.csproj.user" }, { glob = "test/*.dita" }, { glob = "test/*.ditamap" }, { glob = "test/*.dtml" }, { glob = "test/*.fxml" }, { glob = "test/*.iml" }, { glob = "test/*.isml" }, { glob = "test/*.jmx" }, { glob = "test/*.launch" }, { glob = "test/*.menu" }, { glob = "test/*.mxml" }, { glob = "test/*.nuspec" }, { glob = "test/*.osc" }, { glob = "test/*.osm" }, { glob = "test/*.pt" }, { glob = "test/*.publishsettings" }, { glob = "test/*.pubxml" }, { glob = "test/*.pubxml.user" }, { glob = "test/*.rbxlx" }, { glob = "test/*.rbxmx" }, { glob = "test/*.rng" }, { glob = "test/*.shproj" }, { glob = "test/*.tld" }, { glob = "test/*.tmx" }, { glob = "test/*.vbproj.user" }, { glob = "test/*.vcxproj" }, { glob = "test/*.vcxproj.filters" }, { glob = "test/*.wsdl" }, { glob = "test/*.wxi" }, { glob = "test/*.wxs" }, { glob = "test/*.xbl" }, { glob = "test/*.xlf" }, { glob = "test/*.xliff" }, { glob = "test/*.xpdl" }, { glob = "test/*.xul" }, { glob = "test/*.xoml" }, { glob = "test/*.musicxml" }, { glob = "test/*.glif" }, { glob = "test/*.ui" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "  ", tab-width = 2 }
+grammar = "xml"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-xtc"
+scope = "source.xtc"
+file-types = [{ glob = "test/*.xtc" }, { glob = "test/*.xpc" }, { glob = "test/*.xoa" }]
+comment-token = ";"
+grammar = "xtc"
+indent = { unit = "  ", tab-width = 2 }
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-yaml"
+scope = "source.yaml"
+file-types = [{ glob = "test/*.yml" }, { glob = "test/*.yaml" }, { glob = "test/.prettierrc" }, { glob = "test/.clangd" }, { glob = "test/.clang-format" }]
+comment-token = "#"
+indent = { unit = "  ", tab-width = 2 }
+language-servers = [ "yaml-language-server", "ansible-language-server" ]
+grammar = "yaml"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-yuck"
+scope = "source.yuck"
+file-types = [{ glob = "test/*.yuck" }]
+comment-token = ";"
+indent = { unit = "  ", tab-width = 2 }
+grammar = "yuck"
+
+[[language]]
+name = "ec2hx-glob-lang-test-*-zig"
+scope = "source.zig"
+file-types = [{ glob = "test/*.zig" }, { glob = "test/*.zon" }]
+roots = ["build.zig"]
+auto-format = true
+comment-tokens = ["//", "///", "//!"]
+language-servers = [ "zls" ]
+indent = { unit = "  ", tab-width = 2 }
+formatter = { command = "zig" , args = ["fmt", "--stdin"] }
+grammar = "zig"
+
+[[language]]
 name = "ec2hx-unknown-lang-*.docx"
 scope = "text.plain"
 file-types = [{ glob = "*.docx" }]
@@ -21,12 +2383,6 @@ file-types = [{ glob = "*.zip" }]
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
-
-[[language]]
-name = "ec2hx-unknown-lang-test-*"
-scope = "text.plain"
-file-types = [{ glob = "test/*" }]
-indent = { unit = "  ", tab-width = 2 }
 
 [[language]]
 name = "markdown"

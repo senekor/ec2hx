@@ -9,9 +9,15 @@ pub static DEFAULT_LANGUAGES: &str = include_str!("../languages.toml");
 pub struct HelixLangCfg {
     name: String,
     indent: Option<(usize, IndentStyle)>,
-    file_types: Option<Vec<String>>,
+    file_types: Option<Vec<FileType>>,
     has_formatter: bool,
     raw_toml: toml_edit::Table,
+}
+
+#[derive(Debug, Clone, PartialEq)]
+enum FileType {
+    Extension(String),
+    Glob(String),
 }
 
 impl PartialEq for HelixLangCfg {
@@ -52,6 +58,14 @@ pub fn ec2hx(
     fallback_globs: Vec<String>,
     rulers: bool,
 ) -> (String, String, BTreeMap<String, String>) {
+    let fallback_globs = {
+        let mut fallback_globs = fallback_globs;
+        if !fallback_globs.contains(&"*.txt".into()) {
+            fallback_globs.push("*.txt".into());
+        }
+        fallback_globs
+    };
+
     let mut editorconfig = EditorConfig::from(input);
 
     // don't care about preample (usually just "root = true")
@@ -102,13 +116,71 @@ pub fn ec2hx(
                 !contains_glob_char(extension)
             };
 
-            let basename = {
-                let b = lang.rsplit_once('/').unwrap_or(("", &lang)).1;
-                match b.rsplit_once("**") {
-                    Some((_, n)) => format!("*{n}"),
-                    None => b.into(),
-                }
+            let (dirname, basename) = lang.rsplit_once('/').unwrap_or(("", &lang));
+
+            // simplify glob: foo/**.ext => foo/**/*.ext
+            let (dirname, basename) = if basename.starts_with("**") {
+                (format!("{dirname}/**"), basename[1..].to_string())
+            } else {
+                (dirname.into(), basename.into())
             };
+
+            if basename == "*" {
+                // This is a path glob that matches all file types
+                // unconditionally. We need to generate a synthetic language
+                // definition for every known language.
+                for supported_lang in languages {
+                    let matched_name = supported_lang.name.to_string();
+                    let mut lang_cfg = lang_cfg.clone();
+
+                    // use potential previous matching section as default values,
+                    // see for example ../test_data/python
+                    if let Some(prev_lang_cfg) = hx_lang_cfg.get(&matched_name) {
+                        lang_cfg.with_defaults_from(prev_lang_cfg);
+                    }
+                    // Use values from default languages.toml as default, for
+                    // configurations where only size or style is specified.
+                    // See for example ../test_data/cockroach where only
+                    // indent_size is set in the global config.
+                    lang_cfg.with_defaults_from_hx_config(supported_lang);
+
+                    if supported_lang.has_formatter {
+                        lang_cfg.trim_trailing_whitespace = Some(false);
+                    }
+
+                    let name = make_synthetic_lang_name("glob", &format!("{lang}-{matched_name}"));
+                    let mut raw_toml = supported_lang.raw_toml.clone();
+                    raw_toml.remove("injection-regex");
+                    raw_toml.insert("grammar", matched_name.clone().into());
+
+                    let file_types = supported_lang
+                        .file_types
+                        .as_ref()
+                        .unwrap()
+                        .iter()
+                        .map(|ft| match ft {
+                            FileType::Extension(s) => format!("{dirname}/*.{s}"),
+                            FileType::Glob(s) => format!("{dirname}/{s}"),
+                        })
+                        .map(FileType::Glob)
+                        .collect();
+
+                    lang_cfg.raw_toml = Some(raw_toml);
+                    lang_cfg.file_types = Some(file_types);
+                    glob_languages.insert(name.clone(), matched_name);
+                    hx_lang_cfg.insert(name, lang_cfg);
+                }
+
+                // one more synthetic language for the fallback globs
+                {
+                    let mut lang_cfg = lang_cfg.clone();
+                    let name = make_synthetic_lang_name("glob", &format!("{lang}-unknown"));
+                    let file_types = fallback_globs.iter().cloned().map(FileType::Glob).collect();
+                    lang_cfg.file_types = Some(file_types);
+                    hx_lang_cfg.insert(name, lang_cfg);
+                }
+                continue 'header_lang_loop;
+            }
 
             // We want to recognize "package.json" as json so we can copy its
             // config. However, we don't want to treat it exactly like json,
@@ -119,21 +191,22 @@ pub fn ec2hx(
             let is_path_glob = !lang_is_stupid_extension_glob && contains_glob_char(&lang)
                 || basename_is_more_than_extension;
 
-            let ft_candidates = [
-                basename
-                    .rsplit_once('.')
-                    .map(|(_, ext)| ext)
-                    .unwrap_or(&basename)
-                    .to_string(),
-                basename,
-            ];
+            let ext = basename
+                .rsplit_once('.')
+                .map(|(_, ext)| ext)
+                .unwrap_or(&basename)
+                .to_string();
 
             for supported_lang in languages {
                 if supported_lang
                     .file_types
+                    .as_ref()
+                    .unwrap()
                     .iter()
-                    .flatten()
-                    .any(|ft| ft_candidates.contains(ft))
+                    .any(|ft| match ft {
+                        FileType::Extension(s) => s == &ext,
+                        FileType::Glob(s) => s == &basename,
+                    })
                 {
                     let matched_name = supported_lang.name.to_string();
                     let mut lang_cfg = lang_cfg.clone();
@@ -159,7 +232,7 @@ pub fn ec2hx(
                         raw_toml.remove("injection-regex");
                         raw_toml.insert("grammar", matched_name.clone().into());
                         lang_cfg.raw_toml = Some(raw_toml);
-                        lang_cfg.file_types = Some(vec![lang]);
+                        lang_cfg.file_types = Some(vec![FileType::Glob(lang)]);
                         glob_languages.insert(name.clone(), matched_name);
                         hx_lang_cfg.insert(name, lang_cfg);
                     } else {
@@ -177,7 +250,7 @@ pub fn ec2hx(
             // An example for this situation: Linux Kconfig files
             let name = make_synthetic_lang_name("unknown", &lang);
             let mut lang_cfg = lang_cfg.clone();
-            lang_cfg.file_types = Some(vec![lang]);
+            lang_cfg.file_types = Some(vec![FileType::Glob(lang)]);
 
             // use potential previous matching section as default values,
             // see for example ../test_data/python
@@ -235,12 +308,7 @@ pub fn ec2hx(
         }
 
         // global fallback plain text language configuration
-        let mut file_types = vec![];
-        file_types.extend(fallback_globs);
-        if !file_types.contains(&"*.txt".into()) {
-            file_types.push("*.txt".into());
-        }
-        global_lang_cfg.file_types = Some(file_types);
+        global_lang_cfg.file_types = Some(fallback_globs.into_iter().map(FileType::Glob).collect());
         hx_global_lang_cfg.insert("ec2hx-global-fallback-plain-text".into(), global_lang_cfg);
 
         ["\
@@ -504,7 +572,7 @@ pub struct LangCfg {
     trim_trailing_whitespace: Option<bool>,
     // not part of editorconfig, used to generate custom configs for languages
     // unsupported by Helix
-    file_types: Option<Vec<String>>,
+    file_types: Option<Vec<FileType>>,
     // not part of editorconfig, used to generate custom configs for synthetic
     // languages used to support arbitrary path globs
     raw_toml: Option<toml_edit::Table>,
@@ -636,10 +704,13 @@ impl LangCfg {
 
             let file_types = file_types
                 .iter()
-                .map(|ft| {
-                    let mut m = toml_edit::InlineTable::new();
-                    m.insert("glob", ft.as_str().into());
-                    m
+                .map(|ft| match ft {
+                    FileType::Extension(s) => toml_edit::Value::from(s),
+                    FileType::Glob(ft) => {
+                        let mut m = toml_edit::InlineTable::new();
+                        m.insert("glob", ft.as_str().into());
+                        toml_edit::Value::from(m)
+                    }
                 })
                 .collect::<toml_edit::Array>()
                 .into();
@@ -745,14 +816,14 @@ fn merge_langs() {
         HelixLangCfg {
             name: "unchanged".into(),
             indent: Some((2, Space)),
-            file_types: Some(vec!["*.unchanged".into()]),
+            file_types: Some(vec![FileType::Glob("*.unchanged".into())]),
             has_formatter: false,
             raw_toml: toml_edit::Table::new(),
         },
         HelixLangCfg {
             name: "partial".into(),
             indent: None,
-            file_types: Some(vec!["*.partial".into()]),
+            file_types: Some(vec![FileType::Glob("*.partial".into())]),
             has_formatter: true,
             raw_toml: toml_edit::Table::new(),
         },
@@ -761,14 +832,17 @@ fn merge_langs() {
         HelixLangCfg {
             name: "partial".into(),
             indent: Some((4, Space)),
-            file_types: Some(vec!["*.partial".into(), "*.partial.local".into()]),
+            file_types: Some(vec![
+                FileType::Glob("*.partial".into()),
+                FileType::Glob("*.partial.local".into()),
+            ]),
             has_formatter: false,
             raw_toml: toml_edit::Table::new(),
         },
         HelixLangCfg {
             name: "new".into(),
             indent: Some((3, Tab)),
-            file_types: Some(vec!["*.new".into()]),
+            file_types: Some(vec![FileType::Glob("*.new".into())]),
             has_formatter: false,
             raw_toml: toml_edit::Table::new(),
         },
@@ -777,21 +851,24 @@ fn merge_langs() {
         HelixLangCfg {
             name: "unchanged".into(),
             indent: Some((2, Space)),
-            file_types: Some(vec!["*.unchanged".into()]),
+            file_types: Some(vec![FileType::Glob("*.unchanged".into())]),
             has_formatter: false,
             raw_toml: toml_edit::Table::new(),
         },
         HelixLangCfg {
             name: "partial".into(),
             indent: Some((4, Space)),
-            file_types: Some(vec!["*.partial".into(), "*.partial.local".into()]),
+            file_types: Some(vec![
+                FileType::Glob("*.partial".into()),
+                FileType::Glob("*.partial.local".into()),
+            ]),
             has_formatter: true,
             raw_toml: toml_edit::Table::new(),
         },
         HelixLangCfg {
             name: "new".into(),
             indent: Some((3, Tab)),
-            file_types: Some(vec!["*.new".into()]),
+            file_types: Some(vec![FileType::Glob("*.new".into())]),
             has_formatter: false,
             raw_toml: toml_edit::Table::new(),
         },

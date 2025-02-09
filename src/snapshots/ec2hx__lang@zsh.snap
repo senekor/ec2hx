@@ -7,6 +7,2368 @@ snapshot_kind: text
 # language-specific settings:
 
 [[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-ada"
+scope = "source.ada"
+file-types = [{ glob = "Functions/VCS_Info/**/*.adb" }, { glob = "Functions/VCS_Info/**/*.ads" }]
+roots = ["alire.toml"]
+comment-token = "--"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["ada-language-server"]
+grammar = "ada"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-adl"
+scope = "source.adl"
+file-types = [{ glob = "Functions/VCS_Info/**/*.adl" }]
+roots = []
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "adl"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-agda"
+scope = "source.agda"
+file-types = [{ glob = "Functions/VCS_Info/**/*.agda" }]
+roots = []
+comment-token = "--"
+# language-servers = [ "als" ]
+# the agda language server is of questionable functionality.
+auto-format = false
+indent = { unit = "    ", tab-width = 4 }
+grammar = "agda"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-amber"
+scope = "source.ab"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ab" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "amber"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-astro"
+scope = "source.astro"
+file-types = [{ glob = "Functions/VCS_Info/**/*.astro" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "astro"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-awk"
+scope = "source.awk"
+file-types = [{ glob = "Functions/VCS_Info/**/*.awk" }, { glob = "Functions/VCS_Info/**/*.gawk" }, { glob = "Functions/VCS_Info/**/*.nawk" }, { glob = "Functions/VCS_Info/**/*.mawk" }]
+comment-token = "#"
+language-servers = [ "awk-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "awk"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-bash"
+scope = "source.bash"
+file-types = [{ glob = "Functions/VCS_Info/**/*.sh" }, { glob = "Functions/VCS_Info/**/*.bash" }, { glob = "Functions/VCS_Info/**/*.ash" }, { glob = "Functions/VCS_Info/**/*.dash" }, { glob = "Functions/VCS_Info/**/*.ksh" }, { glob = "Functions/VCS_Info/**/*.mksh" }, { glob = "Functions/VCS_Info/**/*.zsh" }, { glob = "Functions/VCS_Info/**/*.zshenv" }, { glob = "Functions/VCS_Info/**/*.zlogin" }, { glob = "Functions/VCS_Info/**/*.zlogout" }, { glob = "Functions/VCS_Info/**/*.zprofile" }, { glob = "Functions/VCS_Info/**/*.zshrc" }, { glob = "Functions/VCS_Info/**/*.eclass" }, { glob = "Functions/VCS_Info/**/*.ebuild" }, { glob = "Functions/VCS_Info/**/*.bazelrc" }, { glob = "Functions/VCS_Info/**/*.Renviron" }, { glob = "Functions/VCS_Info/**/*.zsh-theme" }, { glob = "Functions/VCS_Info/**/*.cshrc" }, { glob = "Functions/VCS_Info/**/*.tcshrc" }, { glob = "Functions/VCS_Info/**/*.bashrc_Apple_Terminal" }, { glob = "Functions/VCS_Info/**/*.zshrc_Apple_Terminal" }, { glob = "Functions/VCS_Info/**/i3/config" }, { glob = "Functions/VCS_Info/**/sway/config" }, { glob = "Functions/VCS_Info/**/tmux.conf" }, { glob = "Functions/VCS_Info/**/.bash_history" }, { glob = "Functions/VCS_Info/**/.bash_login" }, { glob = "Functions/VCS_Info/**/.bash_logout" }, { glob = "Functions/VCS_Info/**/.bash_profile" }, { glob = "Functions/VCS_Info/**/.bashrc" }, { glob = "Functions/VCS_Info/**/.profile" }, { glob = "Functions/VCS_Info/**/.zshenv" }, { glob = "Functions/VCS_Info/**/.zlogin" }, { glob = "Functions/VCS_Info/**/.zlogout" }, { glob = "Functions/VCS_Info/**/.zprofile" }, { glob = "Functions/VCS_Info/**/.zshrc" }, { glob = "Functions/VCS_Info/**/.zimrc" }, { glob = "Functions/VCS_Info/**/APKBUILD" }, { glob = "Functions/VCS_Info/**/.bash_aliases" }, { glob = "Functions/VCS_Info/**/.Renviron" }, { glob = "Functions/VCS_Info/**/.xprofile" }, { glob = "Functions/VCS_Info/**/.xsession" }, { glob = "Functions/VCS_Info/**/.xsessionrc" }, { glob = "Functions/VCS_Info/**/.yashrc" }, { glob = "Functions/VCS_Info/**/.yash_profile" }, { glob = "Functions/VCS_Info/**/.hushlogin" }]
+shebangs = ["sh", "bash", "dash", "zsh"]
+comment-token = "#"
+language-servers = [ "bash-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "bash"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-bass"
+scope = "source.bass"
+file-types = [{ glob = "Functions/VCS_Info/**/*.bass" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "bass" ]
+grammar = "bass"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-beancount"
+scope = "source.beancount"
+file-types = [{ glob = "Functions/VCS_Info/**/*.beancount" }, { glob = "Functions/VCS_Info/**/*.bean" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "beancount"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-bibtex"
+scope = "source.bib"
+file-types = [{ glob = "Functions/VCS_Info/**/*.bib" }]
+comment-token = "%"
+language-servers = [ "texlab" ]
+indent = { unit = "    ", tab-width = 4 }
+auto-format = true
+grammar = "bibtex"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-bicep"
+scope = "source.bicep"
+file-types = [{ glob = "Functions/VCS_Info/**/*.bicep" }, { glob = "Functions/VCS_Info/**/*.bicepparam" }]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "bicep-langserver" ]
+grammar = "bicep"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-bitbake"
+language-servers = [ "bitbake-language-server" ]
+scope = "source.bitbake"
+file-types = [{ glob = "Functions/VCS_Info/**/*.bb" }, { glob = "Functions/VCS_Info/**/*.bbappend" }, { glob = "Functions/VCS_Info/**/*.bbclass" }, { glob = "Functions/VCS_Info/**/conf/*.conf" }, { glob = "Functions/VCS_Info/**/conf/*/*.{inc,conf}" }, { glob = "Functions/VCS_Info/**/recipe-*/*/*.inc" }]
+comment-token = "#"
+grammar = "bitbake"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-blade"
+scope = "source.blade.php"
+file-types = [{ glob = "Functions/VCS_Info/**/*.blade.php" }, { glob = "Functions/VCS_Info/**/*.blade" }]
+roots = ["composer.json", "index.php"]
+grammar = "blade"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-blueprint"
+scope = "source.blueprint"
+file-types = [{ glob = "Functions/VCS_Info/**/*.blp" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "blueprint-compiler" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "blueprint"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-c"
+scope = "source.c"
+file-types = [{ glob = "Functions/VCS_Info/**/*.c" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "clangd" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "c"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-c-sharp"
+scope = "source.csharp"
+file-types = [{ glob = "Functions/VCS_Info/**/*.cs" }, { glob = "Functions/VCS_Info/**/*.csx" }, { glob = "Functions/VCS_Info/**/*.cake" }]
+roots = ["sln", "csproj"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "omnisharp" ]
+grammar = "c-sharp"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-cabal"
+scope = "source.cabal"
+file-types = [{ glob = "Functions/VCS_Info/**/*.cabal" }]
+roots = ["cabal.project", "Setup.hs"]
+indent = { unit = "    ", tab-width = 4 }
+comment-token = "--"
+language-servers = [ "haskell-language-server" ]
+grammar = "cabal"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-cairo"
+scope = "source.cairo"
+file-types = [{ glob = "Functions/VCS_Info/**/*.cairo" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+# auto-format = true
+language-servers = [ "cairo-language-server" ]
+grammar = "cairo"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-capnp"
+scope = "source.capnp"
+file-types = [{ glob = "Functions/VCS_Info/**/*.capnp" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "capnp"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-cel"
+scope = "source.cel"
+file-types = [{ glob = "Functions/VCS_Info/**/*.cel" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "cel"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-circom"
+scope            = "source.circom"
+file-types = [{ glob = "Functions/VCS_Info/**/*.circom" }]
+roots            = ["package.json"]
+comment-tokens   = "//"
+indent = { unit = "    ", tab-width = 4 }
+auto-format      = false
+language-servers = ["circom-lsp"]
+grammar = "circom"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-clojure"
+scope = "source.clojure"
+file-types = [{ glob = "Functions/VCS_Info/**/*.clj" }, { glob = "Functions/VCS_Info/**/*.cljs" }, { glob = "Functions/VCS_Info/**/*.cljc" }, { glob = "Functions/VCS_Info/**/*.clje" }, { glob = "Functions/VCS_Info/**/*.cljr" }, { glob = "Functions/VCS_Info/**/*.cljx" }, { glob = "Functions/VCS_Info/**/*.edn" }, { glob = "Functions/VCS_Info/**/*.boot" }]
+roots = ["project.clj", "build.boot", "deps.edn", "shadow-cljs.edn"]
+comment-token = ";"
+language-servers = [ "clojure-lsp" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "clojure"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-cmake"
+scope = "source.cmake"
+file-types = [{ glob = "Functions/VCS_Info/**/*.cmake" }, { glob = "Functions/VCS_Info/**/CMakeLists.txt" }]
+comment-token = "#"
+block-comment-tokens = { start = "#[[", end = "]]" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "cmake-language-server" ]
+grammar = "cmake"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-comment"
+scope = "scope.comment"
+file-types = []
+grammar = "comment"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-common-lisp"
+scope = "source.lisp"
+file-types = [{ glob = "Functions/VCS_Info/**/*.lisp" }, { glob = "Functions/VCS_Info/**/*.asd" }, { glob = "Functions/VCS_Info/**/*.cl" }, { glob = "Functions/VCS_Info/**/*.l" }, { glob = "Functions/VCS_Info/**/*.lsp" }, { glob = "Functions/VCS_Info/**/*.ny" }, { glob = "Functions/VCS_Info/**/*.podsl" }, { glob = "Functions/VCS_Info/**/*.sexp" }]
+shebangs = ["lisp", "sbcl", "ccl", "clisp", "ecl"]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "cl-lsp" ]
+grammar = "common-lisp"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-cpon"
+scope = "scope.cpon"
+file-types = [{ glob = "Functions/VCS_Info/**/*.cpon" }, { glob = "Functions/VCS_Info/**/*.cp" }]
+auto-format = true
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "cpon"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-cpp"
+scope = "source.cpp"
+file-types = [{ glob = "Functions/VCS_Info/**/*.cc" }, { glob = "Functions/VCS_Info/**/*.hh" }, { glob = "Functions/VCS_Info/**/*.c++" }, { glob = "Functions/VCS_Info/**/*.cpp" }, { glob = "Functions/VCS_Info/**/*.hpp" }, { glob = "Functions/VCS_Info/**/*.h" }, { glob = "Functions/VCS_Info/**/*.ipp" }, { glob = "Functions/VCS_Info/**/*.tpp" }, { glob = "Functions/VCS_Info/**/*.cxx" }, { glob = "Functions/VCS_Info/**/*.hxx" }, { glob = "Functions/VCS_Info/**/*.ixx" }, { glob = "Functions/VCS_Info/**/*.txx" }, { glob = "Functions/VCS_Info/**/*.ino" }, { glob = "Functions/VCS_Info/**/*.C" }, { glob = "Functions/VCS_Info/**/*.H" }, { glob = "Functions/VCS_Info/**/*.cu" }, { glob = "Functions/VCS_Info/**/*.cuh" }, { glob = "Functions/VCS_Info/**/*.cppm" }, { glob = "Functions/VCS_Info/**/*.h++" }, { glob = "Functions/VCS_Info/**/*.ii" }, { glob = "Functions/VCS_Info/**/*.inl" }, { glob = "Functions/VCS_Info/**/.hpp.in" }, { glob = "Functions/VCS_Info/**/.h.in" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "clangd" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "cpp"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-crystal"
+scope = "source.cr"
+file-types = [{ glob = "Functions/VCS_Info/**/*.cr" }]
+roots = ["shard.yml", "shard.lock"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "crystal"
+language-servers = [ "crystalline" ]
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-css"
+scope = "source.css"
+file-types = [{ glob = "Functions/VCS_Info/**/*.css" }, { glob = "Functions/VCS_Info/**/*.scss" }]
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "vscode-css-language-server" ]
+auto-format = true
+indent = { unit = "    ", tab-width = 4 }
+grammar = "css"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-cue"
+scope = "source.cue"
+file-types = [{ glob = "Functions/VCS_Info/**/*.cue" }]
+roots = ["cue.mod"]
+auto-format = true
+comment-token = "//"
+language-servers = [ "cuelsp" ]
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "cue", args = ["fmt", "-"] }
+grammar = "cue"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-cylc"
+scope = "source.cylc"
+file-types = [{ glob = "Functions/VCS_Info/**/*.cylc" }, { glob = "Functions/VCS_Info/**/suite.rc" }]
+comment-tokens = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "cylc"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-d"
+scope = "source.d"
+file-types = [{ glob = "Functions/VCS_Info/**/*.d" }, { glob = "Functions/VCS_Info/**/*.dd" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "serve-d" ]
+formatter = { command = "dfmt" }
+grammar = "d"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-dart"
+scope = "source.dart"
+file-types = [{ glob = "Functions/VCS_Info/**/*.dart" }]
+roots = ["pubspec.yaml"]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "dart" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "dart"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-dbml"
+scope = "source.dbml"
+file-types = [{ glob = "Functions/VCS_Info/**/*.dbml" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "dbml"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-devicetree"
+scope = "source.devicetree"
+file-types = [{ glob = "Functions/VCS_Info/**/*.dts" }, { glob = "Functions/VCS_Info/**/*.dtsi" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "devicetree"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-dhall"
+scope = "source.dhall"
+file-types = [{ glob = "Functions/VCS_Info/**/*.dhall" }]
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "dhall-lsp-server" ]
+formatter = { command = "dhall" , args = ["format"] }
+grammar = "dhall"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-diff"
+scope = "source.diff"
+file-types = [{ glob = "Functions/VCS_Info/**/*.diff" }, { glob = "Functions/VCS_Info/**/*.patch" }, { glob = "Functions/VCS_Info/**/*.rej" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "diff"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-docker-compose"
+scope = "source.yaml.docker-compose"
+roots = ["docker-compose.yaml", "docker-compose.yml"]
+language-servers = [ "docker-compose-langserver", "yaml-language-server" ]
+file-types = [{ glob = "Functions/VCS_Info/**/docker-compose.yaml" }, { glob = "Functions/VCS_Info/**/docker-compose.yml" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "docker-compose"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-dockerfile"
+scope = "source.dockerfile"
+roots = ["Dockerfile", "Containerfile"]
+file-types = [{ glob = "Functions/VCS_Info/**/*.Dockerfile" }, { glob = "Functions/VCS_Info/**/Dockerfile" }, { glob = "Functions/VCS_Info/**/Dockerfile.*" }, { glob = "Functions/VCS_Info/**/*.dockerfile" }, { glob = "Functions/VCS_Info/**/dockerfile" }, { glob = "Functions/VCS_Info/**/dockerfile.*" }, { glob = "Functions/VCS_Info/**/*.Containerfile" }, { glob = "Functions/VCS_Info/**/Containerfile" }, { glob = "Functions/VCS_Info/**/Containerfile.*" }, { glob = "Functions/VCS_Info/**/*.containerfile" }, { glob = "Functions/VCS_Info/**/containerfile" }, { glob = "Functions/VCS_Info/**/containerfile.*" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "docker-langserver" ]
+grammar = "dockerfile"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-dot"
+scope = "source.dot"
+file-types = [{ glob = "Functions/VCS_Info/**/*.dot" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "dot-language-server" ]
+grammar = "dot"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-dtd"
+scope = "source.dtd"
+file-types = [{ glob = "Functions/VCS_Info/**/*.dtd" }, { glob = "Functions/VCS_Info/**/*.ent" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "dtd"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-dune"
+scope = "source.dune"
+roots = ["dune-project"]
+file-types = [{ glob = "Functions/VCS_Info/**/dune-project" }, { glob = "Functions/VCS_Info/**/dune" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "dune"
+auto-format = true
+formatter = { command = "dune", args = ["format-dune-file"] }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-earthfile"
+scope = "source.earthfile"
+roots = ["Earthfile"]
+file-types = [{ glob = "Functions/VCS_Info/**/Earthfile" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["earthlyls"]
+grammar = "earthfile"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-edoc"
+scope = "source.edoc"
+file-types = [{ glob = "Functions/VCS_Info/**/*.edoc" }, { glob = "Functions/VCS_Info/**/*.edoc.in" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "edoc"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-eex"
+scope = "source.eex"
+file-types = [{ glob = "Functions/VCS_Info/**/*.eex" }]
+roots = ["mix.exs", "mix.lock"]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "eex"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-ejs"
+scope = "text.html.ejs"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ejs" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ejs"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-elisp"
+scope = "source.elisp"
+file-types = [{ glob = "Functions/VCS_Info/**/*.el" }]
+comment-tokens = [";"]
+grammar = "elisp"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-elixir"
+scope = "source.elixir"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ex" }, { glob = "Functions/VCS_Info/**/*.exs" }, { glob = "Functions/VCS_Info/**/mix.lock" }]
+shebangs = ["elixir"]
+roots = ["mix.exs", "mix.lock"]
+comment-token = "#"
+language-servers = [ "elixir-ls" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "elixir"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-elm"
+scope = "source.elm"
+file-types = [{ glob = "Functions/VCS_Info/**/*.elm" }]
+roots = ["elm.json"]
+auto-format = true
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+language-servers = [ "elm-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "elm"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-elvish"
+scope = "source.elvish"
+shebangs = ["elvish"]
+file-types = [{ glob = "Functions/VCS_Info/**/*.elv" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "elvish" ]
+grammar = "elvish"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-env"
+scope = "source.env"
+file-types = [{ glob = "Functions/VCS_Info/**/.env" }, { glob = "Functions/VCS_Info/**/.env.*" }, { glob = "Functions/VCS_Info/**/.envrc" }, { glob = "Functions/VCS_Info/**/.envrc.*" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "env"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-erb"
+scope = "text.html.erb"
+file-types = [{ glob = "Functions/VCS_Info/**/*.erb" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "erb"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-erlang"
+scope = "source.erlang"
+file-types = [{ glob = "Functions/VCS_Info/**/*.erl" }, { glob = "Functions/VCS_Info/**/*.hrl" }, { glob = "Functions/VCS_Info/**/*.app" }, { glob = "Functions/VCS_Info/**/rebar.config" }, { glob = "Functions/VCS_Info/**/rebar.lock" }, { glob = "Functions/VCS_Info/**/*.app.src" }]
+roots = ["rebar.config"]
+shebangs = ["escript"]
+comment-token = "%%"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "erlang-ls", "elp" ]
+grammar = "erlang"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-esdl"
+scope = "source.esdl"
+file-types = [{ glob = "Functions/VCS_Info/**/*.esdl" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+roots = ["edgedb.toml"]
+grammar = "esdl"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-fidl"
+scope = "source.fidl"
+file-types = [{ glob = "Functions/VCS_Info/**/*.fidl" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "fidl"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-fish"
+scope = "source.fish"
+file-types = [{ glob = "Functions/VCS_Info/**/*.fish" }]
+shebangs = ["fish"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+auto-format = true
+formatter = { command = "fish_indent" }
+grammar = "fish"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-forth"
+scope = "source.forth"
+file-types = [{ glob = "Functions/VCS_Info/**/*.fs" }, { glob = "Functions/VCS_Info/**/*.forth" }, { glob = "Functions/VCS_Info/**/*.fth" }, { glob = "Functions/VCS_Info/**/*.4th" }]
+comment-token = "\\"
+language-servers = [ "forth-lsp" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "forth"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-fortran"
+scope = "source.fortran"
+file-types = [{ glob = "Functions/VCS_Info/**/*.f" }, { glob = "Functions/VCS_Info/**/*.for" }, { glob = "Functions/VCS_Info/**/*.f90" }, { glob = "Functions/VCS_Info/**/*.f95" }, { glob = "Functions/VCS_Info/**/*.f03" }]
+roots = ["fpm.toml"]
+comment-token = "!"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "fortls" ]
+grammar = "fortran"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-fsharp"
+scope = "source.fs"
+roots = ["sln", "fsproj"]
+file-types = [{ glob = "Functions/VCS_Info/**/*.fs" }, { glob = "Functions/VCS_Info/**/*.fsx" }, { glob = "Functions/VCS_Info/**/*.fsi" }, { glob = "Functions/VCS_Info/**/*.fsscript" }]
+comment-token = "//"
+block-comment-tokens = { start = "(*", end = "*)" }
+indent = { unit = "    ", tab-width = 4 }
+auto-format = true
+language-servers = ["fsharp-ls"]
+grammar = "fsharp"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-gas"
+scope = "source.gas"
+file-types = [{ glob = "Functions/VCS_Info/**/*.s" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gas"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-gdscript"
+scope = "source.gdscript"
+file-types = [{ glob = "Functions/VCS_Info/**/*.gd" }]
+shebangs = []
+roots = ["project.godot"]
+auto-format = true
+formatter = { command = "gdformat", args = ["-"] }
+comment-tokens = ["#", "##"]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gdscript"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-gemini"
+scope = "source.gmi"
+file-types = [{ glob = "Functions/VCS_Info/**/*.gmi" }]
+grammar = "gemini"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-gherkin"
+scope = "source.feature"
+file-types = [{ glob = "Functions/VCS_Info/**/*.feature" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gherkin"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-git-attributes"
+scope = "source.gitattributes"
+file-types = [{ glob = "Functions/VCS_Info/**/.gitattributes" }]
+comment-token = "#"
+grammar = "git-attributes"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-git-commit"
+scope = "git.commitmsg"
+file-types = [{ glob = "Functions/VCS_Info/**/COMMIT_EDITMSG" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+rulers = [51, 73]
+text-width = 72
+grammar = "git-commit"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-git-config"
+scope = "source.gitconfig"
+file-types = [{ glob = "Functions/VCS_Info/**/.gitmodules" }, { glob = "Functions/VCS_Info/**/.gitconfig" }, { glob = "Functions/VCS_Info/**/.git/config" }, { glob = "Functions/VCS_Info/**/.config/git/config" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "git-config"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-git-ignore"
+scope = "source.gitignore"
+file-types = [{ glob = "Functions/VCS_Info/**/.gitignore_global" }, { glob = "Functions/VCS_Info/**/git/ignore" }, { glob = "Functions/VCS_Info/**/.ignore" }, { glob = "Functions/VCS_Info/**/CODEOWNERS" }, { glob = "Functions/VCS_Info/**/.config/helix/ignore" }, { glob = "Functions/VCS_Info/**/.helix/ignore" }, { glob = "Functions/VCS_Info/**/.*ignore" }]
+comment-token = "#"
+grammar = "git-ignore"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-git-rebase"
+scope = "source.gitrebase"
+file-types = [{ glob = "Functions/VCS_Info/**/git-rebase-todo" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "git-rebase"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-gjs"
+scope = "source.gjs"
+file-types = [{ glob = "Functions/VCS_Info/**/*.gjs" }]
+roots = ["package.json", "ember-cli-build.js"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [
+    { except-features = [
+        "format", "diagnostics",
+    ], name = "typescript-language-server" },
+    "vscode-eslint-language-server",
+    "ember-language-server",
+]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gjs"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-gleam"
+scope = "source.gleam"
+file-types = [{ glob = "Functions/VCS_Info/**/*.gleam" }]
+roots = ["gleam.toml"]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "gleam" ]
+auto-format = true
+grammar = "gleam"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-glimmer"
+scope = "source.glimmer"
+file-types = [{ glob = "Functions/VCS_Info/**/{app,addon}/{components,templates}/*.hbs" }]
+block-comment-tokens = { start = "{{!", end = "}}" }
+roots = ["package.json", "ember-cli-build.js"]
+grammar = "glimmer"
+language-servers = ["ember-language-server"]
+formatter = { command = "prettier", args = ['--parser', 'glimmer'] }
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-glsl"
+scope = "source.glsl"
+file-types = [{ glob = "Functions/VCS_Info/**/*.glsl" }, { glob = "Functions/VCS_Info/**/*.vert" }, { glob = "Functions/VCS_Info/**/*.tesc" }, { glob = "Functions/VCS_Info/**/*.tese" }, { glob = "Functions/VCS_Info/**/*.geom" }, { glob = "Functions/VCS_Info/**/*.frag" }, { glob = "Functions/VCS_Info/**/*.comp" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "glsl_analyzer" ]
+grammar = "glsl"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-gn"
+scope = "source.gn"
+file-types = [{ glob = "Functions/VCS_Info/**/*.gn" }, { glob = "Functions/VCS_Info/**/*.gni" }]
+roots = []
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "gn", args = ["format", "--stdin"] }
+grammar = "gn"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-go"
+scope = "source.go"
+file-types = [{ glob = "Functions/VCS_Info/**/*.go" }]
+roots = ["go.work", "go.mod"]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "gopls", "golangci-lint-lsp" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "go"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-godot-resource"
+scope = "source.tscn"
+file-types = [{ glob = "Functions/VCS_Info/**/*.tscn" }, { glob = "Functions/VCS_Info/**/*.tres" }, { glob = "Functions/VCS_Info/**/*.godot" }, { glob = "Functions/VCS_Info/**/*.gdextension" }]
+shebangs = []
+roots = ["project.godot"]
+auto-format = false
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "godot-resource"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-gomod"
+scope = "source.gomod"
+file-types = [{ glob = "Functions/VCS_Info/**/go.mod" }]
+auto-format = true
+comment-token = "//"
+language-servers = [ "gopls" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gomod"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-gotmpl"
+scope = "source.gotmpl"
+file-types = [{ glob = "Functions/VCS_Info/**/*.gotmpl" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "gopls" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gotmpl"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-gowork"
+scope = "source.gowork"
+file-types = [{ glob = "Functions/VCS_Info/**/go.work" }]
+auto-format = true
+comment-token = "//"
+language-servers = [ "gopls" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gowork"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-gpr"
+scope = "source.gpr"
+file-types = [{ glob = "Functions/VCS_Info/**/*.gpr" }]
+roots = ["alire.toml"]
+comment-token = "--"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["ada-gpr-language-server"]
+grammar = "gpr"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-graphql"
+scope = "source.graphql"
+file-types = [{ glob = "Functions/VCS_Info/**/*.gql" }, { glob = "Functions/VCS_Info/**/*.graphql" }, { glob = "Functions/VCS_Info/**/*.graphqls" }]
+language-servers = [ "graphql-language-service" ]
+comment-token = "#"
+block-comment-tokens = { start = "\"\"\"", end = "\"\"\"" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "graphql"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-groovy"
+language-id = "groovy"
+scope = "source.groovy"
+file-types = [{ glob = "Functions/VCS_Info/**/*.gradle" }, { glob = "Functions/VCS_Info/**/*.groovy" }, { glob = "Functions/VCS_Info/**/*.jenkinsfile" }, { glob = "Functions/VCS_Info/**/Jenkinsfile" }, { glob = "Functions/VCS_Info/**/Jenkinsfile.*" }]
+shebangs = ["groovy"]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "groovy"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-gts"
+scope = "source.gts"
+file-types = [{ glob = "Functions/VCS_Info/**/*.gts" }]
+roots = ["package.json", "ember-cli-build.js"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [
+    { except-features = [
+        "format", "diagnostics",
+    ], name = "typescript-language-server" },
+    "vscode-eslint-language-server",
+    "ember-language-server",
+]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "gts"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-hare"
+scope = "source.hare"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ha" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "hare"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-haskell"
+scope = "source.haskell"
+file-types = [{ glob = "Functions/VCS_Info/**/*.hs" }, { glob = "Functions/VCS_Info/**/*.hs-boot" }, { glob = "Functions/VCS_Info/**/*.hsc" }]
+roots = ["Setup.hs", "stack.yaml", "cabal.project"]
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+language-servers = [ "haskell-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "haskell"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-haskell-persistent"
+scope = "source.persistentmodels"
+file-types = [{ glob = "Functions/VCS_Info/**/*.persistentmodels" }]
+comment-token = "--"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "haskell-persistent"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-hcl"
+scope = "source.hcl"
+language-id = "terraform"
+file-types = [{ glob = "Functions/VCS_Info/**/*.hcl" }, { glob = "Functions/VCS_Info/**/*.tf" }, { glob = "Functions/VCS_Info/**/*.nomad" }]
+comment-token = "#"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "terraform-ls" ]
+auto-format = true
+grammar = "hcl"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-heex"
+scope = "source.heex"
+file-types = [{ glob = "Functions/VCS_Info/**/*.heex" }]
+roots = ["mix.exs", "mix.lock"]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "elixir-ls" ]
+grammar = "heex"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-helm"
+grammar = "helm"
+scope = "source.helm"
+roots = ["Chart.yaml"]
+comment-token = "#"
+language-servers = ["helm_ls"]
+file-types = [{ glob = "Functions/VCS_Info/**/templates/*.yaml" }, { glob = "Functions/VCS_Info/**/templates/*.yml" }, { glob = "Functions/VCS_Info/**/templates/_*.tpl" }, { glob = "Functions/VCS_Info/**/templates/NOTES.txt" }]
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-hocon"
+scope = "source.conf"
+file-types = [{ glob = "Functions/VCS_Info/**/**/src/*/resources/**/*.conf" }, { glob = "Functions/VCS_Info/**/*scalafmt*.conf" }, { glob = "Functions/VCS_Info/**/*scalafix*.conf" }]
+comment-token = "#"
+auto-format = true
+indent = { unit = "    ", tab-width = 4 }
+grammar = "hocon"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-hoon"
+scope = "source.hoon"
+file-types = [{ glob = "Functions/VCS_Info/**/*.hoon" }]
+comment-token = "::"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "hoon"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-hosts"
+scope = "source.hosts"
+file-types = [{ glob = "Functions/VCS_Info/**/hosts" }]
+comment-token = "#"
+grammar = "hosts"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-html"
+scope = "text.html.basic"
+file-types = [{ glob = "Functions/VCS_Info/**/*.html" }, { glob = "Functions/VCS_Info/**/*.htm" }, { glob = "Functions/VCS_Info/**/*.shtml" }, { glob = "Functions/VCS_Info/**/*.xhtml" }, { glob = "Functions/VCS_Info/**/*.xht" }, { glob = "Functions/VCS_Info/**/*.jsp" }, { glob = "Functions/VCS_Info/**/*.asp" }, { glob = "Functions/VCS_Info/**/*.aspx" }, { glob = "Functions/VCS_Info/**/*.jshtm" }, { glob = "Functions/VCS_Info/**/*.volt" }, { glob = "Functions/VCS_Info/**/*.rhtml" }, { glob = "Functions/VCS_Info/**/*.cshtml" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+language-servers = [ "vscode-html-language-server", "superhtml" ]
+auto-format = true
+indent = { unit = "    ", tab-width = 4 }
+grammar = "html"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-hurl"
+scope = "source.hurl"
+file-types = [{ glob = "Functions/VCS_Info/**/*.hurl" }]
+comment-token = "#"
+formatter = { command = "hurlfmt" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "hurl"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-hyprlang"
+scope = "source.hyprlang"
+roots = ["hyprland.conf"]
+file-types = [{ glob = "Functions/VCS_Info/**/hypr/*.conf" }]
+comment-token = "#"
+grammar = "hyprlang"
+language-servers = ["hyprls"]
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-idris"
+scope = "source.idr"
+file-types = [{ glob = "Functions/VCS_Info/**/*.idr" }]
+shebangs = []
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "idris2-lsp" ]
+grammar = "idris"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-iex"
+scope = "source.iex"
+file-types = [{ glob = "Functions/VCS_Info/**/*.iex" }]
+comment-token = "#"
+grammar = "iex"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-ini"
+scope = "source.ini"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ini" }, { glob = "Functions/VCS_Info/**/*.service" }, { glob = "Functions/VCS_Info/**/*.automount" }, { glob = "Functions/VCS_Info/**/*.device" }, { glob = "Functions/VCS_Info/**/*.mount" }, { glob = "Functions/VCS_Info/**/*.path" }, { glob = "Functions/VCS_Info/**/*.service" }, { glob = "Functions/VCS_Info/**/*.slice" }, { glob = "Functions/VCS_Info/**/*.socket" }, { glob = "Functions/VCS_Info/**/*.swap" }, { glob = "Functions/VCS_Info/**/*.target" }, { glob = "Functions/VCS_Info/**/*.timer" }, { glob = "Functions/VCS_Info/**/*.container" }, { glob = "Functions/VCS_Info/**/*.volume" }, { glob = "Functions/VCS_Info/**/*.kube" }, { glob = "Functions/VCS_Info/**/*.network" }, { glob = "Functions/VCS_Info/**/.editorconfig" }, { glob = "Functions/VCS_Info/**/.npmrc" }, { glob = "Functions/VCS_Info/**/npmrc" }, { glob = "Functions/VCS_Info/**/rclone.conf" }, { glob = "Functions/VCS_Info/**/*.properties" }, { glob = "Functions/VCS_Info/**/*.cfg" }, { glob = "Functions/VCS_Info/**/*.directory" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ini"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-inko"
+auto-format = true
+scope = "source.inko"
+file-types = [{ glob = "Functions/VCS_Info/**/*.inko" }]
+roots = ["inko.pkg"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "inko", args = ["fmt", "-"] }
+grammar = "inko"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-janet"
+scope = "source.janet"
+file-types = [{ glob = "Functions/VCS_Info/**/*.cgen" }, { glob = "Functions/VCS_Info/**/*.janet" }, { glob = "Functions/VCS_Info/**/*.jdn" }]
+shebangs = ["janet"]
+roots = ["project.janet"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "janet-format" }
+grammar = "janet"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-java"
+scope = "source.java"
+file-types = [{ glob = "Functions/VCS_Info/**/*.java" }, { glob = "Functions/VCS_Info/**/*.jav" }, { glob = "Functions/VCS_Info/**/*.pde" }]
+roots = ["pom.xml", "build.gradle", "build.gradle.kts"]
+language-servers = [ "jdtls" ]
+indent = { unit = "    ", tab-width = 4 }
+comment-tokens = ["//"]
+block-comment-tokens = { start = "/*", end = "*/" }
+grammar = "java"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-javascript"
+scope = "source.js"
+language-id = "javascript"
+file-types = [{ glob = "Functions/VCS_Info/**/*.js" }, { glob = "Functions/VCS_Info/**/*.mjs" }, { glob = "Functions/VCS_Info/**/*.cjs" }, { glob = "Functions/VCS_Info/**/*.rules" }, { glob = "Functions/VCS_Info/**/*.es6" }, { glob = "Functions/VCS_Info/**/*.pac" }, { glob = "Functions/VCS_Info/**/.node_repl_history" }, { glob = "Functions/VCS_Info/**/jakefile" }]
+shebangs = ["node"]
+roots = [ "package.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "javascript"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-jinja"
+scope = "text.html.jinja"
+file-types = [{ glob = "Functions/VCS_Info/**/*.jinja" }, { glob = "Functions/VCS_Info/**/*.jinja2" }, { glob = "Functions/VCS_Info/**/*.j2" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "jinja"
+block-comment-tokens = { start = "{#", end = "#}" }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-jjdescription"
+scope = "jj.description"
+file-types = [{ glob = "Functions/VCS_Info/**/*.jjdescription" }]
+comment-token = "JJ:"
+indent = { unit = "    ", tab-width = 4 }
+rulers = [51, 73]
+text-width = 72
+grammar = "jjdescription"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-jq"
+scope = "source.jq"
+file-types = [{ glob = "Functions/VCS_Info/**/*.jq" }]
+comment-token = "#"
+language-servers = ["jq-lsp"]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "jq"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-jsdoc"
+scope = "source.jsdoc"
+file-types = [{ glob = "Functions/VCS_Info/**/*.jsdoc" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "jsdoc"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-json"
+scope = "source.json"
+file-types = [{ glob = "Functions/VCS_Info/**/*.json" }, { glob = "Functions/VCS_Info/**/*.arb" }, { glob = "Functions/VCS_Info/**/*.ipynb" }, { glob = "Functions/VCS_Info/**/*.geojson" }, { glob = "Functions/VCS_Info/**/*.gltf" }, { glob = "Functions/VCS_Info/**/*.webmanifest" }, { glob = "Functions/VCS_Info/**/flake.lock" }, { glob = "Functions/VCS_Info/**/.babelrc" }, { glob = "Functions/VCS_Info/**/.bowerrc" }, { glob = "Functions/VCS_Info/**/.jscrc" }, { glob = "Functions/VCS_Info/**/*.js.map" }, { glob = "Functions/VCS_Info/**/*.ts.map" }, { glob = "Functions/VCS_Info/**/*.css.map" }, { glob = "Functions/VCS_Info/**/.jslintrc" }, { glob = "Functions/VCS_Info/**/*.jsonl" }, { glob = "Functions/VCS_Info/**/*.jsonld" }, { glob = "Functions/VCS_Info/**/.vuerc" }, { glob = "Functions/VCS_Info/**/composer.lock" }, { glob = "Functions/VCS_Info/**/.watchmanconfig" }, { glob = "Functions/VCS_Info/**/*.avsc" }, { glob = "Functions/VCS_Info/**/*.ldtk" }, { glob = "Functions/VCS_Info/**/*.ldtkl" }, { glob = "Functions/VCS_Info/**/.swift-format" }]
+language-servers = [ "vscode-json-language-server" ]
+auto-format = true
+indent = { unit = "    ", tab-width = 4 }
+grammar = "json"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-json5"
+scope = "source.json5"
+file-types = [{ glob = "Functions/VCS_Info/**/*.json5" }]
+language-servers = []
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "json5"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-jsonc"
+scope = "source.json"
+file-types = [{ glob = "Functions/VCS_Info/**/*.jsonc" }, { glob = "Functions/VCS_Info/**/tsconfig.json" }]
+grammar = "jsonc"
+language-servers = [ "vscode-json-language-server" ]
+auto-format = true
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-jsonnet"
+scope = "source.jsonnet"
+file-types = [{ glob = "Functions/VCS_Info/**/*.libsonnet" }, { glob = "Functions/VCS_Info/**/*.jsonnet" }]
+roots = ["jsonnetfile.json"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "jsonnet-language-server" ]
+grammar = "jsonnet"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-jsx"
+scope = "source.jsx"
+language-id = "javascriptreact"
+file-types = [{ glob = "Functions/VCS_Info/**/*.jsx" }]
+roots = [ "package.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "jsx"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-julia"
+scope = "source.julia"
+file-types = [{ glob = "Functions/VCS_Info/**/*.jl" }]
+shebangs = ["julia"]
+roots = ["Manifest.toml", "Project.toml"]
+comment-token = "#"
+block-comment-tokens = { start = "#=", end = "=#" }
+language-servers = [ "julia" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "julia"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-just"
+scope = "source.just"
+file-types = [{ glob = "Functions/VCS_Info/**/*.just" }, { glob = "Functions/VCS_Info/**/justfile" }, { glob = "Functions/VCS_Info/**/Justfile" }, { glob = "Functions/VCS_Info/**/.justfile" }, { glob = "Functions/VCS_Info/**/.Justfile" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "just"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-kdl"
+scope = "source.kdl"
+file-types = [{ glob = "Functions/VCS_Info/**/*.kdl" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+grammar = "kdl"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-koka"
+scope = "source.koka"
+file-types = [{ glob = "Functions/VCS_Info/**/*.kk" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["koka"]
+grammar = "koka"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-kotlin"
+scope = "source.kotlin"
+file-types = [{ glob = "Functions/VCS_Info/**/*.kt" }, { glob = "Functions/VCS_Info/**/*.kts" }]
+roots = ["settings.gradle", "settings.gradle.kts"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "kotlin-language-server" ]
+grammar = "kotlin"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-koto"
+scope = "source.koto"
+file-types = [{ glob = "Functions/VCS_Info/**/*.koto" }]
+comment-token = "#"
+block-comment-tokens = ["#-", "-#"]
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["koto-ls"]
+grammar = "koto"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-latex"
+scope = "source.tex"
+file-types = [{ glob = "Functions/VCS_Info/**/*.tex" }, { glob = "Functions/VCS_Info/**/*.sty" }, { glob = "Functions/VCS_Info/**/*.cls" }, { glob = "Functions/VCS_Info/**/*.Rd" }, { glob = "Functions/VCS_Info/**/*.bbx" }, { glob = "Functions/VCS_Info/**/*.cbx" }]
+comment-token = "%"
+language-servers = [ "texlab" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "latex"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-ld"
+scope = "source.ld"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ld" }]
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ld"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-ldif"
+scope = "source.ldif"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ldif" }]
+comment-token = "#"
+grammar = "ldif"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-lean"
+scope = "source.lean"
+file-types = [{ glob = "Functions/VCS_Info/**/*.lean" }]
+roots = [ "lakefile.lean" ]
+comment-token = "--"
+block-comment-tokens = { start = "/-", end = "-/" }
+language-servers = [ "lean" ]
+indent = { unit = "    ", tab-width = 4 }
+rulers = [101]
+text-width = 100
+grammar = "lean"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-ledger"
+scope = "source.ledger"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ldg" }, { glob = "Functions/VCS_Info/**/*.ledger" }, { glob = "Functions/VCS_Info/**/*.journal" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ledger"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-llvm"
+scope = "source.llvm"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ll" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "llvm"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-llvm-mir"
+scope = "source.llvm_mir"
+file-types = []
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "llvm-mir"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-llvm-mir-yaml"
+# TODO allow languages to point to their grammar like so:
+#
+#     grammar = "yaml"
+scope = "source.yaml"
+file-types = [{ glob = "Functions/VCS_Info/**/*.mir" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "llvm-mir-yaml"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-log"
+scope = "source.log"
+file-types = [{ glob = "Functions/VCS_Info/**/*.log" }]
+grammar = "log"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-lpf"
+comment-token = "#"
+scope = "source.lpf"
+file-types = [{ glob = "Functions/VCS_Info/**/*.lpf" }]
+grammar = "lpf"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-lua"
+scope = "source.lua"
+file-types = [{ glob = "Functions/VCS_Info/**/*.lua" }]
+shebangs = ["lua", "luajit"]
+roots = [".luarc.json", ".luacheckrc", ".stylua.toml", "selene.toml", ".git"]
+comment-token = "--"
+block-comment-tokens = { start = "--[[", end = "--]]" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "lua-language-server" ]
+grammar = "lua"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-make"
+scope = "source.make"
+file-types = [{ glob = "Functions/VCS_Info/**/Makefile" }, { glob = "Functions/VCS_Info/**/makefile" }, { glob = "Functions/VCS_Info/**/*.make" }, { glob = "Functions/VCS_Info/**/*.mk" }, { glob = "Functions/VCS_Info/**/*.mak" }, { glob = "Functions/VCS_Info/**/GNUmakefile" }, { glob = "Functions/VCS_Info/**/OCamlMakefile" }]
+shebangs = ["make", "gmake"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "make"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-markdoc"
+scope = "text.markdoc"
+block-comment-tokens = { start = "<!--", end = "-->" }
+file-types = [{ glob = "Functions/VCS_Info/**/*.mdoc" }]
+language-servers = [ "markdoc-ls" ]
+grammar = "markdoc"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-markdown"
+scope = "source.md"
+file-types = [{ glob = "Functions/VCS_Info/**/*.md" }, { glob = "Functions/VCS_Info/**/*.livemd" }, { glob = "Functions/VCS_Info/**/*.markdown" }, { glob = "Functions/VCS_Info/**/*.mdx" }, { glob = "Functions/VCS_Info/**/*.mkd" }, { glob = "Functions/VCS_Info/**/*.mkdn" }, { glob = "Functions/VCS_Info/**/*.mdwn" }, { glob = "Functions/VCS_Info/**/*.mdown" }, { glob = "Functions/VCS_Info/**/*.markdn" }, { glob = "Functions/VCS_Info/**/*.mdtxt" }, { glob = "Functions/VCS_Info/**/*.mdtext" }, { glob = "Functions/VCS_Info/**/*.workbook" }, { glob = "Functions/VCS_Info/**/PULLREQ_EDITMSG" }]
+roots = [".marksman.toml"]
+language-servers = [ "marksman", "markdown-oxide" ]
+indent = { unit = "    ", tab-width = 4 }
+block-comment-tokens = { start = "<!--", end = "-->" }
+grammar = "markdown"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-markdown.inline"
+scope = "source.markdown.inline"
+file-types = []
+grammar = "markdown.inline"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-matlab"
+scope = "source.m"
+file-types = [{ glob = "Functions/VCS_Info/**/*.m" }]
+comment-token = "%"
+shebangs = ["octave-cli", "matlab"]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "matlab"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-mermaid"
+scope = "source.mermaid"
+file-types = [{ glob = "Functions/VCS_Info/**/*.mermaid" }, { glob = "Functions/VCS_Info/**/*.mmd" }]
+comment-token = "%%"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "mermaid"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-meson"
+scope = "source.meson"
+file-types = [{ glob = "Functions/VCS_Info/**/meson.build" }, { glob = "Functions/VCS_Info/**/meson.options" }, { glob = "Functions/VCS_Info/**/meson_options.txt" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["mesonlsp"]
+grammar = "meson"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-mint"
+scope = "source.mint"
+file-types = [{ glob = "Functions/VCS_Info/**/*.mint" }]
+shebangs = []
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "mint" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "mint"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-mojo"
+scope = "source.mojo"
+roots = ["__init__.mojo"]
+file-types = [{ glob = "Functions/VCS_Info/**/*.mojo" }, { glob = "Functions/VCS_Info/**/*.🔥" }]
+language-servers = [ "mojo-lsp" ]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+auto-format = true
+formatter = { command = "magic", args = ["run", "mojo" , "format", "-q", "-"]}
+grammar = "mojo"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-move"
+scope = "source.move"
+roots = ["Move.toml"]
+file-types = [{ glob = "Functions/VCS_Info/**/*.move" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = []
+grammar = "move"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-msbuild"
+scope = "source.msbuild"
+file-types = [{ glob = "Functions/VCS_Info/**/*.proj" }, { glob = "Functions/VCS_Info/**/*.vbproj" }, { glob = "Functions/VCS_Info/**/*.csproj" }, { glob = "Functions/VCS_Info/**/*.fsproj" }, { glob = "Functions/VCS_Info/**/*.targets" }, { glob = "Functions/VCS_Info/**/*.props" }]
+indent = { unit = "    ", tab-width = 4 }
+block-comment-tokens = { start = "<!--", end = "-->" }
+grammar = "msbuild"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-nasm"
+scope = "source.nasm"
+file-types = [{ glob = "Functions/VCS_Info/**/*.asm" }, { glob = "Functions/VCS_Info/**/*.S" }, { glob = "Functions/VCS_Info/**/*.nasm" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "nasm"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-nestedtext"
+scope = "text.nested"
+file-types = [{ glob = "Functions/VCS_Info/**/*.nt" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "nestedtext"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-nginx"
+scope = "source.nginx"
+file-types = [{ glob = "Functions/VCS_Info/**/sites-available/*.conf" }, { glob = "Functions/VCS_Info/**/sites-enabled/*.conf" }, { glob = "Functions/VCS_Info/**/nginx.conf" }, { glob = "Functions/VCS_Info/**/conf.d/*.conf" }]
+roots = ["nginx.conf"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "nginx"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-nickel"
+scope = "source.nickel"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ncl" }]
+shebangs = []
+comment-token = "#"
+language-servers = [ "nls" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "nickel"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-nim"
+scope = "source.nim"
+file-types = [{ glob = "Functions/VCS_Info/**/*.nim" }, { glob = "Functions/VCS_Info/**/*.nims" }, { glob = "Functions/VCS_Info/**/*.nimble" }]
+shebangs = []
+comment-token = "#"
+block-comment-tokens = { start = "#[", end = "]#" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "nimlangserver" ]
+grammar = "nim"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-nix"
+scope = "source.nix"
+file-types = [{ glob = "Functions/VCS_Info/**/*.nix" }]
+shebangs = []
+comment-token = "#"
+language-servers = [ "nil", "nixd" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "nix"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-nu"
+scope = "source.nu"
+file-types = [{ glob = "Functions/VCS_Info/**/*.nu" }, { glob = "Functions/VCS_Info/**/*.nuon" }]
+shebangs = ["nu"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "nu-lsp" ]
+grammar = "nu"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-nunjucks"
+scope = "text.html.nunjucks"
+file-types = [{ glob = "Functions/VCS_Info/**/*.njk" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "nunjucks"
+block-comment-tokens = { start = "{#", end = "#}" }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-ocaml"
+scope = "source.ocaml"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ml" }]
+shebangs = ["ocaml", "ocamlrun", "ocamlscript"]
+block-comment-tokens = { start = "(*", end = "*)" }
+language-servers = [ "ocamllsp" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ocaml"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-ocaml-interface"
+scope = "source.ocaml.interface"
+file-types = [{ glob = "Functions/VCS_Info/**/*.mli" }]
+shebangs = []
+block-comment-tokens = { start = "(*", end = "*)" }
+comment-token = "(**)"
+language-servers = [ "ocamllsp" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ocaml-interface"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-odin"
+auto-format = true
+scope = "source.odin"
+file-types = [{ glob = "Functions/VCS_Info/**/*.odin" }]
+roots = ["ols.json", "main.odin"]
+language-servers = [ "ols" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "odinfmt", args = [ "-stdin" ] }
+grammar = "odin"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-ohm"
+scope = "source.ohm"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ohm" }]
+comment-token = "//"
+block-comment-tokens = [
+  { start = "/*", end = "*/" },
+  { start = "/**", end = "*/" },
+]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ohm"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-opencl"
+scope = "source.cl"
+file-types = [{ glob = "Functions/VCS_Info/**/*.cl" }]
+comment-token = "//"
+language-servers = [ "clangd" ]
+grammar = "opencl"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-openscad"
+scope = "source.openscad"
+file-types = [{ glob = "Functions/VCS_Info/**/*.scad" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "openscad-lsp" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "openscad"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-org"
+scope = "source.org"
+file-types = [{ glob = "Functions/VCS_Info/**/*.org" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "org"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-pascal"
+scope = "source.pascal"
+file-types = [{ glob = "Functions/VCS_Info/**/*.pas" }, { glob = "Functions/VCS_Info/**/*.pp" }, { glob = "Functions/VCS_Info/**/*.inc" }, { glob = "Functions/VCS_Info/**/*.lpr" }, { glob = "Functions/VCS_Info/**/*.lfm" }]
+comment-token = "//"
+block-comment-tokens = { start = "{", end = "}" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "pasls" ]
+grammar = "pascal"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-passwd"
+scope = "source.passwd"
+file-types = [{ glob = "Functions/VCS_Info/**/passwd" }]
+grammar = "passwd"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-pem"
+scope = "source.pem"
+file-types = [{ glob = "Functions/VCS_Info/**/*.pem" }, { glob = "Functions/VCS_Info/**/*.cert" }, { glob = "Functions/VCS_Info/**/*.crt" }]
+grammar = "pem"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-perl"
+scope = "source.perl"
+file-types = [{ glob = "Functions/VCS_Info/**/*.pl" }, { glob = "Functions/VCS_Info/**/*.pm" }, { glob = "Functions/VCS_Info/**/*.t" }, { glob = "Functions/VCS_Info/**/*.psgi" }, { glob = "Functions/VCS_Info/**/*.raku" }, { glob = "Functions/VCS_Info/**/*.rakumod" }, { glob = "Functions/VCS_Info/**/*.rakutest" }, { glob = "Functions/VCS_Info/**/*.rakudoc" }, { glob = "Functions/VCS_Info/**/*.nqp" }, { glob = "Functions/VCS_Info/**/*.p6" }, { glob = "Functions/VCS_Info/**/*.pl6" }, { glob = "Functions/VCS_Info/**/*.pm6" }]
+shebangs = ["perl"]
+comment-token = "#"
+language-servers = [ "perlnavigator" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "perl"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-pest"
+scope = "source.pest"
+file-types = [{ glob = "Functions/VCS_Info/**/*.pest" }]
+comment-tokens = ["//", "///", "//!"]
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["pest-language-server"]
+grammar = "pest"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-php"
+scope = "source.php"
+file-types = [{ glob = "Functions/VCS_Info/**/*.php" }, { glob = "Functions/VCS_Info/**/*.inc" }, { glob = "Functions/VCS_Info/**/*.php4" }, { glob = "Functions/VCS_Info/**/*.php5" }, { glob = "Functions/VCS_Info/**/*.phtml" }, { glob = "Functions/VCS_Info/**/*.ctp" }]
+shebangs = ["php"]
+roots = ["composer.json", "index.php"]
+comment-token = "//"
+language-servers = [ "intelephense" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "php"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-php-only"
+scope = "source.php-only"
+file-types = []
+indent = { unit = "    ", tab-width = 4 }
+roots = ["composer.json", "index.php"]
+grammar = "php-only"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-pkgbuild"
+scope = "source.bash"
+file-types = [{ glob = "Functions/VCS_Info/**/PKGBUILD" }]
+comment-token = "#"
+grammar = "pkgbuild"
+language-servers = [
+  "pkgbuild-language-server",
+  { except-features = [
+    "diagnostics",
+  ], name = "bash-language-server" },
+]
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-pkl"
+scope = "source.pkl"
+file-types = [{ glob = "Functions/VCS_Info/**/*.pkl" }, { glob = "Functions/VCS_Info/**/*.pcf" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "pkl"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-po"
+scope = "source.po"
+file-types = [{ glob = "Functions/VCS_Info/**/*.po" }, { glob = "Functions/VCS_Info/**/*.pot" }]
+comment-token = "#"
+grammar = "po"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-pod"
+scope = "source.pod"
+file-types = [{ glob = "Functions/VCS_Info/**/*.pod" }]
+grammar = "pod"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-ponylang"
+scope = "source.pony"
+file-types = [{ glob = "Functions/VCS_Info/**/*.pony" }]
+roots = ["corral.json", "lock.json"]
+indent = { unit = "    ", tab-width = 4 }
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+grammar = "ponylang"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-powershell"
+scope = "source.powershell"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ps1" }, { glob = "Functions/VCS_Info/**/*.psm1" }, { glob = "Functions/VCS_Info/**/*.psd1" }, { glob = "Functions/VCS_Info/**/*.pscc" }, { glob = "Functions/VCS_Info/**/*.psrc" }]
+shebangs = [ "pwsh", "powershell" ]
+comment-token = '#'
+block-comment-tokens = { start = "<#", end = "#>" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "powershell"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-prisma"
+scope = "source.prisma"
+file-types = [{ glob = "Functions/VCS_Info/**/*.prisma" }]
+roots = ["package.json"]
+comment-token = "//"
+language-servers = [ "prisma-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "prisma"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-prolog"
+scope = "source.prolog"
+file-types = [{ glob = "Functions/VCS_Info/**/*.pl" }, { glob = "Functions/VCS_Info/**/*.prolog" }]
+shebangs = ["swipl"]
+comment-token = "%"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "swipl" ]
+grammar = "prolog"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-protobuf"
+scope = "source.proto"
+file-types = [{ glob = "Functions/VCS_Info/**/*.proto" }]
+language-servers = [ "bufls", "pbkit" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "protobuf"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-prql"
+scope = "source.prql"
+file-types = [{ glob = "Functions/VCS_Info/**/*.prql" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "prql"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-purescript"
+scope = "source.purescript"
+file-types = [{ glob = "Functions/VCS_Info/**/*.purs" }]
+roots = ["spago.yaml", "spago.dhall", "bower.json"]
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+language-servers = [ "purescript-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+auto-format = true
+formatter = { command = "purs-tidy", args = ["format"] }
+grammar = "purescript"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-python"
+scope = "source.python"
+file-types = [{ glob = "Functions/VCS_Info/**/*.py" }, { glob = "Functions/VCS_Info/**/*.pyi" }, { glob = "Functions/VCS_Info/**/*.py3" }, { glob = "Functions/VCS_Info/**/*.pyw" }, { glob = "Functions/VCS_Info/**/*.ptl" }, { glob = "Functions/VCS_Info/**/*.rpy" }, { glob = "Functions/VCS_Info/**/*.cpy" }, { glob = "Functions/VCS_Info/**/*.ipy" }, { glob = "Functions/VCS_Info/**/*.pyt" }, { glob = "Functions/VCS_Info/**/.python_history" }, { glob = "Functions/VCS_Info/**/.pythonstartup" }, { glob = "Functions/VCS_Info/**/.pythonrc" }, { glob = "Functions/VCS_Info/**/SConstruct" }, { glob = "Functions/VCS_Info/**/SConscript" }]
+shebangs = ["python", "uv"]
+roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json"]
+comment-token = "#"
+language-servers = ["ruff", "jedi", "pylsp"]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "python"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-qml"
+scope = "source.qml"
+file-types = [{ glob = "Functions/VCS_Info/**/*.qml" }]
+language-servers = [ "qmlls" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "qml"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-quint"
+scope = "source.quint"
+file-types = [{ glob = "Functions/VCS_Info/**/*.qnt" }]
+language-servers = ["quint-language-server"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "quint"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-r"
+scope = "source.r"
+file-types = [{ glob = "Functions/VCS_Info/**/*.r" }, { glob = "Functions/VCS_Info/**/*.R" }, { glob = "Functions/VCS_Info/**/.Rprofile" }, { glob = "Functions/VCS_Info/**/Rprofile.site" }, { glob = "Functions/VCS_Info/**/.RHistory" }]
+shebangs = ["r", "R"]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "r" ]
+grammar = "r"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-racket"
+scope = "source.racket"
+file-types = [{ glob = "Functions/VCS_Info/**/*.rkt" }, { glob = "Functions/VCS_Info/**/*.rktd" }, { glob = "Functions/VCS_Info/**/*.rktl" }, { glob = "Functions/VCS_Info/**/*.scrbl" }]
+shebangs = ["racket"]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+block-comment-tokens = { start = "#|", end = "|#" }
+language-servers = [ "racket" ]
+grammar = "racket"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-regex"
+scope = "source.regex"
+file-types = [{ glob = "Functions/VCS_Info/**/*.regex" }, { glob = "Functions/VCS_Info/**/.Rbuildignore" }]
+grammar = "regex"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-rego"
+scope = "source.rego"
+file-types = [{ glob = "Functions/VCS_Info/**/*.rego" }]
+auto-format = true
+comment-token = "#"
+language-servers = [ "regols" ]
+grammar = "rego"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-rescript"
+scope = "source.rescript"
+file-types = [{ glob = "Functions/VCS_Info/**/*.res" }]
+roots = ["bsconfig.json"]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "rescript-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "rescript"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-rmarkdown"
+scope = "source.rmd"
+language-id = "rmd"
+file-types = [{ glob = "Functions/VCS_Info/**/*.rmd" }, { glob = "Functions/VCS_Info/**/*.Rmd" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "rmarkdown"
+block-comment-tokens = { start = "<!--", end = "-->" }
+language-servers = [ "r" ]
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-robot"
+scope = "source.robot"
+file-types = [{ glob = "Functions/VCS_Info/**/*.robot" }, { glob = "Functions/VCS_Info/**/*.resource" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "robotframework_ls" ]
+grammar = "robot"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-ron"
+scope = "source.ron"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ron" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ron"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-rst"
+scope = "source.rst"
+comment-token = ".."
+file-types = [{ glob = "Functions/VCS_Info/**/*.rst" }]
+grammar = "rst"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-ruby"
+scope = "source.ruby"
+file-types = [{ glob = "Functions/VCS_Info/**/*.rb" }, { glob = "Functions/VCS_Info/**/*.rake" }, { glob = "Functions/VCS_Info/**/*.irb" }, { glob = "Functions/VCS_Info/**/*.gemspec" }, { glob = "Functions/VCS_Info/**/*.rabl" }, { glob = "Functions/VCS_Info/**/*.jbuilder" }, { glob = "Functions/VCS_Info/**/*.jb" }, { glob = "Functions/VCS_Info/**/*.podspec" }, { glob = "Functions/VCS_Info/**/*.rjs" }, { glob = "Functions/VCS_Info/**/*.rbi" }, { glob = "Functions/VCS_Info/**/*.rbs" }, { glob = "Functions/VCS_Info/**/rakefile" }, { glob = "Functions/VCS_Info/**/gemfile" }, { glob = "Functions/VCS_Info/**/Rakefile" }, { glob = "Functions/VCS_Info/**/Gemfile" }, { glob = "Functions/VCS_Info/**/Podfile" }, { glob = "Functions/VCS_Info/**/Vagrantfile" }, { glob = "Functions/VCS_Info/**/Brewfile" }, { glob = "Functions/VCS_Info/**/Guardfile" }, { glob = "Functions/VCS_Info/**/Capfile" }, { glob = "Functions/VCS_Info/**/Cheffile" }, { glob = "Functions/VCS_Info/**/Hobofile" }, { glob = "Functions/VCS_Info/**/Appraisals" }, { glob = "Functions/VCS_Info/**/Rantfile" }, { glob = "Functions/VCS_Info/**/Berksfile" }, { glob = "Functions/VCS_Info/**/Berksfile.lock" }, { glob = "Functions/VCS_Info/**/Thorfile" }, { glob = "Functions/VCS_Info/**/Puppetfile" }, { glob = "Functions/VCS_Info/**/Fastfile" }, { glob = "Functions/VCS_Info/**/Appfile" }, { glob = "Functions/VCS_Info/**/Deliverfile" }, { glob = "Functions/VCS_Info/**/Matchfile" }, { glob = "Functions/VCS_Info/**/Scanfile" }, { glob = "Functions/VCS_Info/**/Snapfile" }, { glob = "Functions/VCS_Info/**/Gymfile" }]
+shebangs = ["ruby"]
+comment-token = "#"
+language-servers = [ "solargraph" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ruby"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-rust"
+scope = "source.rust"
+file-types = [{ glob = "Functions/VCS_Info/**/*.rs" }]
+roots = ["Cargo.toml", "Cargo.lock"]
+shebangs = ["rust-script", "cargo"]
+auto-format = true
+comment-tokens = ["//", "///", "//!"]
+block-comment-tokens = [
+  { start = "/*", end = "*/" },
+  { start = "/**", end = "*/" },
+  { start = "/*!", end = "*/" },
+]
+language-servers = [ "rust-analyzer" ]
+indent = { unit = "    ", tab-width = 4 }
+persistent-diagnostic-sources = ["rustc", "clippy"]
+grammar = "rust"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-sage"
+scope = "source.sage"
+file-types = [{ glob = "Functions/VCS_Info/**/*.sage" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "sage"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-scala"
+scope = "source.scala"
+roots = ["build.sbt", "build.sc", "build.gradle", "build.gradle.kts", "pom.xml", ".scala-build"]
+file-types = [{ glob = "Functions/VCS_Info/**/*.scala" }, { glob = "Functions/VCS_Info/**/*.sbt" }, { glob = "Functions/VCS_Info/**/*.sc" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "metals" ]
+grammar = "scala"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-scheme"
+scope = "source.scheme"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ss" }, { glob = "Functions/VCS_Info/**/*.scm" }]
+shebangs = ["scheme", "guile", "chicken"]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "scheme"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-scss"
+scope = "source.scss"
+file-types = [{ glob = "Functions/VCS_Info/**/*.scss" }]
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "vscode-css-language-server" ]
+auto-format = true
+indent = { unit = "    ", tab-width = 4 }
+grammar = "scss"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-slint"
+scope = "source.slint"
+file-types = [{ glob = "Functions/VCS_Info/**/*.slint" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "slint-lsp" ]
+grammar = "slint"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-smali"
+scope = "source.smali"
+file-types = [{ glob = "Functions/VCS_Info/**/*.smali" }]
+comment-token = "#"
+roots = []
+indent = { unit = "    ", tab-width = 4 }
+grammar = "smali"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-smithy"
+scope = "source.smithy"
+file-types = [{ glob = "Functions/VCS_Info/**/*.smithy" }]
+roots = ["smithy-build.json"]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "cs" ]
+grammar = "smithy"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-sml"
+scope = "source.sml"
+file-types = [{ glob = "Functions/VCS_Info/**/*.sml" }]
+block-comment-tokens = { start = "(*", end = "*)" }
+grammar = "sml"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-snakemake"
+scope = "source.snakemake"
+roots = ["Snakefile", "config.yaml", "environment.yaml", "workflow/"]
+file-types = [{ glob = "Functions/VCS_Info/**/*.smk" }, { glob = "Functions/VCS_Info/**/Snakefile" }]
+comment-tokens = ["#", "##"]
+indent = { unit = "    ", tab-width = 4 }
+language-servers = ["pylsp" ]
+grammar = "snakemake"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-solidity"
+scope = "source.sol"
+file-types = [{ glob = "Functions/VCS_Info/**/*.sol" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "solc" ]
+grammar = "solidity"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-spade"
+scope = "source.spade"
+roots = ["swim.toml"]
+file-types = [{ glob = "Functions/VCS_Info/**/*.spade" }]
+comment-tokens = ["//", "///"]
+block-comment-tokens = [
+  { start = "/*", end = "*/" },
+  { start = "/**", end = "*/" },
+]
+language-servers = [ "spade-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "spade"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-spicedb"
+scope = "source.zed"
+file-types = [{ glob = "Functions/VCS_Info/**/*.zed" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "spicedb"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-sql"
+scope = "source.sql"
+file-types = [{ glob = "Functions/VCS_Info/**/*.sql" }, { glob = "Functions/VCS_Info/**/*.dsql" }]
+comment-token = "--"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "sql"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-sshclientconfig"
+scope = "source.sshclientconfig"
+file-types = [{ glob = "Functions/VCS_Info/**/.ssh/config" }, { glob = "Functions/VCS_Info/**//etc/ssh/ssh_config" }, { glob = "Functions/VCS_Info/**/ssh_config.d/*.conf" }]
+comment-token = "#"
+grammar = "sshclientconfig"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-starlark"
+scope = "source.starlark"
+file-types = [{ glob = "Functions/VCS_Info/**/*.bzl" }, { glob = "Functions/VCS_Info/**/*.bazel" }, { glob = "Functions/VCS_Info/**/*.star" }, { glob = "Functions/VCS_Info/**/BUILD" }, { glob = "Functions/VCS_Info/**/BUILD.*" }, { glob = "Functions/VCS_Info/**/Tiltfile" }, { glob = "Functions/VCS_Info/**/WORKSPACE" }, { glob = "Functions/VCS_Info/**/WORKSPACE.bzlmod" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "starlark"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-strace"
+scope = "source.strace"
+file-types = [{ glob = "Functions/VCS_Info/**/*.strace" }]
+grammar = "strace"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-supercollider"
+scope = "source.supercollider"
+file-types = [{ glob = "Functions/VCS_Info/**/*.scd" }, { glob = "Functions/VCS_Info/**/*.sc" }, { glob = "Functions/VCS_Info/**/*.quark" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "supercollider"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-svelte"
+scope = "source.svelte"
+file-types = [{ glob = "Functions/VCS_Info/**/*.svelte" }]
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "svelteserver" ]
+grammar = "svelte"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-sway"
+scope = "source.sway"
+file-types = [{ glob = "Functions/VCS_Info/**/*.sw" }]
+language-servers = [ "forc" ]
+roots = ["Forc.toml", "Forc.lock"]
+indent = { unit = "    ", tab-width = 4 }
+comment-token = "//"
+grammar = "sway"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-swift"
+scope = "source.swift"
+file-types = [{ glob = "Functions/VCS_Info/**/*.swift" }, { glob = "Functions/VCS_Info/**/*.swiftinterface" }]
+roots = [ "Package.swift" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+formatter = { command = "swift-format" }
+language-servers = [ "sourcekit-lsp" ]
+grammar = "swift"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-t32"
+scope = "source.t32"
+file-types = [{ glob = "Functions/VCS_Info/**/*.cmm" }, { glob = "Functions/VCS_Info/**/*.t32" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "t32"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-tablegen"
+scope = "source.tablegen"
+file-types = [{ glob = "Functions/VCS_Info/**/*.td" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "tablegen"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-tact"
+scope = "source.tact"
+file-types = [{ glob = "Functions/VCS_Info/**/*.tact" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "tact"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-task"
+scope = "source.task"
+file-types = [{ glob = "Functions/VCS_Info/**/*.task" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "task"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-tcl"
+scope = "source.tcl"
+file-types = [{ glob = "Functions/VCS_Info/**/*.tcl" }]
+shebangs = [ "tclsh", "tclish", "jimsh", "wish" ]
+comment-token = '#'
+grammar = "tcl"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-teal"
+scope = "source.tl"
+file-types = [{ glob = "Functions/VCS_Info/**/*.tl" }]
+comment-tokens = "--"
+block-comment-tokens = { start = "--[[", end = "--]]" }
+roots = [ "tlconfig.lua" ]
+language-servers = [ "teal-lsp" ]
+grammar = "teal"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-templ"
+scope = "source.templ"
+file-types = [{ glob = "Functions/VCS_Info/**/*.templ" }]
+roots = ["go.work", "go.mod"]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "templ" ]
+grammar = "templ"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-textproto"
+file-types = [{ glob = "Functions/VCS_Info/**/*.txtpb" }, { glob = "Functions/VCS_Info/**/*.textpb" }, { glob = "Functions/VCS_Info/**/*.textproto" }]
+comment-token = "#"
+scope = "source.textproto"
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "txtpbfmt" }
+auto-format = true
+grammar = "textproto"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-tfvars"
+scope = "source.tfvars"
+language-id = "terraform-vars"
+file-types = [{ glob = "Functions/VCS_Info/**/*.tfvars" }]
+comment-token = "#"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "terraform-ls" ]
+auto-format = true
+grammar = "tfvars"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-thrift"
+scope = "source.thrift"
+file-types = [{ glob = "Functions/VCS_Info/**/*.thrift" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "thrift"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-todotxt"
+scope = "text.todotxt"
+file-types = [{ glob = "Functions/VCS_Info/**/*.todo.txt" }, { glob = "Functions/VCS_Info/**/*.todotxt" }]
+formatter = { command = "sort" }
+auto-format = true
+grammar = "todotxt"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-toml"
+scope = "source.toml"
+file-types = [{ glob = "Functions/VCS_Info/**/*.toml" }, { glob = "Functions/VCS_Info/**/pdm.lock" }, { glob = "Functions/VCS_Info/**/poetry.lock" }, { glob = "Functions/VCS_Info/**/Cargo.lock" }, { glob = "Functions/VCS_Info/**/uv.lock" }]
+comment-token = "#"
+language-servers = [ "taplo" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "toml"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-tsq"
+scope = "source.tsq"
+file-types = [{ glob = "Functions/VCS_Info/**/queries/*.scm" }, { glob = "Functions/VCS_Info/**/injections.scm" }, { glob = "Functions/VCS_Info/**/highlights.scm" }, { glob = "Functions/VCS_Info/**/indents.scm" }, { glob = "Functions/VCS_Info/**/textobjects.scm" }, { glob = "Functions/VCS_Info/**/locals.scm" }, { glob = "Functions/VCS_Info/**/tags.scm" }]
+comment-token = ";"
+language-servers = ["ts_query_ls"]
+grammar = "tsq"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-tsx"
+scope = "source.tsx"
+language-id = "typescriptreact"
+file-types = [{ glob = "Functions/VCS_Info/**/*.tsx" }]
+roots = [ "package.json", "tsconfig.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "tsx"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-twig"
+scope = "source.twig"
+file-types = [{ glob = "Functions/VCS_Info/**/*.twig" }]
+block-comment-tokens = { start = "{#", end = "#}" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "twig"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-typescript"
+scope = "source.ts"
+language-id = "typescript"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ts" }, { glob = "Functions/VCS_Info/**/*.mts" }, { glob = "Functions/VCS_Info/**/*.cts" }]
+shebangs = ["deno", "bun", "ts-node"]
+roots = [ "package.json", "tsconfig.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "typescript"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-typespec"
+scope = "source.typespec"
+language-id = "typespec"
+file-types = [{ glob = "Functions/VCS_Info/**/*.tsp" }]
+roots = ["tspconfig.yaml"]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = ["typespec"]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "typespec"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-typst"
+scope = "source.typst"
+file-types = [{ glob = "Functions/VCS_Info/**/*.typst" }, { glob = "Functions/VCS_Info/**/*.typ" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = ["tinymist", "typst-lsp"]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "typst"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-ungrammar"
+scope = "source.ungrammar"
+file-types = [{ glob = "Functions/VCS_Info/**/*.ungram" }, { glob = "Functions/VCS_Info/**/*.ungrammar" }]
+comment-token = "//"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "ungrammar"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-unison"
+scope = "source.unison"
+file-types = [{ glob = "Functions/VCS_Info/**/*.u" }]
+shebangs = []
+auto-format = false
+comment-token = "--"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "unison"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-unknown"
+scope = "text.plain"
+file-types = [{ glob = "*.foo" }, { glob = "*.txt" }]
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-uxntal"
+scope = "source.tal"
+file-types = [{ glob = "Functions/VCS_Info/**/*.tal" }]
+auto-format = false
+block-comment-tokens = { start = "(", end = ")" }
+grammar = "uxntal"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-v"
+scope = "source.v"
+file-types = [{ glob = "Functions/VCS_Info/**/*.v" }, { glob = "Functions/VCS_Info/**/*.vv" }, { glob = "Functions/VCS_Info/**/*.vsh" }]
+shebangs = ["v run"]
+roots = ["v.mod"]
+language-servers = [ "vlang-language-server" ]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "v"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-vala"
+scope = "source.vala"
+file-types = [{ glob = "Functions/VCS_Info/**/*.vala" }, { glob = "Functions/VCS_Info/**/*.vapi" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "vala-language-server" ]
+grammar = "vala"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-vento"
+scope = "text.html.vto"
+file-types = [{ glob = "Functions/VCS_Info/**/*.vto" }]
+block-comment-tokens = { start = "{{#", end = "#}}" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "vento"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-verilog"
+scope = "source.verilog"
+file-types = [{ glob = "Functions/VCS_Info/**/*.v" }, { glob = "Functions/VCS_Info/**/*.vh" }, { glob = "Functions/VCS_Info/**/*.sv" }, { glob = "Functions/VCS_Info/**/*.svh" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "svlangserver" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "verilog"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-vhdl"
+scope = "source.vhdl"
+file-types = [{ glob = "Functions/VCS_Info/**/*.vhd" }, { glob = "Functions/VCS_Info/**/*.vhdl" }]
+comment-token = "--"
+language-servers = [ "vhdl_ls" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "vhdl"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-vhs"
+scope = "source.vhs"
+file-types = [{ glob = "Functions/VCS_Info/**/*.tape" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "vhs"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-vue"
+scope = "source.vue"
+file-types = [{ glob = "Functions/VCS_Info/**/*.vue" }]
+roots = ["package.json"]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "vuels" ]
+grammar = "vue"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-wast"
+scope = "source.wast"
+comment-token = ";;"
+block-comment-tokens = { start = "(;", end = ";)" }
+file-types = [{ glob = "Functions/VCS_Info/**/*.wast" }]
+grammar = "wast"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-wat"
+scope = "source.wat"
+comment-token = ";;"
+block-comment-tokens = { start = "(;", end = ";)" }
+file-types = [{ glob = "Functions/VCS_Info/**/*.wat" }]
+grammar = "wat"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-webc"
+scope = "text.html.webc"
+file-types = [{ glob = "Functions/VCS_Info/**/*.webc" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "webc"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-wgsl"
+scope = "source.wgsl"
+file-types = [{ glob = "Functions/VCS_Info/**/*.wgsl" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "wgsl_analyzer" ]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "wgsl"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-wit"
+scope = "source.wit"
+file-types = [{ glob = "Functions/VCS_Info/**/*.wit" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "wit"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-wren"
+scope = "source.wren"
+file-types = [{ glob = "Functions/VCS_Info/**/*.wren" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "wren"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-xit"
+scope = "source.xit"
+file-types = [{ glob = "Functions/VCS_Info/**/*.xit" }]
+indent = { unit = "    ", tab-width = 4 }
+grammar = "xit"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-xml"
+scope = "source.xml"
+file-types = [{ glob = "Functions/VCS_Info/**/*.xml" }, { glob = "Functions/VCS_Info/**/*.mobileconfig" }, { glob = "Functions/VCS_Info/**/*.plist" }, { glob = "Functions/VCS_Info/**/*.xib" }, { glob = "Functions/VCS_Info/**/*.storyboard" }, { glob = "Functions/VCS_Info/**/*.svg" }, { glob = "Functions/VCS_Info/**/*.xsd" }, { glob = "Functions/VCS_Info/**/*.gml" }, { glob = "Functions/VCS_Info/**/*.xaml" }, { glob = "Functions/VCS_Info/**/*.gir" }, { glob = "Functions/VCS_Info/**/*.rss" }, { glob = "Functions/VCS_Info/**/*.atom" }, { glob = "Functions/VCS_Info/**/*.opml" }, { glob = "Functions/VCS_Info/**/*.policy" }, { glob = "Functions/VCS_Info/**/*.ascx" }, { glob = "Functions/VCS_Info/**/*.axml" }, { glob = "Functions/VCS_Info/**/*.axaml" }, { glob = "Functions/VCS_Info/**/*.bpmn" }, { glob = "Functions/VCS_Info/**/*.cpt" }, { glob = "Functions/VCS_Info/**/*.csl" }, { glob = "Functions/VCS_Info/**/*.csproj.user" }, { glob = "Functions/VCS_Info/**/*.dita" }, { glob = "Functions/VCS_Info/**/*.ditamap" }, { glob = "Functions/VCS_Info/**/*.dtml" }, { glob = "Functions/VCS_Info/**/*.fxml" }, { glob = "Functions/VCS_Info/**/*.iml" }, { glob = "Functions/VCS_Info/**/*.isml" }, { glob = "Functions/VCS_Info/**/*.jmx" }, { glob = "Functions/VCS_Info/**/*.launch" }, { glob = "Functions/VCS_Info/**/*.menu" }, { glob = "Functions/VCS_Info/**/*.mxml" }, { glob = "Functions/VCS_Info/**/*.nuspec" }, { glob = "Functions/VCS_Info/**/*.osc" }, { glob = "Functions/VCS_Info/**/*.osm" }, { glob = "Functions/VCS_Info/**/*.pt" }, { glob = "Functions/VCS_Info/**/*.publishsettings" }, { glob = "Functions/VCS_Info/**/*.pubxml" }, { glob = "Functions/VCS_Info/**/*.pubxml.user" }, { glob = "Functions/VCS_Info/**/*.rbxlx" }, { glob = "Functions/VCS_Info/**/*.rbxmx" }, { glob = "Functions/VCS_Info/**/*.rng" }, { glob = "Functions/VCS_Info/**/*.shproj" }, { glob = "Functions/VCS_Info/**/*.tld" }, { glob = "Functions/VCS_Info/**/*.tmx" }, { glob = "Functions/VCS_Info/**/*.vbproj.user" }, { glob = "Functions/VCS_Info/**/*.vcxproj" }, { glob = "Functions/VCS_Info/**/*.vcxproj.filters" }, { glob = "Functions/VCS_Info/**/*.wsdl" }, { glob = "Functions/VCS_Info/**/*.wxi" }, { glob = "Functions/VCS_Info/**/*.wxs" }, { glob = "Functions/VCS_Info/**/*.xbl" }, { glob = "Functions/VCS_Info/**/*.xlf" }, { glob = "Functions/VCS_Info/**/*.xliff" }, { glob = "Functions/VCS_Info/**/*.xpdl" }, { glob = "Functions/VCS_Info/**/*.xul" }, { glob = "Functions/VCS_Info/**/*.xoml" }, { glob = "Functions/VCS_Info/**/*.musicxml" }, { glob = "Functions/VCS_Info/**/*.glif" }, { glob = "Functions/VCS_Info/**/*.ui" }]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { unit = "    ", tab-width = 4 }
+grammar = "xml"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-xtc"
+scope = "source.xtc"
+file-types = [{ glob = "Functions/VCS_Info/**/*.xtc" }, { glob = "Functions/VCS_Info/**/*.xpc" }, { glob = "Functions/VCS_Info/**/*.xoa" }]
+comment-token = ";"
+grammar = "xtc"
+indent = { unit = "    ", tab-width = 4 }
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-yaml"
+scope = "source.yaml"
+file-types = [{ glob = "Functions/VCS_Info/**/*.yml" }, { glob = "Functions/VCS_Info/**/*.yaml" }, { glob = "Functions/VCS_Info/**/.prettierrc" }, { glob = "Functions/VCS_Info/**/.clangd" }, { glob = "Functions/VCS_Info/**/.clang-format" }]
+comment-token = "#"
+indent = { unit = "    ", tab-width = 4 }
+language-servers = [ "yaml-language-server", "ansible-language-server" ]
+grammar = "yaml"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-yuck"
+scope = "source.yuck"
+file-types = [{ glob = "Functions/VCS_Info/**/*.yuck" }]
+comment-token = ";"
+indent = { unit = "    ", tab-width = 4 }
+grammar = "yuck"
+
+[[language]]
+name = "ec2hx-glob-lang-Functions-VCS_Info-**-*-zig"
+scope = "source.zig"
+file-types = [{ glob = "Functions/VCS_Info/**/*.zig" }, { glob = "Functions/VCS_Info/**/*.zon" }]
+roots = ["build.zig"]
+auto-format = true
+comment-tokens = ["//", "///", "//!"]
+language-servers = [ "zls" ]
+indent = { unit = "    ", tab-width = 4 }
+formatter = { command = "zig" , args = ["fmt", "--stdin"] }
+grammar = "zig"
+
+[[language]]
 name = "ec2hx-unknown-lang-**-Makefile*"
 scope = "text.plain"
 file-types = [{ glob = "**/Makefile*" }]
@@ -29,12 +2391,6 @@ name = "ec2hx-unknown-lang-ChangeLog"
 scope = "text.plain"
 file-types = [{ glob = "ChangeLog" }]
 indent = { unit = "\t", tab-width = 8 }
-
-[[language]]
-name = "ec2hx-unknown-lang-Functions-VCS_Info-**-*"
-scope = "text.plain"
-file-types = [{ glob = "Functions/VCS_Info/**/*" }]
-indent = { unit = "    ", tab-width = 4 }
 
 ################################################################################
 

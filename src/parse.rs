@@ -1,6 +1,6 @@
 use std::str::FromStr;
 
-use crate::{HelixLangCfg, IndentStyle};
+use crate::{FileType, HelixLangCfg, IndentStyle};
 
 pub fn languages(input: &str) -> Vec<HelixLangCfg> {
     let input = toml_edit::DocumentMut::from_str(input).unwrap();
@@ -19,11 +19,18 @@ pub fn languages(input: &str) -> Vec<HelixLangCfg> {
                     .iter()
                     .map(|file_type| {
                         if let Some(file_type) = file_type.as_str() {
-                            file_type.to_string()
+                            FileType::Extension(file_type.to_string())
                         } else {
-                            let file_type =
-                                file_type.as_inline_table().unwrap().get("glob").unwrap();
-                            file_type.as_str().unwrap().to_string()
+                            FileType::Glob(
+                                file_type
+                                    .as_inline_table()
+                                    .unwrap()
+                                    .get("glob")
+                                    .unwrap()
+                                    .as_str()
+                                    .unwrap()
+                                    .to_string(),
+                            )
                         }
                     })
                     .collect()
