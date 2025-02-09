@@ -13,6 +13,7 @@ file-types = [{ glob = "package.json" }]
 language-servers = [ "vscode-json-language-server" ]
 auto-format = true
 indent = { unit = "  ", tab-width = 2 }
+grammar = "json"
 
 [[language]]
 name = "yaml"

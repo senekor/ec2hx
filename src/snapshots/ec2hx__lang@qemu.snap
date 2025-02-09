@@ -25,6 +25,7 @@ roots = ["composer.json", "index.php"]
 comment-token = "//"
 language-servers = [ "intelephense" ]
 indent = { unit = "    ", tab-width = 4 }
+grammar = "php"
 
 [[language]]
 name = "ec2hx-glob-lang-*.h.inc"
@@ -35,6 +36,7 @@ roots = ["composer.json", "index.php"]
 comment-token = "//"
 language-servers = [ "intelephense" ]
 indent = { unit = "    ", tab-width = 4 }
+grammar = "php"
 
 [[language]]
 name = "ec2hx-unknown-lang-Makefile*"

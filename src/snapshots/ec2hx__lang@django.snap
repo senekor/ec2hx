@@ -17,6 +17,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "typescript-language-server" ]
 indent = { unit = "    ", tab-width = 4 }
+grammar = "javascript"
 
 [[language]]
 name = "ec2hx-unknown-lang-**-admin-js-vendor-**"

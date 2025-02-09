@@ -14,6 +14,7 @@ block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "vscode-css-language-server" ]
 auto-format = true
 indent = { unit = "\t", tab-width = 2 }
+grammar = "css"
 text-width = 80
 
 [[language]]
@@ -27,6 +28,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "typescript-language-server" ]
 indent = { unit = "\t", tab-width = 2 }
+grammar = "javascript"
 text-width = 80
 
 [[language]]

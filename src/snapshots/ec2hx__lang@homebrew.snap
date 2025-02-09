@@ -14,6 +14,7 @@ shebangs = ["ruby"]
 comment-token = "#"
 language-servers = [ "solargraph" ]
 indent = { unit = "  ", tab-width = 2 }
+grammar = "ruby"
 
 [[language]]
 name = "ec2hx-glob-lang-Library-Taps-**.rb"
@@ -23,6 +24,7 @@ shebangs = ["ruby"]
 comment-token = "#"
 language-servers = [ "solargraph" ]
 indent = { unit = "  ", tab-width = 2 }
+grammar = "ruby"
 
 [[language]]
 name = "ec2hx-unknown-lang-.simplecov"

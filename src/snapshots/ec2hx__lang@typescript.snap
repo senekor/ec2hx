@@ -15,6 +15,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "typescript-language-server" ]
 indent = { unit = "    ", tab-width = 4 }
+grammar = "javascript"
 
 [[language]]
 name = "ec2hx-glob-lang-scripts-**.json"
@@ -23,6 +24,7 @@ file-types = [{ glob = "scripts/**.json" }]
 language-servers = [ "vscode-json-language-server" ]
 auto-format = true
 indent = { unit = "    ", tab-width = 4 }
+grammar = "json"
 
 [[language]]
 name = "ec2hx-glob-lang-scripts-**.ts"
@@ -35,6 +37,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "typescript-language-server" ]
 indent = { unit = "    ", tab-width = 4 }
+grammar = "typescript"
 
 [[language]]
 name = "ec2hx-unknown-lang-src-**."

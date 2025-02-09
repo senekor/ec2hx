@@ -29,6 +29,7 @@ roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json"]
 comment-token = "#"
 language-servers = ["ruff", "jedi", "pylsp"]
 indent = { unit = "\t", tab-width = 8 }
+grammar = "python"
 
 [[language]]
 name = "ec2hx-glob-lang-tools-power-**.py"
@@ -39,6 +40,7 @@ roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json"]
 comment-token = "#"
 language-servers = ["ruff", "jedi", "pylsp"]
 indent = { unit = "\t", tab-width = 8 }
+grammar = "python"
 
 [[language]]
 name = "ec2hx-glob-lang-tools-rcu-**.py"
@@ -49,6 +51,7 @@ roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json"]
 comment-token = "#"
 language-servers = ["ruff", "jedi", "pylsp"]
 indent = { unit = "\t", tab-width = 8 }
+grammar = "python"
 
 [[language]]
 name = "ec2hx-glob-lang-tools-testing-kunit-**.py"
@@ -59,6 +62,7 @@ roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json"]
 comment-token = "#"
 language-servers = ["ruff", "jedi", "pylsp"]
 indent = { unit = "\t", tab-width = 8 }
+grammar = "python"
 
 [[language]]
 name = "ec2hx-unknown-lang-*.dtso"

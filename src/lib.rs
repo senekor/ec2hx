@@ -51,7 +51,7 @@ pub fn ec2hx(
     input: &str,
     fallback_globs: Vec<String>,
     rulers: bool,
-) -> (String, String) {
+) -> (String, String, BTreeMap<String, String>) {
     let mut editorconfig = EditorConfig::from(input);
 
     // don't care about preample (usually just "root = true")
@@ -61,6 +61,10 @@ pub fn ec2hx(
 
     let mut hx_editor_cfg = HxEditorCfg::default();
     let mut hx_lang_cfg = BTreeMap::<String, LangCfg>::new();
+
+    // This is used to track which actual language these glob languages
+    // belong to, in order to generate textobject queries for them.
+    let mut glob_languages = BTreeMap::new();
 
     for (header, section) in editorconfig.sections {
         let mut lang_cfg = LangCfg::from(&section);
@@ -153,8 +157,10 @@ pub fn ec2hx(
                         let name = make_synthetic_lang_name("glob", &lang);
                         let mut raw_toml = supported_lang.raw_toml.clone();
                         raw_toml.remove("injection-regex");
+                        raw_toml.insert("grammar", matched_name.clone().into());
                         lang_cfg.raw_toml = Some(raw_toml);
                         lang_cfg.file_types = Some(vec![lang]);
+                        glob_languages.insert(name.clone(), matched_name);
                         hx_lang_cfg.insert(name, lang_cfg);
                     } else {
                         hx_lang_cfg.insert(matched_name, lang_cfg);
@@ -268,7 +274,11 @@ pub fn ec2hx(
             .collect()
     };
 
-    (hx_editor_cfg.to_config_toml(rulers), languages_toml)
+    (
+        hx_editor_cfg.to_config_toml(rulers),
+        languages_toml,
+        glob_languages,
+    )
 }
 
 fn make_synthetic_lang_name(kind: &str, lang: &str) -> String {
@@ -709,7 +719,8 @@ fn snapshot() {
     let languages = parse::languages(DEFAULT_LANGUAGES);
     insta::glob!("..", "test_data/*", |path| {
         let input = std::fs::read_to_string(path).unwrap();
-        let (config_toml, languages_toml) = ec2hx(&languages, &input, vec!["*.foo".into()], false);
+        let (config_toml, languages_toml, _) =
+            ec2hx(&languages, &input, vec!["*.foo".into()], false);
         insta::assert_snapshot!("conf", config_toml);
         insta::assert_snapshot!("lang", languages_toml);
     });
@@ -720,11 +731,11 @@ fn rulers() {
     let languages = parse::languages(DEFAULT_LANGUAGES);
     // global rulers
     let input = std::fs::read_to_string("test_data/webpack").unwrap();
-    let (config_toml, _) = ec2hx(&languages, &input, vec![], true);
+    let (config_toml, _, _) = ec2hx(&languages, &input, vec![], true);
     insta::assert_snapshot!("rulers-conf", config_toml);
     // language rulers
     let input = std::fs::read_to_string("test_data/php").unwrap();
-    let (_, languages_toml) = ec2hx(&languages, &input, vec![], true);
+    let (_, languages_toml, _) = ec2hx(&languages, &input, vec![], true);
     insta::assert_snapshot!("rulers-lang", languages_toml);
 }
 
@@ -788,4 +799,19 @@ fn merge_langs() {
     merge_languages(&mut languages, user_languages);
 
     assert_eq!(languages, expected);
+}
+
+#[test]
+fn glob_langs() {
+    let languages = parse::languages(DEFAULT_LANGUAGES);
+    let input = std::fs::read_to_string("test_data/linux").unwrap();
+    let (_, _, glob_languages) = ec2hx(&languages, &input, vec![], false);
+    insta::assert_snapshot!(format!("{glob_languages:#?}"), @r#"
+    {
+        "ec2hx-glob-lang-tools-perf-**.py": "python",
+        "ec2hx-glob-lang-tools-power-**.py": "python",
+        "ec2hx-glob-lang-tools-rcu-**.py": "python",
+        "ec2hx-glob-lang-tools-testing-kunit-**.py": "python",
+    }
+    "#);
 }

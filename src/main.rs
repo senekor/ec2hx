@@ -87,7 +87,7 @@ fn main() {
         ec2hx::merge_languages(&mut languages, user_languages);
     }
 
-    let (config_toml, languages_toml) =
+    let (config_toml, languages_toml, glob_languages) =
         ec2hx::ec2hx(&languages, &editorconfig, args.fallback_globs, args.rulers);
 
     fs::create_dir_all(".helix").expect("failed to create .helix directory");
@@ -97,6 +97,27 @@ fn main() {
     }
     try_write(".helix/languages.toml", languages_toml);
     try_write(".helix/config.toml", config_toml);
+
+    if !glob_languages.is_empty() {
+        let queries_dir = helix_config_dir().join("runtime").join("queries");
+        for (synthetic, actual) in glob_languages {
+            let lang_dir = queries_dir.join(synthetic);
+            if fs::create_dir_all(&lang_dir).is_err() {
+                continue;
+            }
+            let inherits = format!("; inherits: {actual}");
+            let queries = [
+                "highlights.scm",
+                "injections.scm",
+                "locals.scm",
+                "indents.scm",
+                "textobjects.scm",
+            ];
+            for query in queries {
+                let _ = fs::write(lang_dir.join(query), &inherits);
+            }
+        }
+    }
 }
 
 fn fetch_and_cache_languages() -> Option<String> {
