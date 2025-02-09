@@ -23,6 +23,7 @@ file-types = [{ glob = "deps/**/*.adl" }]
 roots = []
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '<' = '>' }
 grammar = "adl"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -35,6 +36,7 @@ roots = []
 comment-token = "--"
 auto-format = true
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', "'" = "'", '{' = '}', '(' = ')', '[' = ']' }
 grammar = "agda"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 
@@ -104,6 +106,16 @@ comment-token = "%"
 language-servers = [ "texlab" ]
 indent = { unit = "  ", tab-width = 2 }
 auto-format = true
+formatter= { command = 'bibtex-tidy', args = [
+  "-",
+  "--curly",
+  "--drop-all-caps",
+  "--remove-empty-fields",
+  "--sort-fields",
+  "--sort=year,author,id",
+  "--strip-enclosing-braces",
+  "--trailing-commas",
+] }
 grammar = "bibtex"
 
 [[language]]
@@ -154,6 +166,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "clangd" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "c"
 
 [[language]]
@@ -165,6 +178,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "omnisharp" ]
+debugger= { name = "netcoredbg", transport = "tcp", command = "netcoredbg", args = [ "--interpreter=vscode" ], port-arg = "--server={}", templates = [{ name = "launch", request = "launch", completion = [ { name = "path to dll", completion = "filename" } ], args = { type = "coreclr", console = "internalConsole", internalConsoleOptions = "openOnSessionStart", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { processId = "{0}" } }] }
 grammar = "c-sharp"
 
 [[language]]
@@ -256,6 +270,7 @@ comment-token = ";"
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "cl-lsp" ]
 grammar = "common-lisp"
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-deps-**-cpon"
@@ -275,6 +290,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "clangd" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "cpp"
 
 [[language]]
@@ -419,6 +435,7 @@ name = "ec2hx-glob-lang-deps-**-dtd"
 scope = "source.dtd"
 file-types = [{ glob = "deps/**/*.dtd" }, { glob = "deps/**/*.ent" }]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"', "'" = "'", '<' = '>' }
 grammar = "dtd"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -433,6 +450,7 @@ indent = { unit = "  ", tab-width = 2 }
 grammar = "dune"
 auto-format = true
 formatter = { command = "dune", args = ["format-dune-file"] }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-deps-**-earthfile"
@@ -479,6 +497,7 @@ name = "ec2hx-glob-lang-deps-**-elisp"
 scope = "source.elisp"
 file-types = [{ glob = "deps/**/*.el" }]
 comment-tokens = [";"]
+auto-pairs= { '(' = ')', '"' = '"' }
 grammar = "elisp"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
@@ -565,6 +584,7 @@ scope = "source.fidl"
 file-types = [{ glob = "deps/**/*.fidl" }]
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "fidl"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -720,6 +740,7 @@ language-servers = [
 ]
 indent = { unit = "  ", tab-width = 2 }
 grammar = "gjs"
+auto-pairs= { '<' = '>', "'" = "'", "{" = "}", "(" = ")", '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-deps-**-gleam"
@@ -741,6 +762,7 @@ roots = ["package.json", "ember-cli-build.js"]
 grammar = "glimmer"
 language-servers = ["ember-language-server"]
 formatter = { command = "prettier", args = ['--parser', 'glimmer'] }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>', "'" = "'" }
 indent = { unit = "  ", tab-width = 2 }
 
 [[language]]
@@ -773,6 +795,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "gopls", "golangci-lint-lsp" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "go", transport = "tcp", command = "dlv", args = ["dap"], port-arg = "-l 127.0.0.1:{}", templates = [{ name = "source", request = "launch", completion = [ { name = "entrypoint", completion = "filename", default = "." } ], args = { mode = "debug", program = "{0}" } }, { name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { mode = "exec", program = "{0}" } }, { name = "test", request = "launch", completion = [ { name = "tests", completion = "directory", default = "." } ], args = { mode = "test", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { mode = "local", processId = "{0}" } }, { name = "core", request = "launch", completion = [ { name = "binary", completion = "filename" }, { name = "core", completion = "filename" } ], args = { mode = "core", program = "{0}", coreFilePath = "{1}" } }] }
 grammar = "go"
 
 [[language]]
@@ -865,6 +888,7 @@ language-servers = [
 ]
 indent = { unit = "  ", tab-width = 2 }
 grammar = "gts"
+auto-pairs= { '<' = '>', "'" = "'", "{" = "}", "(" = ")", '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-deps-**-hare"
@@ -1040,6 +1064,7 @@ comment-token = "#"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "janet-format" }
 grammar = "janet"
+auto-pairs= { '"' = '"', '(' = ')', '[' = ']', '{' = '}', "`" = "`" }
 
 [[language]]
 name = "ec2hx-glob-lang-deps-**-java"
@@ -1063,6 +1088,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "typescript-language-server" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "node-debug2", transport = "stdio", quirks = { absolute-paths = true }, templates = [{ name = "source", request = "launch", completion = [ { name = "main", completion = "filename", default = "index.js" } ], args = { program = "{0}" } }] }
 grammar = "javascript"
 
 [[language]]
@@ -1258,6 +1284,7 @@ language-servers = [ "lean" ]
 indent = { unit = "  ", tab-width = 2 }
 rulers = [101]
 text-width = 100
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '⟨' = '⟩' }
 grammar = "lean"
 
 [[language]]
@@ -1443,6 +1470,7 @@ file-types = [{ glob = "deps/**/*.proj" }, { glob = "deps/**/*.vbproj" }, { glob
 indent = { unit = "  ", tab-width = 2 }
 block-comment-tokens = { start = "<!--", end = "-->" }
 grammar = "msbuild"
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 
@@ -1485,6 +1513,7 @@ shebangs = []
 comment-token = "#"
 language-servers = [ "nls" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "nickel"
 
 [[language]]
@@ -1496,6 +1525,7 @@ comment-token = "#"
 block-comment-tokens = { start = "#[", end = "]#" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "nimlangserver" ]
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"', "'" = "'", '{' = '}' }
 grammar = "nim"
 
 [[language]]
@@ -1536,6 +1566,7 @@ shebangs = ["ocaml", "ocamlrun", "ocamlscript"]
 block-comment-tokens = { start = "(*", end = "*)" }
 language-servers = [ "ocamllsp" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "ocaml"
 
 [[language]]
@@ -1547,6 +1578,7 @@ block-comment-tokens = { start = "(*", end = "*)" }
 comment-token = "(**)"
 language-servers = [ "ocamllsp" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "ocaml-interface"
 
 [[language]]
@@ -1560,6 +1592,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "odinfmt", args = [ "-stdin" ] }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "odin"
 
 [[language]]
@@ -1572,6 +1605,7 @@ block-comment-tokens = [
   { start = "/**", end = "*/" },
 ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "ohm"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -1650,6 +1684,7 @@ comment-tokens = ["//", "///", "//!"]
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = ["pest-language-server"]
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "pest"
 
 [[language]]
@@ -1943,6 +1978,8 @@ block-comment-tokens = [
 language-servers = [ "rust-analyzer" ]
 indent = { unit = "  ", tab-width = 2 }
 persistent-diagnostic-sources = ["rustc", "clippy"]
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '`' = '`' }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { program = "{0}" } }, { name = "binary (terminal)", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { program = "{0}", runInTerminal = true } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "rust"
 
 [[language]]
@@ -1973,6 +2010,7 @@ file-types = [{ glob = "deps/**/*.ss" }, { glob = "deps/**/*.scm" }]
 shebangs = ["scheme", "guile", "chicken"]
 comment-token = ";"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "scheme"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -2023,6 +2061,7 @@ name = "ec2hx-glob-lang-deps-**-sml"
 scope = "source.sml"
 file-types = [{ glob = "deps/**/*.sml" }]
 block-comment-tokens = { start = "(*", end = "*)" }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "sml"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
@@ -2036,6 +2075,7 @@ file-types = [{ glob = "deps/**/*.smk" }, { glob = "deps/**/Snakefile" }]
 comment-tokens = ["#", "##"]
 indent = { unit = "  ", tab-width = 2 }
 language-servers = ["pylsp" ]
+formatter= { command = "snakefmt", args = ["-"] }
 grammar = "snakemake"
 
 [[language]]
@@ -2060,6 +2100,7 @@ block-comment-tokens = [
 ]
 language-servers = [ "spade-language-server" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '<' = '>' }
 grammar = "spade"
 
 [[language]]
@@ -2179,6 +2220,7 @@ scope = "source.tact"
 file-types = [{ glob = "deps/**/*.tact" }]
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "tact"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -2284,6 +2326,7 @@ comment-token = ";"
 language-servers = ["ts_query_ls"]
 grammar = "tsq"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-deps-**-tsx"
@@ -2341,6 +2384,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = ["tinymist", "typst-lsp"]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '$' = '$', '"' = '"' }
 grammar = "typst"
 
 [[language]]
@@ -2361,6 +2405,7 @@ shebangs = []
 auto-format = true
 comment-token = "--"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '`' = '`' }
 grammar = "unison"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 
@@ -2503,6 +2548,7 @@ file-types = [{ glob = "deps/**/*.wit" }]
 comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 grammar = "wit"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -2531,6 +2577,7 @@ scope = "source.xml"
 file-types = [{ glob = "deps/**/*.xml" }, { glob = "deps/**/*.mobileconfig" }, { glob = "deps/**/*.plist" }, { glob = "deps/**/*.xib" }, { glob = "deps/**/*.storyboard" }, { glob = "deps/**/*.svg" }, { glob = "deps/**/*.xsd" }, { glob = "deps/**/*.gml" }, { glob = "deps/**/*.xaml" }, { glob = "deps/**/*.gir" }, { glob = "deps/**/*.rss" }, { glob = "deps/**/*.atom" }, { glob = "deps/**/*.opml" }, { glob = "deps/**/*.policy" }, { glob = "deps/**/*.ascx" }, { glob = "deps/**/*.axml" }, { glob = "deps/**/*.axaml" }, { glob = "deps/**/*.bpmn" }, { glob = "deps/**/*.cpt" }, { glob = "deps/**/*.csl" }, { glob = "deps/**/*.csproj.user" }, { glob = "deps/**/*.dita" }, { glob = "deps/**/*.ditamap" }, { glob = "deps/**/*.dtml" }, { glob = "deps/**/*.fxml" }, { glob = "deps/**/*.iml" }, { glob = "deps/**/*.isml" }, { glob = "deps/**/*.jmx" }, { glob = "deps/**/*.launch" }, { glob = "deps/**/*.menu" }, { glob = "deps/**/*.mxml" }, { glob = "deps/**/*.nuspec" }, { glob = "deps/**/*.osc" }, { glob = "deps/**/*.osm" }, { glob = "deps/**/*.pt" }, { glob = "deps/**/*.publishsettings" }, { glob = "deps/**/*.pubxml" }, { glob = "deps/**/*.pubxml.user" }, { glob = "deps/**/*.rbxlx" }, { glob = "deps/**/*.rbxmx" }, { glob = "deps/**/*.rng" }, { glob = "deps/**/*.shproj" }, { glob = "deps/**/*.tld" }, { glob = "deps/**/*.tmx" }, { glob = "deps/**/*.vbproj.user" }, { glob = "deps/**/*.vcxproj" }, { glob = "deps/**/*.vcxproj.filters" }, { glob = "deps/**/*.wsdl" }, { glob = "deps/**/*.wxi" }, { glob = "deps/**/*.wxs" }, { glob = "deps/**/*.xbl" }, { glob = "deps/**/*.xlf" }, { glob = "deps/**/*.xliff" }, { glob = "deps/**/*.xpdl" }, { glob = "deps/**/*.xul" }, { glob = "deps/**/*.xoml" }, { glob = "deps/**/*.musicxml" }, { glob = "deps/**/*.glif" }, { glob = "deps/**/*.ui" }]
 block-comment-tokens = { start = "<!--", end = "-->" }
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 grammar = "xml"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -2574,6 +2621,7 @@ comment-tokens = ["//", "///", "//!"]
 language-servers = [ "zls" ]
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "zig" , args = ["fmt", "--stdin"] }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "zig"
 
 [[language]]
@@ -2593,6 +2641,7 @@ file-types = [{ glob = "test/fixtures/**/*.adl" }]
 roots = []
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '<' = '>' }
 grammar = "adl"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -2605,6 +2654,7 @@ roots = []
 comment-token = "--"
 auto-format = true
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', "'" = "'", '{' = '}', '(' = ')', '[' = ']' }
 grammar = "agda"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 
@@ -2674,6 +2724,16 @@ comment-token = "%"
 language-servers = [ "texlab" ]
 indent = { unit = "  ", tab-width = 2 }
 auto-format = true
+formatter= { command = 'bibtex-tidy', args = [
+  "-",
+  "--curly",
+  "--drop-all-caps",
+  "--remove-empty-fields",
+  "--sort-fields",
+  "--sort=year,author,id",
+  "--strip-enclosing-braces",
+  "--trailing-commas",
+] }
 grammar = "bibtex"
 
 [[language]]
@@ -2724,6 +2784,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "clangd" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "c"
 
 [[language]]
@@ -2735,6 +2796,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "omnisharp" ]
+debugger= { name = "netcoredbg", transport = "tcp", command = "netcoredbg", args = [ "--interpreter=vscode" ], port-arg = "--server={}", templates = [{ name = "launch", request = "launch", completion = [ { name = "path to dll", completion = "filename" } ], args = { type = "coreclr", console = "internalConsole", internalConsoleOptions = "openOnSessionStart", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { processId = "{0}" } }] }
 grammar = "c-sharp"
 
 [[language]]
@@ -2826,6 +2888,7 @@ comment-token = ";"
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "cl-lsp" ]
 grammar = "common-lisp"
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-test-fixtures-**-cpon"
@@ -2845,6 +2908,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "clangd" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "cpp"
 
 [[language]]
@@ -2989,6 +3053,7 @@ name = "ec2hx-glob-lang-test-fixtures-**-dtd"
 scope = "source.dtd"
 file-types = [{ glob = "test/fixtures/**/*.dtd" }, { glob = "test/fixtures/**/*.ent" }]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"', "'" = "'", '<' = '>' }
 grammar = "dtd"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -3003,6 +3068,7 @@ indent = { unit = "  ", tab-width = 2 }
 grammar = "dune"
 auto-format = true
 formatter = { command = "dune", args = ["format-dune-file"] }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-test-fixtures-**-earthfile"
@@ -3049,6 +3115,7 @@ name = "ec2hx-glob-lang-test-fixtures-**-elisp"
 scope = "source.elisp"
 file-types = [{ glob = "test/fixtures/**/*.el" }]
 comment-tokens = [";"]
+auto-pairs= { '(' = ')', '"' = '"' }
 grammar = "elisp"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
@@ -3135,6 +3202,7 @@ scope = "source.fidl"
 file-types = [{ glob = "test/fixtures/**/*.fidl" }]
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "fidl"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -3290,6 +3358,7 @@ language-servers = [
 ]
 indent = { unit = "  ", tab-width = 2 }
 grammar = "gjs"
+auto-pairs= { '<' = '>', "'" = "'", "{" = "}", "(" = ")", '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-test-fixtures-**-gleam"
@@ -3311,6 +3380,7 @@ roots = ["package.json", "ember-cli-build.js"]
 grammar = "glimmer"
 language-servers = ["ember-language-server"]
 formatter = { command = "prettier", args = ['--parser', 'glimmer'] }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>', "'" = "'" }
 indent = { unit = "  ", tab-width = 2 }
 
 [[language]]
@@ -3343,6 +3413,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "gopls", "golangci-lint-lsp" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "go", transport = "tcp", command = "dlv", args = ["dap"], port-arg = "-l 127.0.0.1:{}", templates = [{ name = "source", request = "launch", completion = [ { name = "entrypoint", completion = "filename", default = "." } ], args = { mode = "debug", program = "{0}" } }, { name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { mode = "exec", program = "{0}" } }, { name = "test", request = "launch", completion = [ { name = "tests", completion = "directory", default = "." } ], args = { mode = "test", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { mode = "local", processId = "{0}" } }, { name = "core", request = "launch", completion = [ { name = "binary", completion = "filename" }, { name = "core", completion = "filename" } ], args = { mode = "core", program = "{0}", coreFilePath = "{1}" } }] }
 grammar = "go"
 
 [[language]]
@@ -3435,6 +3506,7 @@ language-servers = [
 ]
 indent = { unit = "  ", tab-width = 2 }
 grammar = "gts"
+auto-pairs= { '<' = '>', "'" = "'", "{" = "}", "(" = ")", '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-test-fixtures-**-hare"
@@ -3610,6 +3682,7 @@ comment-token = "#"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "janet-format" }
 grammar = "janet"
+auto-pairs= { '"' = '"', '(' = ')', '[' = ']', '{' = '}', "`" = "`" }
 
 [[language]]
 name = "ec2hx-glob-lang-test-fixtures-**-java"
@@ -3633,6 +3706,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "typescript-language-server" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "node-debug2", transport = "stdio", quirks = { absolute-paths = true }, templates = [{ name = "source", request = "launch", completion = [ { name = "main", completion = "filename", default = "index.js" } ], args = { program = "{0}" } }] }
 grammar = "javascript"
 
 [[language]]
@@ -3828,6 +3902,7 @@ language-servers = [ "lean" ]
 indent = { unit = "  ", tab-width = 2 }
 rulers = [101]
 text-width = 100
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '⟨' = '⟩' }
 grammar = "lean"
 
 [[language]]
@@ -4013,6 +4088,7 @@ file-types = [{ glob = "test/fixtures/**/*.proj" }, { glob = "test/fixtures/**/*
 indent = { unit = "  ", tab-width = 2 }
 block-comment-tokens = { start = "<!--", end = "-->" }
 grammar = "msbuild"
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 
@@ -4055,6 +4131,7 @@ shebangs = []
 comment-token = "#"
 language-servers = [ "nls" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "nickel"
 
 [[language]]
@@ -4066,6 +4143,7 @@ comment-token = "#"
 block-comment-tokens = { start = "#[", end = "]#" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "nimlangserver" ]
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"', "'" = "'", '{' = '}' }
 grammar = "nim"
 
 [[language]]
@@ -4106,6 +4184,7 @@ shebangs = ["ocaml", "ocamlrun", "ocamlscript"]
 block-comment-tokens = { start = "(*", end = "*)" }
 language-servers = [ "ocamllsp" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "ocaml"
 
 [[language]]
@@ -4117,6 +4196,7 @@ block-comment-tokens = { start = "(*", end = "*)" }
 comment-token = "(**)"
 language-servers = [ "ocamllsp" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "ocaml-interface"
 
 [[language]]
@@ -4130,6 +4210,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "odinfmt", args = [ "-stdin" ] }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "odin"
 
 [[language]]
@@ -4142,6 +4223,7 @@ block-comment-tokens = [
   { start = "/**", end = "*/" },
 ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "ohm"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -4220,6 +4302,7 @@ comment-tokens = ["//", "///", "//!"]
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = ["pest-language-server"]
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "pest"
 
 [[language]]
@@ -4513,6 +4596,8 @@ block-comment-tokens = [
 language-servers = [ "rust-analyzer" ]
 indent = { unit = "  ", tab-width = 2 }
 persistent-diagnostic-sources = ["rustc", "clippy"]
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '`' = '`' }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { program = "{0}" } }, { name = "binary (terminal)", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { program = "{0}", runInTerminal = true } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "rust"
 
 [[language]]
@@ -4543,6 +4628,7 @@ file-types = [{ glob = "test/fixtures/**/*.ss" }, { glob = "test/fixtures/**/*.s
 shebangs = ["scheme", "guile", "chicken"]
 comment-token = ";"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "scheme"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -4593,6 +4679,7 @@ name = "ec2hx-glob-lang-test-fixtures-**-sml"
 scope = "source.sml"
 file-types = [{ glob = "test/fixtures/**/*.sml" }]
 block-comment-tokens = { start = "(*", end = "*)" }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "sml"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
@@ -4606,6 +4693,7 @@ file-types = [{ glob = "test/fixtures/**/*.smk" }, { glob = "test/fixtures/**/Sn
 comment-tokens = ["#", "##"]
 indent = { unit = "  ", tab-width = 2 }
 language-servers = ["pylsp" ]
+formatter= { command = "snakefmt", args = ["-"] }
 grammar = "snakemake"
 
 [[language]]
@@ -4630,6 +4718,7 @@ block-comment-tokens = [
 ]
 language-servers = [ "spade-language-server" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '<' = '>' }
 grammar = "spade"
 
 [[language]]
@@ -4749,6 +4838,7 @@ scope = "source.tact"
 file-types = [{ glob = "test/fixtures/**/*.tact" }]
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "tact"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -4854,6 +4944,7 @@ comment-token = ";"
 language-servers = ["ts_query_ls"]
 grammar = "tsq"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-test-fixtures-**-tsx"
@@ -4911,6 +5002,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = ["tinymist", "typst-lsp"]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '$' = '$', '"' = '"' }
 grammar = "typst"
 
 [[language]]
@@ -4931,6 +5023,7 @@ shebangs = []
 auto-format = true
 comment-token = "--"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '`' = '`' }
 grammar = "unison"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 
@@ -5073,6 +5166,7 @@ file-types = [{ glob = "test/fixtures/**/*.wit" }]
 comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 grammar = "wit"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -5101,6 +5195,7 @@ scope = "source.xml"
 file-types = [{ glob = "test/fixtures/**/*.xml" }, { glob = "test/fixtures/**/*.mobileconfig" }, { glob = "test/fixtures/**/*.plist" }, { glob = "test/fixtures/**/*.xib" }, { glob = "test/fixtures/**/*.storyboard" }, { glob = "test/fixtures/**/*.svg" }, { glob = "test/fixtures/**/*.xsd" }, { glob = "test/fixtures/**/*.gml" }, { glob = "test/fixtures/**/*.xaml" }, { glob = "test/fixtures/**/*.gir" }, { glob = "test/fixtures/**/*.rss" }, { glob = "test/fixtures/**/*.atom" }, { glob = "test/fixtures/**/*.opml" }, { glob = "test/fixtures/**/*.policy" }, { glob = "test/fixtures/**/*.ascx" }, { glob = "test/fixtures/**/*.axml" }, { glob = "test/fixtures/**/*.axaml" }, { glob = "test/fixtures/**/*.bpmn" }, { glob = "test/fixtures/**/*.cpt" }, { glob = "test/fixtures/**/*.csl" }, { glob = "test/fixtures/**/*.csproj.user" }, { glob = "test/fixtures/**/*.dita" }, { glob = "test/fixtures/**/*.ditamap" }, { glob = "test/fixtures/**/*.dtml" }, { glob = "test/fixtures/**/*.fxml" }, { glob = "test/fixtures/**/*.iml" }, { glob = "test/fixtures/**/*.isml" }, { glob = "test/fixtures/**/*.jmx" }, { glob = "test/fixtures/**/*.launch" }, { glob = "test/fixtures/**/*.menu" }, { glob = "test/fixtures/**/*.mxml" }, { glob = "test/fixtures/**/*.nuspec" }, { glob = "test/fixtures/**/*.osc" }, { glob = "test/fixtures/**/*.osm" }, { glob = "test/fixtures/**/*.pt" }, { glob = "test/fixtures/**/*.publishsettings" }, { glob = "test/fixtures/**/*.pubxml" }, { glob = "test/fixtures/**/*.pubxml.user" }, { glob = "test/fixtures/**/*.rbxlx" }, { glob = "test/fixtures/**/*.rbxmx" }, { glob = "test/fixtures/**/*.rng" }, { glob = "test/fixtures/**/*.shproj" }, { glob = "test/fixtures/**/*.tld" }, { glob = "test/fixtures/**/*.tmx" }, { glob = "test/fixtures/**/*.vbproj.user" }, { glob = "test/fixtures/**/*.vcxproj" }, { glob = "test/fixtures/**/*.vcxproj.filters" }, { glob = "test/fixtures/**/*.wsdl" }, { glob = "test/fixtures/**/*.wxi" }, { glob = "test/fixtures/**/*.wxs" }, { glob = "test/fixtures/**/*.xbl" }, { glob = "test/fixtures/**/*.xlf" }, { glob = "test/fixtures/**/*.xliff" }, { glob = "test/fixtures/**/*.xpdl" }, { glob = "test/fixtures/**/*.xul" }, { glob = "test/fixtures/**/*.xoml" }, { glob = "test/fixtures/**/*.musicxml" }, { glob = "test/fixtures/**/*.glif" }, { glob = "test/fixtures/**/*.ui" }]
 block-comment-tokens = { start = "<!--", end = "-->" }
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 grammar = "xml"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -5144,6 +5239,7 @@ comment-tokens = ["//", "///", "//!"]
 language-servers = [ "zls" ]
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "zig" , args = ["fmt", "--stdin"] }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "zig"
 
 [[language]]
@@ -5163,6 +5259,7 @@ file-types = [{ glob = "tools/eslint/node_modules/**/*.adl" }]
 roots = []
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '<' = '>' }
 grammar = "adl"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -5175,6 +5272,7 @@ roots = []
 comment-token = "--"
 auto-format = true
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', "'" = "'", '{' = '}', '(' = ')', '[' = ']' }
 grammar = "agda"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 
@@ -5244,6 +5342,16 @@ comment-token = "%"
 language-servers = [ "texlab" ]
 indent = { unit = "  ", tab-width = 2 }
 auto-format = true
+formatter= { command = 'bibtex-tidy', args = [
+  "-",
+  "--curly",
+  "--drop-all-caps",
+  "--remove-empty-fields",
+  "--sort-fields",
+  "--sort=year,author,id",
+  "--strip-enclosing-braces",
+  "--trailing-commas",
+] }
 grammar = "bibtex"
 
 [[language]]
@@ -5294,6 +5402,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "clangd" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "c"
 
 [[language]]
@@ -5305,6 +5414,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "omnisharp" ]
+debugger= { name = "netcoredbg", transport = "tcp", command = "netcoredbg", args = [ "--interpreter=vscode" ], port-arg = "--server={}", templates = [{ name = "launch", request = "launch", completion = [ { name = "path to dll", completion = "filename" } ], args = { type = "coreclr", console = "internalConsole", internalConsoleOptions = "openOnSessionStart", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { processId = "{0}" } }] }
 grammar = "c-sharp"
 
 [[language]]
@@ -5396,6 +5506,7 @@ comment-token = ";"
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "cl-lsp" ]
 grammar = "common-lisp"
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-eslint-node_modules-**-cpon"
@@ -5415,6 +5526,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "clangd" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "cpp"
 
 [[language]]
@@ -5559,6 +5671,7 @@ name = "ec2hx-glob-lang-tools-eslint-node_modules-**-dtd"
 scope = "source.dtd"
 file-types = [{ glob = "tools/eslint/node_modules/**/*.dtd" }, { glob = "tools/eslint/node_modules/**/*.ent" }]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"', "'" = "'", '<' = '>' }
 grammar = "dtd"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -5573,6 +5686,7 @@ indent = { unit = "  ", tab-width = 2 }
 grammar = "dune"
 auto-format = true
 formatter = { command = "dune", args = ["format-dune-file"] }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-eslint-node_modules-**-earthfile"
@@ -5619,6 +5733,7 @@ name = "ec2hx-glob-lang-tools-eslint-node_modules-**-elisp"
 scope = "source.elisp"
 file-types = [{ glob = "tools/eslint/node_modules/**/*.el" }]
 comment-tokens = [";"]
+auto-pairs= { '(' = ')', '"' = '"' }
 grammar = "elisp"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
@@ -5705,6 +5820,7 @@ scope = "source.fidl"
 file-types = [{ glob = "tools/eslint/node_modules/**/*.fidl" }]
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "fidl"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -5860,6 +5976,7 @@ language-servers = [
 ]
 indent = { unit = "  ", tab-width = 2 }
 grammar = "gjs"
+auto-pairs= { '<' = '>', "'" = "'", "{" = "}", "(" = ")", '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-eslint-node_modules-**-gleam"
@@ -5881,6 +5998,7 @@ roots = ["package.json", "ember-cli-build.js"]
 grammar = "glimmer"
 language-servers = ["ember-language-server"]
 formatter = { command = "prettier", args = ['--parser', 'glimmer'] }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>', "'" = "'" }
 indent = { unit = "  ", tab-width = 2 }
 
 [[language]]
@@ -5913,6 +6031,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "gopls", "golangci-lint-lsp" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "go", transport = "tcp", command = "dlv", args = ["dap"], port-arg = "-l 127.0.0.1:{}", templates = [{ name = "source", request = "launch", completion = [ { name = "entrypoint", completion = "filename", default = "." } ], args = { mode = "debug", program = "{0}" } }, { name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { mode = "exec", program = "{0}" } }, { name = "test", request = "launch", completion = [ { name = "tests", completion = "directory", default = "." } ], args = { mode = "test", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { mode = "local", processId = "{0}" } }, { name = "core", request = "launch", completion = [ { name = "binary", completion = "filename" }, { name = "core", completion = "filename" } ], args = { mode = "core", program = "{0}", coreFilePath = "{1}" } }] }
 grammar = "go"
 
 [[language]]
@@ -6005,6 +6124,7 @@ language-servers = [
 ]
 indent = { unit = "  ", tab-width = 2 }
 grammar = "gts"
+auto-pairs= { '<' = '>', "'" = "'", "{" = "}", "(" = ")", '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-eslint-node_modules-**-hare"
@@ -6180,6 +6300,7 @@ comment-token = "#"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "janet-format" }
 grammar = "janet"
+auto-pairs= { '"' = '"', '(' = ')', '[' = ']', '{' = '}', "`" = "`" }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-eslint-node_modules-**-java"
@@ -6203,6 +6324,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "typescript-language-server" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "node-debug2", transport = "stdio", quirks = { absolute-paths = true }, templates = [{ name = "source", request = "launch", completion = [ { name = "main", completion = "filename", default = "index.js" } ], args = { program = "{0}" } }] }
 grammar = "javascript"
 
 [[language]]
@@ -6398,6 +6520,7 @@ language-servers = [ "lean" ]
 indent = { unit = "  ", tab-width = 2 }
 rulers = [101]
 text-width = 100
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '⟨' = '⟩' }
 grammar = "lean"
 
 [[language]]
@@ -6583,6 +6706,7 @@ file-types = [{ glob = "tools/eslint/node_modules/**/*.proj" }, { glob = "tools/
 indent = { unit = "  ", tab-width = 2 }
 block-comment-tokens = { start = "<!--", end = "-->" }
 grammar = "msbuild"
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 
@@ -6625,6 +6749,7 @@ shebangs = []
 comment-token = "#"
 language-servers = [ "nls" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "nickel"
 
 [[language]]
@@ -6636,6 +6761,7 @@ comment-token = "#"
 block-comment-tokens = { start = "#[", end = "]#" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "nimlangserver" ]
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"', "'" = "'", '{' = '}' }
 grammar = "nim"
 
 [[language]]
@@ -6676,6 +6802,7 @@ shebangs = ["ocaml", "ocamlrun", "ocamlscript"]
 block-comment-tokens = { start = "(*", end = "*)" }
 language-servers = [ "ocamllsp" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "ocaml"
 
 [[language]]
@@ -6687,6 +6814,7 @@ block-comment-tokens = { start = "(*", end = "*)" }
 comment-token = "(**)"
 language-servers = [ "ocamllsp" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "ocaml-interface"
 
 [[language]]
@@ -6700,6 +6828,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "odinfmt", args = [ "-stdin" ] }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "odin"
 
 [[language]]
@@ -6712,6 +6841,7 @@ block-comment-tokens = [
   { start = "/**", end = "*/" },
 ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "ohm"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -6790,6 +6920,7 @@ comment-tokens = ["//", "///", "//!"]
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = ["pest-language-server"]
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "pest"
 
 [[language]]
@@ -7083,6 +7214,8 @@ block-comment-tokens = [
 language-servers = [ "rust-analyzer" ]
 indent = { unit = "  ", tab-width = 2 }
 persistent-diagnostic-sources = ["rustc", "clippy"]
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '`' = '`' }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { program = "{0}" } }, { name = "binary (terminal)", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { program = "{0}", runInTerminal = true } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "rust"
 
 [[language]]
@@ -7113,6 +7246,7 @@ file-types = [{ glob = "tools/eslint/node_modules/**/*.ss" }, { glob = "tools/es
 shebangs = ["scheme", "guile", "chicken"]
 comment-token = ";"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "scheme"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -7163,6 +7297,7 @@ name = "ec2hx-glob-lang-tools-eslint-node_modules-**-sml"
 scope = "source.sml"
 file-types = [{ glob = "tools/eslint/node_modules/**/*.sml" }]
 block-comment-tokens = { start = "(*", end = "*)" }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "sml"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
@@ -7176,6 +7311,7 @@ file-types = [{ glob = "tools/eslint/node_modules/**/*.smk" }, { glob = "tools/e
 comment-tokens = ["#", "##"]
 indent = { unit = "  ", tab-width = 2 }
 language-servers = ["pylsp" ]
+formatter= { command = "snakefmt", args = ["-"] }
 grammar = "snakemake"
 
 [[language]]
@@ -7200,6 +7336,7 @@ block-comment-tokens = [
 ]
 language-servers = [ "spade-language-server" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '<' = '>' }
 grammar = "spade"
 
 [[language]]
@@ -7319,6 +7456,7 @@ scope = "source.tact"
 file-types = [{ glob = "tools/eslint/node_modules/**/*.tact" }]
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "tact"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -7424,6 +7562,7 @@ comment-token = ";"
 language-servers = ["ts_query_ls"]
 grammar = "tsq"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-eslint-node_modules-**-tsx"
@@ -7481,6 +7620,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = ["tinymist", "typst-lsp"]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '$' = '$', '"' = '"' }
 grammar = "typst"
 
 [[language]]
@@ -7501,6 +7641,7 @@ shebangs = []
 auto-format = true
 comment-token = "--"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '`' = '`' }
 grammar = "unison"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 
@@ -7643,6 +7784,7 @@ file-types = [{ glob = "tools/eslint/node_modules/**/*.wit" }]
 comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 grammar = "wit"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -7671,6 +7813,7 @@ scope = "source.xml"
 file-types = [{ glob = "tools/eslint/node_modules/**/*.xml" }, { glob = "tools/eslint/node_modules/**/*.mobileconfig" }, { glob = "tools/eslint/node_modules/**/*.plist" }, { glob = "tools/eslint/node_modules/**/*.xib" }, { glob = "tools/eslint/node_modules/**/*.storyboard" }, { glob = "tools/eslint/node_modules/**/*.svg" }, { glob = "tools/eslint/node_modules/**/*.xsd" }, { glob = "tools/eslint/node_modules/**/*.gml" }, { glob = "tools/eslint/node_modules/**/*.xaml" }, { glob = "tools/eslint/node_modules/**/*.gir" }, { glob = "tools/eslint/node_modules/**/*.rss" }, { glob = "tools/eslint/node_modules/**/*.atom" }, { glob = "tools/eslint/node_modules/**/*.opml" }, { glob = "tools/eslint/node_modules/**/*.policy" }, { glob = "tools/eslint/node_modules/**/*.ascx" }, { glob = "tools/eslint/node_modules/**/*.axml" }, { glob = "tools/eslint/node_modules/**/*.axaml" }, { glob = "tools/eslint/node_modules/**/*.bpmn" }, { glob = "tools/eslint/node_modules/**/*.cpt" }, { glob = "tools/eslint/node_modules/**/*.csl" }, { glob = "tools/eslint/node_modules/**/*.csproj.user" }, { glob = "tools/eslint/node_modules/**/*.dita" }, { glob = "tools/eslint/node_modules/**/*.ditamap" }, { glob = "tools/eslint/node_modules/**/*.dtml" }, { glob = "tools/eslint/node_modules/**/*.fxml" }, { glob = "tools/eslint/node_modules/**/*.iml" }, { glob = "tools/eslint/node_modules/**/*.isml" }, { glob = "tools/eslint/node_modules/**/*.jmx" }, { glob = "tools/eslint/node_modules/**/*.launch" }, { glob = "tools/eslint/node_modules/**/*.menu" }, { glob = "tools/eslint/node_modules/**/*.mxml" }, { glob = "tools/eslint/node_modules/**/*.nuspec" }, { glob = "tools/eslint/node_modules/**/*.osc" }, { glob = "tools/eslint/node_modules/**/*.osm" }, { glob = "tools/eslint/node_modules/**/*.pt" }, { glob = "tools/eslint/node_modules/**/*.publishsettings" }, { glob = "tools/eslint/node_modules/**/*.pubxml" }, { glob = "tools/eslint/node_modules/**/*.pubxml.user" }, { glob = "tools/eslint/node_modules/**/*.rbxlx" }, { glob = "tools/eslint/node_modules/**/*.rbxmx" }, { glob = "tools/eslint/node_modules/**/*.rng" }, { glob = "tools/eslint/node_modules/**/*.shproj" }, { glob = "tools/eslint/node_modules/**/*.tld" }, { glob = "tools/eslint/node_modules/**/*.tmx" }, { glob = "tools/eslint/node_modules/**/*.vbproj.user" }, { glob = "tools/eslint/node_modules/**/*.vcxproj" }, { glob = "tools/eslint/node_modules/**/*.vcxproj.filters" }, { glob = "tools/eslint/node_modules/**/*.wsdl" }, { glob = "tools/eslint/node_modules/**/*.wxi" }, { glob = "tools/eslint/node_modules/**/*.wxs" }, { glob = "tools/eslint/node_modules/**/*.xbl" }, { glob = "tools/eslint/node_modules/**/*.xlf" }, { glob = "tools/eslint/node_modules/**/*.xliff" }, { glob = "tools/eslint/node_modules/**/*.xpdl" }, { glob = "tools/eslint/node_modules/**/*.xul" }, { glob = "tools/eslint/node_modules/**/*.xoml" }, { glob = "tools/eslint/node_modules/**/*.musicxml" }, { glob = "tools/eslint/node_modules/**/*.glif" }, { glob = "tools/eslint/node_modules/**/*.ui" }]
 block-comment-tokens = { start = "<!--", end = "-->" }
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 grammar = "xml"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -7714,6 +7857,7 @@ comment-tokens = ["//", "///", "//!"]
 language-servers = [ "zls" ]
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "zig" , args = ["fmt", "--stdin"] }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "zig"
 
 [[language]]
@@ -7733,6 +7877,7 @@ file-types = [{ glob = "tools/gyp/**/*.adl" }]
 roots = []
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '<' = '>' }
 grammar = "adl"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -7745,6 +7890,7 @@ roots = []
 comment-token = "--"
 auto-format = true
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', "'" = "'", '{' = '}', '(' = ')', '[' = ']' }
 grammar = "agda"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 
@@ -7814,6 +7960,16 @@ comment-token = "%"
 language-servers = [ "texlab" ]
 indent = { unit = "  ", tab-width = 2 }
 auto-format = true
+formatter= { command = 'bibtex-tidy', args = [
+  "-",
+  "--curly",
+  "--drop-all-caps",
+  "--remove-empty-fields",
+  "--sort-fields",
+  "--sort=year,author,id",
+  "--strip-enclosing-braces",
+  "--trailing-commas",
+] }
 grammar = "bibtex"
 
 [[language]]
@@ -7864,6 +8020,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "clangd" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "c"
 
 [[language]]
@@ -7875,6 +8032,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "omnisharp" ]
+debugger= { name = "netcoredbg", transport = "tcp", command = "netcoredbg", args = [ "--interpreter=vscode" ], port-arg = "--server={}", templates = [{ name = "launch", request = "launch", completion = [ { name = "path to dll", completion = "filename" } ], args = { type = "coreclr", console = "internalConsole", internalConsoleOptions = "openOnSessionStart", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { processId = "{0}" } }] }
 grammar = "c-sharp"
 
 [[language]]
@@ -7966,6 +8124,7 @@ comment-token = ";"
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "cl-lsp" ]
 grammar = "common-lisp"
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-gyp-**-cpon"
@@ -7985,6 +8144,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "clangd" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "cpp"
 
 [[language]]
@@ -8129,6 +8289,7 @@ name = "ec2hx-glob-lang-tools-gyp-**-dtd"
 scope = "source.dtd"
 file-types = [{ glob = "tools/gyp/**/*.dtd" }, { glob = "tools/gyp/**/*.ent" }]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"', "'" = "'", '<' = '>' }
 grammar = "dtd"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -8143,6 +8304,7 @@ indent = { unit = "  ", tab-width = 2 }
 grammar = "dune"
 auto-format = true
 formatter = { command = "dune", args = ["format-dune-file"] }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-gyp-**-earthfile"
@@ -8189,6 +8351,7 @@ name = "ec2hx-glob-lang-tools-gyp-**-elisp"
 scope = "source.elisp"
 file-types = [{ glob = "tools/gyp/**/*.el" }]
 comment-tokens = [";"]
+auto-pairs= { '(' = ')', '"' = '"' }
 grammar = "elisp"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
@@ -8275,6 +8438,7 @@ scope = "source.fidl"
 file-types = [{ glob = "tools/gyp/**/*.fidl" }]
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "fidl"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -8430,6 +8594,7 @@ language-servers = [
 ]
 indent = { unit = "  ", tab-width = 2 }
 grammar = "gjs"
+auto-pairs= { '<' = '>', "'" = "'", "{" = "}", "(" = ")", '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-gyp-**-gleam"
@@ -8451,6 +8616,7 @@ roots = ["package.json", "ember-cli-build.js"]
 grammar = "glimmer"
 language-servers = ["ember-language-server"]
 formatter = { command = "prettier", args = ['--parser', 'glimmer'] }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>', "'" = "'" }
 indent = { unit = "  ", tab-width = 2 }
 
 [[language]]
@@ -8483,6 +8649,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "gopls", "golangci-lint-lsp" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "go", transport = "tcp", command = "dlv", args = ["dap"], port-arg = "-l 127.0.0.1:{}", templates = [{ name = "source", request = "launch", completion = [ { name = "entrypoint", completion = "filename", default = "." } ], args = { mode = "debug", program = "{0}" } }, { name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { mode = "exec", program = "{0}" } }, { name = "test", request = "launch", completion = [ { name = "tests", completion = "directory", default = "." } ], args = { mode = "test", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { mode = "local", processId = "{0}" } }, { name = "core", request = "launch", completion = [ { name = "binary", completion = "filename" }, { name = "core", completion = "filename" } ], args = { mode = "core", program = "{0}", coreFilePath = "{1}" } }] }
 grammar = "go"
 
 [[language]]
@@ -8575,6 +8742,7 @@ language-servers = [
 ]
 indent = { unit = "  ", tab-width = 2 }
 grammar = "gts"
+auto-pairs= { '<' = '>', "'" = "'", "{" = "}", "(" = ")", '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-gyp-**-hare"
@@ -8750,6 +8918,7 @@ comment-token = "#"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "janet-format" }
 grammar = "janet"
+auto-pairs= { '"' = '"', '(' = ')', '[' = ']', '{' = '}', "`" = "`" }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-gyp-**-java"
@@ -8773,6 +8942,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "typescript-language-server" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "node-debug2", transport = "stdio", quirks = { absolute-paths = true }, templates = [{ name = "source", request = "launch", completion = [ { name = "main", completion = "filename", default = "index.js" } ], args = { program = "{0}" } }] }
 grammar = "javascript"
 
 [[language]]
@@ -8968,6 +9138,7 @@ language-servers = [ "lean" ]
 indent = { unit = "  ", tab-width = 2 }
 rulers = [101]
 text-width = 100
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '⟨' = '⟩' }
 grammar = "lean"
 
 [[language]]
@@ -9153,6 +9324,7 @@ file-types = [{ glob = "tools/gyp/**/*.proj" }, { glob = "tools/gyp/**/*.vbproj"
 indent = { unit = "  ", tab-width = 2 }
 block-comment-tokens = { start = "<!--", end = "-->" }
 grammar = "msbuild"
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 
@@ -9195,6 +9367,7 @@ shebangs = []
 comment-token = "#"
 language-servers = [ "nls" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "nickel"
 
 [[language]]
@@ -9206,6 +9379,7 @@ comment-token = "#"
 block-comment-tokens = { start = "#[", end = "]#" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "nimlangserver" ]
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"', "'" = "'", '{' = '}' }
 grammar = "nim"
 
 [[language]]
@@ -9246,6 +9420,7 @@ shebangs = ["ocaml", "ocamlrun", "ocamlscript"]
 block-comment-tokens = { start = "(*", end = "*)" }
 language-servers = [ "ocamllsp" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "ocaml"
 
 [[language]]
@@ -9257,6 +9432,7 @@ block-comment-tokens = { start = "(*", end = "*)" }
 comment-token = "(**)"
 language-servers = [ "ocamllsp" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "ocaml-interface"
 
 [[language]]
@@ -9270,6 +9446,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "odinfmt", args = [ "-stdin" ] }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "odin"
 
 [[language]]
@@ -9282,6 +9459,7 @@ block-comment-tokens = [
   { start = "/**", end = "*/" },
 ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "ohm"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -9360,6 +9538,7 @@ comment-tokens = ["//", "///", "//!"]
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = ["pest-language-server"]
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "pest"
 
 [[language]]
@@ -9653,6 +9832,8 @@ block-comment-tokens = [
 language-servers = [ "rust-analyzer" ]
 indent = { unit = "  ", tab-width = 2 }
 persistent-diagnostic-sources = ["rustc", "clippy"]
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '`' = '`' }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { program = "{0}" } }, { name = "binary (terminal)", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { program = "{0}", runInTerminal = true } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "rust"
 
 [[language]]
@@ -9683,6 +9864,7 @@ file-types = [{ glob = "tools/gyp/**/*.ss" }, { glob = "tools/gyp/**/*.scm" }]
 shebangs = ["scheme", "guile", "chicken"]
 comment-token = ";"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "scheme"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -9733,6 +9915,7 @@ name = "ec2hx-glob-lang-tools-gyp-**-sml"
 scope = "source.sml"
 file-types = [{ glob = "tools/gyp/**/*.sml" }]
 block-comment-tokens = { start = "(*", end = "*)" }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "sml"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
@@ -9746,6 +9929,7 @@ file-types = [{ glob = "tools/gyp/**/*.smk" }, { glob = "tools/gyp/**/Snakefile"
 comment-tokens = ["#", "##"]
 indent = { unit = "  ", tab-width = 2 }
 language-servers = ["pylsp" ]
+formatter= { command = "snakefmt", args = ["-"] }
 grammar = "snakemake"
 
 [[language]]
@@ -9770,6 +9954,7 @@ block-comment-tokens = [
 ]
 language-servers = [ "spade-language-server" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '<' = '>' }
 grammar = "spade"
 
 [[language]]
@@ -9889,6 +10074,7 @@ scope = "source.tact"
 file-types = [{ glob = "tools/gyp/**/*.tact" }]
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "tact"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -9994,6 +10180,7 @@ comment-token = ";"
 language-servers = ["ts_query_ls"]
 grammar = "tsq"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-gyp-**-tsx"
@@ -10051,6 +10238,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = ["tinymist", "typst-lsp"]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '$' = '$', '"' = '"' }
 grammar = "typst"
 
 [[language]]
@@ -10071,6 +10259,7 @@ shebangs = []
 auto-format = true
 comment-token = "--"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '`' = '`' }
 grammar = "unison"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 
@@ -10213,6 +10402,7 @@ file-types = [{ glob = "tools/gyp/**/*.wit" }]
 comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 grammar = "wit"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -10241,6 +10431,7 @@ scope = "source.xml"
 file-types = [{ glob = "tools/gyp/**/*.xml" }, { glob = "tools/gyp/**/*.mobileconfig" }, { glob = "tools/gyp/**/*.plist" }, { glob = "tools/gyp/**/*.xib" }, { glob = "tools/gyp/**/*.storyboard" }, { glob = "tools/gyp/**/*.svg" }, { glob = "tools/gyp/**/*.xsd" }, { glob = "tools/gyp/**/*.gml" }, { glob = "tools/gyp/**/*.xaml" }, { glob = "tools/gyp/**/*.gir" }, { glob = "tools/gyp/**/*.rss" }, { glob = "tools/gyp/**/*.atom" }, { glob = "tools/gyp/**/*.opml" }, { glob = "tools/gyp/**/*.policy" }, { glob = "tools/gyp/**/*.ascx" }, { glob = "tools/gyp/**/*.axml" }, { glob = "tools/gyp/**/*.axaml" }, { glob = "tools/gyp/**/*.bpmn" }, { glob = "tools/gyp/**/*.cpt" }, { glob = "tools/gyp/**/*.csl" }, { glob = "tools/gyp/**/*.csproj.user" }, { glob = "tools/gyp/**/*.dita" }, { glob = "tools/gyp/**/*.ditamap" }, { glob = "tools/gyp/**/*.dtml" }, { glob = "tools/gyp/**/*.fxml" }, { glob = "tools/gyp/**/*.iml" }, { glob = "tools/gyp/**/*.isml" }, { glob = "tools/gyp/**/*.jmx" }, { glob = "tools/gyp/**/*.launch" }, { glob = "tools/gyp/**/*.menu" }, { glob = "tools/gyp/**/*.mxml" }, { glob = "tools/gyp/**/*.nuspec" }, { glob = "tools/gyp/**/*.osc" }, { glob = "tools/gyp/**/*.osm" }, { glob = "tools/gyp/**/*.pt" }, { glob = "tools/gyp/**/*.publishsettings" }, { glob = "tools/gyp/**/*.pubxml" }, { glob = "tools/gyp/**/*.pubxml.user" }, { glob = "tools/gyp/**/*.rbxlx" }, { glob = "tools/gyp/**/*.rbxmx" }, { glob = "tools/gyp/**/*.rng" }, { glob = "tools/gyp/**/*.shproj" }, { glob = "tools/gyp/**/*.tld" }, { glob = "tools/gyp/**/*.tmx" }, { glob = "tools/gyp/**/*.vbproj.user" }, { glob = "tools/gyp/**/*.vcxproj" }, { glob = "tools/gyp/**/*.vcxproj.filters" }, { glob = "tools/gyp/**/*.wsdl" }, { glob = "tools/gyp/**/*.wxi" }, { glob = "tools/gyp/**/*.wxs" }, { glob = "tools/gyp/**/*.xbl" }, { glob = "tools/gyp/**/*.xlf" }, { glob = "tools/gyp/**/*.xliff" }, { glob = "tools/gyp/**/*.xpdl" }, { glob = "tools/gyp/**/*.xul" }, { glob = "tools/gyp/**/*.xoml" }, { glob = "tools/gyp/**/*.musicxml" }, { glob = "tools/gyp/**/*.glif" }, { glob = "tools/gyp/**/*.ui" }]
 block-comment-tokens = { start = "<!--", end = "-->" }
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 grammar = "xml"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -10284,6 +10475,7 @@ comment-tokens = ["//", "///", "//!"]
 language-servers = [ "zls" ]
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "zig" , args = ["fmt", "--stdin"] }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "zig"
 
 [[language]]
@@ -10303,6 +10495,7 @@ file-types = [{ glob = "tools/icu/**/*.adl" }]
 roots = []
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '<' = '>' }
 grammar = "adl"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -10315,6 +10508,7 @@ roots = []
 comment-token = "--"
 auto-format = true
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', "'" = "'", '{' = '}', '(' = ')', '[' = ']' }
 grammar = "agda"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 
@@ -10384,6 +10578,16 @@ comment-token = "%"
 language-servers = [ "texlab" ]
 indent = { unit = "  ", tab-width = 2 }
 auto-format = true
+formatter= { command = 'bibtex-tidy', args = [
+  "-",
+  "--curly",
+  "--drop-all-caps",
+  "--remove-empty-fields",
+  "--sort-fields",
+  "--sort=year,author,id",
+  "--strip-enclosing-braces",
+  "--trailing-commas",
+] }
 grammar = "bibtex"
 
 [[language]]
@@ -10434,6 +10638,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "clangd" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "c"
 
 [[language]]
@@ -10445,6 +10650,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "omnisharp" ]
+debugger= { name = "netcoredbg", transport = "tcp", command = "netcoredbg", args = [ "--interpreter=vscode" ], port-arg = "--server={}", templates = [{ name = "launch", request = "launch", completion = [ { name = "path to dll", completion = "filename" } ], args = { type = "coreclr", console = "internalConsole", internalConsoleOptions = "openOnSessionStart", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { processId = "{0}" } }] }
 grammar = "c-sharp"
 
 [[language]]
@@ -10536,6 +10742,7 @@ comment-token = ";"
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "cl-lsp" ]
 grammar = "common-lisp"
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-icu-**-cpon"
@@ -10555,6 +10762,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "clangd" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "cpp"
 
 [[language]]
@@ -10699,6 +10907,7 @@ name = "ec2hx-glob-lang-tools-icu-**-dtd"
 scope = "source.dtd"
 file-types = [{ glob = "tools/icu/**/*.dtd" }, { glob = "tools/icu/**/*.ent" }]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"', "'" = "'", '<' = '>' }
 grammar = "dtd"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -10713,6 +10922,7 @@ indent = { unit = "  ", tab-width = 2 }
 grammar = "dune"
 auto-format = true
 formatter = { command = "dune", args = ["format-dune-file"] }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-icu-**-earthfile"
@@ -10759,6 +10969,7 @@ name = "ec2hx-glob-lang-tools-icu-**-elisp"
 scope = "source.elisp"
 file-types = [{ glob = "tools/icu/**/*.el" }]
 comment-tokens = [";"]
+auto-pairs= { '(' = ')', '"' = '"' }
 grammar = "elisp"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
@@ -10845,6 +11056,7 @@ scope = "source.fidl"
 file-types = [{ glob = "tools/icu/**/*.fidl" }]
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "fidl"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -11000,6 +11212,7 @@ language-servers = [
 ]
 indent = { unit = "  ", tab-width = 2 }
 grammar = "gjs"
+auto-pairs= { '<' = '>', "'" = "'", "{" = "}", "(" = ")", '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-icu-**-gleam"
@@ -11021,6 +11234,7 @@ roots = ["package.json", "ember-cli-build.js"]
 grammar = "glimmer"
 language-servers = ["ember-language-server"]
 formatter = { command = "prettier", args = ['--parser', 'glimmer'] }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>', "'" = "'" }
 indent = { unit = "  ", tab-width = 2 }
 
 [[language]]
@@ -11053,6 +11267,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "gopls", "golangci-lint-lsp" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "go", transport = "tcp", command = "dlv", args = ["dap"], port-arg = "-l 127.0.0.1:{}", templates = [{ name = "source", request = "launch", completion = [ { name = "entrypoint", completion = "filename", default = "." } ], args = { mode = "debug", program = "{0}" } }, { name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { mode = "exec", program = "{0}" } }, { name = "test", request = "launch", completion = [ { name = "tests", completion = "directory", default = "." } ], args = { mode = "test", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { mode = "local", processId = "{0}" } }, { name = "core", request = "launch", completion = [ { name = "binary", completion = "filename" }, { name = "core", completion = "filename" } ], args = { mode = "core", program = "{0}", coreFilePath = "{1}" } }] }
 grammar = "go"
 
 [[language]]
@@ -11145,6 +11360,7 @@ language-servers = [
 ]
 indent = { unit = "  ", tab-width = 2 }
 grammar = "gts"
+auto-pairs= { '<' = '>', "'" = "'", "{" = "}", "(" = ")", '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-icu-**-hare"
@@ -11320,6 +11536,7 @@ comment-token = "#"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "janet-format" }
 grammar = "janet"
+auto-pairs= { '"' = '"', '(' = ')', '[' = ']', '{' = '}', "`" = "`" }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-icu-**-java"
@@ -11343,6 +11560,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "typescript-language-server" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "node-debug2", transport = "stdio", quirks = { absolute-paths = true }, templates = [{ name = "source", request = "launch", completion = [ { name = "main", completion = "filename", default = "index.js" } ], args = { program = "{0}" } }] }
 grammar = "javascript"
 
 [[language]]
@@ -11538,6 +11756,7 @@ language-servers = [ "lean" ]
 indent = { unit = "  ", tab-width = 2 }
 rulers = [101]
 text-width = 100
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '⟨' = '⟩' }
 grammar = "lean"
 
 [[language]]
@@ -11723,6 +11942,7 @@ file-types = [{ glob = "tools/icu/**/*.proj" }, { glob = "tools/icu/**/*.vbproj"
 indent = { unit = "  ", tab-width = 2 }
 block-comment-tokens = { start = "<!--", end = "-->" }
 grammar = "msbuild"
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 
@@ -11765,6 +11985,7 @@ shebangs = []
 comment-token = "#"
 language-servers = [ "nls" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "nickel"
 
 [[language]]
@@ -11776,6 +11997,7 @@ comment-token = "#"
 block-comment-tokens = { start = "#[", end = "]#" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "nimlangserver" ]
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"', "'" = "'", '{' = '}' }
 grammar = "nim"
 
 [[language]]
@@ -11816,6 +12038,7 @@ shebangs = ["ocaml", "ocamlrun", "ocamlscript"]
 block-comment-tokens = { start = "(*", end = "*)" }
 language-servers = [ "ocamllsp" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "ocaml"
 
 [[language]]
@@ -11827,6 +12050,7 @@ block-comment-tokens = { start = "(*", end = "*)" }
 comment-token = "(**)"
 language-servers = [ "ocamllsp" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "ocaml-interface"
 
 [[language]]
@@ -11840,6 +12064,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "odinfmt", args = [ "-stdin" ] }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "odin"
 
 [[language]]
@@ -11852,6 +12077,7 @@ block-comment-tokens = [
   { start = "/**", end = "*/" },
 ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "ohm"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -11930,6 +12156,7 @@ comment-tokens = ["//", "///", "//!"]
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = ["pest-language-server"]
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "pest"
 
 [[language]]
@@ -12223,6 +12450,8 @@ block-comment-tokens = [
 language-servers = [ "rust-analyzer" ]
 indent = { unit = "  ", tab-width = 2 }
 persistent-diagnostic-sources = ["rustc", "clippy"]
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '`' = '`' }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { program = "{0}" } }, { name = "binary (terminal)", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { program = "{0}", runInTerminal = true } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "rust"
 
 [[language]]
@@ -12253,6 +12482,7 @@ file-types = [{ glob = "tools/icu/**/*.ss" }, { glob = "tools/icu/**/*.scm" }]
 shebangs = ["scheme", "guile", "chicken"]
 comment-token = ";"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "scheme"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -12303,6 +12533,7 @@ name = "ec2hx-glob-lang-tools-icu-**-sml"
 scope = "source.sml"
 file-types = [{ glob = "tools/icu/**/*.sml" }]
 block-comment-tokens = { start = "(*", end = "*)" }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "sml"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
@@ -12316,6 +12547,7 @@ file-types = [{ glob = "tools/icu/**/*.smk" }, { glob = "tools/icu/**/Snakefile"
 comment-tokens = ["#", "##"]
 indent = { unit = "  ", tab-width = 2 }
 language-servers = ["pylsp" ]
+formatter= { command = "snakefmt", args = ["-"] }
 grammar = "snakemake"
 
 [[language]]
@@ -12340,6 +12572,7 @@ block-comment-tokens = [
 ]
 language-servers = [ "spade-language-server" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '<' = '>' }
 grammar = "spade"
 
 [[language]]
@@ -12459,6 +12692,7 @@ scope = "source.tact"
 file-types = [{ glob = "tools/icu/**/*.tact" }]
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "tact"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -12564,6 +12798,7 @@ comment-token = ";"
 language-servers = ["ts_query_ls"]
 grammar = "tsq"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-icu-**-tsx"
@@ -12621,6 +12856,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = ["tinymist", "typst-lsp"]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '$' = '$', '"' = '"' }
 grammar = "typst"
 
 [[language]]
@@ -12641,6 +12877,7 @@ shebangs = []
 auto-format = true
 comment-token = "--"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '`' = '`' }
 grammar = "unison"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 
@@ -12783,6 +13020,7 @@ file-types = [{ glob = "tools/icu/**/*.wit" }]
 comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 grammar = "wit"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -12811,6 +13049,7 @@ scope = "source.xml"
 file-types = [{ glob = "tools/icu/**/*.xml" }, { glob = "tools/icu/**/*.mobileconfig" }, { glob = "tools/icu/**/*.plist" }, { glob = "tools/icu/**/*.xib" }, { glob = "tools/icu/**/*.storyboard" }, { glob = "tools/icu/**/*.svg" }, { glob = "tools/icu/**/*.xsd" }, { glob = "tools/icu/**/*.gml" }, { glob = "tools/icu/**/*.xaml" }, { glob = "tools/icu/**/*.gir" }, { glob = "tools/icu/**/*.rss" }, { glob = "tools/icu/**/*.atom" }, { glob = "tools/icu/**/*.opml" }, { glob = "tools/icu/**/*.policy" }, { glob = "tools/icu/**/*.ascx" }, { glob = "tools/icu/**/*.axml" }, { glob = "tools/icu/**/*.axaml" }, { glob = "tools/icu/**/*.bpmn" }, { glob = "tools/icu/**/*.cpt" }, { glob = "tools/icu/**/*.csl" }, { glob = "tools/icu/**/*.csproj.user" }, { glob = "tools/icu/**/*.dita" }, { glob = "tools/icu/**/*.ditamap" }, { glob = "tools/icu/**/*.dtml" }, { glob = "tools/icu/**/*.fxml" }, { glob = "tools/icu/**/*.iml" }, { glob = "tools/icu/**/*.isml" }, { glob = "tools/icu/**/*.jmx" }, { glob = "tools/icu/**/*.launch" }, { glob = "tools/icu/**/*.menu" }, { glob = "tools/icu/**/*.mxml" }, { glob = "tools/icu/**/*.nuspec" }, { glob = "tools/icu/**/*.osc" }, { glob = "tools/icu/**/*.osm" }, { glob = "tools/icu/**/*.pt" }, { glob = "tools/icu/**/*.publishsettings" }, { glob = "tools/icu/**/*.pubxml" }, { glob = "tools/icu/**/*.pubxml.user" }, { glob = "tools/icu/**/*.rbxlx" }, { glob = "tools/icu/**/*.rbxmx" }, { glob = "tools/icu/**/*.rng" }, { glob = "tools/icu/**/*.shproj" }, { glob = "tools/icu/**/*.tld" }, { glob = "tools/icu/**/*.tmx" }, { glob = "tools/icu/**/*.vbproj.user" }, { glob = "tools/icu/**/*.vcxproj" }, { glob = "tools/icu/**/*.vcxproj.filters" }, { glob = "tools/icu/**/*.wsdl" }, { glob = "tools/icu/**/*.wxi" }, { glob = "tools/icu/**/*.wxs" }, { glob = "tools/icu/**/*.xbl" }, { glob = "tools/icu/**/*.xlf" }, { glob = "tools/icu/**/*.xliff" }, { glob = "tools/icu/**/*.xpdl" }, { glob = "tools/icu/**/*.xul" }, { glob = "tools/icu/**/*.xoml" }, { glob = "tools/icu/**/*.musicxml" }, { glob = "tools/icu/**/*.glif" }, { glob = "tools/icu/**/*.ui" }]
 block-comment-tokens = { start = "<!--", end = "-->" }
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 grammar = "xml"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -12854,6 +13093,7 @@ comment-tokens = ["//", "///", "//!"]
 language-servers = [ "zls" ]
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "zig" , args = ["fmt", "--stdin"] }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "zig"
 
 [[language]]
@@ -12873,6 +13113,7 @@ file-types = [{ glob = "tools/msvs/**/*.adl" }]
 roots = []
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '<' = '>' }
 grammar = "adl"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -12885,6 +13126,7 @@ roots = []
 comment-token = "--"
 auto-format = true
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', "'" = "'", '{' = '}', '(' = ')', '[' = ']' }
 grammar = "agda"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 
@@ -12954,6 +13196,16 @@ comment-token = "%"
 language-servers = [ "texlab" ]
 indent = { unit = "  ", tab-width = 2 }
 auto-format = true
+formatter= { command = 'bibtex-tidy', args = [
+  "-",
+  "--curly",
+  "--drop-all-caps",
+  "--remove-empty-fields",
+  "--sort-fields",
+  "--sort=year,author,id",
+  "--strip-enclosing-braces",
+  "--trailing-commas",
+] }
 grammar = "bibtex"
 
 [[language]]
@@ -13004,6 +13256,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "clangd" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "c"
 
 [[language]]
@@ -13015,6 +13268,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "omnisharp" ]
+debugger= { name = "netcoredbg", transport = "tcp", command = "netcoredbg", args = [ "--interpreter=vscode" ], port-arg = "--server={}", templates = [{ name = "launch", request = "launch", completion = [ { name = "path to dll", completion = "filename" } ], args = { type = "coreclr", console = "internalConsole", internalConsoleOptions = "openOnSessionStart", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { processId = "{0}" } }] }
 grammar = "c-sharp"
 
 [[language]]
@@ -13106,6 +13360,7 @@ comment-token = ";"
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "cl-lsp" ]
 grammar = "common-lisp"
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-msvs-**-cpon"
@@ -13125,6 +13380,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "clangd" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "cpp"
 
 [[language]]
@@ -13269,6 +13525,7 @@ name = "ec2hx-glob-lang-tools-msvs-**-dtd"
 scope = "source.dtd"
 file-types = [{ glob = "tools/msvs/**/*.dtd" }, { glob = "tools/msvs/**/*.ent" }]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"', "'" = "'", '<' = '>' }
 grammar = "dtd"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -13283,6 +13540,7 @@ indent = { unit = "  ", tab-width = 2 }
 grammar = "dune"
 auto-format = true
 formatter = { command = "dune", args = ["format-dune-file"] }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-msvs-**-earthfile"
@@ -13329,6 +13587,7 @@ name = "ec2hx-glob-lang-tools-msvs-**-elisp"
 scope = "source.elisp"
 file-types = [{ glob = "tools/msvs/**/*.el" }]
 comment-tokens = [";"]
+auto-pairs= { '(' = ')', '"' = '"' }
 grammar = "elisp"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
@@ -13415,6 +13674,7 @@ scope = "source.fidl"
 file-types = [{ glob = "tools/msvs/**/*.fidl" }]
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "fidl"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -13570,6 +13830,7 @@ language-servers = [
 ]
 indent = { unit = "  ", tab-width = 2 }
 grammar = "gjs"
+auto-pairs= { '<' = '>', "'" = "'", "{" = "}", "(" = ")", '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-msvs-**-gleam"
@@ -13591,6 +13852,7 @@ roots = ["package.json", "ember-cli-build.js"]
 grammar = "glimmer"
 language-servers = ["ember-language-server"]
 formatter = { command = "prettier", args = ['--parser', 'glimmer'] }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>', "'" = "'" }
 indent = { unit = "  ", tab-width = 2 }
 
 [[language]]
@@ -13623,6 +13885,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "gopls", "golangci-lint-lsp" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "go", transport = "tcp", command = "dlv", args = ["dap"], port-arg = "-l 127.0.0.1:{}", templates = [{ name = "source", request = "launch", completion = [ { name = "entrypoint", completion = "filename", default = "." } ], args = { mode = "debug", program = "{0}" } }, { name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { mode = "exec", program = "{0}" } }, { name = "test", request = "launch", completion = [ { name = "tests", completion = "directory", default = "." } ], args = { mode = "test", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { mode = "local", processId = "{0}" } }, { name = "core", request = "launch", completion = [ { name = "binary", completion = "filename" }, { name = "core", completion = "filename" } ], args = { mode = "core", program = "{0}", coreFilePath = "{1}" } }] }
 grammar = "go"
 
 [[language]]
@@ -13715,6 +13978,7 @@ language-servers = [
 ]
 indent = { unit = "  ", tab-width = 2 }
 grammar = "gts"
+auto-pairs= { '<' = '>', "'" = "'", "{" = "}", "(" = ")", '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-msvs-**-hare"
@@ -13890,6 +14154,7 @@ comment-token = "#"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "janet-format" }
 grammar = "janet"
+auto-pairs= { '"' = '"', '(' = ')', '[' = ']', '{' = '}', "`" = "`" }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-msvs-**-java"
@@ -13913,6 +14178,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = [ "typescript-language-server" ]
 indent = { unit = "  ", tab-width = 2 }
+debugger= { name = "node-debug2", transport = "stdio", quirks = { absolute-paths = true }, templates = [{ name = "source", request = "launch", completion = [ { name = "main", completion = "filename", default = "index.js" } ], args = { program = "{0}" } }] }
 grammar = "javascript"
 
 [[language]]
@@ -14108,6 +14374,7 @@ language-servers = [ "lean" ]
 indent = { unit = "  ", tab-width = 2 }
 rulers = [101]
 text-width = 100
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '⟨' = '⟩' }
 grammar = "lean"
 
 [[language]]
@@ -14293,6 +14560,7 @@ file-types = [{ glob = "tools/msvs/**/*.proj" }, { glob = "tools/msvs/**/*.vbpro
 indent = { unit = "  ", tab-width = 2 }
 block-comment-tokens = { start = "<!--", end = "-->" }
 grammar = "msbuild"
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
 
@@ -14335,6 +14603,7 @@ shebangs = []
 comment-token = "#"
 language-servers = [ "nls" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "nickel"
 
 [[language]]
@@ -14346,6 +14615,7 @@ comment-token = "#"
 block-comment-tokens = { start = "#[", end = "]#" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = [ "nimlangserver" ]
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"', "'" = "'", '{' = '}' }
 grammar = "nim"
 
 [[language]]
@@ -14386,6 +14656,7 @@ shebangs = ["ocaml", "ocamlrun", "ocamlscript"]
 block-comment-tokens = { start = "(*", end = "*)" }
 language-servers = [ "ocamllsp" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "ocaml"
 
 [[language]]
@@ -14397,6 +14668,7 @@ block-comment-tokens = { start = "(*", end = "*)" }
 comment-token = "(**)"
 language-servers = [ "ocamllsp" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "ocaml-interface"
 
 [[language]]
@@ -14410,6 +14682,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "odinfmt", args = [ "-stdin" ] }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "odin"
 
 [[language]]
@@ -14422,6 +14695,7 @@ block-comment-tokens = [
   { start = "/**", end = "*/" },
 ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "ohm"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -14500,6 +14774,7 @@ comment-tokens = ["//", "///", "//!"]
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
 language-servers = ["pest-language-server"]
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "pest"
 
 [[language]]
@@ -14793,6 +15068,8 @@ block-comment-tokens = [
 language-servers = [ "rust-analyzer" ]
 indent = { unit = "  ", tab-width = 2 }
 persistent-diagnostic-sources = ["rustc", "clippy"]
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '`' = '`' }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { program = "{0}" } }, { name = "binary (terminal)", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { program = "{0}", runInTerminal = true } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "rust"
 
 [[language]]
@@ -14823,6 +15100,7 @@ file-types = [{ glob = "tools/msvs/**/*.ss" }, { glob = "tools/msvs/**/*.scm" }]
 shebangs = ["scheme", "guile", "chicken"]
 comment-token = ";"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "scheme"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -14873,6 +15151,7 @@ name = "ec2hx-glob-lang-tools-msvs-**-sml"
 scope = "source.sml"
 file-types = [{ glob = "tools/msvs/**/*.sml" }]
 block-comment-tokens = { start = "(*", end = "*)" }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"' }
 grammar = "sml"
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
@@ -14886,6 +15165,7 @@ file-types = [{ glob = "tools/msvs/**/*.smk" }, { glob = "tools/msvs/**/Snakefil
 comment-tokens = ["#", "##"]
 indent = { unit = "  ", tab-width = 2 }
 language-servers = ["pylsp" ]
+formatter= { command = "snakefmt", args = ["-"] }
 grammar = "snakemake"
 
 [[language]]
@@ -14910,6 +15190,7 @@ block-comment-tokens = [
 ]
 language-servers = [ "spade-language-server" ]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '<' = '>' }
 grammar = "spade"
 
 [[language]]
@@ -15029,6 +15310,7 @@ scope = "source.tact"
 file-types = [{ glob = "tools/msvs/**/*.tact" }]
 comment-token = "//"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '"' = '"', '{' = '}', '(' = ')', '<' = '>' }
 grammar = "tact"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -15134,6 +15416,7 @@ comment-token = ";"
 language-servers = ["ts_query_ls"]
 grammar = "tsq"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '[' = ']', '"' = '"' }
 
 [[language]]
 name = "ec2hx-glob-lang-tools-msvs-**-tsx"
@@ -15191,6 +15474,7 @@ comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 language-servers = ["tinymist", "typst-lsp"]
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '$' = '$', '"' = '"' }
 grammar = "typst"
 
 [[language]]
@@ -15211,6 +15495,7 @@ shebangs = []
 auto-format = true
 comment-token = "--"
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', '`' = '`' }
 grammar = "unison"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 
@@ -15353,6 +15638,7 @@ file-types = [{ glob = "tools/msvs/**/*.wit" }]
 comment-token = "//"
 block-comment-tokens = { start = "/*", end = "*/" }
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 grammar = "wit"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -15381,6 +15667,7 @@ scope = "source.xml"
 file-types = [{ glob = "tools/msvs/**/*.xml" }, { glob = "tools/msvs/**/*.mobileconfig" }, { glob = "tools/msvs/**/*.plist" }, { glob = "tools/msvs/**/*.xib" }, { glob = "tools/msvs/**/*.storyboard" }, { glob = "tools/msvs/**/*.svg" }, { glob = "tools/msvs/**/*.xsd" }, { glob = "tools/msvs/**/*.gml" }, { glob = "tools/msvs/**/*.xaml" }, { glob = "tools/msvs/**/*.gir" }, { glob = "tools/msvs/**/*.rss" }, { glob = "tools/msvs/**/*.atom" }, { glob = "tools/msvs/**/*.opml" }, { glob = "tools/msvs/**/*.policy" }, { glob = "tools/msvs/**/*.ascx" }, { glob = "tools/msvs/**/*.axml" }, { glob = "tools/msvs/**/*.axaml" }, { glob = "tools/msvs/**/*.bpmn" }, { glob = "tools/msvs/**/*.cpt" }, { glob = "tools/msvs/**/*.csl" }, { glob = "tools/msvs/**/*.csproj.user" }, { glob = "tools/msvs/**/*.dita" }, { glob = "tools/msvs/**/*.ditamap" }, { glob = "tools/msvs/**/*.dtml" }, { glob = "tools/msvs/**/*.fxml" }, { glob = "tools/msvs/**/*.iml" }, { glob = "tools/msvs/**/*.isml" }, { glob = "tools/msvs/**/*.jmx" }, { glob = "tools/msvs/**/*.launch" }, { glob = "tools/msvs/**/*.menu" }, { glob = "tools/msvs/**/*.mxml" }, { glob = "tools/msvs/**/*.nuspec" }, { glob = "tools/msvs/**/*.osc" }, { glob = "tools/msvs/**/*.osm" }, { glob = "tools/msvs/**/*.pt" }, { glob = "tools/msvs/**/*.publishsettings" }, { glob = "tools/msvs/**/*.pubxml" }, { glob = "tools/msvs/**/*.pubxml.user" }, { glob = "tools/msvs/**/*.rbxlx" }, { glob = "tools/msvs/**/*.rbxmx" }, { glob = "tools/msvs/**/*.rng" }, { glob = "tools/msvs/**/*.shproj" }, { glob = "tools/msvs/**/*.tld" }, { glob = "tools/msvs/**/*.tmx" }, { glob = "tools/msvs/**/*.vbproj.user" }, { glob = "tools/msvs/**/*.vcxproj" }, { glob = "tools/msvs/**/*.vcxproj.filters" }, { glob = "tools/msvs/**/*.wsdl" }, { glob = "tools/msvs/**/*.wxi" }, { glob = "tools/msvs/**/*.wxs" }, { glob = "tools/msvs/**/*.xbl" }, { glob = "tools/msvs/**/*.xlf" }, { glob = "tools/msvs/**/*.xliff" }, { glob = "tools/msvs/**/*.xpdl" }, { glob = "tools/msvs/**/*.xul" }, { glob = "tools/msvs/**/*.xoml" }, { glob = "tools/msvs/**/*.musicxml" }, { glob = "tools/msvs/**/*.glif" }, { glob = "tools/msvs/**/*.ui" }]
 block-comment-tokens = { start = "<!--", end = "-->" }
 indent = { unit = "  ", tab-width = 2 }
+auto-pairs= { '(' = ')', '{' = '}', '[' = ']', '"' = '"', "'" = "'", "<" = ">" }
 grammar = "xml"
 formatter = { command = "ec2hx", args = ["trim-trailing-whitespace"] }
 auto-format = true
@@ -15424,6 +15711,7 @@ comment-tokens = ["//", "///", "//!"]
 language-servers = [ "zls" ]
 indent = { unit = "  ", tab-width = 2 }
 formatter = { command = "zig" , args = ["fmt", "--stdin"] }
+debugger= { name = "lldb-dap", transport = "stdio", command = "lldb-dap", templates = [{ name = "binary", request = "launch", completion = [ { name = "binary", completion = "filename" } ], args = { console = "internalConsole", program = "{0}" } }, { name = "attach", request = "attach", completion = [ "pid" ], args = { console = "internalConsole", pid = "{0}" } }, { name = "gdbserver attach", request = "attach", completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ], args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] } }] }
 grammar = "zig"
 
 [[language]]

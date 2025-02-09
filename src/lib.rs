@@ -743,6 +743,12 @@ impl LangCfg {
             t.insert("auto-format", true.into());
         }
 
+        for (_, v) in t.iter_mut() {
+            if v.is_table() {
+                let inline = v.clone().into_table().unwrap().into_inline_table();
+                *v = toml_edit::value(inline);
+            }
+        }
         format!("[[language]]\n{t}\n")
     }
 }
