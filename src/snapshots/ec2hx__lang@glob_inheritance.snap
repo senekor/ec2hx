@@ -1,0 +1,29 @@
+---
+source: src/lib.rs
+expression: languages_toml
+input_file: test_data/glob_inheritance
+snapshot_kind: text
+---
+[[language]]
+name = "ec2hx-glob-lang-docs-**.md"
+scope = "source.md"
+file-types = [{ glob = "docs/**.md" }]
+roots = [".marksman.toml"]
+language-servers = [ "marksman", "markdown-oxide" ]
+indent = { unit = "\t", tab-width = 2 }
+block-comment-tokens = { start = "<!--", end = "-->" }
+grammar = "markdown"
+
+[[language]]
+name = "ec2hx-glob-lang-docs-internal-**.md"
+scope = "source.md"
+file-types = [{ glob = "docs/internal/**.md" }]
+roots = [".marksman.toml"]
+language-servers = [ "marksman", "markdown-oxide" ]
+indent = { unit = "    ", tab-width = 4 }
+block-comment-tokens = { start = "<!--", end = "-->" }
+grammar = "markdown"
+
+[[language]]
+name = "markdown"
+indent = { unit = "\t", tab-width = 4 }

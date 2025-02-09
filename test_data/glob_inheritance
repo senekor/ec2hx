@@ -1,0 +1,16 @@
+# According to the EditorConfig specification, the [docs/internal/**.md]
+# section should inherit `indent_size = 2` from the [docs/**.md] section,
+# but it only inherits `indent_size = 4` from the [*.md] section.
+#
+# I think it's not feasible to fix this, but it's good to have a test that
+# documents this behavior.
+
+[*.md]
+indent_size = 4
+indent_style = tab
+
+[docs/**.md]
+indent_size = 2
+
+[docs/internal/**.md]
+indent_style = space
