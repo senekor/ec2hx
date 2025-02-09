@@ -1,0 +1,10 @@
+[*]
+indent_size = 2
+indent_style = tab
+
+[*.rs]
+indent_size = unset
+
+[*.zig]
+indent_size = unset
+indent_style = unset

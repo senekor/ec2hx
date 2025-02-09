@@ -1,4 +1,4 @@
-use std::{collections::BTreeMap, fmt::Write};
+use std::{collections::BTreeMap, fmt::Write, str::FromStr};
 
 pub mod fmt;
 pub mod parse;
@@ -145,7 +145,7 @@ pub fn ec2hx(
                     lang_cfg.with_defaults_from_hx_config(supported_lang);
 
                     if supported_lang.has_formatter {
-                        lang_cfg.trim_trailing_whitespace = Some(false);
+                        lang_cfg.trim_trailing_whitespace = Src::hx(false);
                     }
 
                     let name = make_synthetic_lang_name("glob", &format!("{lang}-{matched_name}"));
@@ -223,7 +223,7 @@ pub fn ec2hx(
                     lang_cfg.with_defaults_from_hx_config(supported_lang);
 
                     if supported_lang.has_formatter {
-                        lang_cfg.trim_trailing_whitespace = Some(false);
+                        lang_cfg.trim_trailing_whitespace = Src::hx(false);
                     }
 
                     if is_path_glob {
@@ -264,7 +264,7 @@ pub fn ec2hx(
 
     let tab_langs_are_customized = global_lang_cfg.tab_width.is_some();
     let langs_without_formatters_are_customized =
-        global_lang_cfg.trim_trailing_whitespace == Some(true);
+        global_lang_cfg.trim_trailing_whitespace.into() == Some(true);
     let all_langs_are_customized =
         global_lang_cfg.size.is_some() || global_lang_cfg.style.is_some();
 
@@ -288,7 +288,7 @@ pub fn ec2hx(
             let mut lang_cfg = global_lang_cfg.clone();
             if lang.has_formatter {
                 // Do not add formatter if language already has one.
-                lang_cfg.trim_trailing_whitespace = Some(false);
+                lang_cfg.trim_trailing_whitespace = Src::hx(false);
             }
             lang_cfg.with_defaults_from_hx_config(lang);
             // I previously thought it would be a good idea to not generate
@@ -469,11 +469,14 @@ impl<'a> EditorConfig<'a> {
                 cur_section = BTreeMap::new();
             } else {
                 let (key, value) = line.parse_key_value_pair();
-                // see: ../test_data/pandoc and ../test_data/nodejs
-                // I guess an empty value means "unsetting" a global config.
-                // This is not really relevant to us, because global configs
-                // aren't applied to zip, docx etc. anyway...
-                if !matches!(value, "" | "unset" | "ignore") {
+
+                // "" and "ignore" sometimes appear as values. These are
+                // non-standard so we ignore them.
+                //
+                // "" :      ../test_data/pandoc
+                // "ignore": ../test_data/django
+                //
+                if !matches!(value, "" | "ignore") {
                     cur_section.insert(key, value);
                 }
             }
@@ -563,13 +566,72 @@ enum IndentStyle {
 }
 use IndentStyle::*;
 
+/// Any EditorConfig property may have its specified value or alternatively
+/// the value "unset", which means values otherwise inherited from a previous
+/// section should be ignored.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum Property<T> {
+    Unset,
+    Value(T),
+}
+
+/// This lets us distinguish where a value came from. This is relevant for the
+/// EditorConfig "unset" property. We don't want to unset properties that came
+/// from the Helix config, only the ones from the EditorConfig.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+struct Src<T> {
+    ec: Option<Property<T>>,
+    hx: Option<T>,
+}
+
+impl<T> Default for Src<T> {
+    fn default() -> Self {
+        Self { ec: None, hx: None }
+    }
+}
+
+impl<T: Copy> Src<T> {
+    fn hx(val: T) -> Self {
+        Self {
+            ec: None,
+            hx: Some(val),
+        }
+    }
+
+    fn is_some(&self) -> bool {
+        self.ec.is_some_and(|p| !matches!(p, Property::Unset)) || self.hx.is_some()
+    }
+
+    fn is_none(&self) -> bool {
+        !self.is_some()
+    }
+
+    fn into(self) -> Option<T> {
+        match (self.ec, self.hx) {
+            (Some(Property::Value(val)), _) => Some(val),
+            (_, Some(val)) => Some(val),
+            _ => None,
+        }
+    }
+}
+
+impl<T: FromStr> Src<T> {
+    fn parse_ec_prop(s: &str) -> Self {
+        let ec = match s {
+            "unset" => Some(Property::Unset),
+            _ => s.parse().ok().map(Property::Value),
+        };
+        Self { ec, hx: None }
+    }
+}
+
 #[derive(Debug, Clone, Default)]
 pub struct LangCfg {
-    size: Option<usize>,
-    style: Option<IndentStyle>,
-    tab_width: Option<usize>,
-    max_line_length: Option<usize>,
-    trim_trailing_whitespace: Option<bool>,
+    size: Src<usize>,
+    style: Src<IndentStyle>,
+    tab_width: Src<usize>,
+    max_line_length: Src<usize>,
+    trim_trailing_whitespace: Src<bool>,
     // not part of editorconfig, used to generate custom configs for languages
     // unsupported by Helix
     file_types: Option<Vec<FileType>>,
@@ -578,31 +640,36 @@ pub struct LangCfg {
     raw_toml: Option<toml_edit::Table>,
 }
 
-impl LangCfg {
-    fn parse_style(style: &&str) -> Option<IndentStyle> {
+impl FromStr for IndentStyle {
+    type Err = ();
+
+    fn from_str(style: &str) -> Result<Self, Self::Err> {
         match style.to_lowercase().as_str() {
-            "tab" => Some(Tab),
-            "space" => Some(Space),
-            _ => None,
+            "tab" => Ok(Tab),
+            "space" => Ok(Space),
+            _ => Err(()),
         }
     }
+}
 
-    fn with_defaults_from(&mut self, other: &Self) -> &mut Self {
-        if self.size.is_none() {
-            self.size = other.size
+impl LangCfg {
+    fn with_defaults_from(&mut self, other: &LangCfg) -> &mut Self {
+        fn resolve<T: Copy>(it: &mut Src<T>, other: Src<T>) {
+            if it.ec.is_none() {
+                it.ec = other.ec;
+            }
+            if it.hx.is_none() {
+                it.hx = other.hx;
+            }
         }
-        if self.style.is_none() {
-            self.style = other.style
-        }
-        if self.tab_width.is_none() {
-            self.tab_width = other.tab_width
-        }
-        if self.max_line_length.is_none() {
-            self.max_line_length = other.max_line_length;
-        }
-        if self.trim_trailing_whitespace.is_none() {
-            self.trim_trailing_whitespace = other.trim_trailing_whitespace;
-        }
+        resolve(&mut self.size, other.size);
+        resolve(&mut self.style, other.style);
+        resolve(&mut self.tab_width, other.tab_width);
+        resolve(&mut self.max_line_length, other.max_line_length);
+        resolve(
+            &mut self.trim_trailing_whitespace,
+            other.trim_trailing_whitespace,
+        );
         self
     }
 
@@ -614,8 +681,8 @@ impl LangCfg {
         let Some((other_size, other_style)) = other.indent else {
             return self;
         };
-        if self.tab_width.is_some() && self.style != Some(Space) {
-            if self.style == Some(Tab) {
+        if self.tab_width.is_some() && self.style.into() != Some(Space) {
+            if self.style.into() == Some(Tab) {
                 // Do nothing. indent_size has precedence over
                 // tab_width if they both come from .editorconfig,
                 // but we don't want to override an editorconfig's
@@ -623,13 +690,13 @@ impl LangCfg {
                 // languages.toml.
             } else {
                 match other_style {
-                    Tab => self.style = Some(Tab),
+                    Tab => self.style = Src::hx(Tab),
                     Space => {
                         // self.style is none and other style is space.
                         // tab_width will be overruled.
-                        self.style = Some(Space);
+                        self.style = Src::hx(Space);
                         if self.size.is_none() {
-                            self.size = Some(other_size);
+                            self.size = Src::hx(other_size);
                         }
                     }
                 }
@@ -640,25 +707,36 @@ impl LangCfg {
             // See for example ../test_data/cockroach where only
             // indent_size if set in the global config.
             if self.size.is_none() {
-                self.size = Some(other_size)
+                self.size = Src::hx(other_size)
             }
             if self.style.is_none() {
-                self.style = Some(other_style)
+                self.style = Src::hx(other_style)
             }
         }
         self
     }
 
     fn from(section: &BTreeMap<Key, &str>) -> Self {
-        let size = section.get(&Key::IndentSize).and_then(|s| s.parse().ok());
-        let tab_width = section.get(&Key::TabWidth).and_then(|s| s.parse().ok());
-        let style = section.get(&Key::IndentStyle).and_then(Self::parse_style);
+        let size = section
+            .get(&Key::IndentSize)
+            .map(|s| Src::parse_ec_prop(s))
+            .unwrap_or_default();
+        let tab_width = section
+            .get(&Key::TabWidth)
+            .map(|s| Src::parse_ec_prop(s))
+            .unwrap_or_default();
+        let style = section
+            .get(&Key::IndentStyle)
+            .map(|s| Src::parse_ec_prop(s))
+            .unwrap_or_default();
         let max_line_length = section
             .get(&Key::MaxLineLength)
-            .and_then(|s| s.parse().ok());
+            .map(|s| Src::parse_ec_prop(s))
+            .unwrap_or_default();
         let trim_trailing_whitespace = section
             .get(&Key::TrimTrailingWhitespace)
-            .and_then(|s| s.parse().ok());
+            .map(|s| Src::parse_ec_prop(s))
+            .unwrap_or_default();
         Self {
             size,
             style,
@@ -672,10 +750,10 @@ impl LangCfg {
 
     fn to_languages_toml(&self, lang: &str, rulers: bool) -> String {
         let indent = 'indent: {
-            let Some(indent_style) = self.style else {
+            let Some(indent_style) = self.style.into() else {
                 break 'indent None;
             };
-            match (indent_style, self.size, self.tab_width) {
+            match (indent_style, self.size.into(), self.tab_width.into()) {
                 (Space, Some(size), _) => Some((" ".repeat(size), size)), // tab_width doesn't affect space
                 (Tab, Some(size), _) | (Tab, None, Some(size)) => Some(("\t".into(), size)),
                 (Space, None, _) | (Tab, None, None) => None,
@@ -683,7 +761,7 @@ impl LangCfg {
         };
         if indent.is_none()
             && self.max_line_length.is_none()
-            && self.trim_trailing_whitespace != Some(true)
+            && self.trim_trailing_whitespace.into() != Some(true)
         {
             return String::new();
         }
@@ -724,7 +802,7 @@ impl LangCfg {
             t.insert("indent", m.into());
         }
 
-        if let Some(max_line_length) = self.max_line_length {
+        if let Some(max_line_length) = self.max_line_length.into() {
             t.insert("text-width", (max_line_length as i64).into());
             if rulers {
                 let len: toml_edit::Value = ((max_line_length + 1) as i64).into();
@@ -733,7 +811,7 @@ impl LangCfg {
             }
         }
 
-        if let Some(true) = self.trim_trailing_whitespace {
+        if let Some(true) = self.trim_trailing_whitespace.into() {
             let mut m = toml_edit::InlineTable::new();
             m.insert("command", "ec2hx".into());
             let arg = toml_edit::Value::from("trim-trailing-whitespace");

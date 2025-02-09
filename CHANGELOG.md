@@ -18,6 +18,8 @@
 
 ### Fixed
 
+- The `unset` value for properties is now supported.
+
 ## 1.4.2 - 2025-02-08
 
 [compare changes](https://github.com/senekor/ec2hx/compare/v1.4.1...v1.4.2)
