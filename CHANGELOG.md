@@ -4,11 +4,19 @@
 
 ## Unreleased
 
-[compare changes](https://github.com/senekor/ec2hx/compare/v1.4.2...HEAD)
+[compare changes](https://github.com/senekor/ec2hx/compare/v1.5.0...HEAD)
 
 ### Breaking
 
 ### Changed
+
+### Added
+
+### Fixed
+
+## 1.5 - 2025-02-10
+
+[compare changes](https://github.com/senekor/ec2hx/compare/v1.4.2...v1.5.0)
 
 ### Added
 
