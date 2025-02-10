@@ -146,9 +146,10 @@ fn main() {
 }
 
 fn fetch_and_cache_languages() -> Option<String> {
-    let cache_path = directories::ProjectDirs::from("dev", "buenzli", "ec2hx")?
-        .cache_dir()
-        .join("languages.toml");
+    let strategy = choose_base_strategy().expect("Unable to find the config directory!");
+    let mut cache_path = strategy.cache_dir();
+    cache_path.push("ec2hx");
+    cache_path.push("languages.toml");
 
     let stale_cache = match read_cache(&cache_path) {
         Some(CacheContent::Fresh(content)) => return Some(content),
