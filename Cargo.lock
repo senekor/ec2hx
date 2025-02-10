@@ -229,7 +229,6 @@ dependencies = [
  "etcetera",
  "insta",
  "reqwest",
- "serde",
  "toml_edit",
 ]
 
