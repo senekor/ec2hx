@@ -121,8 +121,8 @@ fn main() {
         )
         .expect("failed to write .helix/.gitignore");
     }
-    try_write(".helix/languages.toml", languages_toml);
-    try_write(".helix/config.toml", config_toml);
+    try_write_toml(".helix/languages.toml", languages_toml);
+    try_write_toml(".helix/config.toml", config_toml);
 
     if !glob_languages.is_empty() {
         let queries_dir = helix_config_dir().join("runtime").join("queries");
@@ -300,8 +300,11 @@ fn set_has_formattes_from_hx_health(
     Some(languages)
 }
 
-fn try_write(name: &str, contents: String) {
-    if contents.is_empty() {
+fn try_write_toml(name: &str, contents: String) {
+    if contents
+        .lines()
+        .all(|line| line.is_empty() || line.starts_with('#'))
+    {
         return;
     }
     if let Ok(prev_contents) = fs::read_to_string(name) {

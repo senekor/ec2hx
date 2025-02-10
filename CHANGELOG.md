@@ -23,6 +23,8 @@
 
 ### Fixed
 
+- `ec2hx` doesn't generate files anymore that only contain comments.
+
 ## 1.5.0 - 2025-02-10
 
 [compare changes](https://github.com/senekor/ec2hx/compare/v1.4.2...v1.5.0)
