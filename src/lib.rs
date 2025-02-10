@@ -14,6 +14,16 @@ pub struct HelixLangCfg {
     raw_toml: toml_edit::Table,
 }
 
+impl HelixLangCfg {
+    pub fn name(&self) -> &str {
+        &self.name
+    }
+
+    pub fn set_has_formatter(&mut self, val: bool) {
+        self.has_formatter = val;
+    }
+}
+
 #[derive(Debug, Clone, PartialEq)]
 enum FileType {
     Extension(String),

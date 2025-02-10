@@ -12,6 +12,15 @@
 
 ### Added
 
+- The `trim_trailing_whitespace` is now supported for many more languages. The
+  formatter config to support this key was never applied to languages that have
+  a formatter or LSP defined, because those could provide better formatting.
+  However, the default languages.toml defines many formatters and LSPs the user
+  may not even have installed. `ec2hx` now parses the output of `hx --health` to
+  determine for which languages an LSP or formatter is actually installed, so it
+  can generate the `trim_trailing_whitespace` formatter config for the remaining
+  ones.
+
 ### Fixed
 
 ## 1.5.0 - 2025-02-10

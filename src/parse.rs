@@ -57,6 +57,10 @@ pub fn languages(input: &str) -> Vec<HelixLangCfg> {
                 None
             };
 
+            // This is overly caution, because the configured LSP or formatter
+            // may not even be installed. In main.rs, ec2hx tries to get more
+            // precise information from `hx --health`, but this is a good
+            // default in case that fails.
             let has_formatter =
                 lang.get("language-servers").is_some() || lang.get("formatter").is_some();
 
