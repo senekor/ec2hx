@@ -12,7 +12,7 @@ This is a CLI tool that translates an [EditorConfig] file to a project-specific 
 
 2. Run `ec2hx` in your project directory.
 
-3. Start Helix or run `:config-reload`.
+3. Use Helix as you normally would.
 
 ## Upstream support
 

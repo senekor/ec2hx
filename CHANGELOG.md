@@ -12,6 +12,9 @@
 
 ### Added
 
+- On Unix, `ec2hx` now sends the `USR1` signal to all `hx` processes to make
+  them automatically reload the config.
+
 ### Fixed
 
 ## 1.6.2 - 2025-02-24

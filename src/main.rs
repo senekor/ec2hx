@@ -150,6 +150,11 @@ fn main() {
             }
         }
     }
+
+    #[cfg(unix)] // try to reload config by sending signal
+    let _ = std::process::Command::new("killall")
+        .args(["-USR1", "hx"])
+        .status();
 }
 
 fn fetch_and_cache_languages() -> Option<String> {
