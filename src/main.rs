@@ -1,13 +1,13 @@
 use std::{
     fs,
-    io::{Read, stdin},
+    io::{stdin, Read},
     path::Path,
     process::exit,
     time::Duration,
 };
 
 use clap::Parser;
-use etcetera::base_strategy::{BaseStrategy, choose_base_strategy};
+use etcetera::base_strategy::{choose_base_strategy, BaseStrategy};
 
 #[derive(Debug, clap::Parser)]
 #[command(version, about, long_about = LONG_ABOUT)]

@@ -14,6 +14,8 @@
 
 ### Fixed
 
+- Fix CI by downgrading to Rust edition 2021, `dist` doesn't support it yet.
+
 ## 1.6.1 - 2025-02-24
 
 [compare changes](https://github.com/senekor/ec2hx/compare/v1.6.0...v1.6.1)
