@@ -223,7 +223,7 @@ dependencies = [
 
 [[package]]
 name = "ec2hx"
-version = "1.6.2"
+version = "1.7.0"
 dependencies = [
  "clap",
  "etcetera",

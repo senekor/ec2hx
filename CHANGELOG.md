@@ -4,7 +4,7 @@
 
 ## Unreleased
 
-[compare changes](https://github.com/senekor/ec2hx/compare/v1.6.2...HEAD)
+[compare changes](https://github.com/senekor/ec2hx/compare/v1.7.0...HEAD)
 
 ### Breaking
 
@@ -12,10 +12,16 @@
 
 ### Added
 
+### Fixed
+
+## 1.7.0 - 2025-02-24
+
+[compare changes](https://github.com/senekor/ec2hx/compare/v1.6.2...v1.7.0)
+
+### Added
+
 - On Unix, `ec2hx` now sends the `USR1` signal to all `hx` processes to make
   them automatically reload the config.
-
-### Fixed
 
 ## 1.6.2 - 2025-02-24
 
