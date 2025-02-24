@@ -14,6 +14,13 @@
 
 ### Fixed
 
+- `ec2hx` now fetches a version of the default `languages.toml` that corresponds
+  to the version of helix you are running. The observed problem was that a
+  more recent `languages.toml` contained a new language definition which the
+  installed version of helix was not aware of. To match the version of the
+  default `languages.toml` with your installed version of helix, the output of
+  `hx --version` is parsed.
+
 ## 1.6.0 - 2025-02-10
 
 [compare changes](https://github.com/senekor/ec2hx/compare/v1.5.0...v1.6.0)

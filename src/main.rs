@@ -153,9 +153,12 @@ fn main() {
 }
 
 fn fetch_and_cache_languages() -> Option<String> {
+    let hx_version_hash = get_hx_version_hash()?;
+
     let strategy = choose_base_strategy().expect("Unable to find the config directory!");
     let mut cache_path = strategy.cache_dir();
     cache_path.push("ec2hx");
+    cache_path.push(&hx_version_hash);
     cache_path.push("languages.toml");
 
     let stale_cache = match read_cache(&cache_path) {
@@ -164,7 +167,7 @@ fn fetch_and_cache_languages() -> Option<String> {
         None => None,
     };
 
-    let Some(fetched_languages) = fetch_languages() else {
+    let Some(fetched_languages) = fetch_languages(&hx_version_hash) else {
         return stale_cache;
     };
 
@@ -173,6 +176,25 @@ fn fetch_and_cache_languages() -> Option<String> {
     let _ = std::fs::write(cache_path, &fetched_languages);
 
     Some(fetched_languages)
+}
+
+fn get_hx_version_hash() -> Option<String> {
+    let output = std::process::Command::new("hx")
+        .arg("--version")
+        .output()
+        .ok()?
+        .stdout;
+    let output = std::str::from_utf8(&output).ok()?;
+    let hash = output.split(['(', ')']).nth(1)?;
+
+    if !hash
+        .chars()
+        .all(|c| c.is_ascii_digit() || ('a'..='f').contains(&c))
+    {
+        // doesn't look like a hash
+        return None;
+    }
+    Some(hash.into())
 }
 
 enum CacheContent {
@@ -194,14 +216,14 @@ fn read_cache(cache_path: &Path) -> Option<CacheContent> {
     }
 }
 
-fn fetch_languages() -> Option<String> {
+fn fetch_languages(version_hash: &str) -> Option<String> {
     reqwest::blocking::Client::builder()
         .timeout(std::time::Duration::from_secs(1))
         .build()
         .ok()?
-        .get(
-            "https://raw.githubusercontent.com/helix-editor/helix/refs/heads/master/languages.toml",
-        )
+        .get(format!(
+            "https://raw.githubusercontent.com/helix-editor/helix/{version_hash}/languages.toml"
+        ))
         .send()
         .ok()?
         .text()
