@@ -92,6 +92,14 @@ Examples of such well-supported section headers are:
 
 Globs which match against paths (e.g. when they contain `/` or `**`) are also supported, but there are some caveats.
 
+> [!warning]
+> Because of reasons, ec2hx generates stuff into your runtime directory, e.g.
+> `~/.config/helix/runtime`. If you are building from source, you may have
+> symlinked that to the runtime directory of your locally cloned helix repo. In
+> that case, ec2hx will generate stuff into your helix repo, which is not cool.
+> My solution was to put the symlink at `~/.cargo/bin/runtime` instead, helix
+> also looks for runtime files there.
+
 <details>
 <summary>click here if you're interested in how that even works in the first place</summary>
 
