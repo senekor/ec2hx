@@ -14,6 +14,12 @@
 
 ### Fixed
 
+- Users that build helix from source may have symlinked their runtime directory
+  to the one of their local helix repository. `ec2hx` sometimes generates query
+  files into the user's runtime directory. In that case, those query files will
+  be in the helix repository, which is annoying. These generated files are now
+  also automatically ignored by git, making it less of a problem.
+
 ## 1.7.0 - 2025-02-24
 
 [compare changes](https://github.com/senekor/ec2hx/compare/v1.6.2...v1.7.0)
