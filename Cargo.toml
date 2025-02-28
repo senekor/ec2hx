@@ -1,7 +1,7 @@
 [package]
 name = "ec2hx"
 version = "1.7.0"
-edition = "2021"
+edition = "2024"
 authors = ["Remo Senekowitsch <remo@buenzli.dev>"]
 description = "convert EditorConfig to Helix configuration"
 readme = "README.md"
