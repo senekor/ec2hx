@@ -2,17 +2,9 @@
 
 <!-- https://keepachangelog.com/en/1.1.0/ -->
 
-## Unreleased
+## 1.7.2 - 2025-05-24
 
-[compare changes](https://github.com/senekor/ec2hx/compare/v1.7.1...HEAD)
-
-### Breaking
-
-### Changed
-
-### Added
-
-### Fixed
+Sunset project.
 
 ## 1.7.1 - 2025-02-28
 
