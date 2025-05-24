@@ -2,6 +2,12 @@
 
 This is a CLI tool that translates an [EditorConfig] file to a project-specific configuration for the [Helix] editor.
 
+> [!important]
+>
+> Since the 25.01 release of Helix, it has gained native support for EditorConfig.
+> If you have access to a later release than that, you don't need ec2hx.
+> This project won't be developed further.
+
 ## Usage
 
 1. Install using your preferred method:
@@ -13,20 +19,6 @@ This is a CLI tool that translates an [EditorConfig] file to a project-specific 
 2. Run `ec2hx` in your project directory.
 
 3. Use Helix as you normally would.
-
-## Upstream support
-
-At the time of writing, Helix does not support EditorConfig.
-The maintainers don't want to add it in core, they want a plugin to handle it.
-However, the plugin system is still a work in progress.
-That's why `ec2hx` may be your best option at the moment.
-
-Subscribe to the following issues and PRs to stay up-to-date with developments upstream:
-- [issue: Support for EditorConfig](https://github.com/helix-editor/helix/issues/279)
-- [PR: Implement EditorConfig support](https://github.com/helix-editor/helix/pull/1777)
-- [PR: :trim to remove trailing whitespace](https://github.com/helix-editor/helix/pull/8366)
-- [issue: tracking issue: Switch to a scheme based config](https://github.com/helix-editor/helix/issues/10389)
-- [PR: Add Steel as an optional plugin system](https://github.com/helix-editor/helix/pull/8675)
 
 ## Setting expectations
 
@@ -157,12 +149,5 @@ Unfortunately, that means this configuration won't apply to file types Helix doe
 ec2hx --fallback-globs '*.foo,*.bar'
 ```
 
-## Contributing
-
-A good way to contribute is to provide an example EditorConfig file that you think could be handled better.
-You can [open an issue] about it or a PR adding it to the `test_data/` directory next to the other examples.
-It will automatically be picked up by the snapshot tests (using [insta](https://insta.rs/)).
-
 [EditorConfig]: https://editorconfig.org/
 [Helix]: https://helix-editor.com/
-[open an issue]: https://github.com/senekor/ec2hx/issues/new
